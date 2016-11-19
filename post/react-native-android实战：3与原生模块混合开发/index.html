@@ -1,0 +1,616 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>react-native android实战：3 与原生模块混合开发 | hammer崔的程序世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hammercui">
+    
+
+    
+    <meta name="description" content="如何使用
+封装好java模块供JavaScript调用，比如我们用js实现不了的控件或模块，可以通过java实现并封装，供JavaScript使用。
+
+java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaModule，如下：123456789101112131415161718192021public class LogModule extends">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native android实战：3 与原生模块混合开发">
+<meta property="og:url" content="http://hammercui.github.io/post/react-native-android实战：3与原生模块混合开发/index.html">
+<meta property="og:site_name" content="hammer崔的程序世界">
+<meta property="og:description" content="如何使用
+封装好java模块供JavaScript调用，比如我们用js实现不了的控件或模块，可以通过java实现并封装，供JavaScript使用。
+
+java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaModule，如下：123456789101112131415161718192021public class LogModule extends">
+<meta property="og:image" content="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-11/46348245.jpg">
+<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-native android实战：3 与原生模块混合开发">
+<meta name="twitter:description" content="如何使用
+封装好java模块供JavaScript调用，比如我们用js实现不了的控件或模块，可以通过java实现并封装，供JavaScript使用。
+
+java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaModule，如下：123456789101112131415161718192021public class LogModule extends">
+<meta name="twitter:image" content="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-11/46348245.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hammer崔的程序世界" title="hammer崔的程序世界"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
+				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://hammercui.github.io" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/react-native-android实战：3与原生模块混合开发/" title="react-native android实战：3 与原生模块混合开发" itemprop="url">react-native android实战：3 与原生模块混合开发</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-11T06:47:20.000Z" itemprop="datePublished"> 發表於 2016-03-11</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#如何使用"><span class="toc-number">1.</span> <span class="toc-text">如何使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java模块的封装"><span class="toc-number">1.1.</span> <span class="toc-text">java模块的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js调用封装的java"><span class="toc-number">1.2.</span> <span class="toc-text">js调用封装的java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js向java传参"><span class="toc-number">1.3.</span> <span class="toc-text">js向java传参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java执行结果回传给js"><span class="toc-number">1.4.</span> <span class="toc-text">java执行结果回传给js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-回调"><span class="toc-number">1.4.1.</span> <span class="toc-text">1 回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-事件监听调用"><span class="toc-number">1.4.2.</span> <span class="toc-text">2 事件监听调用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">2.</span> <span class="toc-text">参考文献</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><blockquote>
+<p>封装好java模块供JavaScript调用，比如我们用js实现不了的控件或模块，可以通过java实现并封装，供JavaScript使用。</p>
+</blockquote>
+<h2 id="java模块的封装"><a href="#java模块的封装" class="headerlink" title="java模块的封装"></a>java模块的封装</h2><p>java模块新建LogModule类，继承自ReactContextBaseJavaModule，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class LogModule extends ReactContextBaseJavaModule &#123;</div><div class="line"></div><div class="line">    private static final String MODULE_NAME= &quot;Log&quot;;</div><div class="line">	//构造函数</div><div class="line">    public LogModule(ReactApplicationContext reactContext) &#123;</div><div class="line">        super(reactContext);</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	//字符串是JavaScript调用模块的名字</div><div class="line">    @Override</div><div class="line">    public String getName() &#123;</div><div class="line">        return MODULE_NAME;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //暴露给JavaScript端的方法</div><div class="line">    @ReactMethod</div><div class="line">    public void d(String tag,String msg)</div><div class="line">    &#123;</div><div class="line">        Log.d(tag,msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>新建module注册类,实现自ReactPackage，把module注册如package<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class MyAppReactPackage implements ReactPackage &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public List&lt;NativeModule&gt; createNativeModules(ReactApplicationContext reactContext) &#123;</div><div class="line"></div><div class="line">            List&lt;NativeModule&gt; modules = new ArrayList&lt;&gt;();</div><div class="line">            //add Log模块</div><div class="line">            modules.add(new LogModule(reactContext));</div><div class="line">            //add DBlocal模块</div><div class="line">            modules.add(new DBlocalModule(reactContext));</div><div class="line">            return modules;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</div><div class="line">        return Collections.emptyList();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public List&lt;ViewManager&gt; createViewManagers(ReactApplicationContext reactContext) &#123;</div><div class="line">        return Collections.emptyList();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>注册包，在MainActivity中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">    protected List&lt;ReactPackage&gt; getPackages() &#123;</div><div class="line">        return Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">            new MainReactPackage()</div><div class="line">          +  , new VectorIconsPackage()</div><div class="line">          +      ,new MyAppReactPackage()</div><div class="line">        );</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="js调用封装的java"><a href="#js调用封装的java" class="headerlink" title="js调用封装的java"></a>js调用封装的java</h2><p>我们把需要自定义的java模块，统一管理，放在NativeBrigde.android.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//log模块</div><div class="line">var RCTLog = NativeModules.Log;</div><div class="line">var Log = &#123;</div><div class="line">    d: function (tag: string, msg: string): void &#123;</div><div class="line">        console.log(tag,msg);</div><div class="line">        RCTLog.d(tag, msg);</div><div class="line">    &#125;,</div><div class="line">&#125;;</div><div class="line">module .exports =&#123;Log,DBlocal&#125;;</div></pre></td></tr></table></figure></p>
+<p>需要调用的时候<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var &#123;Log,DBlocal&#125; =  require(&apos;../AnComponent/NativeBridge&apos;);`</div><div class="line">Log.d(&apos;hehe&apos;,&quot;我是打印输出&quot;);</div></pre></td></tr></table></figure></p>
+<h2 id="js向java传参"><a href="#js向java传参" class="headerlink" title="js向java传参"></a>js向java传参</h2><p>下面的参数类型在@ReactMethod注明的方法中，会被直接映射到它们对应的JavaScript类型。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Boolean -&gt; Bool</div><div class="line">Integer -&gt; Number</div><div class="line">Double -&gt; Number</div><div class="line">Float -&gt; Number</div><div class="line">String -&gt; String</div><div class="line">Callback -&gt; function</div><div class="line">ReadableMap -&gt; Object</div><div class="line">ReadableArray -&gt; Array</div></pre></td></tr></table></figure>
+<h2 id="java执行结果回传给js"><a href="#java执行结果回传给js" class="headerlink" title="java执行结果回传给js"></a>java执行结果回传给js</h2><h3 id="1-回调"><a href="#1-回调" class="headerlink" title="1 回调"></a>1 <strong>回调</strong></h3><p>java层需要把结果传递给js，答案就是回调，最典型的一个场景就是javascript层调用java层的网络请求方法，java层拿到网络数据后需要将结果返回给javascript层</p>
+<p>为了测试我们在已建好的模块新增方法,invoke回调的参数是无类型，无个数限制的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@ReactMethod</div><div class="line">    public void getValue(String key,final Callback callback)&#123;</div><div class="line">        callback.invoke(&quot;我是结果&quot;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>JavaScript中的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//从本地数据库取值</div><div class="line">DBlocal.getValue(&apos;test&apos;,(result)=&gt;&#123;</div><div class="line">    Log.d(&apos;hehe&apos;,result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>在android studio控制台可以看到结果<br><img src="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-11/46348245.jpg" alt=""></p>
+<h3 id="2-事件监听调用"><a href="#2-事件监听调用" class="headerlink" title="2 事件监听调用"></a>2 <strong>事件监听调用</strong></h3><p>还可以用事件调用JavaScript层，假设调用了java层方法后，我们希望发送一个事件给javascript，在javascript层再次进行打印输出。</p>
+<p>java端</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@ReactMethod</div><div class="line">    public void d(String tag,String msg)&#123;</div><div class="line">        Log.d(tag, msg);</div><div class="line">        //发送事件给javascript层</div><div class="line">        WritableMap params = Arguments.createMap();</div><div class="line">        params.putString(&quot;TAG&quot;,tag);</div><div class="line">        params.putString(&quot;MSG&quot;,msg);</div><div class="line">        getReactApplicationContext()</div><div class="line">                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)</div><div class="line">                .emit(&quot;logInConsole&quot;, params);//对应的javascript层的事件名为logInConsole，注册该事件即可进行回调</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p>而对应的log.js并不需要做什么修改，我们只需要在想获得该事件的地方注册事件即可，比如我们想在主界面接收该事件，则在index.android.js中进行注册。</p>
+<p>JavaScript端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">componentDidMount:function()&#123;</div><div class="line">    Log.d(&quot;tag&quot;,&quot;tag&quot;);//调用java层log方法，之后就会回调对应的事件（前提是注册了事件）</div><div class="line">    //直接使用DeviceEventEmitter进行事件注册</div><div class="line">    DeviceEventEmitter.addListener(&apos;logInConsole&apos;,(e)=&gt;&#123;</div><div class="line">       console.log(e);</div><div class="line">    &#125;); //记得在UnDidMount里卸载事件</div><div class="line"></div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://blog.csdn.net/sbsujjbcy/article/details/49953041" target="_blank" rel="external">Android React Native使用原生模块</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/react-native-android实战/">react-native android实战</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/react-native/">react-native</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://hammercui.github.io/post/react-native-android实战：3与原生模块混合开发/" data-title="react-native android实战：3 与原生模块混合开发 | hammer崔的程序世界" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/android最佳实践（中英文）/" title="android最佳实践(中英文)">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android最佳实践(中英文)</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/react-native基础：Image资源适配/"  title="react-native基础：Image资源适配">
+ <strong>下一篇：</strong><br/> 
+ <span>react-native基础：Image资源适配
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/react-native-android实战：3与原生模块混合开发/" data-title="react-native android实战：3 与原生模块混合开发" data-url="http://hammercui.github.io/post/react-native-android实战：3与原生模块混合开发/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#如何使用"><span class="toc-number">1.</span> <span class="toc-text">如何使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java模块的封装"><span class="toc-number">1.1.</span> <span class="toc-text">java模块的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js调用封装的java"><span class="toc-number">1.2.</span> <span class="toc-text">js调用封装的java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js向java传参"><span class="toc-number">1.3.</span> <span class="toc-text">js向java传参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java执行结果回传给js"><span class="toc-number">1.4.</span> <span class="toc-text">java执行结果回传给js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-回调"><span class="toc-number">1.4.1.</span> <span class="toc-text">1 回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-事件监听调用"><span class="toc-number">1.4.2.</span> <span class="toc-text">2 事件监听调用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">2.</span> <span class="toc-text">参考文献</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/github/" title="github">github<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react/" title="react">react<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-android实战/" title="react-native android实战">react-native android实战<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-basis/" title="react-native basis">react-native basis<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践/" title="android最佳实践">android最佳实践<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://xiekw2010.github.io" target="_blank" title="xiekw2010&#39;s Blog">xiekw2010&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.lcode.org/" target="_blank" title="江清清的技术专栏">江清清的技术专栏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/hammercui" target="_blank" title="My GitHub">My GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 努力 奋斗 <br/>
+			Tomorrow Is Another Day</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hammercui## e.g. wuchong for https://github.com/wuchong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hammercui">hammercui</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hammercui"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4c0e7eb512fab8f2d1682c1bff044651";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

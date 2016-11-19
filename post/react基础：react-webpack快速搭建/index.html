@@ -1,0 +1,607 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>react基础：react0.14.7+webpack快速搭建web项目 | hammer崔的程序世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hammercui">
+    
+
+    
+    <meta name="description" content="安装方法1 一一安装123456npm install react react-dom babel-preset-react --save-devnpm install babel-preset-es2015 --save-devnpm install webpack --save-devnpm install webpack-dev-server --save-devnpm install ba">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react基础：react0.14.7+webpack快速搭建web项目">
+<meta property="og:url" content="http://hammercui.github.io/post/react基础：react-webpack快速搭建/index.html">
+<meta property="og:site_name" content="hammer崔的程序世界">
+<meta property="og:description" content="安装方法1 一一安装123456npm install react react-dom babel-preset-react --save-devnpm install babel-preset-es2015 --save-devnpm install webpack --save-devnpm install webpack-dev-server --save-devnpm install ba">
+<meta property="og:image" content="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-26/29969857.jpg">
+<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react基础：react0.14.7+webpack快速搭建web项目">
+<meta name="twitter:description" content="安装方法1 一一安装123456npm install react react-dom babel-preset-react --save-devnpm install babel-preset-es2015 --save-devnpm install webpack --save-devnpm install webpack-dev-server --save-devnpm install ba">
+<meta name="twitter:image" content="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-26/29969857.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hammer崔的程序世界" title="hammer崔的程序世界"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
+				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://hammercui.github.io" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/react基础：react-webpack快速搭建/" title="react基础：react0.14.7+webpack快速搭建web项目" itemprop="url">react基础：react0.14.7+webpack快速搭建web项目</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-26T10:26:56.000Z" itemprop="datePublished"> 發表於 2016-03-26</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1-一一安装"><span class="toc-number">1.1.</span> <span class="toc-text">方法1 一一安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2-批量安装"><span class="toc-number">1.2.</span> <span class="toc-text">方法2 批量安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置webpack"><span class="toc-number">2.</span> <span class="toc-text">配置webpack</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编译并启动"><span class="toc-number">3.</span> <span class="toc-text">编译并启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启用webpack-dev-server进行动态开发"><span class="toc-number">4.</span> <span class="toc-text">启用webpack-dev-server进行动态开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优化重合并"><span class="toc-number">5.</span> <span class="toc-text">优化重合并</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#出现的问题"><span class="toc-number">6.</span> <span class="toc-text">出现的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Uncaught-ReferenceError-webpackJsonp-is-not-defined"><span class="toc-number">6.1.</span> <span class="toc-text">1 Uncaught ReferenceError: webpackJsonp is not defined</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">7.</span> <span class="toc-text">参考文献</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="方法1-一一安装"><a href="#方法1-一一安装" class="headerlink" title="方法1 一一安装"></a>方法1 一一安装</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">npm install react react-dom babel-preset-react --save-dev</div><div class="line">npm install babel-preset-es2015 --save-dev</div><div class="line">npm install webpack --save-dev</div><div class="line">npm install webpack-dev-server --save-dev</div><div class="line">npm install babel-core --save-dev</div><div class="line">npm install babel-loader --save-dev</div></pre></td></tr></table></figure>
+<h2 id="方法2-批量安装"><a href="#方法2-批量安装" class="headerlink" title="方法2 批量安装"></a>方法2 批量安装</h2><p>package.json添加如下代码<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"> &quot;dependencies&quot;: &#123;</div><div class="line">   &quot;babel-runtime&quot;: &quot;^6.5.0&quot;,</div><div class="line">   &quot;react&quot;: &quot;^0.14.7&quot;,</div><div class="line">   &quot;react-dom&quot;: &quot;^0.14.7&quot;</div><div class="line"> &#125;,</div><div class="line"></div><div class="line"></div><div class="line"> &quot;devDependencies&quot;: &#123;</div><div class="line">&quot;amazeui-react&quot;: &quot;^1.0.1&quot;,</div><div class="line">   &quot;babel-core&quot;: &quot;^6.7.4&quot;,</div><div class="line">   &quot;babel-loader&quot;: &quot;^6.2.4&quot;,</div><div class="line">   &quot;babel-preset-es2015&quot;: &quot;^6.6.0&quot;,</div><div class="line">   &quot;babel-preset-react&quot;: &quot;^6.5.0&quot;,</div><div class="line">   &quot;css-loader&quot;: &quot;^0.23.1&quot;,</div><div class="line">   &quot;material-ui&quot;: &quot;^0.15.0-alpha.2&quot;,</div><div class="line">   &quot;react&quot;: &quot;^0.14.7&quot;,</div><div class="line">   &quot;react-dom&quot;: &quot;^0.14.7&quot;,</div><div class="line">   &quot;react-hot-loader&quot;: &quot;^1.3.0&quot;,</div><div class="line">   &quot;react-tap-event-plugin&quot;: &quot;^0.2.2&quot;,</div><div class="line">   &quot;style-loader&quot;: &quot;^0.13.1&quot;,</div><div class="line">   &quot;url-loader&quot;: &quot;^0.5.7&quot;,</div><div class="line">   &quot;webpack&quot;: &quot;^1.12.14&quot;,</div><div class="line">   &quot;webpack-dev-server&quot;: &quot;^1.14.1&quot;</div><div class="line"> &#125;</div></pre></td></tr></table></figure></p>
+<p>然后执行<code>npn install</code></p>
+<h1 id="配置webpack"><a href="#配置webpack" class="headerlink" title="配置webpack"></a>配置webpack</h1><p>工程截图<br><img src="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-26/29969857.jpg" alt=""><br>在工程目录下新建<code>webpack.config.js</code>文件，内容如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * Created by hammer on 2016/3/26.</div><div class="line"> * 配置的打包文件</div><div class="line"> */</div><div class="line">var webpack = require(&apos;webpack&apos;);</div><div class="line">//var commonsPlugin = new webpack.optimize.CommonsChunkPlugin(&apos;common.js&apos;);</div><div class="line">var path = require(&apos;path&apos;);</div><div class="line">console.log(__dirname);</div><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">    //插件项</div><div class="line">    plugins: [</div><div class="line">		//commonsPlugin,</div><div class="line">		new webpack.NoErrorsPlugin()</div><div class="line">	1],</div><div class="line">    //页面入口文件配置</div><div class="line">    //entry: &#123;mian : &apos;./app/main.js&apos;&#125;,</div><div class="line">    entry:path.resolve(__dirname,&apos;./app/main.js&apos;),</div><div class="line">    //入口文件输出配置</div><div class="line">    //output: &#123;path: __dirname+&apos;_build_&apos;, filename: &apos;[name].js&apos;&#125;</div><div class="line">    output:&#123;</div><div class="line">        path: path.resolve(__dirname,&apos;./build&apos;),</div><div class="line">        filename: &apos;build.js&apos;</div><div class="line">    &#125;,</div><div class="line">    module: &#123;</div><div class="line">        //加载器配置</div><div class="line">        loaders: [</div><div class="line">            //LESS文件先通过less-load处理成css，然后再通过css-loader加载成css模块，最后由style-loader加载器对其做最后的处理，</div><div class="line">            // 从而运行时可以通过style标签将其应用到最终的浏览器环境</div><div class="line">            &#123;test: /\.less/, loader: &apos;style-loader!css-loader!less-loader&apos;&#125;,</div><div class="line">            //.css 文件使用 style-loader 和 css-loader 来处理</div><div class="line">            &#123; test: /\.css$/, loader: &apos;style-loader!css-loader&apos; &#125;,</div><div class="line">            //.js 文件使用 jsx-loader 来编译处理 jsx-loader可以添加?harmony参数使其支持ES6语法</div><div class="line">            &#123; test: /\.js$/,</div><div class="line">                exclude: /node_modules/,</div><div class="line">                loader: &apos;babel&apos;,</div><div class="line">                query:&#123;</div><div class="line">                    presets:[&apos;es2015&apos;,&apos;react&apos;]</div><div class="line">                &#125; //备注：es2015用于支持ES6语法，react用于解决render()报错的问题</div><div class="line">            &#125;,</div><div class="line">            //.scss 文件使用 style-loader、css-loader 和 sass-loader 来编译处理</div><div class="line">            &#123; test: /\.scss$/, loader: &apos;style!css!sass?sourceMap&apos;&#125;,</div><div class="line">            //图片文件使用 url-loader 来处理，小于8kb的直接转为base64</div><div class="line">            &#123; test: /\.(png|jpg)$/, loader: &apos;url-loader?limit=8192&apos;&#125;</div><div class="line">        ]</div><div class="line">    &#125;,</div><div class="line">    //其它解决方案配置</div><div class="line">    resolve: &#123;</div><div class="line">        //查找module的话从这里开始查找</div><div class="line">        //root: &apos;E:/github/flux-example/app&apos;, //绝对路径</div><div class="line">        //自动扩展文件后缀名，意味着我们require模块可以省略不写后缀名</div><div class="line">        extensions: [&apos;&apos;, &apos;.js&apos;, &apos;.json&apos;, &apos;.scss&apos;],</div><div class="line">        //模块别名定义，方便后续直接引用别名，无须多写长长的地址</div><div class="line">        alias: &#123;</div><div class="line">            AppStore : &apos;js/stores/AppStores.js&apos;,</div><div class="line">            ActionType : &apos;js/actions/ActionType.js&apos;,</div><div class="line">            AppAction : &apos;js/actions/AppAction.js&apos;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<p>执行<code>webpack</code>命令进行打包，打包完成就会在build目录出现build.js文件，编译成功。</p>
+<h1 id="编译并启动"><a href="#编译并启动" class="headerlink" title="编译并启动"></a>编译并启动</h1><p>修改<code>package.json</code>文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&quot;scripts&quot;: &#123;</div><div class="line">    &quot;build&quot;: &quot;webpack&quot;,</div><div class="line">	&quot;dev&quot;: &quot;webpack-dev-server --devtool eval --progress --colors --hot --content-base build&quot;</div><div class="line">  &#125;,</div></pre></td></tr></table></figure>
+<p>index.html文件如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div id=&quot;content&quot;&gt;&lt;/div&gt;</div><div class="line">&lt;script src=&quot;build.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p>可修改服务的端口号<code>webpac.config.js</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">devServer: &#123;</div><div class="line">       inline: true,</div><div class="line">       port: 7777</div><div class="line">   &#125;,</div></pre></td></tr></table></figure></p>
+<p>运行<code>npm run dev</code><br>在浏览器打开<a href="http://localhost:7777预览" target="_blank" rel="external">http://localhost:7777预览</a></p>
+<h1 id="启用webpack-dev-server进行动态开发"><a href="#启用webpack-dev-server进行动态开发" class="headerlink" title="启用webpack-dev-server进行动态开发"></a>启用webpack-dev-server进行动态开发</h1><p>1 在配置中增加一个入口点,修改<code>webpack.config.js</code>文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">entry:[</div><div class="line">        &apos;webpack/hot/dev-server&apos;,</div><div class="line">        path.resolve(__dirname,&apos;app/main.js&apos;)</div><div class="line">    ],</div></pre></td></tr></table></figure></p>
+<p>2 修改inedx.html文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id = &quot;app&quot;&gt;&lt;/div&gt;</div><div class="line">    &lt;script src=&quot;http://localhost:7777/webpack-dev-server.js&quot;&gt;&lt;/script&gt;</div><div class="line">    &lt;script src=&quot;build.js&quot;&gt;&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<p>这样可以通过</p>
+<p>运行<code>npm run dev</code>进入开发模式，可以快速编辑直接预览</p>
+<h1 id="优化重合并"><a href="#优化重合并" class="headerlink" title="优化重合并"></a>优化重合并</h1><p>你可能注意到在引入 React JS 到你的项目之后，给你的应用重新合并会花费太多的时间。在开发环境中，最理想的是编译最多 200 到 800 毫秒的速度，取决于你在开发的应用。<br>在开发环境中使用压缩文件<br>为了不让 Webpack 去遍历 React JS 及其依赖，你可以在开发中重写它的行为。<br>修改<code>webpack.config.js</code>文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">var path = require(&apos;path&apos;);</div><div class="line">+ var node_modules = path.resolve(__dirname, &apos;node_modules&apos;);</div><div class="line">+ var pathToReact = path.resolve(node_modules, &apos;react/dist/react.min.js&apos;);</div><div class="line"></div><div class="line">config = &#123;</div><div class="line">    entry: [&apos;webpack/hot/dev-server&apos;, path.resolve(__dirname, &apos;app/main.js&apos;)],</div><div class="line">    resolve: &#123;</div><div class="line">        alias: &#123;</div><div class="line">         + &apos;react&apos;: pathToReact</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    output: &#123;</div><div class="line">        path: path.resolve(__dirname, &apos;build&apos;),</div><div class="line">        filename: &apos;bundle.js&apos;,</div><div class="line">    &#125;,</div><div class="line">    module: &#123;</div><div class="line">        loaders: [&#123;</div><div class="line">            test: /\.jsx?$/,</div><div class="line">            loader: &apos;babel&apos;</div><div class="line">        &#125;],</div><div class="line">        noParse: [pathToReact]</div><div class="line">    &#125;    </div><div class="line">&#125;;</div><div class="line"></div><div class="line">module.exports = config;</div></pre></td></tr></table></figure></p>
+<h1 id="出现的问题"><a href="#出现的问题" class="headerlink" title="出现的问题"></a>出现的问题</h1><h2 id="1-Uncaught-ReferenceError-webpackJsonp-is-not-defined"><a href="#1-Uncaught-ReferenceError-webpackJsonp-is-not-defined" class="headerlink" title="1 Uncaught ReferenceError: webpackJsonp is not defined"></a>1 Uncaught ReferenceError: webpackJsonp is not defined</h2><p>使用CommonsChunkPlugin生成了公共文件，但是未使用<br>添加</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://segmentfault.com/a/1190000003768578" target="_blank" rel="external">初学webpack与react</a>,这个是我认为最好的教程。</p>
+<p><a href="https://segmentfault.com/a/1190000002767365#articleHeader7" target="_blank" rel="external">轻松入门React和Webpack</a></p>
+<p><a href="http://www.w2bc.com/Article/50764" target="_blank" rel="external">一小时包教会 —— webpack 入门指南</a></p>
+<p><a href="http://www.zplan.net/news.php?id=287" target="_blank" rel="external">react新版本与babel新版本的兼容问题:Module build failed: SyntaxError:React.render(<br>Hello</a><br><a href="http://www.jianshu.com/p/418e48e0cef1" target="_blank" rel="external">React+Webpack快速上手指南</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/react/">react</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/react/">react</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://hammercui.github.io/post/react基础：react-webpack快速搭建/" data-title="react基础：react0.14.7+webpack快速搭建web项目 | hammer崔的程序世界" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/react基础：react-web项目选择ui/" title="react基础：react-web项目ui的选择">
+  <strong>上一篇：</strong><br/>
+  <span>
+  react基础：react-web项目ui的选择</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/react基础：npm如何使用淘宝镜像/"  title="react基础：npm如何使用淘宝镜像">
+ <strong>下一篇：</strong><br/> 
+ <span>react基础：npm如何使用淘宝镜像
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/react基础：react-webpack快速搭建/" data-title="react基础：react0.14.7+webpack快速搭建web项目" data-url="http://hammercui.github.io/post/react基础：react-webpack快速搭建/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装"><span class="toc-number">1.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#方法1-一一安装"><span class="toc-number">1.1.</span> <span class="toc-text">方法1 一一安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法2-批量安装"><span class="toc-number">1.2.</span> <span class="toc-text">方法2 批量安装</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#配置webpack"><span class="toc-number">2.</span> <span class="toc-text">配置webpack</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编译并启动"><span class="toc-number">3.</span> <span class="toc-text">编译并启动</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#启用webpack-dev-server进行动态开发"><span class="toc-number">4.</span> <span class="toc-text">启用webpack-dev-server进行动态开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#优化重合并"><span class="toc-number">5.</span> <span class="toc-text">优化重合并</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#出现的问题"><span class="toc-number">6.</span> <span class="toc-text">出现的问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Uncaught-ReferenceError-webpackJsonp-is-not-defined"><span class="toc-number">6.1.</span> <span class="toc-text">1 Uncaught ReferenceError: webpackJsonp is not defined</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">7.</span> <span class="toc-text">参考文献</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/github/" title="github">github<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react/" title="react">react<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-android实战/" title="react-native android实战">react-native android实战<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-basis/" title="react-native basis">react-native basis<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践/" title="android最佳实践">android最佳实践<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://xiekw2010.github.io" target="_blank" title="xiekw2010&#39;s Blog">xiekw2010&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.lcode.org/" target="_blank" title="江清清的技术专栏">江清清的技术专栏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/hammercui" target="_blank" title="My GitHub">My GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 努力 奋斗 <br/>
+			Tomorrow Is Another Day</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hammercui## e.g. wuchong for https://github.com/wuchong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hammercui">hammercui</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hammercui"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4c0e7eb512fab8f2d1682c1bff044651";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

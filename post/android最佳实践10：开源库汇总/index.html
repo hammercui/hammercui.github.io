@@ -1,0 +1,721 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android最佳实践10：开源库汇总 | hammer崔的程序世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hammercui">
+    
+
+    
+    <meta name="description" content="第一部分：工具库依赖注入库dagger：Square公司的明星项目，已被google官方采用
+依赖注入，适用于 Android 和 Java
+在android平台，特别适合mvp架构
+官网
+Dagger 源码解析
+Dagger2使用
+MVP+Dagger2+Retrofit实现更清晰的架构
+
+AndroidAnnotations(Code Diet)
+目前我正在使用的项目，不是很方便，每次要编译时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android最佳实践10：开源库汇总">
+<meta property="og:url" content="http://hammercui.github.io/post/android最佳实践10：开源库汇总/index.html">
+<meta property="og:site_name" content="hammer崔的程序世界">
+<meta property="og:description" content="第一部分：工具库依赖注入库dagger：Square公司的明星项目，已被google官方采用
+依赖注入，适用于 Android 和 Java
+在android平台，特别适合mvp架构
+官网
+Dagger 源码解析
+Dagger2使用
+MVP+Dagger2+Retrofit实现更清晰的架构
+
+AndroidAnnotations(Code Diet)
+目前我正在使用的项目，不是很方便，每次要编译时">
+<meta property="og:image" content="https://camo.githubusercontent.com/7539fed2c320aecc0d47320586e8c2ee22a2d762/687474703a2f2f37786b39646a2e636f6d312e7a302e676c622e636c6f7564646e2e636f6d2f726566726573686c61796f75742f73637265656e73686f74732f6267615f726566726573686c61796f7574322e676966">
+<meta property="og:image" content="https://raw.githubusercontent.com/chrisbanes/Android-PullToRefresh/master/header_graphic.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/afollestad/material-dialogs/master/art/mddemoshowcase.png">
+<meta property="og:image" content="https://github.com/saiwu-bigkoo/Android-PickerView/raw/master/preview/pickerdemo.gif">
+<meta property="og:image" content="https://github.com/saiwu-bigkoo/Android-ConvenientBanner/raw/master/preview/convenientbannerdemo.gif">
+<meta property="og:image" content="https://github.com/dalong982242260/LoopRotarySwitch/raw/master/img/dalong.gif">
+<meta property="og:image" content="https://camo.githubusercontent.com/fc4718502ecb25f906deb73a34c2e7b465323ea0/687474703a2f2f646576656c6f70776561722e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031342f30352f6361726f7573656c312e706e67">
+<meta property="og:image" content="https://camo.githubusercontent.com/ad7578f22aeef2180975a57c2ce291d8d22d7ec3/68747470733a2f2f7261772e6769746875622e636f6d2f6c75646f766963726f6c616e642f6361726f7573656c2d616e64726f69642f6d61737465722f73637265656e73686f74312e706e67">
+<meta property="og:image" content="https://github.com/panhuachao/Android-3D-Carousel/raw/master/round.gif">
+<meta property="og:image" content="https://github.com/dalong982242260/CarrouselView/raw/master/screenshot/carouselview.gif">
+<meta property="og:image" content="https://github.com/LittleLiByte/GlFancyCoverFlow/raw/master/GlFancyCoverFlow/res/raw/ScreenShots/device-2014-10-15-141029.png">
+<meta property="og:image" content="https://github.com/traex/ExpandableLayout/raw/master/demo.gif">
+<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android最佳实践10：开源库汇总">
+<meta name="twitter:description" content="第一部分：工具库依赖注入库dagger：Square公司的明星项目，已被google官方采用
+依赖注入，适用于 Android 和 Java
+在android平台，特别适合mvp架构
+官网
+Dagger 源码解析
+Dagger2使用
+MVP+Dagger2+Retrofit实现更清晰的架构
+
+AndroidAnnotations(Code Diet)
+目前我正在使用的项目，不是很方便，每次要编译时">
+<meta name="twitter:image" content="https://camo.githubusercontent.com/7539fed2c320aecc0d47320586e8c2ee22a2d762/687474703a2f2f37786b39646a2e636f6d312e7a302e676c622e636c6f7564646e2e636f6d2f726566726573686c61796f75742f73637265656e73686f74732f6267615f726566726573686c61796f7574322e676966">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hammer崔的程序世界" title="hammer崔的程序世界"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
+				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://hammercui.github.io" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/android最佳实践10：开源库汇总/" title="android最佳实践10：开源库汇总" itemprop="url">android最佳实践10：开源库汇总</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
+		
+  <p class="article-time">
+    <time datetime="2016-05-16T01:57:48.000Z" itemprop="datePublished"> 發表於 2016-05-16</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一部分：工具库"><span class="toc-number">1.</span> <span class="toc-text">第一部分：工具库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖注入库"><span class="toc-number">1.1.</span> <span class="toc-text">依赖注入库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dagger：Square公司的明星项目，已被google官方采用"><span class="toc-number">1.1.1.</span> <span class="toc-text">dagger：Square公司的明星项目，已被google官方采用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AndroidAnnotations-Code-Diet"><span class="toc-number">1.1.2.</span> <span class="toc-text">AndroidAnnotations(Code Diet)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片缓存库"><span class="toc-number">1.2.</span> <span class="toc-text">图片缓存库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对比"><span class="toc-number">1.2.1.</span> <span class="toc-text">对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-retrolambda-java7兼容lambda库"><span class="toc-number">1.3.</span> <span class="toc-text">gradle-retrolambda:java7兼容lambda库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rx-android-感受响应式编程魅力"><span class="toc-number">1.4.</span> <span class="toc-text">rx-android:感受响应式编程魅力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrofit2-0-最热门的restfull规范网络请求框架"><span class="toc-number">1.5.</span> <span class="toc-text">Retrofit2.0:最热门的restfull规范网络请求框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EventBus：发布-订阅的事件总线"><span class="toc-number">1.6.</span> <span class="toc-text">EventBus：发布 / 订阅的事件总线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高版本向低版本兼容库"><span class="toc-number">1.7.</span> <span class="toc-text">高版本向低版本兼容库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nineoldandroids-JakeWharton大神的项目"><span class="toc-number">1.7.1.</span> <span class="toc-text">nineoldandroids:JakeWharton大神的项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二部分-ui库"><span class="toc-number">2.</span> <span class="toc-text">第二部分 ui库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#刷新ui"><span class="toc-number">2.1.</span> <span class="toc-text">刷新ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BGARefreshLayout-Android-多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位"><span class="toc-number">2.1.1.</span> <span class="toc-text">BGARefreshLayout-Android:多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-PullToRefresh"><span class="toc-number">2.1.2.</span> <span class="toc-text">Android-PullToRefresh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#android-Ultra-Pull-To-Refresh"><span class="toc-number">2.1.3.</span> <span class="toc-text">android-Ultra-Pull-To-Refresh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Material-Design-UI"><span class="toc-number">2.2.</span> <span class="toc-text">Material Design UI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#material-dialogs"><span class="toc-number">2.2.1.</span> <span class="toc-text">material-dialogs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#仿ios的ui"><span class="toc-number">2.3.</span> <span class="toc-text">仿ios的ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-PickerView-仿ios的pickview库"><span class="toc-number">2.3.1.</span> <span class="toc-text">Android-PickerView:仿ios的pickview库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewPager-、Gallery轮播图-旋转木马效果"><span class="toc-number">2.4.</span> <span class="toc-text">ViewPager 、Gallery轮播图 旋转木马效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-ConvenientBanner-banner轮播图"><span class="toc-number">2.4.1.</span> <span class="toc-text">Android-ConvenientBanner:banner轮播图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LoopRotarySwitch：旋转木马"><span class="toc-number">2.4.2.</span> <span class="toc-text">LoopRotarySwitch：旋转木马</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CarouselViewProject：画廊效果"><span class="toc-number">2.4.3.</span> <span class="toc-text">CarouselViewProject：画廊效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3d旋转木马效果"><span class="toc-number">2.4.4.</span> <span class="toc-text">3d旋转木马效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#carousel-android-star31"><span class="toc-number">2.4.4.1.</span> <span class="toc-text">carousel-android:star31</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-3D-Carousel-star4"><span class="toc-number">2.4.4.2.</span> <span class="toc-text">Android-3D-Carousel:star4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CarrouselView-star22-中文版"><span class="toc-number">2.4.4.3.</span> <span class="toc-text">CarrouselView:star22 中文版</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GlFancyCoverFlow-电影海报轮播图"><span class="toc-number">2.4.5.</span> <span class="toc-text">GlFancyCoverFlow:电影海报轮播图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊ui"><span class="toc-number">2.5.</span> <span class="toc-text">特殊ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ExpandableLayout-控件收缩"><span class="toc-number">2.5.1.</span> <span class="toc-text">ExpandableLayout:控件收缩</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="第一部分：工具库"><a href="#第一部分：工具库" class="headerlink" title="第一部分：工具库"></a>第一部分：工具库</h1><h2 id="依赖注入库"><a href="#依赖注入库" class="headerlink" title="依赖注入库"></a>依赖注入库</h2><h3 id="dagger：Square公司的明星项目，已被google官方采用"><a href="#dagger：Square公司的明星项目，已被google官方采用" class="headerlink" title="dagger：Square公司的明星项目，已被google官方采用"></a><a href="https://github.com/square/dagger" target="_blank" rel="external">dagger</a>：Square公司的明星项目，已被google官方采用</h3><ul>
+<li>依赖注入，适用于 Android 和 Java</li>
+<li>在android平台，特别适合mvp架构</li>
+<li><a href="http://square.github.io/dagger/" target="_blank" rel="external">官网</a></li>
+<li><a href="http://a.codekk.com/detail/Android/%E6%89%94%E7%89%A9%E7%BA%BF/Dagger%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90" target="_blank" rel="external">Dagger 源码解析</a></li>
+<li><a href="http://www.jianshu.com/p/c2feb21064bb" target="_blank" rel="external">Dagger2使用</a></li>
+<li><a href="http://blog.csdn.net/tiankong1206/article/details/46486401" target="_blank" rel="external">MVP+Dagger2+Retrofit实现更清晰的架构</a></li>
+</ul>
+<h3 id="AndroidAnnotations-Code-Diet"><a href="#AndroidAnnotations-Code-Diet" class="headerlink" title="AndroidAnnotations(Code Diet)"></a><a href="https://github.com/excilys/androidannotations" target="_blank" rel="external">AndroidAnnotations(Code Diet)</a></h3><ul>
+<li>目前我正在使用的项目，不是很方便，每次要编译时生成Activity的子类_Activity</li>
+<li>特点：(1) 依赖注入：包括 view，extras，系统服务，资源等等<br>(2) 简单的线程模型，通过 annotation 表示方法运行在 ui 线程还是后台线程<br>(3) 事件绑定：通过 annotation 表示 view 的响应事件，不用在写内部类<br>(4) REST 客户端：定义客户端接口，自动生成 REST 请求的实现<br>(5) 没有你想象的复杂：AndroidAnnotations 只是在在编译时生成相应子类<br>(6) 不影响应用性能：仅 50kb，在编译时完成，不会对运行时有性能影响。<br>其他：与 roboguice 的比较：roboguice 通过运行时读取 annotations 进行反射，所以可能影响应用性能，而 AndroidAnnotations 在编译时生成子类，所以对性能没有影响</li>
+</ul>
+<h2 id="图片缓存库"><a href="#图片缓存库" class="headerlink" title="图片缓存库"></a>图片缓存库</h2><ul>
+<li>picasso</li>
+<li>fresco</li>
+<li>Glide</li>
+</ul>
+<h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><ul>
+<li>fresco facebook的明星项目，5.0以下特别流畅，但是包大。亮点是渐进式显示图片</li>
+<li>picasso Square的明星项目，跟okhttp结合最好用，包最小</li>
+<li>Glide是google出品的图片缓存框架</li>
+</ul>
+<p>总结，我选择使用Picasso，因为简单易上手。</p>
+<h2 id="gradle-retrolambda-java7兼容lambda库"><a href="#gradle-retrolambda-java7兼容lambda库" class="headerlink" title="gradle-retrolambda:java7兼容lambda库"></a><a href="https://github.com/evant/gradle-retrolambda" target="_blank" rel="external">gradle-retrolambda</a>:java7兼容lambda库</h2><p><a href="http://hammercui.github.io/post/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B51%EF%BC%9Aretrolambda%E6%A1%86%E6%9E%B6/">使用教程</a></p>
+<h2 id="rx-android-感受响应式编程魅力"><a href="#rx-android-感受响应式编程魅力" class="headerlink" title="rx-android:感受响应式编程魅力"></a><a href="https://github.com/ReactiveX/RxAndroid" target="_blank" rel="external">rx-android</a>:感受响应式编程魅力</h2><p><a href="http://hammercui.github.io/post/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B52%EF%BC%9Arxjava%E6%A1%86%E6%9E%B6/">使用教程</a></p>
+<h2 id="Retrofit2-0-最热门的restfull规范网络请求框架"><a href="#Retrofit2-0-最热门的restfull规范网络请求框架" class="headerlink" title="Retrofit2.0:最热门的restfull规范网络请求框架"></a><a href="https://github.com/square/retrofit" target="_blank" rel="external">Retrofit2.0</a>:最热门的restfull规范网络请求框架</h2><p><a href="http://hammercui.github.io/post/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B53%EF%BC%9Aretrofit%E6%A1%86%E6%9E%B6/">使用教程</a></p>
+<h2 id="EventBus：发布-订阅的事件总线"><a href="#EventBus：发布-订阅的事件总线" class="headerlink" title="EventBus：发布 / 订阅的事件总线"></a><a href="https://github.com/greenrobot/EventBus" target="_blank" rel="external">EventBus</a>：发布 / 订阅的事件总线</h2><p><a href="http://hammercui.github.io/post/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B55%EF%BC%9AEventBus/">使用教程</a></p>
+<h2 id="高版本向低版本兼容库"><a href="#高版本向低版本兼容库" class="headerlink" title="高版本向低版本兼容库"></a>高版本向低版本兼容库</h2><h3 id="nineoldandroids-JakeWharton大神的项目"><a href="#nineoldandroids-JakeWharton大神的项目" class="headerlink" title="nineoldandroids:JakeWharton大神的项目"></a><a href="https://github.com/JakeWharton/NineOldAndroids" target="_blank" rel="external">nineoldandroids</a>:JakeWharton大神的项目</h3><ul>
+<li><a href="http://a.codekk.com/detail/Android/Mr.Simple/NineOldAnimations%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90" target="_blank" rel="external">NineOldAnimations 源码解析</a></li>
+<li><a href="http://nineoldandroids.com/" target="_blank" rel="external">文档介绍</a></li>
+</ul>
+<h1 id="第二部分-ui库"><a href="#第二部分-ui库" class="headerlink" title="第二部分 ui库"></a>第二部分 ui库</h1><h2 id="刷新ui"><a href="#刷新ui" class="headerlink" title="刷新ui"></a>刷新ui</h2><h3 id="BGARefreshLayout-Android-多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位"><a href="#BGARefreshLayout-Android-多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位" class="headerlink" title="BGARefreshLayout-Android:多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位"></a><a href="https://github.com/bingoogolapple/BGARefreshLayout-Android" target="_blank" rel="external">BGARefreshLayout-Android</a>:多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位</h3><p><img src="https://camo.githubusercontent.com/7539fed2c320aecc0d47320586e8c2ee22a2d762/687474703a2f2f37786b39646a2e636f6d312e7a302e676c622e636c6f7564646e2e636f6d2f726566726573686c61796f75742f73637265656e73686f74732f6267615f726566726573686c61796f7574322e676966" alt=""></p>
+<ul>
+<li>目前我正在使用的下拉刷新，上拉加载</li>
+</ul>
+<h3 id="Android-PullToRefresh"><a href="#Android-PullToRefresh" class="headerlink" title="Android-PullToRefresh"></a><a href="https://github.com/chrisbanes/Android-PullToRefresh" target="_blank" rel="external">Android-PullToRefresh</a></h3><p><img src="https://raw.githubusercontent.com/chrisbanes/Android-PullToRefresh/master/header_graphic.png" alt=""></p>
+<ul>
+<li>目前使用最广泛的强大的拉动刷新开源项目，强烈推荐使用</li>
+<li>支持各种控件下拉刷新，ListView、ViewPager、WebView、ExpandableListView、GridView、ScrollView、Horizontal ScrollView、Fragment 上下左右拉动刷新</li>
+<li>APP 示例：新浪微博各个页面</li>
+</ul>
+<h3 id="android-Ultra-Pull-To-Refresh"><a href="#android-Ultra-Pull-To-Refresh" class="headerlink" title="android-Ultra-Pull-To-Refresh"></a><a href="https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh" target="_blank" rel="external">android-Ultra-Pull-To-Refresh</a></h3><ul>
+<li>star数目4991的项目，跟上一个刷新控件媲美</li>
+<li>这个继承于 ViewGroup 可以包含任何 View。功能甚至比 SwipeRefreshLayout 强大。使用起来非常简单。良好的设计，如果你想定制自己的 UI 样式，非常简单，就像给 ListView 加一个 Header View 那么简单。支持 API LEVEL &gt;= 8</li>
+<li><a href="http://a.codekk.com/detail/Android/Grumoon/android-Ultra-Pull-To-Refresh%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90" target="_blank" rel="external">android-Ultra-Pull-To-Refresh 源码解析</a></li>
+</ul>
+<h2 id="Material-Design-UI"><a href="#Material-Design-UI" class="headerlink" title="Material Design UI"></a>Material Design UI</h2><h3 id="material-dialogs"><a href="#material-dialogs" class="headerlink" title="material-dialogs"></a><a href="https://github.com/afollestad/material-dialogs" target="_blank" rel="external">material-dialogs</a></h3><ul>
+<li>各种material风格的dialog。 漂亮的的、易于使用的和可定制的Dialog API，你能够使用Material designed风格的Dialog到API 8</li>
+<li>目前正在使用，文档很全面。</li>
+<li><img src="https://raw.githubusercontent.com/afollestad/material-dialogs/master/art/mddemoshowcase.png" alt=""></li>
+</ul>
+<h2 id="仿ios的ui"><a href="#仿ios的ui" class="headerlink" title="仿ios的ui"></a>仿ios的ui</h2><h3 id="Android-PickerView-仿ios的pickview库"><a href="#Android-PickerView-仿ios的pickview库" class="headerlink" title="Android-PickerView:仿ios的pickview库"></a><a href="https://github.com/saiwu-bigkoo/Android-PickerView" target="_blank" rel="external">Android-PickerView</a>:仿ios的pickview库</h3><p>仿iOS的PickerView控件，有时间选择和选项选择并支持一二三级联动效果<br><img src="https://github.com/saiwu-bigkoo/Android-PickerView/raw/master/preview/pickerdemo.gif" alt=""></p>
+<h2 id="ViewPager-、Gallery轮播图-旋转木马效果"><a href="#ViewPager-、Gallery轮播图-旋转木马效果" class="headerlink" title="ViewPager 、Gallery轮播图 旋转木马效果"></a>ViewPager 、Gallery轮播图 旋转木马效果</h2><h3 id="Android-ConvenientBanner-banner轮播图"><a href="#Android-ConvenientBanner-banner轮播图" class="headerlink" title="Android-ConvenientBanner:banner轮播图"></a><a href="https://github.com/saiwu-bigkoo/Android-ConvenientBanner" target="_blank" rel="external">Android-ConvenientBanner</a>:banner轮播图</h3><p><img src="https://github.com/saiwu-bigkoo/Android-ConvenientBanner/raw/master/preview/convenientbannerdemo.gif" alt=""></p>
+<ul>
+<li>目前我正在使用的控件，没有解决每次imageview重新加载的问题，导致大的图片会先出现空白。</li>
+</ul>
+<h3 id="LoopRotarySwitch：旋转木马"><a href="#LoopRotarySwitch：旋转木马" class="headerlink" title="LoopRotarySwitch：旋转木马"></a><a href="https://github.com/dalong982242260/LoopRotarySwitch" target="_blank" rel="external">LoopRotarySwitch</a>：旋转木马</h3><p><img src="https://github.com/dalong982242260/LoopRotarySwitch/raw/master/img/dalong.gif" alt=""></p>
+<ul>
+<li>目前正在使用，适用于3-4个图片，支持无线滚动。<br><strong>优点</strong></li>
+<li>适用于Activity和Fragment</li>
+<li>可定制大小，可监听事件，可调整旋转滚动半径</li>
+</ul>
+<h3 id="CarouselViewProject：画廊效果"><a href="#CarouselViewProject：画廊效果" class="headerlink" title="CarouselViewProject：画廊效果"></a><a href="https://github.com/clkasd/CarouselViewProject" target="_blank" rel="external">CarouselViewProject</a>：画廊效果</h3><p><img src="https://camo.githubusercontent.com/fc4718502ecb25f906deb73a34c2e7b465323ea0/687474703a2f2f646576656c6f70776561722e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031342f30352f6361726f7573656c312e706e67" alt=""></p>
+<ul>
+<li>不是很灵活，不支持无限滚动</li>
+</ul>
+<h3 id="3d旋转木马效果"><a href="#3d旋转木马效果" class="headerlink" title="3d旋转木马效果"></a>3d旋转木马效果</h3><p>以下三个3d旋转木马效果，都来自于这篇文章<a href="http://www.codeproject.com/Articles/146145/Android-D-Carousel" target="_blank" rel="external">Android 3D Carousel</a>,分别是不同的实现</p>
+<h4 id="carousel-android-star31"><a href="#carousel-android-star31" class="headerlink" title="carousel-android:star31"></a><a href="https://github.com/ludovicroland/carousel-android" target="_blank" rel="external">carousel-android</a>:star31</h4><p><img src="https://camo.githubusercontent.com/ad7578f22aeef2180975a57c2ce291d8d22d7ec3/68747470733a2f2f7261772e6769746875622e636f6d2f6c75646f766963726f6c616e642f6361726f7573656c2d616e64726f69642f6d61737465722f73637265656e73686f74312e706e67" alt=""></p>
+<p><strong>缺点</strong></p>
+<ul>
+<li>在Fragment中使用会出现问题。</li>
+</ul>
+<h4 id="Android-3D-Carousel-star4"><a href="#Android-3D-Carousel-star4" class="headerlink" title="Android-3D-Carousel:star4"></a><a href="https://github.com/panhuachao/Android-3D-Carousel#android-3d-carousel" target="_blank" rel="external">Android-3D-Carousel</a>:star4</h4><p><img src="https://github.com/panhuachao/Android-3D-Carousel/raw/master/round.gif" alt=""><br><strong>优点</strong></p>
+<ul>
+<li>增加了垂直滚动模式，尚未测试</li>
+</ul>
+<h4 id="CarrouselView-star22-中文版"><a href="#CarrouselView-star22-中文版" class="headerlink" title="CarrouselView:star22 中文版"></a><a href="https://github.com/dalong982242260/CarrouselView" target="_blank" rel="external">CarrouselView</a>:star22 中文版</h4><p><img src="https://github.com/dalong982242260/CarrouselView/raw/master/screenshot/carouselview.gif" alt=""></p>
+<p><strong>优点</strong></p>
+<ul>
+<li>中文版，效果最佳</li>
+<li>布局可以随意自定义，不受只是图片的限制。 </li>
+<li>2、增加点击切换到中间位置。 </li>
+<li>3、手势滑动切换。 </li>
+<li>4、切换中间回调。 </li>
+<li>5、自定义适配器更加方便用户设置自己需要的布局。</li>
+</ul>
+<h3 id="GlFancyCoverFlow-电影海报轮播图"><a href="#GlFancyCoverFlow-电影海报轮播图" class="headerlink" title="GlFancyCoverFlow:电影海报轮播图"></a><a href="https://github.com/LittleLiByte/GlFancyCoverFlow" target="_blank" rel="external">GlFancyCoverFlow</a>:电影海报轮播图</h3><p><img src="https://github.com/LittleLiByte/GlFancyCoverFlow/raw/master/GlFancyCoverFlow/res/raw/ScreenShots/device-2014-10-15-141029.png" alt=""></p>
+<ul>
+<li>借鉴自<a href="https://github.com/davidschreiber/FancyCoverFlow" target="_blank" rel="external">FancyCoverFlow</a></li>
+<li>增加了无限滚动，更适合海报等效果</li>
+<li>但是继承自GalleryView，这个类已经被google放弃了，有内存溢出的风险</li>
+</ul>
+<h2 id="特殊ui"><a href="#特殊ui" class="headerlink" title="特殊ui"></a>特殊ui</h2><h3 id="ExpandableLayout-控件收缩"><a href="#ExpandableLayout-控件收缩" class="headerlink" title="ExpandableLayout:控件收缩"></a><a href="https://github.com/traex/ExpandableLayout" target="_blank" rel="external">ExpandableLayout</a>:控件收缩</h3><p><img src="https://github.com/traex/ExpandableLayout/raw/master/demo.gif" alt=""></p>
+<ul>
+<li>目前正在使用，可以自己修改源码。</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android最佳实践/">android最佳实践</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://hammercui.github.io/post/android最佳实践10：开源库汇总/" data-title="android最佳实践10：开源库汇总 | hammer崔的程序世界" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/android基础：浅析mvc与mvp/" title="android基础：浅析mvc与mvp">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android基础：浅析mvc与mvp</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/android基础：构建神器gradle/"  title="android基础：构建神器gradle">
+ <strong>下一篇：</strong><br/> 
+ <span>android基础：构建神器gradle
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/android最佳实践10：开源库汇总/" data-title="android最佳实践10：开源库汇总" data-url="http://hammercui.github.io/post/android最佳实践10：开源库汇总/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一部分：工具库"><span class="toc-number">1.</span> <span class="toc-text">第一部分：工具库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖注入库"><span class="toc-number">1.1.</span> <span class="toc-text">依赖注入库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dagger：Square公司的明星项目，已被google官方采用"><span class="toc-number">1.1.1.</span> <span class="toc-text">dagger：Square公司的明星项目，已被google官方采用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AndroidAnnotations-Code-Diet"><span class="toc-number">1.1.2.</span> <span class="toc-text">AndroidAnnotations(Code Diet)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片缓存库"><span class="toc-number">1.2.</span> <span class="toc-text">图片缓存库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对比"><span class="toc-number">1.2.1.</span> <span class="toc-text">对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-retrolambda-java7兼容lambda库"><span class="toc-number">1.3.</span> <span class="toc-text">gradle-retrolambda:java7兼容lambda库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rx-android-感受响应式编程魅力"><span class="toc-number">1.4.</span> <span class="toc-text">rx-android:感受响应式编程魅力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrofit2-0-最热门的restfull规范网络请求框架"><span class="toc-number">1.5.</span> <span class="toc-text">Retrofit2.0:最热门的restfull规范网络请求框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EventBus：发布-订阅的事件总线"><span class="toc-number">1.6.</span> <span class="toc-text">EventBus：发布 / 订阅的事件总线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高版本向低版本兼容库"><span class="toc-number">1.7.</span> <span class="toc-text">高版本向低版本兼容库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nineoldandroids-JakeWharton大神的项目"><span class="toc-number">1.7.1.</span> <span class="toc-text">nineoldandroids:JakeWharton大神的项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二部分-ui库"><span class="toc-number">2.</span> <span class="toc-text">第二部分 ui库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#刷新ui"><span class="toc-number">2.1.</span> <span class="toc-text">刷新ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BGARefreshLayout-Android-多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位"><span class="toc-number">2.1.1.</span> <span class="toc-text">BGARefreshLayout-Android:多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-PullToRefresh"><span class="toc-number">2.1.2.</span> <span class="toc-text">Android-PullToRefresh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#android-Ultra-Pull-To-Refresh"><span class="toc-number">2.1.3.</span> <span class="toc-text">android-Ultra-Pull-To-Refresh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Material-Design-UI"><span class="toc-number">2.2.</span> <span class="toc-text">Material Design UI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#material-dialogs"><span class="toc-number">2.2.1.</span> <span class="toc-text">material-dialogs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#仿ios的ui"><span class="toc-number">2.3.</span> <span class="toc-text">仿ios的ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-PickerView-仿ios的pickview库"><span class="toc-number">2.3.1.</span> <span class="toc-text">Android-PickerView:仿ios的pickview库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewPager-、Gallery轮播图-旋转木马效果"><span class="toc-number">2.4.</span> <span class="toc-text">ViewPager 、Gallery轮播图 旋转木马效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-ConvenientBanner-banner轮播图"><span class="toc-number">2.4.1.</span> <span class="toc-text">Android-ConvenientBanner:banner轮播图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LoopRotarySwitch：旋转木马"><span class="toc-number">2.4.2.</span> <span class="toc-text">LoopRotarySwitch：旋转木马</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CarouselViewProject：画廊效果"><span class="toc-number">2.4.3.</span> <span class="toc-text">CarouselViewProject：画廊效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3d旋转木马效果"><span class="toc-number">2.4.4.</span> <span class="toc-text">3d旋转木马效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#carousel-android-star31"><span class="toc-number">2.4.4.1.</span> <span class="toc-text">carousel-android:star31</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-3D-Carousel-star4"><span class="toc-number">2.4.4.2.</span> <span class="toc-text">Android-3D-Carousel:star4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CarrouselView-star22-中文版"><span class="toc-number">2.4.4.3.</span> <span class="toc-text">CarrouselView:star22 中文版</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GlFancyCoverFlow-电影海报轮播图"><span class="toc-number">2.4.5.</span> <span class="toc-text">GlFancyCoverFlow:电影海报轮播图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊ui"><span class="toc-number">2.5.</span> <span class="toc-text">特殊ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ExpandableLayout-控件收缩"><span class="toc-number">2.5.1.</span> <span class="toc-text">ExpandableLayout:控件收缩</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/github/" title="github">github<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react/" title="react">react<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-android实战/" title="react-native android实战">react-native android实战<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-basis/" title="react-native basis">react-native basis<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践/" title="android最佳实践">android最佳实践<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://xiekw2010.github.io" target="_blank" title="xiekw2010&#39;s Blog">xiekw2010&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.lcode.org/" target="_blank" title="江清清的技术专栏">江清清的技术专栏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/hammercui" target="_blank" title="My GitHub">My GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 努力 奋斗 <br/>
+			Tomorrow Is Another Day</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hammercui## e.g. wuchong for https://github.com/wuchong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hammercui">hammercui</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hammercui"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4c0e7eb512fab8f2d1682c1bff044651";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

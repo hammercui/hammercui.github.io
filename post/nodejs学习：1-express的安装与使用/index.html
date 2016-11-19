@@ -1,0 +1,701 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>nodejs学习：1 express的安装与使用 | hammer崔的程序世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hammercui">
+    
+
+    
+    <meta name="description" content="nodejs简介
+nodejs能提供静态文件服务
+
+网页
+纯文本
+图片
+前端JavaScript代码
+css样式表文件
+媒体文件
+字体文件
+
+
+nodejs能提供http服务
+
+api接口
+中间件
+
+
+nodejs能提供tcp(socket)服务
+
+
+安装及启动安装1 安装node软件2 安装express生成模板1npm install -g express-generator
+3 安装expr">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs学习：1 express的安装与使用">
+<meta property="og:url" content="http://hammercui.github.io/post/nodejs学习：1-express的安装与使用/index.html">
+<meta property="og:site_name" content="hammer崔的程序世界">
+<meta property="og:description" content="nodejs简介
+nodejs能提供静态文件服务
+
+网页
+纯文本
+图片
+前端JavaScript代码
+css样式表文件
+媒体文件
+字体文件
+
+
+nodejs能提供http服务
+
+api接口
+中间件
+
+
+nodejs能提供tcp(socket)服务
+
+
+安装及启动安装1 安装node软件2 安装express生成模板1npm install -g express-generator
+3 安装expr">
+<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs学习：1 express的安装与使用">
+<meta name="twitter:description" content="nodejs简介
+nodejs能提供静态文件服务
+
+网页
+纯文本
+图片
+前端JavaScript代码
+css样式表文件
+媒体文件
+字体文件
+
+
+nodejs能提供http服务
+
+api接口
+中间件
+
+
+nodejs能提供tcp(socket)服务
+
+
+安装及启动安装1 安装node软件2 安装express生成模板1npm install -g express-generator
+3 安装expr">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hammer崔的程序世界" title="hammer崔的程序世界"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
+				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://hammercui.github.io" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/nodejs学习：1-express的安装与使用/" title="nodejs学习：1 express的安装与使用" itemprop="url">nodejs学习：1 express的安装与使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
+		
+  <p class="article-time">
+    <time datetime="2016-04-09T07:07:11.000Z" itemprop="datePublished"> 發表於 2016-04-09</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#nodejs简介"><span class="toc-number">1.</span> <span class="toc-text">nodejs简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装及启动"><span class="toc-number">2.</span> <span class="toc-text">安装及启动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动服务"><span class="toc-number">2.2.</span> <span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体使用"><span class="toc-number">3.</span> <span class="toc-text">具体使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用express的静态文件服务"><span class="toc-number">3.1.</span> <span class="toc-text">使用express的静态文件服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用express的路由"><span class="toc-number">3.2.</span> <span class="toc-text">使用express的路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#带参数路由"><span class="toc-number">3.2.1.</span> <span class="toc-text">带参数路由</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h1 id="nodejs简介"><a href="#nodejs简介" class="headerlink" title="nodejs简介"></a>nodejs简介</h1><ul>
+<li><p>nodejs能提供静态文件服务</p>
+<ul>
+<li>网页</li>
+<li>纯文本</li>
+<li>图片</li>
+<li>前端JavaScript代码</li>
+<li>css样式表文件</li>
+<li>媒体文件</li>
+<li>字体文件</li>
+</ul>
+</li>
+<li><p>nodejs能提供http服务</p>
+<ul>
+<li>api接口</li>
+<li>中间件</li>
+</ul>
+</li>
+<li><p>nodejs能提供tcp(socket)服务</p>
+</li>
+</ul>
+<h1 id="安装及启动"><a href="#安装及启动" class="headerlink" title="安装及启动"></a>安装及启动</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1 安装node软件<br>2 安装express生成模板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g express-generator</div></pre></td></tr></table></figure></p>
+<p>3 安装express<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g express</div></pre></td></tr></table></figure></p>
+<p>4 安装nodemon调试模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g nodemon</div></pre></td></tr></table></figure></p>
+<p>5 使用模板创建nodejs工程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">express [工程名]</div></pre></td></tr></table></figure></p>
+<p>然后执行<code>npm install</code>安装第三方模块。</p>
+<p>创建工程后出现如下目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">+bin</div><div class="line"> -www  //执行脚本</div><div class="line">+public </div><div class="line">+routes </div><div class="line">+view     //静态页面</div><div class="line">-app.js   //创建express实例</div><div class="line">-package.json</div></pre></td></tr></table></figure></p>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm start</div></pre></td></tr></table></figure>
+<h1 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h1><h2 id="使用express的静态文件服务"><a href="#使用express的静态文件服务" class="headerlink" title="使用express的静态文件服务"></a>使用express的静态文件服务</h2><p>使用express的静态服务的中间件，直接使用<br>use方法使用中间件<br>public目录当做我们的静态文件目录<br>/直接使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">app.use(express.static(path.join(__dirname, &apos;public&apos;)));</div></pre></td></tr></table></figure>
+<h2 id="使用express的路由"><a href="#使用express的路由" class="headerlink" title="使用express的路由"></a>使用express的路由</h2><ul>
+<li>将不同的请求。分配给响应的函数</li>
+<li>区分：路径，请求方法</li>
+</ul>
+<p>三种方法：</p>
+<ul>
+<li>path方式 直接get</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.get(&apos;/login&apos;,function()&#123;</div><div class="line"></div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<ul>
+<li>Router方式</li>
+</ul>
+<p>比如一组路由，都是post下面的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">var Router = express.Router();</div><div class="line">Router.get(&apos;/add&apos;,function(req,res)&#123;</div><div class="line">&#125;)</div><div class="line">Router.get(&apos;/list&apos;,function(req,res)&#123;</div><div class="line">&#125;)</div><div class="line">app.user(&apos;post&apos;,Router);</div></pre></td></tr></table></figure>
+<ul>
+<li>route方式</li>
+</ul>
+<p>针对一个路由，编写不同方法的不同处理。<br>不如针对以上路由的get请求方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">app.route(&apos;article&apos;).get(function(req,response)</div><div class="line">&#123;</div><div class="line">&#125;).post(function(req,response))</div></pre></td></tr></table></figure>
+<h3 id="带参数路由"><a href="#带参数路由" class="headerlink" title="带参数路由"></a>带参数路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">app.param(&apos;newsId&apos;,function(req,res,next,newsId)&#123;</div><div class="line">req.nresId = newsId;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">app.get(&apos;/news/:newsId,function(req,response)&#123;</div><div class="line">req.end(&apos;newsId:&apos;+req.newsId)</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/nodejs/">nodejs</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/nodejs/">nodejs</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://hammercui.github.io/post/nodejs学习：1-express的安装与使用/" data-title="nodejs学习：1 express的安装与使用 | hammer崔的程序世界" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/nodejs学习：2-redis的安装与使用/" title="nodejs学习：2 redis的安装与使用">
+  <strong>上一篇：</strong><br/>
+  <span>
+  nodejs学习：2 redis的安装与使用</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/android基础：常见问题集锦/"  title="android基础：常见问题集锦">
+ <strong>下一篇：</strong><br/> 
+ <span>android基础：常见问题集锦
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/nodejs学习：1-express的安装与使用/" data-title="nodejs学习：1 express的安装与使用" data-url="http://hammercui.github.io/post/nodejs学习：1-express的安装与使用/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#nodejs简介"><span class="toc-number">1.</span> <span class="toc-text">nodejs简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装及启动"><span class="toc-number">2.</span> <span class="toc-text">安装及启动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动服务"><span class="toc-number">2.2.</span> <span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体使用"><span class="toc-number">3.</span> <span class="toc-text">具体使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用express的静态文件服务"><span class="toc-number">3.1.</span> <span class="toc-text">使用express的静态文件服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用express的路由"><span class="toc-number">3.2.</span> <span class="toc-text">使用express的路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#带参数路由"><span class="toc-number">3.2.1.</span> <span class="toc-text">带参数路由</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/github/" title="github">github<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react/" title="react">react<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-android实战/" title="react-native android实战">react-native android实战<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-basis/" title="react-native basis">react-native basis<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践/" title="android最佳实践">android最佳实践<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://xiekw2010.github.io" target="_blank" title="xiekw2010&#39;s Blog">xiekw2010&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.lcode.org/" target="_blank" title="江清清的技术专栏">江清清的技术专栏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/hammercui" target="_blank" title="My GitHub">My GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 努力 奋斗 <br/>
+			Tomorrow Is Another Day</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hammercui## e.g. wuchong for https://github.com/wuchong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hammercui">hammercui</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hammercui"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4c0e7eb512fab8f2d1682c1bff044651";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

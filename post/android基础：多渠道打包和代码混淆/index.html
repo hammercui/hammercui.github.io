@@ -1,0 +1,639 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android基础：多渠道打包和代码混淆 | hammer崔的程序世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hammercui">
+    
+
+    
+    <meta name="description" content="多渠道打包AndroidManifest.xml文件解析
+补充知识AndroidManifest.xml 是每个android程序中必须的文件。它位于整个项目的根目录，描述了package中暴露的组件（activities, services, 等等），他们各自的实现类，各种能被处理的数据和启动位置。 除了能声明程序中的Activities, ContentProviders, Services,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android基础：多渠道打包和代码混淆">
+<meta property="og:url" content="http://hammercui.github.io/post/android基础：多渠道打包和代码混淆/index.html">
+<meta property="og:site_name" content="hammer崔的程序世界">
+<meta property="og:description" content="多渠道打包AndroidManifest.xml文件解析
+补充知识AndroidManifest.xml 是每个android程序中必须的文件。它位于整个项目的根目录，描述了package中暴露的组件（activities, services, 等等），他们各自的实现类，各种能被处理的数据和启动位置。 除了能声明程序中的Activities, ContentProviders, Services,">
+<meta property="og:image" content="http://xyzphoto.qiniudn.com/wordpress_20_QQ%E6%88%AA%E5%9B%BE20141117162914.png">
+<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android基础：多渠道打包和代码混淆">
+<meta name="twitter:description" content="多渠道打包AndroidManifest.xml文件解析
+补充知识AndroidManifest.xml 是每个android程序中必须的文件。它位于整个项目的根目录，描述了package中暴露的组件（activities, services, 等等），他们各自的实现类，各种能被处理的数据和启动位置。 除了能声明程序中的Activities, ContentProviders, Services,">
+<meta name="twitter:image" content="http://xyzphoto.qiniudn.com/wordpress_20_QQ%E6%88%AA%E5%9B%BE20141117162914.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hammer崔的程序世界" title="hammer崔的程序世界"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
+				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://hammercui.github.io" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/android基础：多渠道打包和代码混淆/" title="android基础：多渠道打包和代码混淆" itemprop="url">android基础：多渠道打包和代码混淆</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
+		
+  <p class="article-time">
+    <time datetime="2016-06-15T03:48:11.000Z" itemprop="datePublished"> 發表於 2016-06-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多渠道打包"><span class="toc-number">1.</span> <span class="toc-text">多渠道打包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AndroidManifest-xml文件解析"><span class="toc-number">1.1.</span> <span class="toc-text">AndroidManifest.xml文件解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-lt-meta-adata-gt"><span class="toc-number">1.1.1.</span> <span class="toc-text">1 <meta-adata></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多渠道打包-1"><span class="toc-number">1.2.</span> <span class="toc-text">多渠道打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在AndroidManifest-xml里配置PlaceHolder"><span class="toc-number">1.2.1.</span> <span class="toc-text">1 在AndroidManifest.xml里配置PlaceHolder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-在build-gradle设置productFlavors"><span class="toc-number">1.2.2.</span> <span class="toc-text">2 在build.gradle设置productFlavors</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle命令行打包"><span class="toc-number">1.3.</span> <span class="toc-text">gradle命令行打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用gradle命令配置签名"><span class="toc-number">1.3.1.</span> <span class="toc-text">1 使用gradle命令配置签名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-使用命令行打包"><span class="toc-number">1.4.</span> <span class="toc-text">2 使用命令行打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-比命令行更简单的打包方式"><span class="toc-number">1.4.1.</span> <span class="toc-text">3 比命令行更简单的打包方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误处理"><span class="toc-number">1.5.</span> <span class="toc-text">错误处理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码混淆"><span class="toc-number">2.</span> <span class="toc-text">代码混淆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">3.</span> <span class="toc-text">参考文献</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="多渠道打包"><a href="#多渠道打包" class="headerlink" title="多渠道打包"></a>多渠道打包</h1><h2 id="AndroidManifest-xml文件解析"><a href="#AndroidManifest-xml文件解析" class="headerlink" title="AndroidManifest.xml文件解析"></a>AndroidManifest.xml文件解析</h2><blockquote>
+<p>补充知识<br>AndroidManifest.xml 是每个android程序中必须的文件。它位于整个项目的根目录，描述了package中暴露的组件（activities, services, 等等），他们各自的实现类，各种能被处理的数据和启动位置。 除了能声明程序中的Activities, ContentProviders, Services, 和Intent Receivers,还能指定permissions和instrumentation（安全控制和测试）</p>
+</blockquote>
+<h3 id="1-lt-meta-adata-gt"><a href="#1-lt-meta-adata-gt" class="headerlink" title="1 &lt;meta-adata&gt;"></a>1 <code>&lt;meta-adata&gt;</code></h3><p><strong>语法</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data android:name=&quot;string&quot;</div><div class="line">           android:resource=&quot;resource specification&quot;</div><div class="line">           android:value=&quot;string&quot;/&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>被包含于</strong></p>
+<p><code>&lt;activity&gt;</code><br><code>&lt;activity-alias&gt;</code><br><code>&lt;service&gt;</code><br><code>&lt;receiver&gt;</code><br>四个元素中。</p>
+<p><strong>说明</strong><br>这个元素用name-value对的格式给其父组件提供任意可选的数据。<br>一个组件元素能够包含任意多个<code>&lt;meta-data&gt;</code>子元素，所有这些元素中定义的值会被收集到一个<a href="http://blog.csdn.net/randyjiawenjie/article/details/6651437" target="_blank" rel="external">Bundle</a>对象中，并且提供给组件的<code>PackageItemInfo.metaData</code>属性字段。<br>通常值是通过其value属性来指定的。但是，也可以使用resource属性来代替，把一个资源ID跟值进行关联。</p>
+<p>例如，下面的代码就是把存储在@string/kangaroo资源中的值跟”zoo”名称进行关联：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data android:name=&quot;zoo&quot; android:value=&quot;@string/kangaroo&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>另一个方面，使用resource属性会给zoo分配一个数字资源ID，而不是保存在资源中的值。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data android:name=&quot;zoo&quot; android:resource=&quot;@string/kangaroo&quot; /&gt;</div></pre></td></tr></table></figure></p>
+<p>要避免使用多个独立的<meta-data>实体来提供相关的数据。相反如果有复杂的数据要跟组件关联，那么把数据作为资源来保存，并使用resource属性，把相关的资源ID通知给组件。</meta-data></p>
+<p><strong>属性</strong></p>
+<ul>
+<li><code>android:name</code><br>针对项目的一个唯一名称。使用Java样式的命名规则，可以确保名称的唯一性，例如：<code>com.example.project.activity.fred</code>。</li>
+<li><p><code>android:resource</code><br>这个属性定义了一个要引用的资源。资源的ID会跟这个项目进行关联。通过Bundle.getInt()方法能够从meta-data的Bundle对象中获取这个ID。</p>
+</li>
+<li><p><code>android:value</code><br>这个属性会给这个项目分配一个值。下表列出了可能分配的数据的数据类型，以及获取这些数据的方法：</p>
+</li>
+</ul>
+<h2 id="多渠道打包-1"><a href="#多渠道打包-1" class="headerlink" title="多渠道打包"></a>多渠道打包</h2><blockquote>
+<p>以友盟统计为例,在AndroidManifest.xml里面会有<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data</div><div class="line">    android:name=&quot;UMENG_CHANNEL&quot;</div><div class="line">    android:value=&quot;Channel_ID&quot; /&gt;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p>Channel_ID就是渠道标示,我们的目标就是在编译的时候这个值能够自动变化。</p>
+<h3 id="1-在AndroidManifest-xml里配置PlaceHolder"><a href="#1-在AndroidManifest-xml里配置PlaceHolder" class="headerlink" title="1 在AndroidManifest.xml里配置PlaceHolder"></a>1 在AndroidManifest.xml里配置PlaceHolder</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;meta-data</div><div class="line">    android:name=&quot;UMENG_CHANNEL&quot;</div><div class="line">    android:value=&quot;$&#123;UMENG_CHANNEL_VALUE&#125;&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>${UMENG_CHANNEL_VALUE}这是个引用，具体值在gradle中配置</p>
+<h3 id="2-在build-gradle设置productFlavors"><a href="#2-在build-gradle设置productFlavors" class="headerlink" title="2 在build.gradle设置productFlavors"></a>2 在build.gradle设置productFlavors</h3><p>首先配置UMENG_CHANNEL_VALUE的默认值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">defaultConfig &#123;</div><div class="line"> ···</div><div class="line">	manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;channel_name&quot;]</div><div class="line"> ···</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后配置不同的渠道id</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">android &#123;  </div><div class="line">...</div><div class="line">    productFlavors &#123;</div><div class="line">        xiaomi &#123;</div><div class="line">            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;xiaomi&quot;]</div><div class="line">        &#125;</div><div class="line">        _360 &#123;</div><div class="line">            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;_360&quot;]</div><div class="line">        &#125;</div><div class="line">        baidu &#123;</div><div class="line">            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;baidu&quot;]</div><div class="line">        &#125;</div><div class="line">        wandoujia &#123;</div><div class="line">            manifestPlaceholders = [UMENG_CHANNEL_VALUE: &quot;wandoujia&quot;]</div><div class="line">        &#125;</div><div class="line">    &#125;  </div><div class="line">...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>更简洁的写法，<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 友盟多渠道打包</div><div class="line">    productFlavors &#123;</div><div class="line">        wandoujia &#123;&#125;</div><div class="line">        c360 &#123;&#125;</div><div class="line">        baidu &#123;&#125;</div><div class="line">        xiaomi &#123;&#125;</div><div class="line">        tencent &#123;&#125;</div><div class="line">        taobao &#123;&#125;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    productFlavors.all &#123; flavor -&gt;</div><div class="line">        flavor.manifestPlaceholders = [UMENG_CHANNEL_VALUE: name]</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>然后在签名配置完成后，就可以使用命令行打包了</p>
+<h2 id="gradle命令行打包"><a href="#gradle命令行打包" class="headerlink" title="gradle命令行打包"></a>gradle命令行打包</h2><h3 id="1-使用gradle命令配置签名"><a href="#1-使用gradle命令配置签名" class="headerlink" title="1 使用gradle命令配置签名"></a>1 使用gradle命令配置签名</h3><p>首先在app的build.gradle文件配置要签名的keystore文件</p>
+<p>为了不暴露密码，不直接在signingConfigs中配置密码，需要在控制台输出</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">def releaseTime() &#123;</div><div class="line">    return new Date().format(&quot;yyyy-MM-dd&quot;, TimeZone.getTimeZone(&quot;UTC&quot;))</div><div class="line">&#125;</div><div class="line"></div><div class="line">android &#123;</div><div class="line">...</div><div class="line"></div><div class="line">	//执行lint检查，有任何的错误或者警告提示，都会终止构建，我们可以将其关掉。</div><div class="line">    lintOptions &#123;</div><div class="line">        abortOnError false</div><div class="line">    &#125;</div><div class="line"></div><div class="line"></div><div class="line">	signingConfigs &#123;</div><div class="line">		debug &#123;</div><div class="line">            // No debug config</div><div class="line">        &#125;		</div><div class="line">		//release版本</div><div class="line">		release&#123;</div><div class="line">           storeFile file(&apos;../keystore文件名&apos;)</div><div class="line">			keyAlias &apos;asar&apos;</div><div class="line">			storePassword System.console().readLine(&quot;\nKeystore password: &quot;)  </div><div class="line">			keyPassword System.console().readLine(&quot;\nKey password: &quot;)  </div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line"></div><div class="line"></div><div class="line">	buildTypes &#123;  </div><div class="line">		debug &#123;</div><div class="line">            // 显示Log</div><div class="line">            buildConfigField &quot;boolean&quot;, &quot;LOG_DEBUG&quot;, &quot;true&quot;</div><div class="line"></div><div class="line">            versionNameSuffix &quot;-debug&quot;</div><div class="line">            minifyEnabled false</div><div class="line">            zipAlignEnabled false</div><div class="line">            shrinkResources false</div><div class="line">            signingConfig signingConfigs.debug</div><div class="line">        	&#125;</div><div class="line">	    release &#123;  </div><div class="line">	         ...  </div><div class="line">			// 不显示Log</div><div class="line">            buildConfigField &quot;boolean&quot;, &quot;LOG_DEBUG&quot;, &quot;false&quot;</div><div class="line">			//混淆</div><div class="line">			minifyEnabled true</div><div class="line">			//zipAlgn优化</div><div class="line">			zipAlignEnabled true</div><div class="line">			//移除无用的resource文件</div><div class="line">			shrinkResources true</div><div class="line">			 </div><div class="line">			//加载默认的混淆配置文件</div><div class="line">			proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos;</div><div class="line">			//签名</div><div class="line">	        signingConfig signingConfigs.release </div><div class="line">			//配置输出的apk文件名</div><div class="line"> 			applicationVariants.all &#123; variant -&gt;</div><div class="line">                variant.outputs.each &#123; output -&gt;</div><div class="line">                    def outputFile = output.outputFile</div><div class="line">                    if (outputFile != null &amp;&amp; outputFile.name.endsWith(&apos;.apk&apos;)) &#123;</div><div class="line">                    	// 输出apk名称为zlot_v1.0_2015-01-15_wandoujia.apk</div><div class="line">                        def fileName = &quot;zlot_v$&#123;defaultConfig.versionName&#125;_$&#123;releaseTime()&#125;_$&#123;variant.productFlavors[0].name&#125;.apk&quot;</div><div class="line">                        output.outputFile = new File(outputFile.parent, fileName)</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">	        &#125;  </div><div class="line">	   &#125;  </div><div class="line"></div><div class="line">...</div></pre></td></tr></table></figure>
+<h2 id="2-使用命令行打包"><a href="#2-使用命令行打包" class="headerlink" title="2 使用命令行打包"></a>2 使用命令行打包</h2><p>1 view-&gt;ToolWindows-&gt;Terminal打开命令行<br>2 在命令行输入<code>gradlew -v</code> ，如果第一次会执行下载gradle，记得翻墙，不然会慢到崩溃<br>3 执行<code>gradlew clean</code>,等待时间会比较长<br>4 执行<code>gradle build</code>，开始编译，成功后<code>zlot\build\outputs\apk</code>目录会有编译后的apk,<br>这时编译的apk包括debug版本，release版本，特别慢<br>补充</p>
+<ul>
+<li><code>gradlew assembleRelease</code> ：只编译并打Release的包</li>
+<li><code>gradlew assembleDebug</code>   :只编译并打包debug版本</li>
+</ul>
+<p>除此之外 assemble 还能和 Product Flavor 结合创建新的任务，其实 assemble 是和 Build Variants 一起结合使用的，而Build Variants = Build Type + Product Flavor ， 举个例子大家就明白了：</p>
+<ul>
+<li><code>gradlew assembleWandoujiaRelease</code>只打包wandoujia渠道的release包</li>
+</ul>
+<h3 id="3-比命令行更简单的打包方式"><a href="#3-比命令行更简单的打包方式" class="headerlink" title="3 比命令行更简单的打包方式"></a>3 比命令行更简单的打包方式</h3><p>打开androidStudiode gradle面板，会发现多了很多任务，<br><img src="http://xyzphoto.qiniudn.com/wordpress_20_QQ%E6%88%AA%E5%9B%BE20141117162914.png" alt=""></p>
+<p>然后直接双击任务生成apk</p>
+<h2 id="错误处理"><a href="#错误处理" class="headerlink" title="错误处理"></a>错误处理</h2><p>当build faile时，找不到错误的原因，可以执行<code>gradlew check</code>进行检测，一般会给出错误原因，<br>比如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">ndroid &#123;</div><div class="line">    lintOptions &#123;</div><div class="line">        abortOnError false</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">...</div><div class="line">             </div><div class="line">* Try:</div></pre></td></tr></table></figure></p>
+<p>意义是让我们关闭lint检查，因为开启的话，有任何的错误或者警告提示，都会终止构建</p>
+<h1 id="代码混淆"><a href="#代码混淆" class="headerlink" title="代码混淆"></a>代码混淆</h1><h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://blog.csdn.net/shineflowers/article/details/45042485" target="_blank" rel="external">Android 使用Android Studio + Gradle 或 命令行 进行apk签名打包</a></p>
+<p><a href="http://blog.csdn.net/ljchlx/article/details/43059467" target="_blank" rel="external">Android Studio系列教程六–Gradle多渠道打包</a></p>
+<p><a href="http://my.oschina.net/aibenben/blog/370985" target="_blank" rel="external">Android studio 使用心得(四)—android studio 多渠道打包(二)</a></p>
+<p><a href="http://www.cnblogs.com/0616--ataozhijia/p/4203997.html" target="_blank" rel="external">[Android Studio] Android studio 多渠道打包(超简洁版)</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android/">android</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://hammercui.github.io/post/android基础：多渠道打包和代码混淆/" data-title="android基础：多渠道打包和代码混淆 | hammer崔的程序世界" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/android最佳实践8：dragger2框架/" title="android最佳实践8：dagger2框架">
+  <strong>上一篇：</strong><br/>
+  <span>
+  android最佳实践8：dagger2框架</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/android最佳实践9：greenDao的使用/"  title="android最佳实践9：greenDao在android studio中的使用">
+ <strong>下一篇：</strong><br/> 
+ <span>android最佳实践9：greenDao在android studio中的使用
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/android基础：多渠道打包和代码混淆/" data-title="android基础：多渠道打包和代码混淆" data-url="http://hammercui.github.io/post/android基础：多渠道打包和代码混淆/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#多渠道打包"><span class="toc-number">1.</span> <span class="toc-text">多渠道打包</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#AndroidManifest-xml文件解析"><span class="toc-number">1.1.</span> <span class="toc-text">AndroidManifest.xml文件解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-lt-meta-adata-gt"><span class="toc-number">1.1.1.</span> <span class="toc-text">1 <meta-adata></span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多渠道打包-1"><span class="toc-number">1.2.</span> <span class="toc-text">多渠道打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-在AndroidManifest-xml里配置PlaceHolder"><span class="toc-number">1.2.1.</span> <span class="toc-text">1 在AndroidManifest.xml里配置PlaceHolder</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-在build-gradle设置productFlavors"><span class="toc-number">1.2.2.</span> <span class="toc-text">2 在build.gradle设置productFlavors</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle命令行打包"><span class="toc-number">1.3.</span> <span class="toc-text">gradle命令行打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-使用gradle命令配置签名"><span class="toc-number">1.3.1.</span> <span class="toc-text">1 使用gradle命令配置签名</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-使用命令行打包"><span class="toc-number">1.4.</span> <span class="toc-text">2 使用命令行打包</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-比命令行更简单的打包方式"><span class="toc-number">1.4.1.</span> <span class="toc-text">3 比命令行更简单的打包方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#错误处理"><span class="toc-number">1.5.</span> <span class="toc-text">错误处理</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#代码混淆"><span class="toc-number">2.</span> <span class="toc-text">代码混淆</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">3.</span> <span class="toc-text">参考文献</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/github/" title="github">github<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react/" title="react">react<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-android实战/" title="react-native android实战">react-native android实战<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-basis/" title="react-native basis">react-native basis<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践/" title="android最佳实践">android最佳实践<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://xiekw2010.github.io" target="_blank" title="xiekw2010&#39;s Blog">xiekw2010&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.lcode.org/" target="_blank" title="江清清的技术专栏">江清清的技术专栏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/hammercui" target="_blank" title="My GitHub">My GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 努力 奋斗 <br/>
+			Tomorrow Is Another Day</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hammercui## e.g. wuchong for https://github.com/wuchong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hammercui">hammercui</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hammercui"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4c0e7eb512fab8f2d1682c1bff044651";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

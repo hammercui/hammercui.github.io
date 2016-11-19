@@ -1,0 +1,650 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>python学习笔记：2.面向对象 | hammer崔的程序世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hammercui">
+    
+
+    
+    <meta name="description" content="模块一个py文件，就是一个模块（module），相同函数和变量名可以存在不同的模块中。一个py模块就是一个类，可以这么理解
+为了避免类的冲突，引入包的概念。注意每一个包下面，都会有一个init.py的文件，他的模块名就是包名    
+作用域
+
+正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，x123，PI等；
+
+类似_xxx和xxx这样的函数或变量就是非公开的（priva">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python学习笔记：2.面向对象">
+<meta property="og:url" content="http://hammercui.github.io/post/python学习笔记：2-面向对象/index.html">
+<meta property="og:site_name" content="hammer崔的程序世界">
+<meta property="og:description" content="模块一个py文件，就是一个模块（module），相同函数和变量名可以存在不同的模块中。一个py模块就是一个类，可以这么理解
+为了避免类的冲突，引入包的概念。注意每一个包下面，都会有一个init.py的文件，他的模块名就是包名    
+作用域
+
+正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，x123，PI等；
+
+类似_xxx和xxx这样的函数或变量就是非公开的（priva">
+<meta property="og:image" content="http://img1.tuicool.com/qau2yqQ.png!web">
+<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python学习笔记：2.面向对象">
+<meta name="twitter:description" content="模块一个py文件，就是一个模块（module），相同函数和变量名可以存在不同的模块中。一个py模块就是一个类，可以这么理解
+为了避免类的冲突，引入包的概念。注意每一个包下面，都会有一个init.py的文件，他的模块名就是包名    
+作用域
+
+正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，x123，PI等；
+
+类似_xxx和xxx这样的函数或变量就是非公开的（priva">
+<meta name="twitter:image" content="http://img1.tuicool.com/qau2yqQ.png!web">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hammer崔的程序世界" title="hammer崔的程序世界"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
+				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://hammercui.github.io" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/python学习笔记：2-面向对象/" title="python学习笔记：2.面向对象" itemprop="url">python学习笔记：2.面向对象</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
+		
+  <p class="article-time">
+    <time datetime="2016-09-05T02:36:00.000Z" itemprop="datePublished"> 發表於 2016-09-05</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模块"><span class="toc-number">1.</span> <span class="toc-text">模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装第三方模块"><span class="toc-number">1.1.</span> <span class="toc-text">安装第三方模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象编程"><span class="toc-number">2.</span> <span class="toc-text">面向对象编程</span></a></li></ol>
+		
+		</div>
+		
+		<h2 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h2><p>一个py文件，就是一个模块（module），相同函数和变量名可以存在不同的模块中。一个py模块就是一个类，可以这么理解</p>
+<p>为了避免类的冲突，引入包的概念。注意每一个包下面，都会有一个<strong>init</strong>.py的文件，他的模块名就是包名    </p>
+<p><strong>作用域</strong></p>
+<ul>
+<li><p>正常的函数和变量名是公开的（public），可以被直接引用，比如：abc，x123，PI等；</p>
+</li>
+<li><p>类似_xxx和<strong>xxx这样的函数或变量就是非公开的（private），不应该被直接引用，比如_abc，</strong>abc等；</p>
+</li>
+</ul>
+<p>之所以我们说，private函数和变量“不应该”被直接引用，而不是“不能”被直接引用，是因为Python并没有一种方法可以完全限制访问private函数或变量，但是，从编程习惯上不应该引用private函数或变量。</p>
+<p><strong>命令行运行</strong><br>在命令行运行py文件时，Python解释器把一个特殊变量<strong>name</strong>置为<strong>main</strong><br>因此以下代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">if __name__==&apos;__main__&apos;:</div><div class="line">    test()</div></pre></td></tr></table></figure>
+<p>在<code>$ python hello.py</code>运行时，会执行<code>test()</code>，但是import时不会执行</p>
+<h3 id="安装第三方模块"><a href="#安装第三方模块" class="headerlink" title="安装第三方模块"></a>安装第三方模块</h3><p><strong>安装pip</strong><br>使用pip安装，可在命令行检查输入pip，检查是否安装。<br>如果安装不成功，可以直接去<a href="https://pypi.python.org/pypi/pip#downloads ：" target="_blank" rel="external">官网地址</a>下载<br><img src="http://img1.tuicool.com/qau2yqQ.png!web" alt=""></p>
+<p>下载完成之后，解压到一个文件夹，用CMD控制台进入解压目录，输入：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python setup.py install</div></pre></td></tr></table></figure></p>
+<p>然后输入pip命令，检测是否安装成功</p>
+<p><strong>安装PIL</strong><br>PIL是一个图片处理库，而且是跨平台的。<br>当我们执行以下失败时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install PIL</div></pre></td></tr></table></figure></p>
+<p>换成<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install pillow</div></pre></td></tr></table></figure></p>
+<p>然后引入时<code>fom PIL import Image</code></p>
+<p><strong>在python2中使用python3</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">from __future__ import unicode_literals</div><div class="line">from __future__ import division</div></pre></td></tr></table></figure></p>
+<p>2.x里的字符串用’xxx’表示str，Unicode字符串用u’xxx’表示unicode<br>在3.x中，所有字符串都被视为unicode，写u’xxx’和’xxx’是完全一致的，但是str就必须写成b’xxx’，来表示“二进制字符串”</p>
+<h2 id="面向对象编程"><a href="#面向对象编程" class="headerlink" title="面向对象编程"></a>面向对象编程</h2><p>给对象发消息实际上就是调用对象对应的关联函数，我们称之为对象的方法（Method）。这里指明了方法跟函数概念上的区别</p>
+<p>数据封装、继承和多态是面向对象的三大特点。</p>
+<p>如果要让内部属性不被外部访问，可以把属性的名称前加上两个下划线<strong>，在Python中，实例的变量名如果以</strong>开头，就变成了一个私有变量（private），只有内部可以访问，外部不能访问</p>
+<p><strong>继承和多态</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#父类</div><div class="line">class Animal(object):</div><div class="line">    def run(self):</div><div class="line">        print &quot;Animal is running&quot;</div><div class="line"></div><div class="line">class Dog(Animal):</div><div class="line">    pass</div><div class="line">class Cat(Animal):</div><div class="line">    pass</div><div class="line"></div><div class="line">dog = Dog()</div><div class="line">dog.run()</div><div class="line">cat = Cat()</div><div class="line">cat.run()</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p><code>type()</code>,来判断对象类型。</p>
+</li>
+<li><p>通过内置的一系列函数，我们可以对任意一个Python对象进行剖析，拿到其内部的数据。</p>
+</li>
+<li><code>dir()</code>,来获得一个对象的所有属性跟方法。</li>
+</ul>
+<p>高级特性：多重继承，定制类，元类</p>
+<p><strong>动态绑定</strong><br>动态绑定允许我们在程序运行的过程中动态给class加上功能，这在静态语言中很难实现</p>
+<p>以下给一个实例绑定方法，其他实例没有这个方法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 给dog对象动态新增方法set_age</div><div class="line"></div><div class="line">def set_age(self,age): #定义一个函数作为实例方法</div><div class="line">    self.age = age</div><div class="line"></div><div class="line">dog.set_age = MethodType(set_age,dog,Dog)# 给实例绑定一个方法</div><div class="line">dog.set_age(25)</div><div class="line">print &apos;dog的age:%s&apos; % dog.age</div></pre></td></tr></table></figure></p>
+<p>以下是给对象绑定方法，它的所有实例都会有这个方法<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">def set_price(self,price): #定义一个函数作为实例方法</div><div class="line">    self.price = price</div><div class="line"></div><div class="line">Animal.set_price = MethodType(set_price,None,Animal)# 给类绑定一个方法</div><div class="line">dog.set_price(&apos;200$&apos;)</div><div class="line">cat.set_price(&apos;300$&apos;)</div><div class="line">print dog.price</div><div class="line">print cat.price</div></pre></td></tr></table></figure></p>
+<p><strong>@property</strong><br>类似java的get set，避免把属性直接暴露<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line"></div><div class="line">    @property</div><div class="line">    def birth(self):</div><div class="line">        return self._birth</div><div class="line"></div><div class="line">    @birth.setter</div><div class="line">    def birth(self, value):</div><div class="line">        self._birth = value</div></pre></td></tr></table></figure></p>
+<p><strong>多重继承</strong></p>
+<p>区别于java的单继承<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">class Dog(Mammal, RunnableMixin, CarnivorousMixin):</div><div class="line">    pass</div><div class="line"></div><div class="line">这样Dog类就继承了Mammal类，RunnableMixin类，CarnivorousMixin类</div></pre></td></tr></table></figure></p>
+<p><strong>定制类</strong><br><code>__str__</code><br><code>__repr__</code><br>用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">class Student(object):</div><div class="line">    def __init__(self, name):</div><div class="line">        self.name = name</div><div class="line">    def __str__(self):</div><div class="line">        return &apos;Student object (name=%s)&apos; % self.name</div><div class="line">    __repr__ = __str__</div></pre></td></tr></table></figure></p>
+<p><code>__iter__</code>用法：<br>如果一个类想被用于for … in循环，类似list或tuple那样，就必须实现一个<strong>iter</strong>()方法，该方法返回一个迭代对象，然后，Python的for循环就会不断调用该迭代对象的next()方法拿到循环的下一个值，直到遇到StopIteration错误时退出循环。</p>
+<p><code>__getattr__</code><br>利用完全动态的<strong>getattr</strong>写一个链式调用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">class Chain(object):</div><div class="line">    # class实例化调用</div><div class="line">    def __init__(self,path = &apos;&apos;):</div><div class="line">        self._pathh = path</div><div class="line">    # 调用Chain不存在的属性时</div><div class="line">    def __getattr__(self, path):</div><div class="line">        return Chain(&apos;%s/%s&apos; % (self._pathh,path))</div><div class="line">    def __str__(self):</div><div class="line">        return self._pathh</div><div class="line"></div><div class="line">print Chain().statu.v2.member.center</div><div class="line">结果</div><div class="line">/statu/v2/member/center</div></pre></td></tr></table></figure>
+<p><code>__call()__</code>可以使对象被当成函数进行调用</p>
+<p><strong>使用元类</strong></p>
+<ul>
+<li>type() 动态语言和静态语言最大的不同，就是函数和类的定义，不是编译时定义的，而是运行时动态创建的</li>
+<li><p>type()函数既可以返回一个对象的类型，又可以创建出新的类型</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">def fn(self, name=&apos;world&apos;): # 先定义函数</div><div class="line">       print(&apos;Hello, %s.&apos; % name)</div><div class="line">Hello = type(&apos;Hello&apos;, (object,), dict(hello=fn)) # 创建Hello class</div><div class="line">h = Hello()</div><div class="line">h.hello()</div></pre></td></tr></table></figure>
+</li>
+<li><p><code>metaclass</code><br>控制类的创建行为，还可使使用这个，元类<br>先定义metaclass，就可以创建类，最后创建实例。所以，metaclass允许你创建类或者修改类。换句话说，你可以把类看成是metaclass创建出来的“实例”。</p>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/python/">python</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/python基础/">python基础</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://hammercui.github.io/post/python学习笔记：2-面向对象/" data-title="python学习笔记：2.面向对象 | hammer崔的程序世界" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/post/python学习笔记：1-基础/"  title="python学习笔记：1.基础">
+ <strong>下一篇：</strong><br/> 
+ <span>python学习笔记：1.基础
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/python学习笔记：2-面向对象/" data-title="python学习笔记：2.面向对象" data-url="http://hammercui.github.io/post/python学习笔记：2-面向对象/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#模块"><span class="toc-number">1.</span> <span class="toc-text">模块</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装第三方模块"><span class="toc-number">1.1.</span> <span class="toc-text">安装第三方模块</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象编程"><span class="toc-number">2.</span> <span class="toc-text">面向对象编程</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/github/" title="github">github<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react/" title="react">react<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-android实战/" title="react-native android实战">react-native android实战<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-basis/" title="react-native basis">react-native basis<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践/" title="android最佳实践">android最佳实践<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://xiekw2010.github.io" target="_blank" title="xiekw2010&#39;s Blog">xiekw2010&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.lcode.org/" target="_blank" title="江清清的技术专栏">江清清的技术专栏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/hammercui" target="_blank" title="My GitHub">My GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 努力 奋斗 <br/>
+			Tomorrow Is Another Day</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hammercui## e.g. wuchong for https://github.com/wuchong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hammercui">hammercui</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hammercui"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4c0e7eb512fab8f2d1682c1bff044651";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

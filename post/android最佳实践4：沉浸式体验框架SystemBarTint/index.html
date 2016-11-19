@@ -1,0 +1,602 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>android最佳实践4：4.4以下沉浸式体验框架SystemBarTint | hammer崔的程序世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hammercui">
+    
+
+    
+    <meta name="description" content="前言android也实现了类似于ios的状态栏透明，变色效果，称为沉浸式体验。但是，4.4及以上才能用！！所以强烈推荐这个SystemBarTint框架，能实现同样的效果,而且最低兼容API10.
+注意
+当不采用MD设计规范时，采用本方案最合适。若使用MD方案了，请最好使用toolbar取代actionbar.具体本方案的兼容性，还需要继续测试。
+4.4 以下版本的方案引入依赖1compile &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="android最佳实践4：4.4以下沉浸式体验框架SystemBarTint">
+<meta property="og:url" content="http://hammercui.github.io/post/android最佳实践4：沉浸式体验框架SystemBarTint/index.html">
+<meta property="og:site_name" content="hammer崔的程序世界">
+<meta property="og:description" content="前言android也实现了类似于ios的状态栏透明，变色效果，称为沉浸式体验。但是，4.4及以上才能用！！所以强烈推荐这个SystemBarTint框架，能实现同样的效果,而且最低兼容API10.
+注意
+当不采用MD设计规范时，采用本方案最合适。若使用MD方案了，请最好使用toolbar取代actionbar.具体本方案的兼容性，还需要继续测试。
+4.4 以下版本的方案引入依赖1compile &amp;">
+<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="android最佳实践4：4.4以下沉浸式体验框架SystemBarTint">
+<meta name="twitter:description" content="前言android也实现了类似于ios的状态栏透明，变色效果，称为沉浸式体验。但是，4.4及以上才能用！！所以强烈推荐这个SystemBarTint框架，能实现同样的效果,而且最低兼容API10.
+注意
+当不采用MD设计规范时，采用本方案最合适。若使用MD方案了，请最好使用toolbar取代actionbar.具体本方案的兼容性，还需要继续测试。
+4.4 以下版本的方案引入依赖1compile &amp;">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hammer崔的程序世界" title="hammer崔的程序世界"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
+				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://hammercui.github.io" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/android最佳实践4：沉浸式体验框架SystemBarTint/" title="android最佳实践4：4.4以下沉浸式体验框架SystemBarTint" itemprop="url">android最佳实践4：4.4以下沉浸式体验框架SystemBarTint</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
+		
+  <p class="article-time">
+    <time datetime="2015-12-15T10:00:08.000Z" itemprop="datePublished"> 發表於 2015-12-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-4-以下版本的方案"><span class="toc-number">2.</span> <span class="toc-text">4.4 以下版本的方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引入依赖"><span class="toc-number">2.1.</span> <span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-number">2.2.</span> <span class="toc-text">如何使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Activity的onCreate方法添加"><span class="toc-number">2.2.1.</span> <span class="toc-text">1  Activity的onCreate方法添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-activity的xml配置文件"><span class="toc-number">2.3.</span> <span class="toc-text">2 activity的xml配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Theme的配置"><span class="toc-number">2.4.</span> <span class="toc-text">3 Theme的配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-4以上版本的方案（不适用第三方框架）"><span class="toc-number">3.</span> <span class="toc-text">4.4以上版本的方案（不适用第三方框架）</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>android也实现了类似于ios的状态栏透明，变色效果，称为沉浸式体验。但是，4.4及以上才能用！！所以强烈推荐这个<a href="https://github.com/jgilfelt/SystemBarTint" target="_blank" rel="external">SystemBarTint</a>框架，能实现同样的效果,而且最低兼容API10.</p>
+<p><strong>注意</strong></p>
+<p>当不采用MD设计规范时，采用本方案最合适。若使用MD方案了，请最好使用toolbar取代actionbar.具体本方案的兼容性，还需要继续测试。</p>
+<h1 id="4-4-以下版本的方案"><a href="#4-4-以下版本的方案" class="headerlink" title="4.4 以下版本的方案"></a>4.4 以下版本的方案</h1><h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile &apos;com.readystatesoftware.systembartint:systembartint:1.0.3&apos;</div></pre></td></tr></table></figure>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="1-Activity的onCreate方法添加"><a href="#1-Activity的onCreate方法添加" class="headerlink" title="1  Activity的onCreate方法添加"></a>1  Activity的onCreate方法添加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">protected void onCreate(Bundle savedInstanceState) &#123;</div><div class="line">    super.onCreate(savedInstanceState);</div><div class="line">    setContentView(R.layout.activity_main);</div><div class="line">	//当api》=19时</div><div class="line">	if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</div><div class="line">			setTranslucentStatus(true);</div><div class="line">		&#125;</div><div class="line"></div><div class="line">    // 创建状态栏的管理实例</div><div class="line">    SystemBarTintManager tintManager = new SystemBarTintManager(this);</div><div class="line">    // 激活状态栏设置</div><div class="line">    tintManager.setStatusBarTintEnabled(true);</div><div class="line">    // 激活导航栏设置，当使用actionbar的时候开启</div><div class="line">    tintManager.setNavigationBarTintEnabled(true);</div><div class="line">	// 设置一个颜色给系统栏  </div><div class="line">	tintManager.setTintColor(Color.parseColor(&quot;#99000FF&quot;));  </div><div class="line">	// 设置状态栏需颜色或背景图</div><div class="line">	tintManager.setStatusBarTintResource(R.color.statusbar_bg);</div><div class="line">	// 设置一个样式背景给导航栏，当使用actionbar的时候使用</div><div class="line">	tintManager.setNavigationBarTintResource(R.drawable.my_tint);  </div><div class="line">	</div><div class="line">&#125;</div><div class="line"></div><div class="line">@TargetApi(19) </div><div class="line">	private void setTranslucentStatus(boolean on) &#123;</div><div class="line">		Window win = getWindow();</div><div class="line">		WindowManager.LayoutParams winParams = win.getAttributes();</div><div class="line">		final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;</div><div class="line">		if (on) &#123;</div><div class="line">			winParams.flags |= bits;</div><div class="line">		&#125; else &#123;</div><div class="line">			winParams.flags &amp;= ~bits;</div><div class="line">		&#125;</div><div class="line">		win.setAttributes(winParams);</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h2 id="2-activity的xml配置文件"><a href="#2-activity的xml配置文件" class="headerlink" title="2 activity的xml配置文件"></a>2 activity的xml配置文件</h2><p>记得新增属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure></p>
+<h2 id="3-Theme的配置"><a href="#3-Theme的配置" class="headerlink" title="3 Theme的配置"></a>3 Theme的配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;!-- 我的activity主题，应用于所有的 activity--&gt;</div><div class="line">    &lt;style name=&quot;MyTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</div><div class="line">		&lt;!-- activity切换动画--&gt;</div><div class="line">        &lt;item name=&quot;android:windowAnimationStyle&quot;&gt;@style/activityAnimation&lt;/item&gt;</div><div class="line">		&lt;!-- 不显示Title Bar --&gt;</div><div class="line">		&lt;item name=&quot;android:windowNoTitle&quot;&gt;true&lt;/item&gt;</div><div class="line">		&lt;!-- 避免控件都会顶到状态栏上 --&gt;</div><div class="line">        &lt;item name=&quot;android:fitsSystemWindows&quot;&gt;true&lt;/item&gt;</div><div class="line">		&lt;!-- API 14 theme 的自定义 can go here. --&gt;</div><div class="line">		&lt;item name=&quot;android:actionBarStyle&quot;&gt;@style/ActionBarStyle&lt;/item&gt;</div><div class="line">    &lt;/style&gt;</div><div class="line"></div><div class="line">&lt;!--activity统一的切换动画 --&gt;</div><div class="line">&lt;style name=&quot;activityAnimation&quot; parent=&quot;@android:style/Animation.Activity&quot;&gt;</div><div class="line">        &lt;item name=&quot;android:activityOpenEnterAnimation&quot;&gt;@anim/push_left_in&lt;/item&gt;  </div><div class="line">        &lt;item name=&quot;android:activityOpenExitAnimation&quot;&gt;@anim/push_left_out&lt;/item&gt;  </div><div class="line">        &lt;item name=&quot;android:activityCloseEnterAnimation&quot;&gt;@anim/back_right_in&lt;/item&gt;  </div><div class="line">        &lt;item name=&quot;android:activityCloseExitAnimation&quot;&gt;@anim/back_right_out&lt;/item&gt;  </div><div class="line">    &lt;/style&gt;</div><div class="line">	</div><div class="line">	&lt;!--API 14主题的自定义 --&gt;</div><div class="line">	&lt;style name=&quot;ActionBarStyle&quot; parent=&quot;android:Widget.Holo.Light.ActionBar.Solid.Inverse&quot;&gt;</div><div class="line">	&lt;item name=&quot;android:background&quot;&gt;@color/orange&lt;/item&gt;</div><div class="line">	&lt;/style&gt;</div></pre></td></tr></table></figure>
+<h1 id="4-4以上版本的方案（不适用第三方框架）"><a href="#4-4以上版本的方案（不适用第三方框架）" class="headerlink" title="4.4以上版本的方案（不适用第三方框架）"></a>4.4以上版本的方案（不适用第三方框架）</h1><p>如何实现，请参考blog <a href="http://blog.csdn.net/koche/article/details/46766963" target="_blank" rel="external">安卓4.4以上修改状态栏颜色</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/android/">android</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/android最佳实践/">android最佳实践</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://hammercui.github.io/post/android最佳实践4：沉浸式体验框架SystemBarTint/" data-title="android最佳实践4：4.4以下沉浸式体验框架SystemBarTint | hammer崔的程序世界" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/hexo-gihthub创建blog/" title="hexo gihthub创建blog">
+  <strong>上一篇：</strong><br/>
+  <span>
+  hexo gihthub创建blog</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/android最佳实践3：retrofit框架/"  title="android最佳实践3：retrofit框架">
+ <strong>下一篇：</strong><br/> 
+ <span>android最佳实践3：retrofit框架
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/android最佳实践4：沉浸式体验框架SystemBarTint/" data-title="android最佳实践4：4.4以下沉浸式体验框架SystemBarTint" data-url="http://hammercui.github.io/post/android最佳实践4：沉浸式体验框架SystemBarTint/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-4-以下版本的方案"><span class="toc-number">2.</span> <span class="toc-text">4.4 以下版本的方案</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#引入依赖"><span class="toc-number">2.1.</span> <span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#如何使用"><span class="toc-number">2.2.</span> <span class="toc-text">如何使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Activity的onCreate方法添加"><span class="toc-number">2.2.1.</span> <span class="toc-text">1  Activity的onCreate方法添加</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-activity的xml配置文件"><span class="toc-number">2.3.</span> <span class="toc-text">2 activity的xml配置文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Theme的配置"><span class="toc-number">2.4.</span> <span class="toc-text">3 Theme的配置</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-4以上版本的方案（不适用第三方框架）"><span class="toc-number">3.</span> <span class="toc-text">4.4以上版本的方案（不适用第三方框架）</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/github/" title="github">github<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react/" title="react">react<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-android实战/" title="react-native android实战">react-native android实战<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-basis/" title="react-native basis">react-native basis<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践/" title="android最佳实践">android最佳实践<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://xiekw2010.github.io" target="_blank" title="xiekw2010&#39;s Blog">xiekw2010&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.lcode.org/" target="_blank" title="江清清的技术专栏">江清清的技术专栏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/hammercui" target="_blank" title="My GitHub">My GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 努力 奋斗 <br/>
+			Tomorrow Is Another Day</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hammercui## e.g. wuchong for https://github.com/wuchong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hammercui">hammercui</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hammercui"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4c0e7eb512fab8f2d1682c1bff044651";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

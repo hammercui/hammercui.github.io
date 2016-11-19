@@ -1,0 +1,773 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>react-native-android实战：4 CodePush使用 | hammer崔的程序世界</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="hammercui">
+    
+
+    
+    <meta name="description" content="CodePush简介CodePush 是微软开发的，可以实时更新 React Native 和 Cordova 应用。
+CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用更新给用户设备的云服务。CodePush 作为一个中央仓库，开发者可以推送更新到 (JS, HTML, CSS and images)，应用可以从客户端 SDKs 里面查询更新。Cod">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native-android实战：4 CodePush使用">
+<meta property="og:url" content="http://hammercui.github.io/post/react-native-android实战：4-CodePush/index.html">
+<meta property="og:site_name" content="hammer崔的程序世界">
+<meta property="og:description" content="CodePush简介CodePush 是微软开发的，可以实时更新 React Native 和 Cordova 应用。
+CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用更新给用户设备的云服务。CodePush 作为一个中央仓库，开发者可以推送更新到 (JS, HTML, CSS and images)，应用可以从客户端 SDKs 里面查询更新。Cod">
+<meta property="og:image" content="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-18/11301899.jpg">
+<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-native-android实战：4 CodePush使用">
+<meta name="twitter:description" content="CodePush简介CodePush 是微软开发的，可以实时更新 React Native 和 Cordova 应用。
+CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用更新给用户设备的云服务。CodePush 作为一个中央仓库，开发者可以推送更新到 (JS, HTML, CSS and images)，应用可以从客户端 SDKs 里面查询更新。Cod">
+<meta name="twitter:image" content="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-18/11301899.jpg">
+
+    
+    <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="hammer崔的程序世界" title="hammer崔的程序世界"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
+				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页|Home</a></li>
+					
+						<li><a href="/archives">归档|Archives</a></li>
+					
+						<li><a href="/about">关于|About</a></li>
+					
+					<li>
+ 					
+						<form class="search" action="http://hammercui.github.io" target="_blank">
+							<label>Search</label>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/post/react-native-android实战：4-CodePush/" title="react-native-android实战：4 CodePush使用" itemprop="url">react-native-android实战：4 CodePush使用</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
+		
+  <p class="article-time">
+    <time datetime="2016-03-18T02:00:38.000Z" itemprop="datePublished"> 發表於 2016-03-18</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目錄</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CodePush简介"><span class="toc-number">1.</span> <span class="toc-text">CodePush简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-API"><span class="toc-number">2.</span> <span class="toc-text">JavaScript API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-checkForUpdate"><span class="toc-number">2.1.</span> <span class="toc-text">codePush.checkForUpdate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-getCurrentPackage"><span class="toc-number">2.2.</span> <span class="toc-text">codePush.getCurrentPackage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-notifyApplicationReady"><span class="toc-number">2.3.</span> <span class="toc-text">codePush.notifyApplicationReady</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-restartApp"><span class="toc-number">2.4.</span> <span class="toc-text">codePush.restartApp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-sync"><span class="toc-number">2.5.</span> <span class="toc-text">codePush.sync</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实战应用"><span class="toc-number">3.</span> <span class="toc-text">实战应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Service部署"><span class="toc-number">3.1.</span> <span class="toc-text">Service部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装CodePush-CLI"><span class="toc-number">3.1.1.</span> <span class="toc-text">安装CodePush CLI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建CodePush-账号"><span class="toc-number">3.1.2.</span> <span class="toc-text">创建CodePush 账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册一个app"><span class="toc-number">3.1.3.</span> <span class="toc-text">注册一个app</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署已经注册的app"><span class="toc-number">3.1.4.</span> <span class="toc-text">部署已经注册的app</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react-native-code-push插件安装"><span class="toc-number">3.2.</span> <span class="toc-text">react-native-code-push插件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android配置"><span class="toc-number">3.3.</span> <span class="toc-text">android配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript代码"><span class="toc-number">3.4.</span> <span class="toc-text">JavaScript代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设计方案"><span class="toc-number">3.4.1.</span> <span class="toc-text">设计方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app如何更新（JavaScript-image）"><span class="toc-number">3.5.</span> <span class="toc-text">app如何更新（JavaScript+image）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#package命令"><span class="toc-number">3.5.1.</span> <span class="toc-text">package命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#release命令"><span class="toc-number">3.5.2.</span> <span class="toc-text">release命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见问题"><span class="toc-number">4.</span> <span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-更新不成功，报but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><span class="toc-number">4.1.</span> <span class="toc-text">1 更新不成功，报but it is being ignored due to having been previously rolled back.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CodePush-An-update-is-available-but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><span class="toc-number">4.2.</span> <span class="toc-text">2 [CodePush] An update is available, but it is being ignored due to having been previously rolled back.</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">5.</span> <span class="toc-text">参考文章</span></a></li></ol>
+		
+		</div>
+		
+		<h1 id="CodePush简介"><a href="#CodePush简介" class="headerlink" title="CodePush简介"></a>CodePush简介</h1><p><a href="http://microsoft.github.io/code-push/" target="_blank" rel="external">CodePush</a> 是微软开发的，可以实时更新 React Native 和 Cordova 应用。</p>
+<p>CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用更新给用户设备的云服务。CodePush 作为一个中央仓库，开发者可以推送更新到 (JS, HTML, CSS and images)，应用可以从客户端 SDKs 里面查询更新。CodePush 可以让应用有更多的可确定性，也可以让你直接接触用户群。在修复一些小问题和添加新特性的时候，不需要经过二进制打包，可以直接推送代码进行实时更新。</p>
+<p>CodePush 可以进行实时的推送代码更新：</p>
+<ul>
+<li>直接对用户部署代码更新</li>
+<li>管理 Alpha，Beta 和生产环境应用</li>
+<li>支持 Cordova 和 React Native </li>
+</ul>
+<p><strong>CodePush的react-native版本是<a href="https://github.com/Microsoft/react-native-code-push" target="_blank" rel="external">react-native-code-push</a></strong></p>
+<h1 id="JavaScript-API"><a href="#JavaScript-API" class="headerlink" title="JavaScript API"></a>JavaScript API</h1><ul>
+<li>checkForUpdate</li>
+<li>getCurrentPackage</li>
+<li>notifyApplicationReady</li>
+<li>restartApp </li>
+<li>sync</li>
+</ul>
+<h2 id="codePush-checkForUpdate"><a href="#codePush-checkForUpdate" class="headerlink" title="codePush.checkForUpdate"></a>codePush.checkForUpdate</h2><p>询问<code>code push</code> 服务器是否app有新的版本</p>
+<p><code>codePush.checkForUpdate(deploymentKey: String = null): Promise&lt;RemotePackage&gt;;</code></p>
+<p>该方法返回Promise，有如下两种值：</p>
+<ol>
+<li>null 没有更新</li>
+<li>A RemotePackage instance</li>
+</ol>
+<p>举例用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">codePush.checkForUpdate()</div><div class="line">.then((update) =&gt; &#123;</div><div class="line">    if (!update) &#123;</div><div class="line">        console.log(&quot;The app is up to date!&quot;); </div><div class="line">    &#125; else &#123;</div><div class="line">        console.log(&quot;An update is available! Should we download it?&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="codePush-getCurrentPackage"><a href="#codePush-getCurrentPackage" class="headerlink" title="codePush.getCurrentPackage"></a><code>codePush.getCurrentPackage</code></h2><p>获得当前已安装更新的元数据（比如描述，安装时间，大小）<br>举例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">codePush.getCurrentPackage()</div><div class="line">.then((update) =&gt; &#123;</div><div class="line">    // If the current app &quot;session&quot; represents the first time</div><div class="line">    // this update has run, and it had a description provided</div><div class="line">    // with it upon release, let&apos;s show it to the end user</div><div class="line">    if (update.isFirstRun &amp;&amp; update.description) &#123;</div><div class="line">        // Display a &quot;what&apos;s new?&quot; modal</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<h2 id="codePush-notifyApplicationReady"><a href="#codePush-notifyApplicationReady" class="headerlink" title="codePush.notifyApplicationReady"></a><code>codePush.notifyApplicationReady</code></h2><p>通知CodePush进程，一个更新安装好了。当你检查并安装更新，（比如没有使用sync方法去handle的时候），这个方法必须被调用。否则CodePush会认为update失败，并rollback当前版本，在app重启时。</p>
+<p>当使用<code>sync</code>方法时，不需要调用本方法，因为<code>sync</code>会自动调用，</p>
+<h2 id="codePush-restartApp"><a href="#codePush-restartApp" class="headerlink" title="codePush.restartApp"></a><code>codePush.restartApp</code></h2><p>立即重启app.</p>
+<p>当以下情况时，这个方式是很有用的。：</p>
+<ol>
+<li>app 当 调用 <code>sync</code> or <code>LocalPackage.install</code> 方法时，指定的 install mode 是 <code>ON_NEXT_RESTART</code> or <code>ON_NEXT_RESUME</code>时 . 这两种情况都是当app重启或resume时，更新内容才能被看到。</li>
+<li>You have an app-specific user event (e.g. the end user navigated back to the app’s home route) that allows you to apply the update in an unobtrusive way, and potentially gets the update in front of the end user sooner then waiting until the next restart or resume.</li>
+</ol>
+<p>因为强制重启，能马上显示更新内容嘛！</p>
+<h2 id="codePush-sync"><a href="#codePush-sync" class="headerlink" title="codePush.sync"></a><code>codePush.sync</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">codePush.sync(options: Object, syncStatusChangeCallback: function(syncStatus: Number), downloadProgressCallback: function(progress: DownloadProgress)): Promise&lt;Number&gt;;</div></pre></td></tr></table></figure>
+<p>允许检查更新，下载并安装，都在一个方法中。除非你需要自定义UI开表现。我们建议开发者在整合CodePush时，使用这个函数。<br>checkForUpdate方法只能检查更新，接下来怎么做要自己写。而该方法更新，下载，安装都能处理。该方法提供了两种模式</p>
+<ul>
+<li><code>Silent mode</code>（默认的模式），</li>
+</ul>
+<p>它会自动下载可用更新，并在下次重启应用时应用它们（比如操作系统或用户杀死进程，或者重新启动设备） 。这样一来，整个更新是“沉默”给最终用户，因为用户看不到任何更新提示。</p>
+<ul>
+<li><code>Active mode</code></li>
+</ul>
+<p>当有可用的更新，提示用户是否允许下载，然后立即应用此更新。一旦选择了强制通知用户来手动更新，以后每次更新都会强制通知。个人感觉这种方式最合理</p>
+<p><code>sync</code>方法，有以下设置属性</p>
+<ul>
+<li><code>deploymentKey</code> （String）： 部署key，用来区分不同的app,在<code>Info.plist</code>(Ios)和<code>MianActivity.java</code>(Android)修改，当然你也可以在JavaScript里填写，这样我们能动态的修改key</li>
+<li><code>installMode</code> (codePush.InstallMode)： 非强制更新，默认<code>codePush.InstallMode.ON_NEXT_RESTART</code></li>
+<li><code>mandatoryInstallMode</code> (codePush.InstallMode):强制更新,默认<code>codePush.InstallMode.IMMEDIATE</code></li>
+<li><code>minimumBackgroundDuration</code> (Number):</li>
+<li><p><code>updateDialog</code> (UpdateDialogOptions) :可选的，更新的对话框，默认是null,包含以下属性</p>
+<ul>
+<li><p><code>appendReleaseDescription</code> (Boolean) - 是否显示更新description，默认false</p>
+</li>
+<li><p><code>descriptionPrefix</code> (String) - 更新说明的前缀。 默认是” Description: “</p>
+</li>
+<li><p><code>mandatoryContinueButtonLabel</code> (String) - 强制更新的按钮文字. 默认 to “Continue”.</p>
+</li>
+<li><p><code>mandatoryUpdateMessage</code> (String) - 强制更新时，更新通知. Defaults to “An update is available that must be installed.”.</p>
+</li>
+<li><p><code>optionalIgnoreButtonLabel</code> (String) - 非强制更新时，取消按钮文字. Defaults to “Ignore”.</p>
+</li>
+<li><p><code>optionalInstallButtonLabel</code> (String) - 非强制更新时，确认文字. Defaults to “Install”.</p>
+</li>
+<li><p><code>optionalUpdateMessage</code> (String) - 非强制更新时，更新通知. Defaults to “An update is available. Would you like to install it?”.</p>
+</li>
+<li><p><code>title</code> (String) - 要显示的更新通知的标题. Defaults to “Update available”.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>举例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// Prompt the user when an update is available</div><div class="line">// and then display a &quot;downloading&quot; modal </div><div class="line">codePush.sync(&#123; updateDialog: true &#125;, (status) =&gt; &#123;</div><div class="line">    switch (status) &#123;</div><div class="line">        case codePush.SyncStatus.DOWNLOADING_PACKAGE:</div><div class="line">            // Show &quot;downloading&quot; modal</div><div class="line">            break;</div><div class="line">        case codePush.SyncStatus.INSTALLING_UPDATE:</div><div class="line">            // Hide &quot;downloading&quot; modal</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p><a href="https://github.com/Microsoft/react-native-code-push/blob/master/Examples/CodePushDemoApp/crossplatformdemo.js#L68" target="_blank" rel="external">再贴一个官方demo地址</a></p>
+<h1 id="实战应用"><a href="#实战应用" class="headerlink" title="实战应用"></a>实战应用</h1><h2 id="Service部署"><a href="#Service部署" class="headerlink" title="Service部署"></a>Service部署</h2><h3 id="安装CodePush-CLI"><a href="#安装CodePush-CLI" class="headerlink" title="安装CodePush CLI"></a>安装CodePush CLI</h3><p><code>npm install -g code-push-cli</code></p>
+<p>可以输入<code>code-push -v</code>查看版本号</p>
+<h3 id="创建CodePush-账号"><a href="#创建CodePush-账号" class="headerlink" title="创建CodePush 账号"></a>创建CodePush 账号</h3><p>在发布一个更新前，必须有账号。</p>
+<ul>
+<li>终端输入<code>code-push register</code>,执行后弹出<a href="https://codepush-management.azurewebsites.net/auth/register?hostname=DESKTOP-3PVIHT6，" target="_blank" rel="external">https://codepush-management.azurewebsites.net/auth/register?hostname=DESKTOP-3PVIHT6，</a></li>
+<li>选择输入微软账号或者github账号，选择Authorize application。然后注册成功，获得一个token。</li>
+<li>token输入到控制台，显示<br><img src="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-18/11301899.jpg" alt=""></li>
+<li>登录 <code>code-push login</code></li>
+<li>注销 <code>code-push loout</code></li>
+<li>列出登录的token<code>code-push access-key ls</code></li>
+<li>删除某个access-key <code>code-push access-key rm &lt;accessKey&gt;</code></li>
+</ul>
+<h3 id="注册一个app"><a href="#注册一个app" class="headerlink" title="注册一个app"></a>注册一个app</h3><p>常用命令,只有下面几个：</p>
+<ul>
+<li><code>access-key</code>    View and delete active user sessions</li>
+<li><code>app</code>         View and manage your CodePush-enabled apps</li>
+<li><code>collaborator</code>   View and manage collaborators for a given app</li>
+<li><code>deployment</code>     View and manage the deployments for your apps</li>
+<li><code>login</code>         Authenticate with the CodePush server in order to begin managing your apps</li>
+<li><code>logout</code>       Log out of the current session</li>
+<li><code>promote</code>      Promote the package from one deployment of your app to another</li>
+<li><code>register</code>       Register a new account with the CodePush server</li>
+<li><code>release</code>       Release a new version of your app to a specific deployment</li>
+<li><code>release-react</code> Release a new version of your React Native app to a specific deployment</li>
+<li><code>rollback</code>       Performs a rollback on the latest package of a specific deployment</li>
+</ul>
+<p>选项：</p>
+<ul>
+<li>-v, –version  显示版本号  [boolean]</li>
+</ul>
+<p>比如</p>
+<ul>
+<li>查看当前部署的app: <code>code-push app ls</code></li>
+<li>添加一个app:  <code>code-push app add Zlot_react</code></li>
+</ul>
+<h3 id="部署已经注册的app"><a href="#部署已经注册的app" class="headerlink" title="部署已经注册的app"></a>部署已经注册的app</h3><ul>
+<li>部署: <code>code-push deployment add app名字 部署名</code></li>
+<li>重命名部署名： <code>code-push deployment rename app名字 旧部署名 新部署名</code></li>
+<li>删除部署名字:  <code>code-push deployment rm app名字 部署名字</code></li>
+<li>列表部署名字: <code>code-push deployment ls app名字</code></li>
+<li>查看部署的key: <code>code-push deployment ls app名 -k</code></li>
+<li>查看release 的历史版本<br><code>code-push deployment history appName deploymentName</code></li>
+</ul>
+<p><strong>注意：默认的部署名是staging，所以staging的key值就是我们的deployment key</strong></p>
+<h2 id="react-native-code-push插件安装"><a href="#react-native-code-push插件安装" class="headerlink" title="react-native-code-push插件安装"></a>react-native-code-push插件安装</h2><p>需要有git环境，并在app工程目录控制台输入</p>
+<p><code>npm install react-native-code-push --save</code></p>
+<p>安装成功在package.json会看到</p>
+<p><code>&quot;react-native-code-push&quot;: &quot;^1.8.0-beta&quot;,</code></p>
+<h2 id="android配置"><a href="#android配置" class="headerlink" title="android配置"></a>android配置</h2><ul>
+<li>编辑android/setting.gradle文件，添加</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">include &apos;:app&apos;, &apos;:react-native-code-push&apos;</div><div class="line">project(&apos;:react-native-code-push&apos;).projectDir = new File(rootProject.projectDir, &apos;../node_modules/react-native-code-push/android/app&apos;)</div></pre></td></tr></table></figure>
+<ul>
+<li>编辑android/app/builde.gradle文件，添加依赖<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile project(&apos;:react-native-code-push&apos;)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>android react-native v0.18.0+</strong></p>
+<blockquote>
+<p>此种配置方法仅仅适用react-native 0.18版本及其以上。而且是android studio环境</p>
+</blockquote>
+<ul>
+<li>修改<code>MainActivity.java</code>文件,添加CodePush包</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">// 1. Import the plugin class</div><div class="line">import com.microsoft.codepush.react.CodePush;</div><div class="line"></div><div class="line"></div><div class="line">public class MainActivity extends ReactActivity &#123;</div><div class="line">    // 2. Define a private field to hold the CodePush runtime instance</div><div class="line">    private CodePush _codePush;</div><div class="line">    ...</div><div class="line"></div><div class="line">    // 3. Override the getJSBundleFile method in order to let</div><div class="line">    // the CodePush runtime determine where to get the JS</div><div class="line">    // bundle location from on each app start</div><div class="line">    @Override</div><div class="line">    protected String getJSBundleFile() &#123;</div><div class="line">        return this._codePush.getBundleUrl(&quot;index.android.bundle&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected List&lt;ReactPackage&gt; getPackages() &#123;</div><div class="line">        // 4. Instantiate an instance of the CodePush runtime, using the right deployment key. If you don&apos;t</div><div class="line">        // already have it, you can run &quot;code-push deployment ls &lt;appName&gt; -k&quot; to retrieve your key.</div><div class="line">        this._codePush = new CodePush(&quot;0dsIDongIcoH0mqAmoR0CYb5FhBZNy1w4Bf-l&quot;, this, BuildConfig.DEBUG);</div><div class="line"></div><div class="line">        // 5. Add the CodePush package to the list of existing packages</div><div class="line">        return Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">            new MainReactPackage(), this._codePush.getReactPackage());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>确定在<code>android/app/build.gradle</code>文件有<code>android.defaultConfig.versionName</code>属性</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123;</div><div class="line">        ...</div><div class="line">        versionName &quot;1.0.0&quot;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h2><ul>
+<li>导入CodePush的JavaScript组件</li>
+</ul>
+<p><code>import codePush from &quot;react-native-code-push&quot;;</code></p>
+<ul>
+<li>在在每个app启动时，在生命周期的<code>componentDidMount</code>阶段调用<code>sync</code>,来开启一个后台的更新。</li>
+</ul>
+<p><code>codePush.sync();</code></p>
+<h3 id="设计方案"><a href="#设计方案" class="headerlink" title="设计方案"></a>设计方案</h3><ul>
+<li><code>isMandatory === true</code>强制更新，采用弹出model框提醒的方式</li>
+</ul>
+<ul>
+<li><code>isMandatory === false</code>非强制更新，采用静默安装的方式</li>
+</ul>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">componentDidMount() &#123;</div><div class="line">    codePush.sync(&#123;</div><div class="line">      updateDialog: false,</div><div class="line">      installMode: codePush.InstallMode.ON_NEXT_RESUME,</div><div class="line">      deploymentKey: CODE_PUSH_PRODUCTION_KEY,</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div></pre></td></tr></table></figure></p>
+<h2 id="app如何更新（JavaScript-image）"><a href="#app如何更新（JavaScript-image）" class="headerlink" title="app如何更新（JavaScript+image）"></a>app如何更新（JavaScript+image）</h2><blockquote>
+<p>注意：从react-native v0.19.0开始支持android更新assets资源，并且需要CodePush v1.7.0。所以你需要升级你的react-native跟CodePush。</p>
+</blockquote>
+<p>确保在工程目录,新建release文件夹,如下</p>
+<h3 id="package命令"><a href="#package命令" class="headerlink" title="package命令"></a>package命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">react-native bundle </div><div class="line">--platform ios 选择平台</div><div class="line">--entry-file index.ios.js  选择启动项</div><div class="line">--bundle-output ./release/main.jsbundle  选择打包js输出文件</div><div class="line">--assets-dest ./release \  选择资源输出目录</div><div class="line">--dev false  是否调试</div></pre></td></tr></table></figure>
+<ul>
+<li><p>Android版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native bundle --platform android --entry-file index.android.js --bundle-output ./release/main.jsbundle  --assets-dest ./release --dev false</div></pre></td></tr></table></figure>
+</li>
+<li><p>ios版本</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native bundle --platform ios --entry-file index.ios.js --bundle-output ./release/main.jsbundle  --assets-dest ./release --dev false</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="release命令"><a href="#release命令" class="headerlink" title="release命令"></a>release命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">code-push release &lt;appName&gt; &lt;updateContents&gt; &lt;targetBinaryVersion&gt;</div><div class="line">[--deploymentName &lt;deploymentName&gt;]</div><div class="line">[--description &lt;description&gt;]</div><div class="line">[--mandatory]</div></pre></td></tr></table></figure>
+<p>mandatory ：是否强制更新。</p>
+<p><strong>注意：targetBinaryVersion指的是当前的app版本，比如客户端是1.0.0，如果我们要更新客户端，targetBinaryVersion也要是1.0.0，表示是1.0.0版本的更新，跟native的更新不太一样。这是我们第一次经常犯的错误大家不要搞混了。</strong></p>
+<ul>
+<li>Android版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">code-push release Zlot ./release 1.0.0 --description &quot;这是一个1.0.0版本的更新&quot; --mandatory true</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="1-更新不成功，报but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><a href="#1-更新不成功，报but-it-is-being-ignored-due-to-having-been-previously-rolled-back" class="headerlink" title="1 更新不成功，报but it is being ignored due to having been previously rolled back."></a>1 更新不成功，报<code>but it is being ignored due to having been previously rolled back.</code></h2><p>问题原因：客户端版本1.0.0，然后release的版本是1.0.1，所以检测的时候发现不了1.0.0版本的更新。</p>
+<p>因此我们也建议，js的更新采用静默更新，native的更新，做出提示。</p>
+<p><strong>注意：targetBinaryVersion指的是当前的app版本，比如客户端是1.0.0，如果我们要更新客户端，targetBinaryVersion也要是1.0.0，表示是1.0.0版本的更新，跟native的更新不太一样。这是我们第一次经常犯的错误大家不要搞混了。</strong></p>
+<h2 id="2-CodePush-An-update-is-available-but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><a href="#2-CodePush-An-update-is-available-but-it-is-being-ignored-due-to-having-been-previously-rolled-back" class="headerlink" title="2 [CodePush] An update is available, but it is being ignored due to having been previously rolled back."></a>2 <code>[CodePush] An update is available, but it is being ignored due to having been previously rolled back.</code></h2><p>解决方案：一般这种情况是在，我们自定义model，展示更新过程，并监听了安装完成，比如这个<a href="https://github.com/Microsoft/react-native-code-push/blob/master/Examples/CodePushDemoApp/crossplatformdemo.js" target="_blank" rel="external">demo</a>,我这这里忘了在<code>componentDidMount()</code>方法里添加<code>CodePush.notifyApplicationReady();</code>，就一直报这个错误。添加上就ok了</p>
+<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><p><a href="http://blog.csdn.net/oiken/article/details/50279871" target="_blank" rel="external">使用CodePush热更新ReactNative JS代码</a></p>
+<p><a href="https://github.com/Microsoft/react-native-code-push#releasing-updates-javascript--images" target="_blank" rel="external">react-native-code-push官方文档</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/react-native-android实战/">react-native android实战</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/react-native/">react-native</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://hammercui.github.io/post/react-native-android实战：4-CodePush/" data-title="react-native-android实战：4 CodePush使用 | hammer崔的程序世界" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/post/购物清单/" title="购物清单">
+  <strong>上一篇：</strong><br/>
+  <span>
+  购物清单</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/post/android最佳实践（中英文）/"  title="android最佳实践(中英文)">
+ <strong>下一篇：</strong><br/> 
+ <span>android最佳实践(中英文)
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="post/react-native-android实战：4-CodePush/" data-title="react-native-android实战：4 CodePush使用" data-url="http://hammercui.github.io/post/react-native-android实战：4-CodePush/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目錄</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CodePush简介"><span class="toc-number">1.</span> <span class="toc-text">CodePush简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-API"><span class="toc-number">2.</span> <span class="toc-text">JavaScript API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-checkForUpdate"><span class="toc-number">2.1.</span> <span class="toc-text">codePush.checkForUpdate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-getCurrentPackage"><span class="toc-number">2.2.</span> <span class="toc-text">codePush.getCurrentPackage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-notifyApplicationReady"><span class="toc-number">2.3.</span> <span class="toc-text">codePush.notifyApplicationReady</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-restartApp"><span class="toc-number">2.4.</span> <span class="toc-text">codePush.restartApp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-sync"><span class="toc-number">2.5.</span> <span class="toc-text">codePush.sync</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实战应用"><span class="toc-number">3.</span> <span class="toc-text">实战应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Service部署"><span class="toc-number">3.1.</span> <span class="toc-text">Service部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装CodePush-CLI"><span class="toc-number">3.1.1.</span> <span class="toc-text">安装CodePush CLI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建CodePush-账号"><span class="toc-number">3.1.2.</span> <span class="toc-text">创建CodePush 账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册一个app"><span class="toc-number">3.1.3.</span> <span class="toc-text">注册一个app</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署已经注册的app"><span class="toc-number">3.1.4.</span> <span class="toc-text">部署已经注册的app</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react-native-code-push插件安装"><span class="toc-number">3.2.</span> <span class="toc-text">react-native-code-push插件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android配置"><span class="toc-number">3.3.</span> <span class="toc-text">android配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript代码"><span class="toc-number">3.4.</span> <span class="toc-text">JavaScript代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设计方案"><span class="toc-number">3.4.1.</span> <span class="toc-text">设计方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app如何更新（JavaScript-image）"><span class="toc-number">3.5.</span> <span class="toc-text">app如何更新（JavaScript+image）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#package命令"><span class="toc-number">3.5.1.</span> <span class="toc-text">package命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#release命令"><span class="toc-number">3.5.2.</span> <span class="toc-text">release命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见问题"><span class="toc-number">4.</span> <span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-更新不成功，报but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><span class="toc-number">4.1.</span> <span class="toc-text">1 更新不成功，报but it is being ignored due to having been previously rolled back.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CodePush-An-update-is-available-but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><span class="toc-number">4.2.</span> <span class="toc-text">2 [CodePush] An update is available, but it is being ignored due to having been previously rolled back.</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">5.</span> <span class="toc-text">参考文章</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<aside class="clearfix">
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分類</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/android/" title="android">android<sup>21</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/github/" title="github">github<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react/" title="react">react<sup>4</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-android实战/" title="react-native android实战">react-native android实战<sup>6</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/react-native-basis/" title="react-native basis">react-native basis<sup>7</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">標簽</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/react-native/" title="react-native">react-native<sup>13</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践/" title="android最佳实践">android最佳实践<sup>12</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android/" title="android">android<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/react/" title="react">react<sup>4</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/nodejs/" title="nodejs">nodejs<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/github/" title="github">github<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/生活常识/" title="生活常识">生活常识<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情鏈接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://xiekw2010.github.io" target="_blank" title="xiekw2010&#39;s Blog">xiekw2010&#39;s Blog</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://www.lcode.org/" target="_blank" title="江清清的技术专栏">江清清的技术专栏</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://github.com/hammercui" target="_blank" title="My GitHub">My GitHub</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> 努力 奋斗 <br/>
+			Tomorrow Is Another Day</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		
+		<a href="https://github.com/hammercui## e.g. wuchong for https://github.com/wuchong" target="_blank" class="icon-github" title="github"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="hammercui">hammercui</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"hammercui"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?4c0e7eb512fab8f2d1682c1bff044651";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
