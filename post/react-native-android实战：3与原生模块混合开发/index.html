@@ -24,7 +24,7 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 
 java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaModule，如下：123456789101112131415161718192021public class LogModule extends">
 <meta property="og:image" content="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-11/46348245.jpg">
-<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta property="og:updated_time" content="2016-03-18T07:59:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native android实战：3 与原生模块混合开发">
 <meta name="twitter:description" content="如何使用
@@ -56,7 +56,7 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -72,7 +72,7 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -94,14 +94,14 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-11T06:47:20.000Z" itemprop="datePublished"> 發表於 2016-03-11</time>
+    <time datetime="2016-03-11T06:47:20.000Z" itemprop="datePublished"> Published 2016-03-11</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#如何使用"><span class="toc-number">1.</span> <span class="toc-text">如何使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java模块的封装"><span class="toc-number">1.1.</span> <span class="toc-text">java模块的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js调用封装的java"><span class="toc-number">1.2.</span> <span class="toc-text">js调用封装的java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js向java传参"><span class="toc-number">1.3.</span> <span class="toc-text">js向java传参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java执行结果回传给js"><span class="toc-number">1.4.</span> <span class="toc-text">java执行结果回传给js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-回调"><span class="toc-number">1.4.1.</span> <span class="toc-text">1 回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-事件监听调用"><span class="toc-number">1.4.2.</span> <span class="toc-text">2 事件监听调用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">2.</span> <span class="toc-text">参考文献</span></a></li></ol>
 		
@@ -110,22 +110,22 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 		<h1 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h1><blockquote>
 <p>封装好java模块供JavaScript调用，比如我们用js实现不了的控件或模块，可以通过java实现并封装，供JavaScript使用。</p>
 </blockquote>
-<h2 id="java模块的封装"><a href="#java模块的封装" class="headerlink" title="java模块的封装"></a>java模块的封装</h2><p>java模块新建LogModule类，继承自ReactContextBaseJavaModule，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">public class LogModule extends ReactContextBaseJavaModule &#123;</div><div class="line"></div><div class="line">    private static final String MODULE_NAME= &quot;Log&quot;;</div><div class="line">	//构造函数</div><div class="line">    public LogModule(ReactApplicationContext reactContext) &#123;</div><div class="line">        super(reactContext);</div><div class="line">    &#125;</div><div class="line">	</div><div class="line">	//字符串是JavaScript调用模块的名字</div><div class="line">    @Override</div><div class="line">    public String getName() &#123;</div><div class="line">        return MODULE_NAME;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //暴露给JavaScript端的方法</div><div class="line">    @ReactMethod</div><div class="line">    public void d(String tag,String msg)</div><div class="line">    &#123;</div><div class="line">        Log.d(tag,msg);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>新建module注册类,实现自ReactPackage，把module注册如package<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public class MyAppReactPackage implements ReactPackage &#123;</div><div class="line"></div><div class="line"></div><div class="line">    @Override</div><div class="line">    public List&lt;NativeModule&gt; createNativeModules(ReactApplicationContext reactContext) &#123;</div><div class="line"></div><div class="line">            List&lt;NativeModule&gt; modules = new ArrayList&lt;&gt;();</div><div class="line">            //add Log模块</div><div class="line">            modules.add(new LogModule(reactContext));</div><div class="line">            //add DBlocal模块</div><div class="line">            modules.add(new DBlocalModule(reactContext));</div><div class="line">            return modules;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</div><div class="line">        return Collections.emptyList();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    public List&lt;ViewManager&gt; createViewManagers(ReactApplicationContext reactContext) &#123;</div><div class="line">        return Collections.emptyList();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>注册包，在MainActivity中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">    protected List&lt;ReactPackage&gt; getPackages() &#123;</div><div class="line">        return Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">            new MainReactPackage()</div><div class="line">          +  , new VectorIconsPackage()</div><div class="line">          +      ,new MyAppReactPackage()</div><div class="line">        );</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<h2 id="js调用封装的java"><a href="#js调用封装的java" class="headerlink" title="js调用封装的java"></a>js调用封装的java</h2><p>我们把需要自定义的java模块，统一管理，放在NativeBrigde.android.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//log模块</div><div class="line">var RCTLog = NativeModules.Log;</div><div class="line">var Log = &#123;</div><div class="line">    d: function (tag: string, msg: string): void &#123;</div><div class="line">        console.log(tag,msg);</div><div class="line">        RCTLog.d(tag, msg);</div><div class="line">    &#125;,</div><div class="line">&#125;;</div><div class="line">module .exports =&#123;Log,DBlocal&#125;;</div></pre></td></tr></table></figure></p>
-<p>需要调用的时候<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var &#123;Log,DBlocal&#125; =  require(&apos;../AnComponent/NativeBridge&apos;);`</div><div class="line">Log.d(&apos;hehe&apos;,&quot;我是打印输出&quot;);</div></pre></td></tr></table></figure></p>
+<h2 id="java模块的封装"><a href="#java模块的封装" class="headerlink" title="java模块的封装"></a>java模块的封装</h2><p>java模块新建LogModule类，继承自ReactContextBaseJavaModule，如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">public class LogModule extends ReactContextBaseJavaModule &#123;</span><br><span class="line"></span><br><span class="line">    private static final String MODULE_NAME= &quot;Log&quot;;</span><br><span class="line">	//构造函数</span><br><span class="line">    public LogModule(ReactApplicationContext reactContext) &#123;</span><br><span class="line">        super(reactContext);</span><br><span class="line">    &#125;</span><br><span class="line">	</span><br><span class="line">	//字符串是JavaScript调用模块的名字</span><br><span class="line">    @Override</span><br><span class="line">    public String getName() &#123;</span><br><span class="line">        return MODULE_NAME;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    //暴露给JavaScript端的方法</span><br><span class="line">    @ReactMethod</span><br><span class="line">    public void d(String tag,String msg)</span><br><span class="line">    &#123;</span><br><span class="line">        Log.d(tag,msg);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>新建module注册类,实现自ReactPackage，把module注册如package<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">public class MyAppReactPackage implements ReactPackage &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;NativeModule&gt; createNativeModules(ReactApplicationContext reactContext) &#123;</span><br><span class="line"></span><br><span class="line">            List&lt;NativeModule&gt; modules = new ArrayList&lt;&gt;();</span><br><span class="line">            //add Log模块</span><br><span class="line">            modules.add(new LogModule(reactContext));</span><br><span class="line">            //add DBlocal模块</span><br><span class="line">            modules.add(new DBlocalModule(reactContext));</span><br><span class="line">            return modules;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;Class&lt;? extends JavaScriptModule&gt;&gt; createJSModules() &#123;</span><br><span class="line">        return Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public List&lt;ViewManager&gt; createViewManagers(ReactApplicationContext reactContext) &#123;</span><br><span class="line">        return Collections.emptyList();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>注册包，在MainActivity中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    protected List&lt;ReactPackage&gt; getPackages() &#123;</span><br><span class="line">        return Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">            new MainReactPackage()</span><br><span class="line">          +  , new VectorIconsPackage()</span><br><span class="line">          +      ,new MyAppReactPackage()</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="js调用封装的java"><a href="#js调用封装的java" class="headerlink" title="js调用封装的java"></a>js调用封装的java</h2><p>我们把需要自定义的java模块，统一管理，放在NativeBrigde.android.js文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//log模块</span><br><span class="line">var RCTLog = NativeModules.Log;</span><br><span class="line">var Log = &#123;</span><br><span class="line">    d: function (tag: string, msg: string): void &#123;</span><br><span class="line">        console.log(tag,msg);</span><br><span class="line">        RCTLog.d(tag, msg);</span><br><span class="line">    &#125;,</span><br><span class="line">&#125;;</span><br><span class="line">module .exports =&#123;Log,DBlocal&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>需要调用的时候<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var &#123;Log,DBlocal&#125; =  require(&apos;../AnComponent/NativeBridge&apos;);`</span><br><span class="line">Log.d(&apos;hehe&apos;,&quot;我是打印输出&quot;);</span><br></pre></td></tr></table></figure></p>
 <h2 id="js向java传参"><a href="#js向java传参" class="headerlink" title="js向java传参"></a>js向java传参</h2><p>下面的参数类型在@ReactMethod注明的方法中，会被直接映射到它们对应的JavaScript类型。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">Boolean -&gt; Bool</div><div class="line">Integer -&gt; Number</div><div class="line">Double -&gt; Number</div><div class="line">Float -&gt; Number</div><div class="line">String -&gt; String</div><div class="line">Callback -&gt; function</div><div class="line">ReadableMap -&gt; Object</div><div class="line">ReadableArray -&gt; Array</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Boolean -&gt; Bool</span><br><span class="line">Integer -&gt; Number</span><br><span class="line">Double -&gt; Number</span><br><span class="line">Float -&gt; Number</span><br><span class="line">String -&gt; String</span><br><span class="line">Callback -&gt; function</span><br><span class="line">ReadableMap -&gt; Object</span><br><span class="line">ReadableArray -&gt; Array</span><br></pre></td></tr></table></figure>
 <h2 id="java执行结果回传给js"><a href="#java执行结果回传给js" class="headerlink" title="java执行结果回传给js"></a>java执行结果回传给js</h2><h3 id="1-回调"><a href="#1-回调" class="headerlink" title="1 回调"></a>1 <strong>回调</strong></h3><p>java层需要把结果传递给js，答案就是回调，最典型的一个场景就是javascript层调用java层的网络请求方法，java层拿到网络数据后需要将结果返回给javascript层</p>
-<p>为了测试我们在已建好的模块新增方法,invoke回调的参数是无类型，无个数限制的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@ReactMethod</div><div class="line">    public void getValue(String key,final Callback callback)&#123;</div><div class="line">        callback.invoke(&quot;我是结果&quot;);</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-<p>JavaScript中的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">//从本地数据库取值</div><div class="line">DBlocal.getValue(&apos;test&apos;,(result)=&gt;&#123;</div><div class="line">    Log.d(&apos;hehe&apos;,result);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>为了测试我们在已建好的模块新增方法,invoke回调的参数是无类型，无个数限制的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@ReactMethod</span><br><span class="line">    public void getValue(String key,final Callback callback)&#123;</span><br><span class="line">        callback.invoke(&quot;我是结果&quot;);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>JavaScript中的使用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//从本地数据库取值</span><br><span class="line">DBlocal.getValue(&apos;test&apos;,(result)=&gt;&#123;</span><br><span class="line">    Log.d(&apos;hehe&apos;,result);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>在android studio控制台可以看到结果<br><img src="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-11/46348245.jpg" alt=""></p>
 <h3 id="2-事件监听调用"><a href="#2-事件监听调用" class="headerlink" title="2 事件监听调用"></a>2 <strong>事件监听调用</strong></h3><p>还可以用事件调用JavaScript层，假设调用了java层方法后，我们希望发送一个事件给javascript，在javascript层再次进行打印输出。</p>
 <p>java端</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@ReactMethod</div><div class="line">    public void d(String tag,String msg)&#123;</div><div class="line">        Log.d(tag, msg);</div><div class="line">        //发送事件给javascript层</div><div class="line">        WritableMap params = Arguments.createMap();</div><div class="line">        params.putString(&quot;TAG&quot;,tag);</div><div class="line">        params.putString(&quot;MSG&quot;,msg);</div><div class="line">        getReactApplicationContext()</div><div class="line">                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)</div><div class="line">                .emit(&quot;logInConsole&quot;, params);//对应的javascript层的事件名为logInConsole，注册该事件即可进行回调</div><div class="line"></div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@ReactMethod</span><br><span class="line">    public void d(String tag,String msg)&#123;</span><br><span class="line">        Log.d(tag, msg);</span><br><span class="line">        //发送事件给javascript层</span><br><span class="line">        WritableMap params = Arguments.createMap();</span><br><span class="line">        params.putString(&quot;TAG&quot;,tag);</span><br><span class="line">        params.putString(&quot;MSG&quot;,msg);</span><br><span class="line">        getReactApplicationContext()</span><br><span class="line">                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)</span><br><span class="line">                .emit(&quot;logInConsole&quot;, params);//对应的javascript层的事件名为logInConsole，注册该事件即可进行回调</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>而对应的log.js并不需要做什么修改，我们只需要在想获得该事件的地方注册事件即可，比如我们想在主界面接收该事件，则在index.android.js中进行注册。</p>
-<p>JavaScript端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">componentDidMount:function()&#123;</div><div class="line">    Log.d(&quot;tag&quot;,&quot;tag&quot;);//调用java层log方法，之后就会回调对应的事件（前提是注册了事件）</div><div class="line">    //直接使用DeviceEventEmitter进行事件注册</div><div class="line">    DeviceEventEmitter.addListener(&apos;logInConsole&apos;,(e)=&gt;&#123;</div><div class="line">       console.log(e);</div><div class="line">    &#125;); //记得在UnDidMount里卸载事件</div><div class="line"></div><div class="line">  &#125;,</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>JavaScript端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount:function()&#123;</span><br><span class="line">    Log.d(&quot;tag&quot;,&quot;tag&quot;);//调用java层log方法，之后就会回调对应的事件（前提是注册了事件）</span><br><span class="line">    //直接使用DeviceEventEmitter进行事件注册</span><br><span class="line">    DeviceEventEmitter.addListener(&apos;logInConsole&apos;,(e)=&gt;&#123;</span><br><span class="line">       console.log(e);</span><br><span class="line">    &#125;); //记得在UnDidMount里卸载事件</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://blog.csdn.net/sbsujjbcy/article/details/49953041" target="_blank" rel="external">Android React Native使用原生模块</a></p>
   
 	</div>
@@ -188,22 +188,22 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#如何使用"><span class="toc-number">1.</span> <span class="toc-text">如何使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#java模块的封装"><span class="toc-number">1.1.</span> <span class="toc-text">java模块的封装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js调用封装的java"><span class="toc-number">1.2.</span> <span class="toc-text">js调用封装的java</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#js向java传参"><span class="toc-number">1.3.</span> <span class="toc-text">js向java传参</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#java执行结果回传给js"><span class="toc-number">1.4.</span> <span class="toc-text">java执行结果回传给js</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-回调"><span class="toc-number">1.4.1.</span> <span class="toc-text">1 回调</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-事件监听调用"><span class="toc-number">1.4.2.</span> <span class="toc-text">2 事件监听调用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">2.</span> <span class="toc-text">参考文献</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -215,7 +215,7 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 		  
 		
 		  
-			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 		  
 		
 		  
@@ -227,7 +227,7 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 		  
 		
 		  
-			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+			<li><a href="/categories/python/" title="python">python<sup>6</sup></a></li>
 		  
 		
 		  
@@ -243,7 +243,15 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 		  
 		
 		  
+			<li><a href="/categories/基础/" title="基础">基础<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
 		  
 		
 		  
@@ -256,7 +264,7 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -272,15 +280,19 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 			
 		
 			
-				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>6</sup></a></li>
 			
 		
 			
@@ -292,15 +304,7 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 			
 		
 			
-				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
 			
 		
 			
@@ -308,11 +312,23 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 			
 		
 			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -320,7 +336,7 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -328,7 +344,7 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -353,11 +369,11 @@ java模块的封装java模块新建LogModule类，继承自ReactContextBaseJavaM
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -596,7 +612,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

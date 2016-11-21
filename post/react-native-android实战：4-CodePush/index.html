@@ -20,7 +20,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 <meta property="og:description" content="CodePush简介CodePush 是微软开发的，可以实时更新 React Native 和 Cordova 应用。
 CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用更新给用户设备的云服务。CodePush 作为一个中央仓库，开发者可以推送更新到 (JS, HTML, CSS and images)，应用可以从客户端 SDKs 里面查询更新。Cod">
 <meta property="og:image" content="http://7xrf0l.com1.z0.glb.clouddn.com/16-3-18/11301899.jpg">
-<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta property="og:updated_time" content="2016-03-22T09:39:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native-android实战：4 CodePush使用">
 <meta name="twitter:description" content="CodePush简介CodePush 是微软开发的，可以实时更新 React Native 和 Cordova 应用。
@@ -50,7 +50,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -66,7 +66,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -88,14 +88,14 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-18T02:00:38.000Z" itemprop="datePublished"> 發表於 2016-03-18</time>
+    <time datetime="2016-03-18T02:00:38.000Z" itemprop="datePublished"> Published 2016-03-18</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CodePush简介"><span class="toc-number">1.</span> <span class="toc-text">CodePush简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-API"><span class="toc-number">2.</span> <span class="toc-text">JavaScript API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-checkForUpdate"><span class="toc-number">2.1.</span> <span class="toc-text">codePush.checkForUpdate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-getCurrentPackage"><span class="toc-number">2.2.</span> <span class="toc-text">codePush.getCurrentPackage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-notifyApplicationReady"><span class="toc-number">2.3.</span> <span class="toc-text">codePush.notifyApplicationReady</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-restartApp"><span class="toc-number">2.4.</span> <span class="toc-text">codePush.restartApp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-sync"><span class="toc-number">2.5.</span> <span class="toc-text">codePush.sync</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实战应用"><span class="toc-number">3.</span> <span class="toc-text">实战应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Service部署"><span class="toc-number">3.1.</span> <span class="toc-text">Service部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装CodePush-CLI"><span class="toc-number">3.1.1.</span> <span class="toc-text">安装CodePush CLI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建CodePush-账号"><span class="toc-number">3.1.2.</span> <span class="toc-text">创建CodePush 账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册一个app"><span class="toc-number">3.1.3.</span> <span class="toc-text">注册一个app</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署已经注册的app"><span class="toc-number">3.1.4.</span> <span class="toc-text">部署已经注册的app</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react-native-code-push插件安装"><span class="toc-number">3.2.</span> <span class="toc-text">react-native-code-push插件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android配置"><span class="toc-number">3.3.</span> <span class="toc-text">android配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript代码"><span class="toc-number">3.4.</span> <span class="toc-text">JavaScript代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设计方案"><span class="toc-number">3.4.1.</span> <span class="toc-text">设计方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app如何更新（JavaScript-image）"><span class="toc-number">3.5.</span> <span class="toc-text">app如何更新（JavaScript+image）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#package命令"><span class="toc-number">3.5.1.</span> <span class="toc-text">package命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#release命令"><span class="toc-number">3.5.2.</span> <span class="toc-text">release命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见问题"><span class="toc-number">4.</span> <span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-更新不成功，报but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><span class="toc-number">4.1.</span> <span class="toc-text">1 更新不成功，报but it is being ignored due to having been previously rolled back.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CodePush-An-update-is-available-but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><span class="toc-number">4.2.</span> <span class="toc-text">2 [CodePush] An update is available, but it is being ignored due to having been previously rolled back.</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">5.</span> <span class="toc-text">参考文章</span></a></li></ol>
 		
@@ -124,8 +124,8 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 <li>null 没有更新</li>
 <li>A RemotePackage instance</li>
 </ol>
-<p>举例用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">codePush.checkForUpdate()</div><div class="line">.then((update) =&gt; &#123;</div><div class="line">    if (!update) &#123;</div><div class="line">        console.log(&quot;The app is up to date!&quot;); </div><div class="line">    &#125; else &#123;</div><div class="line">        console.log(&quot;An update is available! Should we download it?&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
-<h2 id="codePush-getCurrentPackage"><a href="#codePush-getCurrentPackage" class="headerlink" title="codePush.getCurrentPackage"></a><code>codePush.getCurrentPackage</code></h2><p>获得当前已安装更新的元数据（比如描述，安装时间，大小）<br>举例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">codePush.getCurrentPackage()</div><div class="line">.then((update) =&gt; &#123;</div><div class="line">    // If the current app &quot;session&quot; represents the first time</div><div class="line">    // this update has run, and it had a description provided</div><div class="line">    // with it upon release, let&apos;s show it to the end user</div><div class="line">    if (update.isFirstRun &amp;&amp; update.description) &#123;</div><div class="line">        // Display a &quot;what&apos;s new?&quot; modal</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+<p>举例用法：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">codePush.checkForUpdate()</span><br><span class="line">.then((update) =&gt; &#123;</span><br><span class="line">    if (!update) &#123;</span><br><span class="line">        console.log(&quot;The app is up to date!&quot;); </span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        console.log(&quot;An update is available! Should we download it?&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<h2 id="codePush-getCurrentPackage"><a href="#codePush-getCurrentPackage" class="headerlink" title="codePush.getCurrentPackage"></a><code>codePush.getCurrentPackage</code></h2><p>获得当前已安装更新的元数据（比如描述，安装时间，大小）<br>举例:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">codePush.getCurrentPackage()</span><br><span class="line">.then((update) =&gt; &#123;</span><br><span class="line">    // If the current app &quot;session&quot; represents the first time</span><br><span class="line">    // this update has run, and it had a description provided</span><br><span class="line">    // with it upon release, let&apos;s show it to the end user</span><br><span class="line">    if (update.isFirstRun &amp;&amp; update.description) &#123;</span><br><span class="line">        // Display a &quot;what&apos;s new?&quot; modal</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <h2 id="codePush-notifyApplicationReady"><a href="#codePush-notifyApplicationReady" class="headerlink" title="codePush.notifyApplicationReady"></a><code>codePush.notifyApplicationReady</code></h2><p>通知CodePush进程，一个更新安装好了。当你检查并安装更新，（比如没有使用sync方法去handle的时候），这个方法必须被调用。否则CodePush会认为update失败，并rollback当前版本，在app重启时。</p>
 <p>当使用<code>sync</code>方法时，不需要调用本方法，因为<code>sync</code>会自动调用，</p>
 <h2 id="codePush-restartApp"><a href="#codePush-restartApp" class="headerlink" title="codePush.restartApp"></a><code>codePush.restartApp</code></h2><p>立即重启app.</p>
@@ -135,7 +135,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 <li>You have an app-specific user event (e.g. the end user navigated back to the app’s home route) that allows you to apply the update in an unobtrusive way, and potentially gets the update in front of the end user sooner then waiting until the next restart or resume.</li>
 </ol>
 <p>因为强制重启，能马上显示更新内容嘛！</p>
-<h2 id="codePush-sync"><a href="#codePush-sync" class="headerlink" title="codePush.sync"></a><code>codePush.sync</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">codePush.sync(options: Object, syncStatusChangeCallback: function(syncStatus: Number), downloadProgressCallback: function(progress: DownloadProgress)): Promise&lt;Number&gt;;</div></pre></td></tr></table></figure>
+<h2 id="codePush-sync"><a href="#codePush-sync" class="headerlink" title="codePush.sync"></a><code>codePush.sync</code></h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">codePush.sync(options: Object, syncStatusChangeCallback: function(syncStatus: Number), downloadProgressCallback: function(progress: DownloadProgress)): Promise&lt;Number&gt;;</span><br></pre></td></tr></table></figure>
 <p>允许检查更新，下载并安装，都在一个方法中。除非你需要自定义UI开表现。我们建议开发者在整合CodePush时，使用这个函数。<br>checkForUpdate方法只能检查更新，接下来怎么做要自己写。而该方法更新，下载，安装都能处理。该方法提供了两种模式</p>
 <ul>
 <li><code>Silent mode</code>（默认的模式），</li>
@@ -173,7 +173,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 </li>
 </ul>
 <p>举例：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">// Prompt the user when an update is available</div><div class="line">// and then display a &quot;downloading&quot; modal </div><div class="line">codePush.sync(&#123; updateDialog: true &#125;, (status) =&gt; &#123;</div><div class="line">    switch (status) &#123;</div><div class="line">        case codePush.SyncStatus.DOWNLOADING_PACKAGE:</div><div class="line">            // Show &quot;downloading&quot; modal</div><div class="line">            break;</div><div class="line">        case codePush.SyncStatus.INSTALLING_UPDATE:</div><div class="line">            // Hide &quot;downloading&quot; modal</div><div class="line">            break;</div><div class="line">    &#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">// Prompt the user when an update is available</span><br><span class="line">// and then display a &quot;downloading&quot; modal </span><br><span class="line">codePush.sync(&#123; updateDialog: true &#125;, (status) =&gt; &#123;</span><br><span class="line">    switch (status) &#123;</span><br><span class="line">        case codePush.SyncStatus.DOWNLOADING_PACKAGE:</span><br><span class="line">            // Show &quot;downloading&quot; modal</span><br><span class="line">            break;</span><br><span class="line">        case codePush.SyncStatus.INSTALLING_UPDATE:</span><br><span class="line">            // Hide &quot;downloading&quot; modal</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p><a href="https://github.com/Microsoft/react-native-code-push/blob/master/Examples/CodePushDemoApp/crossplatformdemo.js#L68" target="_blank" rel="external">再贴一个官方demo地址</a></p>
 <h1 id="实战应用"><a href="#实战应用" class="headerlink" title="实战应用"></a>实战应用</h1><h2 id="Service部署"><a href="#Service部署" class="headerlink" title="Service部署"></a>Service部署</h2><h3 id="安装CodePush-CLI"><a href="#安装CodePush-CLI" class="headerlink" title="安装CodePush CLI"></a>安装CodePush CLI</h3><p><code>npm install -g code-push-cli</code></p>
 <p>可以输入<code>code-push -v</code>查看版本号</p>
@@ -226,9 +226,9 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 <h2 id="android配置"><a href="#android配置" class="headerlink" title="android配置"></a>android配置</h2><ul>
 <li>编辑android/setting.gradle文件，添加</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">include &apos;:app&apos;, &apos;:react-native-code-push&apos;</div><div class="line">project(&apos;:react-native-code-push&apos;).projectDir = new File(rootProject.projectDir, &apos;../node_modules/react-native-code-push/android/app&apos;)</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">include &apos;:app&apos;, &apos;:react-native-code-push&apos;</span><br><span class="line">project(&apos;:react-native-code-push&apos;).projectDir = new File(rootProject.projectDir, &apos;../node_modules/react-native-code-push/android/app&apos;)</span><br></pre></td></tr></table></figure>
 <ul>
-<li>编辑android/app/builde.gradle文件，添加依赖<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile project(&apos;:react-native-code-push&apos;)</div></pre></td></tr></table></figure>
+<li>编辑android/app/builde.gradle文件，添加依赖<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile project(&apos;:react-native-code-push&apos;)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><strong>android react-native v0.18.0+</strong></p>
@@ -238,11 +238,11 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 <ul>
 <li>修改<code>MainActivity.java</code>文件,添加CodePush包</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">// 1. Import the plugin class</div><div class="line">import com.microsoft.codepush.react.CodePush;</div><div class="line"></div><div class="line"></div><div class="line">public class MainActivity extends ReactActivity &#123;</div><div class="line">    // 2. Define a private field to hold the CodePush runtime instance</div><div class="line">    private CodePush _codePush;</div><div class="line">    ...</div><div class="line"></div><div class="line">    // 3. Override the getJSBundleFile method in order to let</div><div class="line">    // the CodePush runtime determine where to get the JS</div><div class="line">    // bundle location from on each app start</div><div class="line">    @Override</div><div class="line">    protected String getJSBundleFile() &#123;</div><div class="line">        return this._codePush.getBundleUrl(&quot;index.android.bundle&quot;);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    @Override</div><div class="line">    protected List&lt;ReactPackage&gt; getPackages() &#123;</div><div class="line">        // 4. Instantiate an instance of the CodePush runtime, using the right deployment key. If you don&apos;t</div><div class="line">        // already have it, you can run &quot;code-push deployment ls &lt;appName&gt; -k&quot; to retrieve your key.</div><div class="line">        this._codePush = new CodePush(&quot;0dsIDongIcoH0mqAmoR0CYb5FhBZNy1w4Bf-l&quot;, this, BuildConfig.DEBUG);</div><div class="line"></div><div class="line">        // 5. Add the CodePush package to the list of existing packages</div><div class="line">        return Arrays.&lt;ReactPackage&gt;asList(</div><div class="line">            new MainReactPackage(), this._codePush.getReactPackage());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">// 1. Import the plugin class</span><br><span class="line">import com.microsoft.codepush.react.CodePush;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">public class MainActivity extends ReactActivity &#123;</span><br><span class="line">    // 2. Define a private field to hold the CodePush runtime instance</span><br><span class="line">    private CodePush _codePush;</span><br><span class="line">    ...</span><br><span class="line"></span><br><span class="line">    // 3. Override the getJSBundleFile method in order to let</span><br><span class="line">    // the CodePush runtime determine where to get the JS</span><br><span class="line">    // bundle location from on each app start</span><br><span class="line">    @Override</span><br><span class="line">    protected String getJSBundleFile() &#123;</span><br><span class="line">        return this._codePush.getBundleUrl(&quot;index.android.bundle&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    protected List&lt;ReactPackage&gt; getPackages() &#123;</span><br><span class="line">        // 4. Instantiate an instance of the CodePush runtime, using the right deployment key. If you don&apos;t</span><br><span class="line">        // already have it, you can run &quot;code-push deployment ls &lt;appName&gt; -k&quot; to retrieve your key.</span><br><span class="line">        this._codePush = new CodePush(&quot;0dsIDongIcoH0mqAmoR0CYb5FhBZNy1w4Bf-l&quot;, this, BuildConfig.DEBUG);</span><br><span class="line"></span><br><span class="line">        // 5. Add the CodePush package to the list of existing packages</span><br><span class="line">        return Arrays.&lt;ReactPackage&gt;asList(</span><br><span class="line">            new MainReactPackage(), this._codePush.getReactPackage());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <ul>
 <li>确定在<code>android/app/build.gradle</code>文件有<code>android.defaultConfig.versionName</code>属性</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">android &#123;</div><div class="line">    ...</div><div class="line">    defaultConfig &#123;</div><div class="line">        ...</div><div class="line">        versionName &quot;1.0.0&quot;</div><div class="line">        ...</div><div class="line">    &#125;</div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    ...</span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        ...</span><br><span class="line">        versionName &quot;1.0.0&quot;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="JavaScript代码"><a href="#JavaScript代码" class="headerlink" title="JavaScript代码"></a>JavaScript代码</h2><ul>
 <li>导入CodePush的JavaScript组件</li>
 </ul>
@@ -257,25 +257,25 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 <ul>
 <li><code>isMandatory === false</code>非强制更新，采用静默安装的方式</li>
 </ul>
-<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">componentDidMount() &#123;</div><div class="line">    codePush.sync(&#123;</div><div class="line">      updateDialog: false,</div><div class="line">      installMode: codePush.InstallMode.ON_NEXT_RESUME,</div><div class="line">      deploymentKey: CODE_PUSH_PRODUCTION_KEY,</div><div class="line">    &#125;);</div><div class="line">  &#125;,</div></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">    codePush.sync(&#123;</span><br><span class="line">      updateDialog: false,</span><br><span class="line">      installMode: codePush.InstallMode.ON_NEXT_RESUME,</span><br><span class="line">      deploymentKey: CODE_PUSH_PRODUCTION_KEY,</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure></p>
 <h2 id="app如何更新（JavaScript-image）"><a href="#app如何更新（JavaScript-image）" class="headerlink" title="app如何更新（JavaScript+image）"></a>app如何更新（JavaScript+image）</h2><blockquote>
 <p>注意：从react-native v0.19.0开始支持android更新assets资源，并且需要CodePush v1.7.0。所以你需要升级你的react-native跟CodePush。</p>
 </blockquote>
 <p>确保在工程目录,新建release文件夹,如下</p>
-<h3 id="package命令"><a href="#package命令" class="headerlink" title="package命令"></a>package命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">react-native bundle </div><div class="line">--platform ios 选择平台</div><div class="line">--entry-file index.ios.js  选择启动项</div><div class="line">--bundle-output ./release/main.jsbundle  选择打包js输出文件</div><div class="line">--assets-dest ./release \  选择资源输出目录</div><div class="line">--dev false  是否调试</div></pre></td></tr></table></figure>
+<h3 id="package命令"><a href="#package命令" class="headerlink" title="package命令"></a>package命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">react-native bundle </span><br><span class="line">--platform ios 选择平台</span><br><span class="line">--entry-file index.ios.js  选择启动项</span><br><span class="line">--bundle-output ./release/main.jsbundle  选择打包js输出文件</span><br><span class="line">--assets-dest ./release \  选择资源输出目录</span><br><span class="line">--dev false  是否调试</span><br></pre></td></tr></table></figure>
 <ul>
 <li><p>Android版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native bundle --platform android --entry-file index.android.js --bundle-output ./release/main.jsbundle  --assets-dest ./release --dev false</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native bundle --platform android --entry-file index.android.js --bundle-output ./release/main.jsbundle  --assets-dest ./release --dev false</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>ios版本</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">react-native bundle --platform ios --entry-file index.ios.js --bundle-output ./release/main.jsbundle  --assets-dest ./release --dev false</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native bundle --platform ios --entry-file index.ios.js --bundle-output ./release/main.jsbundle  --assets-dest ./release --dev false</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h3 id="release命令"><a href="#release命令" class="headerlink" title="release命令"></a>release命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">code-push release &lt;appName&gt; &lt;updateContents&gt; &lt;targetBinaryVersion&gt;</div><div class="line">[--deploymentName &lt;deploymentName&gt;]</div><div class="line">[--description &lt;description&gt;]</div><div class="line">[--mandatory]</div></pre></td></tr></table></figure>
+<h3 id="release命令"><a href="#release命令" class="headerlink" title="release命令"></a>release命令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">code-push release &lt;appName&gt; &lt;updateContents&gt; &lt;targetBinaryVersion&gt;</span><br><span class="line">[--deploymentName &lt;deploymentName&gt;]</span><br><span class="line">[--description &lt;description&gt;]</span><br><span class="line">[--mandatory]</span><br></pre></td></tr></table></figure>
 <p>mandatory ：是否强制更新。</p>
 <p><strong>注意：targetBinaryVersion指的是当前的app版本，比如客户端是1.0.0，如果我们要更新客户端，targetBinaryVersion也要是1.0.0，表示是1.0.0版本的更新，跟native的更新不太一样。这是我们第一次经常犯的错误大家不要搞混了。</strong></p>
 <ul>
-<li>Android版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">code-push release Zlot ./release 1.0.0 --description &quot;这是一个1.0.0版本的更新&quot; --mandatory true</div></pre></td></tr></table></figure>
+<li>Android版本<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code-push release Zlot ./release 1.0.0 --description &quot;这是一个1.0.0版本的更新&quot; --mandatory true</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h1 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h1><h2 id="1-更新不成功，报but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><a href="#1-更新不成功，报but-it-is-being-ignored-due-to-having-been-previously-rolled-back" class="headerlink" title="1 更新不成功，报but it is being ignored due to having been previously rolled back."></a>1 更新不成功，报<code>but it is being ignored due to having been previously rolled back.</code></h2><p>问题原因：客户端版本1.0.0，然后release的版本是1.0.1，所以检测的时候发现不了1.0.0版本的更新。</p>
@@ -345,22 +345,22 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#CodePush简介"><span class="toc-number">1.</span> <span class="toc-text">CodePush简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaScript-API"><span class="toc-number">2.</span> <span class="toc-text">JavaScript API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-checkForUpdate"><span class="toc-number">2.1.</span> <span class="toc-text">codePush.checkForUpdate</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-getCurrentPackage"><span class="toc-number">2.2.</span> <span class="toc-text">codePush.getCurrentPackage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-notifyApplicationReady"><span class="toc-number">2.3.</span> <span class="toc-text">codePush.notifyApplicationReady</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-restartApp"><span class="toc-number">2.4.</span> <span class="toc-text">codePush.restartApp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#codePush-sync"><span class="toc-number">2.5.</span> <span class="toc-text">codePush.sync</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#实战应用"><span class="toc-number">3.</span> <span class="toc-text">实战应用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Service部署"><span class="toc-number">3.1.</span> <span class="toc-text">Service部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装CodePush-CLI"><span class="toc-number">3.1.1.</span> <span class="toc-text">安装CodePush CLI</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建CodePush-账号"><span class="toc-number">3.1.2.</span> <span class="toc-text">创建CodePush 账号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注册一个app"><span class="toc-number">3.1.3.</span> <span class="toc-text">注册一个app</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署已经注册的app"><span class="toc-number">3.1.4.</span> <span class="toc-text">部署已经注册的app</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#react-native-code-push插件安装"><span class="toc-number">3.2.</span> <span class="toc-text">react-native-code-push插件安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#android配置"><span class="toc-number">3.3.</span> <span class="toc-text">android配置</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript代码"><span class="toc-number">3.4.</span> <span class="toc-text">JavaScript代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#设计方案"><span class="toc-number">3.4.1.</span> <span class="toc-text">设计方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#app如何更新（JavaScript-image）"><span class="toc-number">3.5.</span> <span class="toc-text">app如何更新（JavaScript+image）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#package命令"><span class="toc-number">3.5.1.</span> <span class="toc-text">package命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#release命令"><span class="toc-number">3.5.2.</span> <span class="toc-text">release命令</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#常见问题"><span class="toc-number">4.</span> <span class="toc-text">常见问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-更新不成功，报but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><span class="toc-number">4.1.</span> <span class="toc-text">1 更新不成功，报but it is being ignored due to having been previously rolled back.</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-CodePush-An-update-is-available-but-it-is-being-ignored-due-to-having-been-previously-rolled-back"><span class="toc-number">4.2.</span> <span class="toc-text">2 [CodePush] An update is available, but it is being ignored due to having been previously rolled back.</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">5.</span> <span class="toc-text">参考文章</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -372,7 +372,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 		  
 		
 		  
-			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 		  
 		
 		  
@@ -384,7 +384,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 		  
 		
 		  
-			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+			<li><a href="/categories/python/" title="python">python<sup>6</sup></a></li>
 		  
 		
 		  
@@ -400,7 +400,15 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 		  
 		
 		  
+			<li><a href="/categories/基础/" title="基础">基础<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
 		  
 		
 		  
@@ -413,7 +421,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -429,15 +437,19 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 			
 		
 			
-				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>6</sup></a></li>
 			
 		
 			
@@ -449,15 +461,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 			
 		
 			
-				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
 			
 		
 			
@@ -465,11 +469,23 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 			
 		
 			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -477,7 +493,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -485,7 +501,7 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -510,11 +526,11 @@ CodePush 是提供给 React Native 和 Cordova 开发者直接部署移动应用
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -753,7 +769,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

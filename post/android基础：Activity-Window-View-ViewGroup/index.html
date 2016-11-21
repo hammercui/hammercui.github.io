@@ -34,7 +34,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 <meta property="og:image" content="http://img.blog.csdn.net/20140919110917937?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmFua2V0cmVl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20140919111133997?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmFua2V0cmVl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
 <meta property="og:image" content="http://img.blog.csdn.net/20140919111154012?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmFua2V0cmVl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta property="og:updated_time" content="2016-06-06T10:31:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android基础：Activity Window View ViewGroup">
 <meta name="twitter:description" content="View与ViewGroup的关系Android系统中的所有UI类都是建立在View和ViewGroup这两个类的基础上的。
@@ -69,7 +69,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -85,7 +85,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -107,14 +107,14 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-05-30T02:22:08.000Z" itemprop="datePublished"> 發表於 2016-05-30</time>
+    <time datetime="2016-05-30T02:22:08.000Z" itemprop="datePublished"> Published 2016-05-30</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#View与ViewGroup的关系"><span class="toc-number">1.</span> <span class="toc-text">View与ViewGroup的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">1.1.</span> <span class="toc-text">区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity与window"><span class="toc-number">2.</span> <span class="toc-text">Activity与window</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity"><span class="toc-number">2.1.</span> <span class="toc-text">Activity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window"><span class="toc-number">2.2.</span> <span class="toc-text">Window</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity与Window关系"><span class="toc-number">2.3.</span> <span class="toc-text">Activity与Window关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window-Activity和DecorView"><span class="toc-number">2.4.</span> <span class="toc-text">Window,Activity和DecorView</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">3.</span> <span class="toc-text">参考文献</span></a></li></ol>
 		
@@ -143,7 +143,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 <li>当我们调用Acitivity的 setContentView方法的时候实际上是调用的Window对象的setContentView方法，Activity中关于界 面的绘制实际上全是交给Window对象来做的</li>
 </ul>
 <h2 id="Activity与Window关系"><a href="#Activity与Window关系" class="headerlink" title="Activity与Window关系"></a>Activity与Window关系</h2><p>一个Activity包含了一个Window，Window才是真正代表一个窗口，也就是说Activity可以没有Window，那就相当于是Service了。在ActivityThread中也有控制Service的相关函数或许正好印证了这一点。<br> Activity和Window的第一次邂逅是在ActivityThread调用Activity的attach()函数时。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">//[window]:通过PolicyManager创建window,实现callback函数,所以,当window接收到</div><div class="line">//外界状态改变时,会调用activity的方法,</div><div class="line"></div><div class="line">final void attach(Context context, ActivityThread aThread,</div><div class="line">        Instrumentation instr, IBinder token, int ident,</div><div class="line">        Application application, Intent intent, ActivityInfo info,</div><div class="line">        CharSequence title, Activity parent, String id,</div><div class="line">        NonConfigurationInstances lastNonConfigurationInstances,</div><div class="line">        Configuration config, String referrer, IVoiceInteractor voiceInteractor) &#123;</div><div class="line">    ....</div><div class="line">    mWindow = PolicyManager.makeNewWindow(this);</div><div class="line">    //当window接收系统发送给它的IO输入事件时,例如键盘和触摸屏事件,就可以转发给相应的Activity</div><div class="line">    mWindow.setCallback(this);</div><div class="line">    .....</div><div class="line">    //设置本地窗口管理器</div><div class="line">    mWindow.setWindowManager(</div><div class="line">            (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),</div><div class="line">            mToken, mComponent.flattenToString(),</div><div class="line">            (info.flags &amp; ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0);</div><div class="line">    .....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">//[window]:通过PolicyManager创建window,实现callback函数,所以,当window接收到</span><br><span class="line">//外界状态改变时,会调用activity的方法,</span><br><span class="line"></span><br><span class="line">final void attach(Context context, ActivityThread aThread,</span><br><span class="line">        Instrumentation instr, IBinder token, int ident,</span><br><span class="line">        Application application, Intent intent, ActivityInfo info,</span><br><span class="line">        CharSequence title, Activity parent, String id,</span><br><span class="line">        NonConfigurationInstances lastNonConfigurationInstances,</span><br><span class="line">        Configuration config, String referrer, IVoiceInteractor voiceInteractor) &#123;</span><br><span class="line">    ....</span><br><span class="line">    mWindow = PolicyManager.makeNewWindow(this);</span><br><span class="line">    //当window接收系统发送给它的IO输入事件时,例如键盘和触摸屏事件,就可以转发给相应的Activity</span><br><span class="line">    mWindow.setCallback(this);</span><br><span class="line">    .....</span><br><span class="line">    //设置本地窗口管理器</span><br><span class="line">    mWindow.setWindowManager(</span><br><span class="line">            (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),</span><br><span class="line">            mToken, mComponent.flattenToString(),</span><br><span class="line">            (info.flags &amp; ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0);</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p> 在attach()中，新建一个Window实例作为自己的成员变量，它的类型为PhoneWindow,这是抽象类Window的一个子类。然后设置mWindow的WindowManager。</p>
 <h2 id="Window-Activity和DecorView"><a href="#Window-Activity和DecorView" class="headerlink" title="Window,Activity和DecorView"></a>Window,Activity和DecorView</h2><p>DecorView是FrameLayout的子类，它可以被认为是Android视图树的根节点视图。DecorView作为顶级View，一般情况下它内部包含一个竖直方向的LinearLayout，在这个LinearLayout里面有上下两个部分（具体情况和Android版本及主体有关），上面的是标题栏，下面的是内容栏。在Activity中通过setContentView所设置的布局文件其实就是被加到内容栏之中的，而内容栏的id是content，在代码中可以通过ViewGroup content = （ViewGroup)findViewById(R.android.id.content)来得到content对应的layout。<br> Window中有几个视图相关的比较重要的成员变量如下所示:</p>
 <ul>
@@ -151,7 +151,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 <li>mContentParent:setContetView所设置的布局文件就加到这个视图中</li>
 <li>mContentRoot:是DecorView的唯一子视图，内部包含mContentParent,标题栏和状态栏。<br> <br>Activity中不仅持有一个Window实例，还有一个类型为View的mDecor实例。这个实例和Window中的mDecor实例有什么关系呢？它又是什么时候被创建的呢？<br> 二者其实指向同一个对象，这个对象是在Activity调用setContentView时创建的。我们都知道Activity的setContentView实际上是调用了Window的setContentView方法。</li>
 </ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public void setContentView(int layoutResID) &#123;</div><div class="line">    if (mContentParent == null) &#123; //[window]如何没有DecorView,那么就新建一个</div><div class="line">        installDecor(); //[window]</div><div class="line">    &#125; else if (!hasFeature(FEATURE_CONTENT_TRANSITIONS)) &#123;</div><div class="line">        mContentParent.removeAllViews();</div><div class="line">    &#125;</div><div class="line">    ....</div><div class="line">    //[window]第二步,将layout添加到mContentParent</div><div class="line">    mLayoutInflater.inflate(layoutResID, mContentParent);</div><div class="line">    .....</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">public void setContentView(int layoutResID) &#123;</span><br><span class="line">    if (mContentParent == null) &#123; //[window]如何没有DecorView,那么就新建一个</span><br><span class="line">        installDecor(); //[window]</span><br><span class="line">    &#125; else if (!hasFeature(FEATURE_CONTENT_TRANSITIONS)) &#123;</span><br><span class="line">        mContentParent.removeAllViews();</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br><span class="line">    //[window]第二步,将layout添加到mContentParent</span><br><span class="line">    mLayoutInflater.inflate(layoutResID, mContentParent);</span><br><span class="line">    .....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://blog.csdn.net/u012422440/article/details/51173387" target="_blank" rel="external">Android视图架构详解</a></p>
 <p><a href="http://blog.csdn.net/luoshengyang/article/details/8245546" target="_blank" rel="external">Android应用程序窗口（Activity）的视图对象（View）的创建过程分析</a></p>
   
@@ -215,22 +215,22 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#View与ViewGroup的关系"><span class="toc-number">1.</span> <span class="toc-text">View与ViewGroup的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#区别"><span class="toc-number">1.1.</span> <span class="toc-text">区别</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Activity与window"><span class="toc-number">2.</span> <span class="toc-text">Activity与window</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity"><span class="toc-number">2.1.</span> <span class="toc-text">Activity</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window"><span class="toc-number">2.2.</span> <span class="toc-text">Window</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Activity与Window关系"><span class="toc-number">2.3.</span> <span class="toc-text">Activity与Window关系</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Window-Activity和DecorView"><span class="toc-number">2.4.</span> <span class="toc-text">Window,Activity和DecorView</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">3.</span> <span class="toc-text">参考文献</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -242,7 +242,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 		  
 		
 		  
-			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 		  
 		
 		  
@@ -254,7 +254,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 		  
 		
 		  
-			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+			<li><a href="/categories/python/" title="python">python<sup>6</sup></a></li>
 		  
 		
 		  
@@ -270,7 +270,15 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 		  
 		
 		  
+			<li><a href="/categories/基础/" title="基础">基础<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
 		  
 		
 		  
@@ -283,7 +291,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -299,15 +307,19 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 			
 		
 			
-				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>6</sup></a></li>
 			
 		
 			
@@ -319,15 +331,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 			
 		
 			
-				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
 			
 		
 			
@@ -335,11 +339,23 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 			
 		
 			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -347,7 +363,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -355,7 +371,7 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -380,11 +396,11 @@ View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -623,7 +639,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

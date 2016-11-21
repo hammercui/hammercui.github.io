@@ -21,7 +21,7 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 <meta property="og:description" content="applicationId：在Android系统中应用的applicationId作为应用的唯一标识，就像人的身份证号一样，在一个Android设备中所有的应用程序的applicationId都是唯一的。
 
 eclipse版本package name：在用Eclipse构建的Android项目中，使用包名(Package Name)作为应用的唯一标识（applicationId）。可以说在Ecl">
-<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta property="og:updated_time" content="2016-03-23T08:05:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android基础：applicationId与packageName的区别">
 <meta name="twitter:description" content="applicationId：在Android系统中应用的applicationId作为应用的唯一标识，就像人的身份证号一样，在一个Android设备中所有的应用程序的applicationId都是唯一的。
@@ -51,7 +51,7 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -67,7 +67,7 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -89,14 +89,14 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-23T07:41:11.000Z" itemprop="datePublished"> 發表於 2016-03-23</time>
+    <time datetime="2016-03-23T07:41:11.000Z" itemprop="datePublished"> Published 2016-03-23</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#eclipse版本"><span class="toc-number">1.</span> <span class="toc-text">eclipse版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#androidStudo版本"><span class="toc-number">2.</span> <span class="toc-text">androidStudo版本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解耦方案"><span class="toc-number">2.1.</span> <span class="toc-text">解耦方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number">3.</span> <span class="toc-text">参考文档</span></a></li></ol>
 		
@@ -113,8 +113,8 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 <li><code>package</code> 用于在源码中引用 R 类以及解析注册相关的 activity/service，对应 Java 的包名概念。</li>
 </ul>
 <p>我们在AndroidManifest.xml定义一个包名，这个是唯一的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</div><div class="line">    package=&quot;com.hammercui.app.react&quot;&gt;</div></pre></td></tr></table></figure>
-<p>我们在<code>app.gradle</code>文件使用Gradle DSL 方法来为不同的 flavor 和 build type 定义不同的 applicationId：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">android&#123;</div><div class="line">···</div><div class="line">productFlavors &#123;</div><div class="line">        pro &#123;</div><div class="line">            applicationId = &quot;com.hammercui.app.pro&quot;</div><div class="line">        &#125;</div><div class="line">        free &#123;</div><div class="line">            applicationId = &quot;com.hammercui.app.free&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    buildTypes &#123;</div><div class="line">        debug &#123;</div><div class="line">            applicationIdSuffix &quot;.debug&quot;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    ....</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    package=&quot;com.hammercui.app.react&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>我们在<code>app.gradle</code>文件使用Gradle DSL 方法来为不同的 flavor 和 build type 定义不同的 applicationId：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">···</span><br><span class="line">productFlavors &#123;</span><br><span class="line">        pro &#123;</span><br><span class="line">            applicationId = &quot;com.hammercui.app.pro&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        free &#123;</span><br><span class="line">            applicationId = &quot;com.hammercui.app.free&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        debug &#123;</span><br><span class="line">            applicationIdSuffix &quot;.debug&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://chaosleong.gitbooks.io/gradle-for-android/content/appendix/applicationid_versus_packagename.html" target="_blank" rel="external">Gradle Android Plugin中文手册</a></p>
 <p><a href="http://siroccoicode.club/?p=574" target="_blank" rel="external">applicationID和packageName的区别</a></p>
   
@@ -178,22 +178,22 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#eclipse版本"><span class="toc-number">1.</span> <span class="toc-text">eclipse版本</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#androidStudo版本"><span class="toc-number">2.</span> <span class="toc-text">androidStudo版本</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#解耦方案"><span class="toc-number">2.1.</span> <span class="toc-text">解耦方案</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文档"><span class="toc-number">3.</span> <span class="toc-text">参考文档</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -205,7 +205,7 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 		  
 		
 		  
-			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 		  
 		
 		  
@@ -217,7 +217,7 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 		  
 		
 		  
-			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+			<li><a href="/categories/python/" title="python">python<sup>6</sup></a></li>
 		  
 		
 		  
@@ -233,7 +233,15 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 		  
 		
 		  
+			<li><a href="/categories/基础/" title="基础">基础<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
 		  
 		
 		  
@@ -246,7 +254,7 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -262,15 +270,19 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 			
 		
 			
-				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>6</sup></a></li>
 			
 		
 			
@@ -282,15 +294,7 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 			
 		
 			
-				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
 			
 		
 			
@@ -298,11 +302,23 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 			
 		
 			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -310,7 +326,7 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -318,7 +334,7 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -343,11 +359,11 @@ eclipse版本package name：在用Eclipse构建的Android项目中，使用包�
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -586,7 +602,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

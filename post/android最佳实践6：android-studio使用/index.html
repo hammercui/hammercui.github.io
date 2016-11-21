@@ -24,7 +24,7 @@
 开启 instant run支持这个类似于swift的热加载，大大改善开发效率setting-&amp;gt;Build,Execution,Deployment -&amp;gt;Instant Run
 开启java8的支持android studio从2.1开启改善了对java8的支持，好开森，可以放弃gradl">
 <meta property="og:image" content="http://7xrf0l.com1.z0.glb.clouddn.com/16-4-1/12490656.jpg">
-<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta property="og:updated_time" content="2016-06-17T07:00:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android最佳实践6：android studio使用">
 <meta name="twitter:description" content="android studio版本号：2.1.5 previewjdk 1.8sdk: 6.0
@@ -56,7 +56,7 @@
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -72,7 +72,7 @@
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -94,14 +94,14 @@
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-01T06:21:45.000Z" itemprop="datePublished"> 發表於 2016-04-01</time>
+    <time datetime="2016-04-01T06:21:45.000Z" itemprop="datePublished"> Published 2016-04-01</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开启-instant-run支持"><span class="toc-number">1.</span> <span class="toc-text">开启 instant run支持</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开启java8的支持"><span class="toc-number">2.</span> <span class="toc-text">开启java8的支持</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-number">3.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#支持instant和不支持instant的地方"><span class="toc-number">4.</span> <span class="toc-text">支持instant和不支持instant的地方</span></a></li></ol>
 		
@@ -113,7 +113,7 @@
 <h1 id="开启-instant-run支持"><a href="#开启-instant-run支持" class="headerlink" title="开启 instant run支持"></a>开启 instant run支持</h1><p>这个类似于swift的热加载，大大改善开发效率<br>setting-&gt;Build,Execution,Deployment -&gt;Instant Run<br><img src="http://7xrf0l.com1.z0.glb.clouddn.com/16-4-1/12490656.jpg" alt=""></p>
 <h1 id="开启java8的支持"><a href="#开启java8的支持" class="headerlink" title="开启java8的支持"></a>开启java8的支持</h1><p>android studio从2.1开启改善了对java8的支持，好开森，可以放弃gradle-retrolambda了<br>re<br>参考地址在 <a href="http://luckymin.com/2016/03/16/2016031610_%E5%9C%A8AndroidStudio%E4%B8%AD%E6%94%AF%E6%8C%81Java8/" target="_blank" rel="external">Android Studio 中支持 Java 8</a></p>
 <p>app.gradle文件增加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">android&#123;</div><div class="line">···</div><div class="line">	defaultConfig &#123;</div><div class="line">    ...</div><div class="line">	//要想使用java8，必须使用jack编译</div><div class="line">    jackOptions &#123;</div><div class="line">      enabled true</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">    compileOptions &#123;</div><div class="line">        sourceCompatibility JavaVersion.VERSION_1_8</div><div class="line">        targetCompatibility JavaVersion.VERSION_1_8</div><div class="line">    &#125;</div><div class="line"></div><div class="line">···</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">···</span><br><span class="line">	defaultConfig &#123;</span><br><span class="line">    ...</span><br><span class="line">	//要想使用java8，必须使用jack编译</span><br><span class="line">    jackOptions &#123;</span><br><span class="line">      enabled true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">    compileOptions &#123;</span><br><span class="line">        sourceCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">        targetCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>另外别忘了下载并修改buildTollersion 24.0.rc2</p>
 <h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>现阶段<br> <code>com.android.tools.build:gradle:2.1.0-alpha</code><br> <code>buildToolsVersion &quot;24rc2&quot;</code><br>build gradle时还是比较卡的，不推荐尝鲜，我尝试了一下又换回<br>gradle-retrolambda了</p>
 <h1 id="支持instant和不支持instant的地方"><a href="#支持instant和不支持instant的地方" class="headerlink" title="支持instant和不支持instant的地方"></a>支持instant和不支持instant的地方</h1>  
@@ -177,22 +177,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开启-instant-run支持"><span class="toc-number">1.</span> <span class="toc-text">开启 instant run支持</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#开启java8的支持"><span class="toc-number">2.</span> <span class="toc-text">开启java8的支持</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#注意事项"><span class="toc-number">3.</span> <span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#支持instant和不支持instant的地方"><span class="toc-number">4.</span> <span class="toc-text">支持instant和不支持instant的地方</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -204,7 +204,7 @@
 		  
 		
 		  
-			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 		  
 		
 		  
@@ -216,7 +216,7 @@
 		  
 		
 		  
-			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+			<li><a href="/categories/python/" title="python">python<sup>6</sup></a></li>
 		  
 		
 		  
@@ -232,7 +232,15 @@
 		  
 		
 		  
+			<li><a href="/categories/基础/" title="基础">基础<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
 		  
 		
 		  
@@ -245,7 +253,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -261,15 +269,19 @@
 			
 		
 			
-				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>6</sup></a></li>
 			
 		
 			
@@ -281,15 +293,7 @@
 			
 		
 			
-				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
 			
 		
 			
@@ -297,11 +301,23 @@
 			
 		
 			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -309,7 +325,7 @@
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -317,7 +333,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -342,11 +358,11 @@
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -585,7 +601,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

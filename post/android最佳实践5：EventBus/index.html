@@ -24,7 +24,7 @@ EventBus实现了什么？主要用于事件的发布和订阅。EventBus定义�
 
 Publishe">
 <meta property="og:image" content="https://github.com/greenrobot/EventBus/raw/master/EventBus-Publish-Subscribe.png">
-<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta property="og:updated_time" content="2016-06-17T07:00:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android最佳实践5：EventBus">
 <meta name="twitter:description" content="学习EventBus的使用介绍EventBus为什么要使用EventBus呢？当我们的Fragment过多的时候，组件之间传递信息会变得异常繁琐，单例不是很好的解决方案，通常我们会使用观察者模式来解决这个问题。EventBus就是一个很不错的观察者模式框架。
@@ -56,7 +56,7 @@ Publishe">
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -72,7 +72,7 @@ Publishe">
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -94,14 +94,14 @@ Publishe">
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2015-10-05T07:56:27.000Z" itemprop="datePublished"> 發表於 2015-10-05</time>
+    <time datetime="2015-10-05T07:56:27.000Z" itemprop="datePublished"> Published 2015-10-05</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#学习EventBus的使用"><span class="toc-number">1.</span> <span class="toc-text">学习EventBus的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍EventBus"><span class="toc-number">1.1.</span> <span class="toc-text">介绍EventBus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要使用EventBus呢？"><span class="toc-number">1.1.1.</span> <span class="toc-text">为什么要使用EventBus呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EventBus实现了什么？"><span class="toc-number">1.1.2.</span> <span class="toc-text">EventBus实现了什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#订阅者Subscriber"><span class="toc-number">1.1.3.</span> <span class="toc-text">订阅者Subscriber</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布者Publisher"><span class="toc-number">1.1.4.</span> <span class="toc-text">发布者Publisher</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用EventBus"><span class="toc-number">1.2.</span> <span class="toc-text">使用EventBus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入依赖"><span class="toc-number">1.2.1.</span> <span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单使用步骤"><span class="toc-number">1.2.2.</span> <span class="toc-text">简单使用步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">1.3.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol>
 		
@@ -124,27 +124,27 @@ Publishe">
 <li>onEventBusAsync 当使用这种类型时，不管事件发起函数在哪里执行，都会另起一个线程去执行回调,但最好限制线程的数目。</li>
 </ul>
 <h3 id="发布者Publisher"><a href="#发布者Publisher" class="headerlink" title="发布者Publisher"></a>发布者Publisher</h3><p>可以在任意线程任意位置发送事件，直接调用EventBus的<code>post(Object)</code>方法，可以自己实例化EventBus对象，但一般使用默认的单例就好了：<code>EventBus.getDefault().post(Object)</code>，根据post函数参数的类型，会自动调用订阅相应类型事件的函数。</p>
-<h2 id="使用EventBus"><a href="#使用EventBus" class="headerlink" title="使用EventBus"></a>使用EventBus</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><p>编辑app的build.gradle<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compile &apos;org.greenrobot:eventbus:3.0.0&apos;</div></pre></td></tr></table></figure></p>
+<h2 id="使用EventBus"><a href="#使用EventBus" class="headerlink" title="使用EventBus"></a>使用EventBus</h2><h3 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h3><p>编辑app的build.gradle<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &apos;org.greenrobot:eventbus:3.0.0&apos;</span><br></pre></td></tr></table></figure></p>
 <h3 id="简单使用步骤"><a href="#简单使用步骤" class="headerlink" title="简单使用步骤"></a>简单使用步骤</h3><ol>
 <li><p>定义事件类型</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">public class MyEvents &#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">public class MyEvents &#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>在订阅者类里，新建事件处理方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">@Subscribe</div><div class="line">public void onEventMainThread(MyEvent events)&#123;</div><div class="line">        </div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">@Subscribe</span><br><span class="line">public void onEventMainThread(MyEvent events)&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
 <p><strong>千万别忘记写@Subscribe注解了</strong>，详情见<a href="http://blog.csdn.net/chniccs/article/details/50222827" target="_blank" rel="external">EventBus 注册错误no public methods with the @Subscribe annotation</a></p>
 <ol>
 <li><p>注册订阅者，在构造函数或onCreate(Bundle savedInstanceState)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">EventBus.getDefault().register(this);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().register(this);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>取消订阅者，在onDestory()方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">EventBus.getDefault().unregister(this);</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().unregister(this);</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>发送事件，可以在任意方法，线程</p>
 </li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">EventBus.getDefault().post(new MyEvent());</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">EventBus.getDefault().post(new MyEvent());</span><br></pre></td></tr></table></figure>
 <h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>AngelDevil的<a href="http://www.cnblogs.com/angeldevil/p/3715934.html" target="_blank" rel="external">快速Android开发系列通信篇之EventBus</a><br> <a href="Android EventBus实战 没听过你就out了">Android EventBus实战 没听过你就out了</a><br> <a href="http://blog.csdn.net/knighttools/article/details/26608351" target="_blank" rel="external">Android中开源库EventBus使用详解</a></p>
   
 	</div>
@@ -199,22 +199,22 @@ Publishe">
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#学习EventBus的使用"><span class="toc-number">1.</span> <span class="toc-text">学习EventBus的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#介绍EventBus"><span class="toc-number">1.1.</span> <span class="toc-text">介绍EventBus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#为什么要使用EventBus呢？"><span class="toc-number">1.1.1.</span> <span class="toc-text">为什么要使用EventBus呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#EventBus实现了什么？"><span class="toc-number">1.1.2.</span> <span class="toc-text">EventBus实现了什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#订阅者Subscriber"><span class="toc-number">1.1.3.</span> <span class="toc-text">订阅者Subscriber</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#发布者Publisher"><span class="toc-number">1.1.4.</span> <span class="toc-text">发布者Publisher</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用EventBus"><span class="toc-number">1.2.</span> <span class="toc-text">使用EventBus</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#引入依赖"><span class="toc-number">1.2.1.</span> <span class="toc-text">引入依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#简单使用步骤"><span class="toc-number">1.2.2.</span> <span class="toc-text">简单使用步骤</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#参考文献"><span class="toc-number">1.3.</span> <span class="toc-text">参考文献</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -226,7 +226,7 @@ Publishe">
 		  
 		
 		  
-			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 		  
 		
 		  
@@ -238,7 +238,7 @@ Publishe">
 		  
 		
 		  
-			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+			<li><a href="/categories/python/" title="python">python<sup>6</sup></a></li>
 		  
 		
 		  
@@ -254,7 +254,15 @@ Publishe">
 		  
 		
 		  
+			<li><a href="/categories/基础/" title="基础">基础<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
 		  
 		
 		  
@@ -267,7 +275,7 @@ Publishe">
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -283,15 +291,19 @@ Publishe">
 			
 		
 			
-				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>6</sup></a></li>
 			
 		
 			
@@ -303,15 +315,7 @@ Publishe">
 			
 		
 			
-				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
 			
 		
 			
@@ -319,11 +323,23 @@ Publishe">
 			
 		
 			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -331,7 +347,7 @@ Publishe">
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -339,7 +355,7 @@ Publishe">
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -364,11 +380,11 @@ Publishe">
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -607,7 +623,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

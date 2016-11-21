@@ -25,7 +25,7 @@
 以下是get请求
 
 12345678910111213141516171819202122232425262728&amp;lt;!DOCTYPE html&amp;gt;&amp;lt;html&amp;gt;&amp;lt;head&amp;gt;&amp;lt;me">
-<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta property="og:updated_time" content="2016-03-03T01:48:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angularJs学习4：http请求">
 <meta name="twitter:description" content="如何通过http从网络获取数据1 读取json文件AngularJS $http 是一个用于读取web服务器上数据的服务。$http.get(url) 是用于读取服务器数据的函数。
@@ -57,7 +57,7 @@
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -73,7 +73,7 @@
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -95,14 +95,14 @@
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-02T14:40:55.000Z" itemprop="datePublished"> 發表於 2016-03-02</time>
+    <time datetime="2016-03-02T14:40:55.000Z" itemprop="datePublished"> Published 2016-03-02</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#如何通过http从网络获取数据"><span class="toc-number">1.</span> <span class="toc-text">如何通过http从网络获取数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-读取json文件"><span class="toc-number">1.1.</span> <span class="toc-text">1 读取json文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格显示"><span class="toc-number">1.2.</span> <span class="toc-text">表格显示</span></a></li></ol></li></ol>
 		
@@ -112,16 +112,16 @@
 <blockquote>
 <p>以下是get请求</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">&lt;script src=&quot;http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;customersCtrl&quot;&gt; </div><div class="line"></div><div class="line">&lt;ul&gt;</div><div class="line">  &lt;li ng-repeat=&quot;x in names&quot;&gt;</div><div class="line">    &#123;&#123; x.Name + &apos;, &apos; + x.Country &#125;&#125;</div><div class="line">  &lt;/li&gt;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">var app = angular.module(&apos;myApp&apos;, []);</div><div class="line">app.controller(&apos;customersCtrl&apos;, function($scope, $http) &#123;</div><div class="line">  $http.get(&quot;http://www.runoob.com/try/angularjs/data/Customers_JSON.php&quot;)</div><div class="line">  .success(function (response) &#123;$scope.names = response.records;&#125;);</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;script src=&quot;http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;customersCtrl&quot;&gt; </span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">  &lt;li ng-repeat=&quot;x in names&quot;&gt;</span><br><span class="line">    &#123;&#123; x.Name + &apos;, &apos; + x.Country &#125;&#125;</span><br><span class="line">  &lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">var app = angular.module(&apos;myApp&apos;, []);</span><br><span class="line">app.controller(&apos;customersCtrl&apos;, function($scope, $http) &#123;</span><br><span class="line">  $http.get(&quot;http://www.runoob.com/try/angularjs/data/Customers_JSON.php&quot;)</span><br><span class="line">  .success(function (response) &#123;$scope.names = response.records;&#125;);</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>以下是post请求</p>
 </blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">        function formController($scope, $http) &#123;</div><div class="line">            $scope.commit = function() &#123;</div><div class="line">                $http(&#123;</div><div class="line">                    method:&quot;POST&quot;,</div><div class="line">                    url:&quot;/liberty_oa_2015_4_21/login/login.do&quot;, </div><div class="line">                    params:&#123;</div><div class="line">                        &quot;userName&quot;:$scope.current.name,</div><div class="line">                        &quot;password&quot;:$scope.current.pass</div><div class="line">                    &#125;</div><div class="line">                &#125;).success(function(data) &#123;</div><div class="line">                    console.log(&quot;success...&quot;);</div><div class="line">                &#125;).error(function() &#123;</div><div class="line">                    alert(&quot;fail...&quot;);</div><div class="line">                &#125;);</div><div class="line">             </div><div class="line">            &#125;;</div><div class="line">        &#125;;</div><div class="line">    &lt;/script&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">        function formController($scope, $http) &#123;</span><br><span class="line">            $scope.commit = function() &#123;</span><br><span class="line">                $http(&#123;</span><br><span class="line">                    method:&quot;POST&quot;,</span><br><span class="line">                    url:&quot;/liberty_oa_2015_4_21/login/login.do&quot;, </span><br><span class="line">                    params:&#123;</span><br><span class="line">                        &quot;userName&quot;:$scope.current.name,</span><br><span class="line">                        &quot;password&quot;:$scope.current.pass</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;).success(function(data) &#123;</span><br><span class="line">                    console.log(&quot;success...&quot;);</span><br><span class="line">                &#125;).error(function() &#123;</span><br><span class="line">                    alert(&quot;fail...&quot;);</span><br><span class="line">                &#125;);</span><br><span class="line">             </span><br><span class="line">            &#125;;</span><br><span class="line">        &#125;;</span><br><span class="line">    &lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <h2 id="表格显示"><a href="#表格显示" class="headerlink" title="表格显示"></a>表格显示</h2><ol>
-<li>普通显示<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;table&gt;</div><div class="line">  &lt;tr ng-repeat=&quot;x in names&quot;&gt;</div><div class="line">    &lt;td&gt;&#123;&#123; x.Name &#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&#123;&#123; x.Country &#125;&#125;&lt;/td&gt;</div><div class="line">  &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure>
+<li>普通显示<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">  &lt;tr ng-repeat=&quot;x in names&quot;&gt;</span><br><span class="line">    &lt;td&gt;&#123;&#123; x.Name &#125;&#125;&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;&#123;&#123; x.Country &#125;&#125;&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p>2.带序号的显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;table&gt;</div><div class="line">  &lt;tr ng-repeat=&quot;x in names&quot;&gt;</div><div class="line">    &lt;td&gt;&#123;&#123; $index + 1 &#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&#123;&#123; x.Name &#125;&#125;&lt;/td&gt;</div><div class="line">    &lt;td&gt;&#123;&#123; x.Country &#125;&#125;&lt;/td&gt;</div><div class="line">  &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div></pre></td></tr></table></figure></p>
+<p>2.带序号的显示<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;table&gt;</span><br><span class="line">  &lt;tr ng-repeat=&quot;x in names&quot;&gt;</span><br><span class="line">    &lt;td&gt;&#123;&#123; $index + 1 &#125;&#125;&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;&#123;&#123; x.Name &#125;&#125;&lt;/td&gt;</span><br><span class="line">    &lt;td&gt;&#123;&#123; x.Country &#125;&#125;&lt;/td&gt;</span><br><span class="line">  &lt;/tr&gt;</span><br><span class="line">&lt;/table&gt;</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -183,22 +183,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#如何通过http从网络获取数据"><span class="toc-number">1.</span> <span class="toc-text">如何通过http从网络获取数据</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-读取json文件"><span class="toc-number">1.1.</span> <span class="toc-text">1 读取json文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#表格显示"><span class="toc-number">1.2.</span> <span class="toc-text">表格显示</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -210,7 +210,7 @@
 		  
 		
 		  
-			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 		  
 		
 		  
@@ -222,7 +222,7 @@
 		  
 		
 		  
-			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+			<li><a href="/categories/python/" title="python">python<sup>6</sup></a></li>
 		  
 		
 		  
@@ -238,7 +238,15 @@
 		  
 		
 		  
+			<li><a href="/categories/基础/" title="基础">基础<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
 		  
 		
 		  
@@ -251,7 +259,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -267,15 +275,19 @@
 			
 		
 			
-				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>6</sup></a></li>
 			
 		
 			
@@ -287,15 +299,7 @@
 			
 		
 			
-				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
 			
 		
 			
@@ -303,11 +307,23 @@
 			
 		
 			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -315,7 +331,7 @@
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -323,7 +339,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -348,11 +364,11 @@
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -591,7 +607,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

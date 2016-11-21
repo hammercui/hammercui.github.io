@@ -25,7 +25,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 
 当你在 AngularJS 创建控制器时，你可以将 $scope 对象当作一个参数传递:
 代码示例123456789101112131415161718192021222324&amp;lt;html&amp;gt;&amp;l">
-<meta property="og:updated_time" content="2016-11-18T08:11:38.000Z">
+<meta property="og:updated_time" content="2016-03-03T01:48:02.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="angularJs学习2：scope作用域">
 <meta name="twitter:description" content="scope
@@ -57,7 +57,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -73,7 +73,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
 						</form>
 					
 					</li>
@@ -95,14 +95,14 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-02T14:35:49.000Z" itemprop="datePublished"> 發表於 2016-03-02</time>
+    <time datetime="2016-03-02T14:35:49.000Z" itemprop="datePublished"> Published 2016-03-02</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目錄</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#scope"><span class="toc-number">1.</span> <span class="toc-text">scope</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码示例"><span class="toc-number">1.1.</span> <span class="toc-text">代码示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-应用组成如下："><span class="toc-number">1.2.</span> <span class="toc-text">AngularJS 应用组成如下：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#根作用域-rootScope"><span class="toc-number">1.3.</span> <span class="toc-text">根作用域 $rootScope</span></a></li></ol></li></ol>
 		
@@ -112,7 +112,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 <li><p>Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的纽带。<br>Scope 是一个对象，有可用的方法和属性。<br>Scope 可应用在视图和控制器上。</p>
 </li>
 <li><p>当你在 AngularJS 创建控制器时，你可以将 $scope 对象当作一个参数传递:</p>
-<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">&lt;script src=&quot;http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;</div><div class="line"></div><div class="line">&lt;h1&gt;&#123;&#123;carname&#125;&#125;&lt;/h1&gt;</div><div class="line"></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">var app = angular.module(&apos;myApp&apos;, []);</div><div class="line">app.controller(&apos;myCtrl&apos;, function($scope) &#123;</div><div class="line">    $scope.carname = &quot;Volvo&quot;;</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;p&gt;控制器中创建一个属性名 &quot;carname&quot;，对应了视图中使用 &#123;&#123; &#125;&#125; 中的名称。&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<h2 id="代码示例"><a href="#代码示例" class="headerlink" title="代码示例"></a>代码示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;script src=&quot;http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;&#123;&#123;carname&#125;&#125;&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">var app = angular.module(&apos;myApp&apos;, []);</span><br><span class="line">app.controller(&apos;myCtrl&apos;, function($scope) &#123;</span><br><span class="line">    $scope.carname = &quot;Volvo&quot;;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;控制器中创建一个属性名 &quot;carname&quot;，对应了视图中使用 &#123;&#123; &#125;&#125; 中的名称。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="AngularJS-应用组成如下："><a href="#AngularJS-应用组成如下：" class="headerlink" title="AngularJS 应用组成如下："></a>AngularJS 应用组成如下：</h2><ul>
@@ -121,7 +121,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 <li>Controller(控制器), 即 JavaScript 函数，可以添加或修改属性。</li>
 </ul>
 <p>scope 是模型。<br>scope 是一个 JavaScript 对象，带有属性和方法，这些属性和方法可以在视图和控制器中使用。<br>我自己的理解是：<br>scope就是类似dom的树，根据id取不同的对象，只不过是比dom效率高了，因为是<br>直接获得，比如 input ng-model=”text1”,可以直接通过$.scope.text1赋值</p>
-<h2 id="根作用域-rootScope"><a href="#根作用域-rootScope" class="headerlink" title="根作用域 $rootScope"></a>根作用域 $rootScope</h2><p>所有的应用都有一个 $rootScope，它可以作用在 ng-app 指令包含的所有 HTML 元素中。<br>$rootScope 可作用于整个应用中。是各个 controller 中 scope 的桥梁。用 rootscope 定义的值，可以在各个 controller 中使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</div><div class="line">&lt;script src=&quot;http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;</div><div class="line"></div><div class="line">&lt;h1&gt;姓氏为 &#123;&#123;lastname&#125;&#125; 家族成员:&lt;/h1&gt;</div><div class="line"></div><div class="line">&lt;ul&gt;</div><div class="line">    &lt;li ng-repeat=&quot;x in names&quot;&gt;&#123;&#123;x&#125;&#125; &#123;&#123;lastname&#125;&#125;</div><div class="line">&lt;/ul&gt;</div><div class="line"></div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">var app = angular.module(&apos;myApp&apos;, []);</div><div class="line"></div><div class="line">app.controller(&apos;myCtrl&apos;, function($scope, $rootScope) &#123;</div><div class="line">    $scope.names = [&quot;Emil&quot;, &quot;Tobias&quot;, &quot;Linus&quot;];</div><div class="line">    $rootScope.lastname = &quot;Refsnes&quot;;</div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;p&gt;注意 $rootScope 在循环对象内外都可以访问。&lt;/p&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="根作用域-rootScope"><a href="#根作用域-rootScope" class="headerlink" title="根作用域 $rootScope"></a>根作用域 $rootScope</h2><p>所有的应用都有一个 $rootScope，它可以作用在 ng-app 指令包含的所有 HTML 元素中。<br>$rootScope 可作用于整个应用中。是各个 controller 中 scope 的桥梁。用 rootscope 定义的值，可以在各个 controller 中使用。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;meta charset=&quot;utf-8&quot;&gt;</span><br><span class="line">&lt;script src=&quot;http://apps.bdimg.com/libs/angular.js/1.4.6/angular.min.js&quot;&gt;&lt;/script&gt;</span><br><span class="line">&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line"></span><br><span class="line">&lt;div ng-app=&quot;myApp&quot; ng-controller=&quot;myCtrl&quot;&gt;</span><br><span class="line"></span><br><span class="line">&lt;h1&gt;姓氏为 &#123;&#123;lastname&#125;&#125; 家族成员:&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li ng-repeat=&quot;x in names&quot;&gt;&#123;&#123;x&#125;&#125; &#123;&#123;lastname&#125;&#125;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">var app = angular.module(&apos;myApp&apos;, []);</span><br><span class="line"></span><br><span class="line">app.controller(&apos;myCtrl&apos;, function($scope, $rootScope) &#123;</span><br><span class="line">    $scope.names = [&quot;Emil&quot;, &quot;Tobias&quot;, &quot;Linus&quot;];</span><br><span class="line">    $rootScope.lastname = &quot;Refsnes&quot;;</span><br><span class="line">&#125;);</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br><span class="line">&lt;p&gt;注意 $rootScope 在循环对象内外都可以访问。&lt;/p&gt;</span><br><span class="line"></span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure></p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -167,9 +167,9 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 
 
 <div class="next">
-<a href="/post/angularJs学习1：初识angular/"  title="angularJs学习1：初识angular">
+<a href="/post/angularJs学习1：初始angular/"  title="angularJs学习1：初始angular">
  <strong>下一篇：</strong><br/> 
- <span>angularJs学习1：初识angular
+ <span>angularJs学习1：初始angular
 </span>
 </a>
 </div>
@@ -183,22 +183,22 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目錄</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#scope"><span class="toc-number">1.</span> <span class="toc-text">scope</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#代码示例"><span class="toc-number">1.1.</span> <span class="toc-text">代码示例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AngularJS-应用组成如下："><span class="toc-number">1.2.</span> <span class="toc-text">AngularJS 应用组成如下：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#根作用域-rootScope"><span class="toc-number">1.3.</span> <span class="toc-text">根作用域 $rootScope</span></a></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">分類</p>
+	<p class="asidetitle">Categories</p>
 		<ul>
 		
 		  
@@ -210,7 +210,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 		  
 		
 		  
-			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+			<li><a href="/categories/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 		  
 		
 		  
@@ -222,7 +222,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 		  
 		
 		  
-			<li><a href="/categories/python/" title="python">python<sup>2</sup></a></li>
+			<li><a href="/categories/python/" title="python">python<sup>6</sup></a></li>
 		  
 		
 		  
@@ -238,7 +238,15 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 		  
 		
 		  
+			<li><a href="/categories/基础/" title="基础">基础<sup>1</sup></a></li>
+		  
+		
+		  
 			<li><a href="/categories/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/数据库/" title="数据库">数据库<sup>1</sup></a></li>
 		  
 		
 		  
@@ -251,7 +259,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 
   
 <div class="tagslist">
-	<p class="asidetitle">標簽</p>
+	<p class="asidetitle">Tags</p>
 		<ul class="clearfix">
 		
 			
@@ -267,15 +275,19 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 			
 		
 			
-				<li><a href="/tags/ionic/" title="ionic">ionic<sup>7</sup></a></li>
+				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/angulasJs/" title="angulasJs">angulasJs<sup>7</sup></a></li>
+				<li><a href="/tags/html5/" title="html5">html5<sup>8</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/html5/" title="html5">html5<sup>7</sup></a></li>
+				<li><a href="/tags/ionic/" title="ionic">ionic<sup>8</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/python基础/" title="python基础">python基础<sup>6</sup></a></li>
 			
 		
 			
@@ -287,15 +299,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 			
 		
 			
-				<li><a href="/tags/python基础/" title="python基础">python基础<sup>2</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
-			
-		
-			
-				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
 			
 		
 			
@@ -303,11 +307,23 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 			
 		
 			
+				<li><a href="/tags/material-desigin/" title="material desigin">material desigin<sup>1</sup></a></li>
+			
+		
+			
 				<li><a href="/tags/ES6/" title="ES6">ES6<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/React-Native/" title="React Native">React Native<sup>1</sup></a></li>
+				<li><a href="/tags/android最佳实践-中英文/" title="android最佳实践(中英文)">android最佳实践(中英文)<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+			
+		
+			
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -315,7 +331,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -323,7 +339,7 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 
 
   <div class="linkslist">
-  <p class="asidetitle">友情鏈接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -348,11 +364,11 @@ Scope(作用域) 是应用在 HTML (视图) 和 JavaScript (控制器)之间的�
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -591,7 +607,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
