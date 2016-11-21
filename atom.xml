@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hammercui.github.io/"/>
-  <updated>2016-09-14T06:53:44.000Z</updated>
+  <updated>2016-11-21T01:40:38.000Z</updated>
   <id>http://hammercui.github.io/</id>
   
   <author>
@@ -14,6 +14,151 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>android学习路线</title>
+    <link href="http://hammercui.github.io/post/android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
+    <id>http://hammercui.github.io/post/android学习路线/</id>
+    <published>2016-11-21T06:43:19.000Z</published>
+    <updated>2016-11-21T01:40:38.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;初级阶段&quot;&gt;&lt;a href=&quot;#初级阶段&quot; class=&quot;headerlink&quot; title=&quot;初级阶段&quot;&gt;&lt;/a&gt;初级阶段&lt;/h2&gt;&lt;p&gt;技术要求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;四大组件Activity，Service, BroadcastReceive，ContentProvider的使用.&lt;a href=&quot;http://www.jianshu.com/p/51aaa65d5d25&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考文章&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Fragment&lt;/li&gt;
+&lt;li&gt;ui设计&lt;ul&gt;
+&lt;li&gt;各类layout&lt;/li&gt;
+&lt;li&gt;简单自定义view，各种用户界面&lt;/li&gt;
+&lt;li&gt;动画[包括valueAnimator,ObjectAnimator]&lt;/li&gt;
+&lt;li&gt;Bitmap,Canvas&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;数据存储&lt;ul&gt;
+&lt;li&gt;sharePerference&lt;/li&gt;
+&lt;li&gt;SQLite3,GreenDao,Realm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;书籍推荐:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;《Thinking in java》 经典&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;网站推荐:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://developer.android.com/guide/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;google api guides&lt;/a&gt;官方api，不知道怎么用，就看官方的&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wiki.jikexueyuan.com/list/android/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;极客学院Android wiki&lt;/a&gt;非常全面&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://wiki.jikexueyuan.com/list/android/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Stack Overflow android tag&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;中级阶段&quot;&gt;&lt;a href=&quot;#中级阶段&quot; class=&quot;headerlink&quot; title=&quot;中级阶段&quot;&gt;&lt;/a&gt;中级阶段&lt;/h2&gt;&lt;p&gt;技术要求&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;aidl:熟悉aidl，理解其工作原理，懂transact和onTransact的区别&lt;/li&gt;
+&lt;li&gt;Binder:从java层大概理解Binder的工作原理，懂Parcel对象的使用&lt;/li&gt;
+&lt;li&gt;多进程：多进程的运行机制，消息队列，Messenger,Socket&lt;/li&gt;
+&lt;li&gt;事件分发：弹性滑动 滑动冲突&lt;/li&gt;
+&lt;li&gt;玩转view： view的绘制原理，各种自定义view&lt;/li&gt;
+&lt;li&gt;动画系列：熟悉view动画和属性动画的不同点，懂ObjectAnimator的工作原理&lt;/li&gt;
+&lt;li&gt;懂性能优化，熟悉mat等工具&lt;/li&gt;
+&lt;li&gt;熟悉常见的设计模式，比如mvp,mvvm&lt;/li&gt;
+&lt;li&gt;熟悉rxjava响应式编程&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;学习方法&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;阅读源码&lt;/li&gt;
+&lt;li&gt;view以及事件分发&lt;ul&gt;
+&lt;li&gt;view的滑动原理&lt;/li&gt;
+&lt;li&gt;如何实现弹性滑动&lt;/li&gt;
+&lt;li&gt;view的滑动冲突&lt;/li&gt;
+&lt;li&gt;view的measure，layout，draw&lt;/li&gt;
+&lt;li&gt;自己实现几个经典的view&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;高级阶段&quot;&gt;&lt;a href=&quot;#高级阶段&quot; class=&quot;headerlink&quot; title=&quot;高级阶段&quot;&gt;&lt;/a&gt;高级阶段&lt;/h2&gt;&lt;p&gt;技术要求&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;了解SystemSever的启动过程&lt;/li&gt;
+&lt;li&gt;了解AndroidFramework层的内容&lt;/li&gt;
+&lt;li&gt;了解主线程的消息循环模型&lt;/li&gt;
+&lt;li&gt;了解ams和psm的工作原理&lt;/li&gt;
+&lt;li&gt;了解Windows&lt;/li&gt;
+&lt;li&gt;Activity的启动模式以及异常情况下不同Activity的表现 &lt;/li&gt;
+&lt;li&gt;Service的onBind和onReBind的关联 &lt;/li&gt;
+&lt;li&gt;onServiceDisconnected(ComponentName className)和binderDied()的区别 &lt;/li&gt;
+&lt;li&gt;AsyncTask在不同版本上的表现细节 &lt;/li&gt;
+&lt;li&gt;线程池的细节和参数配置 &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;总结&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;系统核心机制&lt;/li&gt;
+&lt;li&gt;基础知识点的细节&lt;/li&gt;
+&lt;li&gt;设计模式和架构&lt;/li&gt;
+&lt;li&gt;了解这张图的底层细节&lt;br&gt;&lt;img src=&quot;http://img.blog.csdn.net/20140326133801171?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaXRmb290YmFsbA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;image&quot;&gt; &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;推荐书籍&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;《android内核剖析》&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;初级阶段&quot;&gt;&lt;a href=&quot;#初级阶段&quot; class=&quot;headerlink&quot; title=&quot;初级阶段&quot;&gt;&lt;/a&gt;初级阶段&lt;/h2&gt;&lt;p&gt;技术要求：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;四大组件Activity，Service, BroadcastReceive，Cont
+    
+    </summary>
+    
+      <category term="android" scheme="http://hammercui.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://hammercui.github.io/tags/android/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>android基础：控件集锦</title>
+    <link href="http://hammercui.github.io/post/android%E6%8E%A7%E4%BB%B6%E9%9B%86%E9%94%A6/"/>
+    <id>http://hammercui.github.io/post/android控件集锦/</id>
+    <published>2016-11-20T06:43:19.000Z</published>
+    <updated>2016-11-21T01:51:54.000Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;汇总常用的或者经常忘记的Android控件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;DrawerLayout&quot;&gt;&lt;a href=&quot;#DrawerLayout&quot; class=&quot;headerlink&quot; title=&quot;DrawerLayout&quot;&gt;&lt;/a&gt;DrawerLayout&lt;/h2&gt;&lt;p&gt;弹出式抽屉视图&lt;br&gt;&lt;em&gt;DrawerLayout 控件的子视图必须是2个，1个显示原视图，1个显示弹出的抽屉视图&lt;/em&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;android.support.v4.widget.DrawerLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    android:id=&amp;quot;@+id/drawerLayout&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    android:layout_width=&amp;quot;match_parent&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    android:layout_height=&amp;quot;match_parent&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tools:context=&amp;quot;com.inthecheesefactory.lab.designlibrary.CodeLabActivity&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;!--视图1：原视图--&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;TextView&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        android:layout_width=&amp;quot;wrap_content&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        android:layout_height=&amp;quot;wrap_content&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        android:text=&amp;quot;@string/hello_world&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;!--视图2：弹出的抽屉视图 --&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;LinearLayout&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        android:layout_width=&amp;quot;match_parent&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        android:layout_height=&amp;quot;match_parent&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        android:layout_gravity=&amp;quot;start&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        android:background=&amp;quot;#ffffff&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        android:orientation=&amp;quot;vertical&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &amp;lt;/LinearLayout&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;硬按键控制音量&quot;&gt;&lt;a href=&quot;#硬按键控制音量&quot; class=&quot;headerlink&quot; title=&quot;硬按键控制音量&quot;&gt;&lt;/a&gt;硬按键控制音量&lt;/h2&gt;&lt;p&gt;1 添加权限&lt;br&gt;&lt;code&gt;&amp;lt;uses-permission android:name=&amp;quot;android.permission.MODIFY_AUDIO_SETTINGS&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;2 新建控制音量类实例 &lt;/p&gt;
+ &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt; //音量控制,初始化定义&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; private AudioManager mAudioManager;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;3 实例初始化，在&lt;code&gt;onCreat()&lt;/code&gt;中：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;mAudioManager = (AudioManager) &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;getSystemService(Context.AUDIO_SERVICE);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;4 具体调节音量&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  public boolean onKeyDown(int keyCode, KeyEvent event) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    int currentVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    switch(keyCode)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    case KeyEvent.KEYCODE_VOLUME_UP:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume+1, 1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      return true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    case KeyEvent.KEYCODE_VOLUME_DOWN:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume-1, 1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      return true;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return super.onKeyDown(keyCode, event);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;home按键切换后台&quot;&gt;&lt;a href=&quot;#home按键切换后台&quot; class=&quot;headerlink&quot; title=&quot;home按键切换后台&quot;&gt;&lt;/a&gt;home按键切换后台&lt;/h2&gt;&lt;p&gt; 1借用surface改变：&lt;br&gt;切换后台触发:&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  // TODO Auto-generated method stub&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  Log.v(&amp;quot;admob&amp;quot;, &amp;quot;surfaceChanged!&amp;quot;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;回到前台触发：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;26&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;27&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;public void surfaceCreated(SurfaceHolder arg0) &amp;#123;	//activity resume&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  // TODO Auto-generated method stub&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  if(isPause &amp;amp;&amp;amp; m_State == GAME_PLAY)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.mContext);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   builder.setTitle(&amp;quot;Alert&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   .setMessage(&amp;quot;Game is paused，press OK resume&amp;quot;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      .setCancelable(false)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      .setPositiveButton(&amp;quot;OK&amp;quot;, new DialogInterface.OnClickListener() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       public void onClick(DialogInterface dialog, int which) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        // TODO Auto-generated method stub&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        mLoopHandler.start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;       &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      &amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   AlertDialog alert = builder.create();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   alert.show();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   mLoopHandler.start();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  isPause = false;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;``` &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;##  action bar使用&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;action bar是3.0之后系统自带的控件，&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;@Override&lt;br&gt;protected void onCreate(Bundle savedInstanceState) {&lt;br&gt;super.onCreate(savedInstanceState);&lt;br&gt;    setContentView(R.layout.aty_securityissue_creat);&lt;br&gt;actionBar= getActionBar();&lt;br&gt;actionBar.show();&lt;/p&gt;
+&lt;p&gt;}&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//创建菜单&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;@Override&lt;br&gt;public boolean onCreateOptionsMenu(Menu menu) {&lt;br&gt;// Inflate the menu; this adds items to the action bar if it is present.&lt;br&gt;super.onCreateOptionsMenu(menu);&lt;br&gt;//添加菜单项&lt;br&gt;MenuItem add=menu.add(0,0,0,”add”);&lt;br&gt;    MenuItem del=menu.add(0,0,0,”del”);&lt;br&gt;    MenuItem save=menu.add(0,0,0,”save”);&lt;br&gt;//绑定到ActionBar&lt;br&gt;add.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);&lt;br&gt;    del.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);&lt;br&gt;    save.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);&lt;br&gt;return true;&lt;br&gt;}&lt;/p&gt;
+&lt;p&gt;//选择菜单&lt;br&gt;@Override&lt;br&gt;public boolean onOptionsItemSelected(MenuItem item)&lt;br&gt;{&lt;br&gt;switch (item.getItemId())&lt;br&gt;    {&lt;br&gt;case android.R.id.home:&lt;br&gt;return true;&lt;br&gt;default:&lt;br&gt;return super.onOptionsItemSelected(item);&lt;br&gt;    }&lt;br&gt;}&lt;br&gt;```&lt;/p&gt;
+&lt;h2 id=&quot;FragmentTabHost&quot;&gt;&lt;a href=&quot;#FragmentTabHost&quot; class=&quot;headerlink&quot; title=&quot;FragmentTabHost&quot;&gt;&lt;/a&gt;FragmentTabHost&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/3b0ff7a4bde1&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考案例&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;汇总常用的或者经常忘记的Android控件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;DrawerLayout&quot;&gt;&lt;a href=&quot;#DrawerLayout&quot; class=&quot;headerlink&quot; title=&quot;DrawerLayout
+    
+    </summary>
+    
+      <category term="android" scheme="http://hammercui.github.io/categories/android/"/>
+    
+    
+      <category term="android" scheme="http://hammercui.github.io/tags/android/"/>
+    
+  </entry>
   
   <entry>
     <title>python学习笔记：6 tornado</title>
@@ -1007,181 +1152,6 @@
     
     
       <category term="android" scheme="http://hammercui.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android基础：浅析mvc与mvp</title>
-    <link href="http://hammercui.github.io/post/android%E5%9F%BA%E7%A1%80%EF%BC%9A%E6%B5%85%E6%9E%90mvc%E4%B8%8Emvp/"/>
-    <id>http://hammercui.github.io/post/android基础：浅析mvc与mvp/</id>
-    <published>2016-05-20T01:41:08.000Z</published>
-    <updated>2016-05-20T10:12:10.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;为什么要使用框架&quot;&gt;&lt;a href=&quot;#为什么要使用框架&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用框架&quot;&gt;&lt;/a&gt;为什么要使用框架&lt;/h1&gt;&lt;p&gt;设计框架的目的：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提高开发效率，尤其是协同工作&lt;/li&gt;
-&lt;li&gt;业务逻辑的切分，渐进式开发，提高业务的重用性，灵活性&lt;/li&gt;
-&lt;li&gt;测试以及问题的定位&lt;/li&gt;
-&lt;li&gt;日常的更新与维护&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;MVC&quot;&gt;&lt;a href=&quot;#MVC&quot; class=&quot;headerlink&quot; title=&quot;MVC&quot;&gt;&lt;/a&gt;MVC&lt;/h1&gt;&lt;p&gt;经典的框架，view层，model层，Controller层.&lt;br&gt;用一种业务逻辑、数据、界面显示分离的方法组织代码，将业务逻辑聚集到一个部件里面，在改进和个性化定制界面及用户交互的同时，不需要重新编写业务逻辑。&lt;/p&gt;
-&lt;p&gt;在android中的实践呢？&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;M层：适合的业务逻辑。数据库存取，网络操作，复杂算法，耗时操作&lt;/li&gt;
-&lt;li&gt;V层：显示数据&lt;/li&gt;
-&lt;li&gt;Contro层：在很多情况下activity会掺和很多Controller的事情，activity负责人机交互界面。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;举例：&lt;br&gt;Activity读取V视图层的数据（eg.读取当前EditText控件的数据），控制用户输入（eg.EditText控件数据的输入），并向Model发送数据请求（eg.发起网络请求等）。&lt;/p&gt;
-&lt;h2 id=&quot;优点：&quot;&gt;&lt;a href=&quot;#优点：&quot; class=&quot;headerlink&quot; title=&quot;优点：&quot;&gt;&lt;/a&gt;优点：&lt;/h2&gt;&lt;p&gt;(1)耦合性低。所谓耦合性就是模块代码之间的关联程度。利用MVC框架使得View（视图）层和Model（模型）层可以很好的分离，这样就达到了解耦的目的，所以耦合性低，减少模块代码之间的相互影响。便于进行单元开发，单元测试&lt;br&gt;(2)可扩展性好。由于耦合性低，添加需求，扩展代码就可以减少修改之前的代码，降低bug的出现率。&lt;br&gt;(3)模块职责划分明确。主要划分层M,V,C三个模块，利于代码的维护。&lt;/p&gt;
-&lt;h2 id=&quot;缺点：&quot;&gt;&lt;a href=&quot;#缺点：&quot; class=&quot;headerlink&quot; title=&quot;缺点：&quot;&gt;&lt;/a&gt;缺点：&lt;/h2&gt;&lt;p&gt;Activity中有很多关于视图UI的显示代码，因此View视图和Activity控制器并不是完全分离的，当activity类业务过多的时候，会变得难以管理和维护。&lt;br&gt;尤其是当ui的状态数据，跟持久化的数据混杂在一起，变得极为混乱。&lt;/p&gt;
-&lt;h1 id=&quot;MVP&quot;&gt;&lt;a href=&quot;#MVP&quot; class=&quot;headerlink&quot; title=&quot;MVP&quot;&gt;&lt;/a&gt;MVP&lt;/h1&gt;&lt;p&gt;为了解决view层代码过多，引入了这套设计框架。&lt;br&gt;MVP从更早的MVC框架演变过来，与MVC有一定的相似性：Controller/Presenter负责逻辑的处理，Model提供数据，View负责显示。&lt;br&gt;如下图&lt;br&gt;&lt;img src=&quot;http://assets.tianmaying.com/md-image/ea995e88af236afbd8fdc4906a67e829&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;MVP框架由3部分组成：View负责显示，Presenter负责逻辑处理，Model提供数据。在MVP模式里通常包含3个要素（加上View interface是4个）：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;View：负责呈现ui，与用户进行交互，如activity fragment&lt;/li&gt;
-&lt;li&gt;Model: 负责存储，检索，操作数据&lt;/li&gt;
-&lt;li&gt;Presenter：作为view跟model的桥梁，处理交互与数据逻辑。&lt;/li&gt;
-&lt;li&gt;View Interface:Presenter中持有的view层接口，负责给view返回消息。降低耦合，方便单元测试&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;优点&quot;&gt;&lt;a href=&quot;#优点&quot; class=&quot;headerlink&quot; title=&quot;优点&quot;&gt;&lt;/a&gt;优点&lt;/h2&gt;&lt;p&gt;1 模型与视图完全分离，我们可以修改视图而不影响模型；&lt;br&gt;2 可以更高效地使用模型，因为所有的交互都发生在一个地方——Presenter内部；&lt;br&gt;3 我们可以将一个Presenter用于多个视图，而不需要改变Presenter的逻辑。这个特性非常的有用，因为视图的变化总是比模型的变化频繁；&lt;br&gt;4 如果我们把逻辑放在Presenter中，那么我们就可以脱离用户接口来测试这些逻辑（单元测试）。&lt;/p&gt;
-&lt;h1 id=&quot;两者的区别&quot;&gt;&lt;a href=&quot;#两者的区别&quot; class=&quot;headerlink&quot; title=&quot;两者的区别&quot;&gt;&lt;/a&gt;两者的区别&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;http://pic001.cnblogs.com/images/2012/1/2012040113391482.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;（最主要区别）View与Model并不直接交互，而是通过与Presenter交互来与Model间接交互。而在MVC中View可以与Model直接交互&lt;br&gt;通常View与Presenter是一对一的，但复杂的View可能绑定多个Presenter来处理逻辑。而Controller是基于行为的，并且可以被多个View共享，Controller可以负责决定显示哪个View&lt;br&gt;Presenter与View的交互是通过接口来进行的，更有利于添加单元测试。&lt;/p&gt;
-&lt;h1 id=&quot;附赠MVVM知识&quot;&gt;&lt;a href=&quot;#附赠MVVM知识&quot; class=&quot;headerlink&quot; title=&quot;附赠MVVM知识&quot;&gt;&lt;/a&gt;附赠MVVM知识&lt;/h1&gt;&lt;p&gt;MVVM可以算是MVP的升级版，其中的VM是ViewModel的缩写，ViewModel可以理解成是View的数据模型和Presenter的合体，ViewModel和View之间的交互通过Data Binding完成，而Data Binding可以实现双向的交互，这就使得视图和控制层之间的耦合程度进一步降低，关注点分离更为彻底，同时减轻了Activity的压力。&lt;/p&gt;
-&lt;p&gt;MVC -&amp;gt; MVP -&amp;gt; MVVM 这几个软件设计模式是一步步演化发展的，MVVM 是从 MVP 的进一步发展与规范，MVP 隔离了MVC中的 M 与 V 的直接联系后，靠 Presenter 来中转，所以使用 MVP 时 P 是直接调用 View 的接口来实现对视图的操作的，这个 View 接口的东西一般来说是 showData、showLoading等等。M 与 V已经隔离了，方便测试了，但代码还不够优雅简洁，所以 MVVM 就弥补了这些缺陷。在 MVVM 中就出现的 Data Binding 这个概念，意思就是 View 接口的 showData 这些实现方法可以不写了，通过 Binding 来实现。&lt;/p&gt;
-&lt;p&gt;google官方已经推出了Data Binding库来写声明的layouts文件，并且用最少的代码来绑定你的app逻辑和layouts文件&lt;br&gt;Data Binding库不仅灵活而且广泛兼容- 它是一个support库，因此你可以在所有的Android平台最低能到Android 2.1（API等级7+）上使用它。&lt;/p&gt;
-&lt;h2 id=&quot;三者的异同&quot;&gt;&lt;a href=&quot;#三者的异同&quot; class=&quot;headerlink&quot; title=&quot;三者的异同&quot;&gt;&lt;/a&gt;三者的异同&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://assets.tianmaying.com/md-image/bb8f3106230c33063ab53393dfe1876a.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;异&lt;br&gt;三者的差异在于如何粘合View和Model，实现用户的交互操作以及变更通知&lt;/p&gt;
-&lt;h1 id=&quot;参考文献&quot;&gt;&lt;a href=&quot;#参考文献&quot; class=&quot;headerlink&quot; title=&quot;参考文献&quot;&gt;&lt;/a&gt;参考文献&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://www.tianmaying.com/tutorial/AndroidMVC&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android App的设计架构：MVC,MVP,MVVM与架构经验谈&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://segmentfault.com/a/1190000002876984&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Data Binding 用户指南（Android）&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/asce1885/article/details/47080085&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android DataBinding：再见Presenter，你好ViewModel！&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;为什么要使用框架&quot;&gt;&lt;a href=&quot;#为什么要使用框架&quot; class=&quot;headerlink&quot; title=&quot;为什么要使用框架&quot;&gt;&lt;/a&gt;为什么要使用框架&lt;/h1&gt;&lt;p&gt;设计框架的目的：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提高开发效率，尤其是协同工作&lt;/li&gt;
-&lt;li&gt;
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>android最佳实践10：开源库汇总</title>
-    <link href="http://hammercui.github.io/post/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B510%EF%BC%9A%E5%BC%80%E6%BA%90%E5%BA%93%E6%B1%87%E6%80%BB/"/>
-    <id>http://hammercui.github.io/post/android最佳实践10：开源库汇总/</id>
-    <published>2016-05-16T01:57:48.000Z</published>
-    <updated>2016-06-17T07:01:06.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;第一部分：工具库&quot;&gt;&lt;a href=&quot;#第一部分：工具库&quot; class=&quot;headerlink&quot; title=&quot;第一部分：工具库&quot;&gt;&lt;/a&gt;第一部分：工具库&lt;/h1&gt;&lt;h2 id=&quot;依赖注入库&quot;&gt;&lt;a href=&quot;#依赖注入库&quot; class=&quot;headerlink&quot; title=&quot;依赖注入库&quot;&gt;&lt;/a&gt;依赖注入库&lt;/h2&gt;&lt;h3 id=&quot;dagger：Square公司的明星项目，已被google官方采用&quot;&gt;&lt;a href=&quot;#dagger：Square公司的明星项目，已被google官方采用&quot; class=&quot;headerlink&quot; title=&quot;dagger：Square公司的明星项目，已被google官方采用&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/square/dagger&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;dagger&lt;/a&gt;：Square公司的明星项目，已被google官方采用&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;依赖注入，适用于 Android 和 Java&lt;/li&gt;
-&lt;li&gt;在android平台，特别适合mvp架构&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://square.github.io/dagger/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://a.codekk.com/detail/Android/%E6%89%94%E7%89%A9%E7%BA%BF/Dagger%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dagger 源码解析&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://www.jianshu.com/p/c2feb21064bb&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Dagger2使用&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://blog.csdn.net/tiankong1206/article/details/46486401&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MVP+Dagger2+Retrofit实现更清晰的架构&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;AndroidAnnotations-Code-Diet&quot;&gt;&lt;a href=&quot;#AndroidAnnotations-Code-Diet&quot; class=&quot;headerlink&quot; title=&quot;AndroidAnnotations(Code Diet)&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/excilys/androidannotations&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AndroidAnnotations(Code Diet)&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;目前我正在使用的项目，不是很方便，每次要编译时生成Activity的子类_Activity&lt;/li&gt;
-&lt;li&gt;特点：(1) 依赖注入：包括 view，extras，系统服务，资源等等&lt;br&gt;(2) 简单的线程模型，通过 annotation 表示方法运行在 ui 线程还是后台线程&lt;br&gt;(3) 事件绑定：通过 annotation 表示 view 的响应事件，不用在写内部类&lt;br&gt;(4) REST 客户端：定义客户端接口，自动生成 REST 请求的实现&lt;br&gt;(5) 没有你想象的复杂：AndroidAnnotations 只是在在编译时生成相应子类&lt;br&gt;(6) 不影响应用性能：仅 50kb，在编译时完成，不会对运行时有性能影响。&lt;br&gt;其他：与 roboguice 的比较：roboguice 通过运行时读取 annotations 进行反射，所以可能影响应用性能，而 AndroidAnnotations 在编译时生成子类，所以对性能没有影响&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;图片缓存库&quot;&gt;&lt;a href=&quot;#图片缓存库&quot; class=&quot;headerlink&quot; title=&quot;图片缓存库&quot;&gt;&lt;/a&gt;图片缓存库&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;picasso&lt;/li&gt;
-&lt;li&gt;fresco&lt;/li&gt;
-&lt;li&gt;Glide&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;对比&quot;&gt;&lt;a href=&quot;#对比&quot; class=&quot;headerlink&quot; title=&quot;对比&quot;&gt;&lt;/a&gt;对比&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;fresco facebook的明星项目，5.0以下特别流畅，但是包大。亮点是渐进式显示图片&lt;/li&gt;
-&lt;li&gt;picasso Square的明星项目，跟okhttp结合最好用，包最小&lt;/li&gt;
-&lt;li&gt;Glide是google出品的图片缓存框架&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;总结，我选择使用Picasso，因为简单易上手。&lt;/p&gt;
-&lt;h2 id=&quot;gradle-retrolambda-java7兼容lambda库&quot;&gt;&lt;a href=&quot;#gradle-retrolambda-java7兼容lambda库&quot; class=&quot;headerlink&quot; title=&quot;gradle-retrolambda:java7兼容lambda库&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/evant/gradle-retrolambda&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;gradle-retrolambda&lt;/a&gt;:java7兼容lambda库&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://hammercui.github.io/post/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B51%EF%BC%9Aretrolambda%E6%A1%86%E6%9E%B6/&quot;&gt;使用教程&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;rx-android-感受响应式编程魅力&quot;&gt;&lt;a href=&quot;#rx-android-感受响应式编程魅力&quot; class=&quot;headerlink&quot; title=&quot;rx-android:感受响应式编程魅力&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/ReactiveX/RxAndroid&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;rx-android&lt;/a&gt;:感受响应式编程魅力&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://hammercui.github.io/post/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B52%EF%BC%9Arxjava%E6%A1%86%E6%9E%B6/&quot;&gt;使用教程&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;Retrofit2-0-最热门的restfull规范网络请求框架&quot;&gt;&lt;a href=&quot;#Retrofit2-0-最热门的restfull规范网络请求框架&quot; class=&quot;headerlink&quot; title=&quot;Retrofit2.0:最热门的restfull规范网络请求框架&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/square/retrofit&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Retrofit2.0&lt;/a&gt;:最热门的restfull规范网络请求框架&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://hammercui.github.io/post/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B53%EF%BC%9Aretrofit%E6%A1%86%E6%9E%B6/&quot;&gt;使用教程&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;EventBus：发布-订阅的事件总线&quot;&gt;&lt;a href=&quot;#EventBus：发布-订阅的事件总线&quot; class=&quot;headerlink&quot; title=&quot;EventBus：发布 / 订阅的事件总线&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/greenrobot/EventBus&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;EventBus&lt;/a&gt;：发布 / 订阅的事件总线&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://hammercui.github.io/post/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B55%EF%BC%9AEventBus/&quot;&gt;使用教程&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;高版本向低版本兼容库&quot;&gt;&lt;a href=&quot;#高版本向低版本兼容库&quot; class=&quot;headerlink&quot; title=&quot;高版本向低版本兼容库&quot;&gt;&lt;/a&gt;高版本向低版本兼容库&lt;/h2&gt;&lt;h3 id=&quot;nineoldandroids-JakeWharton大神的项目&quot;&gt;&lt;a href=&quot;#nineoldandroids-JakeWharton大神的项目&quot; class=&quot;headerlink&quot; title=&quot;nineoldandroids:JakeWharton大神的项目&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/JakeWharton/NineOldAndroids&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nineoldandroids&lt;/a&gt;:JakeWharton大神的项目&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;&lt;a href=&quot;http://a.codekk.com/detail/Android/Mr.Simple/NineOldAnimations%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;NineOldAnimations 源码解析&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://nineoldandroids.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;文档介绍&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;第二部分-ui库&quot;&gt;&lt;a href=&quot;#第二部分-ui库&quot; class=&quot;headerlink&quot; title=&quot;第二部分 ui库&quot;&gt;&lt;/a&gt;第二部分 ui库&lt;/h1&gt;&lt;h2 id=&quot;刷新ui&quot;&gt;&lt;a href=&quot;#刷新ui&quot; class=&quot;headerlink&quot; title=&quot;刷新ui&quot;&gt;&lt;/a&gt;刷新ui&lt;/h2&gt;&lt;h3 id=&quot;BGARefreshLayout-Android-多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位&quot;&gt;&lt;a href=&quot;#BGARefreshLayout-Android-多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位&quot; class=&quot;headerlink&quot; title=&quot;BGARefreshLayout-Android:多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/bingoogolapple/BGARefreshLayout-Android&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;BGARefreshLayout-Android&lt;/a&gt;:多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/7539fed2c320aecc0d47320586e8c2ee22a2d762/687474703a2f2f37786b39646a2e636f6d312e7a302e676c622e636c6f7564646e2e636f6d2f726566726573686c61796f75742f73637265656e73686f74732f6267615f726566726573686c61796f7574322e676966&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;目前我正在使用的下拉刷新，上拉加载&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;Android-PullToRefresh&quot;&gt;&lt;a href=&quot;#Android-PullToRefresh&quot; class=&quot;headerlink&quot; title=&quot;Android-PullToRefresh&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/chrisbanes/Android-PullToRefresh&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android-PullToRefresh&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/chrisbanes/Android-PullToRefresh/master/header_graphic.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;目前使用最广泛的强大的拉动刷新开源项目，强烈推荐使用&lt;/li&gt;
-&lt;li&gt;支持各种控件下拉刷新，ListView、ViewPager、WebView、ExpandableListView、GridView、ScrollView、Horizontal ScrollView、Fragment 上下左右拉动刷新&lt;/li&gt;
-&lt;li&gt;APP 示例：新浪微博各个页面&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;android-Ultra-Pull-To-Refresh&quot;&gt;&lt;a href=&quot;#android-Ultra-Pull-To-Refresh&quot; class=&quot;headerlink&quot; title=&quot;android-Ultra-Pull-To-Refresh&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/liaohuqiu/android-Ultra-Pull-To-Refresh&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android-Ultra-Pull-To-Refresh&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;star数目4991的项目，跟上一个刷新控件媲美&lt;/li&gt;
-&lt;li&gt;这个继承于 ViewGroup 可以包含任何 View。功能甚至比 SwipeRefreshLayout 强大。使用起来非常简单。良好的设计，如果你想定制自己的 UI 样式，非常简单，就像给 ListView 加一个 Header View 那么简单。支持 API LEVEL &amp;gt;= 8&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;http://a.codekk.com/detail/Android/Grumoon/android-Ultra-Pull-To-Refresh%20%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;android-Ultra-Pull-To-Refresh 源码解析&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Material-Design-UI&quot;&gt;&lt;a href=&quot;#Material-Design-UI&quot; class=&quot;headerlink&quot; title=&quot;Material Design UI&quot;&gt;&lt;/a&gt;Material Design UI&lt;/h2&gt;&lt;h3 id=&quot;material-dialogs&quot;&gt;&lt;a href=&quot;#material-dialogs&quot; class=&quot;headerlink&quot; title=&quot;material-dialogs&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/afollestad/material-dialogs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;material-dialogs&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
-&lt;li&gt;各种material风格的dialog。 漂亮的的、易于使用的和可定制的Dialog API，你能够使用Material designed风格的Dialog到API 8&lt;/li&gt;
-&lt;li&gt;目前正在使用，文档很全面。&lt;/li&gt;
-&lt;li&gt;&lt;img src=&quot;https://raw.githubusercontent.com/afollestad/material-dialogs/master/art/mddemoshowcase.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;仿ios的ui&quot;&gt;&lt;a href=&quot;#仿ios的ui&quot; class=&quot;headerlink&quot; title=&quot;仿ios的ui&quot;&gt;&lt;/a&gt;仿ios的ui&lt;/h2&gt;&lt;h3 id=&quot;Android-PickerView-仿ios的pickview库&quot;&gt;&lt;a href=&quot;#Android-PickerView-仿ios的pickview库&quot; class=&quot;headerlink&quot; title=&quot;Android-PickerView:仿ios的pickview库&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/saiwu-bigkoo/Android-PickerView&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android-PickerView&lt;/a&gt;:仿ios的pickview库&lt;/h3&gt;&lt;p&gt;仿iOS的PickerView控件，有时间选择和选项选择并支持一二三级联动效果&lt;br&gt;&lt;img src=&quot;https://github.com/saiwu-bigkoo/Android-PickerView/raw/master/preview/pickerdemo.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;ViewPager-、Gallery轮播图-旋转木马效果&quot;&gt;&lt;a href=&quot;#ViewPager-、Gallery轮播图-旋转木马效果&quot; class=&quot;headerlink&quot; title=&quot;ViewPager 、Gallery轮播图 旋转木马效果&quot;&gt;&lt;/a&gt;ViewPager 、Gallery轮播图 旋转木马效果&lt;/h2&gt;&lt;h3 id=&quot;Android-ConvenientBanner-banner轮播图&quot;&gt;&lt;a href=&quot;#Android-ConvenientBanner-banner轮播图&quot; class=&quot;headerlink&quot; title=&quot;Android-ConvenientBanner:banner轮播图&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/saiwu-bigkoo/Android-ConvenientBanner&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android-ConvenientBanner&lt;/a&gt;:banner轮播图&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://github.com/saiwu-bigkoo/Android-ConvenientBanner/raw/master/preview/convenientbannerdemo.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;目前我正在使用的控件，没有解决每次imageview重新加载的问题，导致大的图片会先出现空白。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;LoopRotarySwitch：旋转木马&quot;&gt;&lt;a href=&quot;#LoopRotarySwitch：旋转木马&quot; class=&quot;headerlink&quot; title=&quot;LoopRotarySwitch：旋转木马&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/dalong982242260/LoopRotarySwitch&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;LoopRotarySwitch&lt;/a&gt;：旋转木马&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://github.com/dalong982242260/LoopRotarySwitch/raw/master/img/dalong.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;目前正在使用，适用于3-4个图片，支持无线滚动。&lt;br&gt;&lt;strong&gt;优点&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;适用于Activity和Fragment&lt;/li&gt;
-&lt;li&gt;可定制大小，可监听事件，可调整旋转滚动半径&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;CarouselViewProject：画廊效果&quot;&gt;&lt;a href=&quot;#CarouselViewProject：画廊效果&quot; class=&quot;headerlink&quot; title=&quot;CarouselViewProject：画廊效果&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/clkasd/CarouselViewProject&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CarouselViewProject&lt;/a&gt;：画廊效果&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/fc4718502ecb25f906deb73a34c2e7b465323ea0/687474703a2f2f646576656c6f70776561722e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031342f30352f6361726f7573656c312e706e67&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;不是很灵活，不支持无限滚动&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;3d旋转木马效果&quot;&gt;&lt;a href=&quot;#3d旋转木马效果&quot; class=&quot;headerlink&quot; title=&quot;3d旋转木马效果&quot;&gt;&lt;/a&gt;3d旋转木马效果&lt;/h3&gt;&lt;p&gt;以下三个3d旋转木马效果，都来自于这篇文章&lt;a href=&quot;http://www.codeproject.com/Articles/146145/Android-D-Carousel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android 3D Carousel&lt;/a&gt;,分别是不同的实现&lt;/p&gt;
-&lt;h4 id=&quot;carousel-android-star31&quot;&gt;&lt;a href=&quot;#carousel-android-star31&quot; class=&quot;headerlink&quot; title=&quot;carousel-android:star31&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/ludovicroland/carousel-android&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;carousel-android&lt;/a&gt;:star31&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/ad7578f22aeef2180975a57c2ce291d8d22d7ec3/68747470733a2f2f7261772e6769746875622e636f6d2f6c75646f766963726f6c616e642f6361726f7573656c2d616e64726f69642f6d61737465722f73637265656e73686f74312e706e67&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;缺点&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在Fragment中使用会出现问题。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;Android-3D-Carousel-star4&quot;&gt;&lt;a href=&quot;#Android-3D-Carousel-star4&quot; class=&quot;headerlink&quot; title=&quot;Android-3D-Carousel:star4&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/panhuachao/Android-3D-Carousel#android-3d-carousel&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android-3D-Carousel&lt;/a&gt;:star4&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://github.com/panhuachao/Android-3D-Carousel/raw/master/round.gif&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;strong&gt;优点&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;增加了垂直滚动模式，尚未测试&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h4 id=&quot;CarrouselView-star22-中文版&quot;&gt;&lt;a href=&quot;#CarrouselView-star22-中文版&quot; class=&quot;headerlink&quot; title=&quot;CarrouselView:star22 中文版&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/dalong982242260/CarrouselView&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;CarrouselView&lt;/a&gt;:star22 中文版&lt;/h4&gt;&lt;p&gt;&lt;img src=&quot;https://github.com/dalong982242260/CarrouselView/raw/master/screenshot/carouselview.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;优点&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;中文版，效果最佳&lt;/li&gt;
-&lt;li&gt;布局可以随意自定义，不受只是图片的限制。 &lt;/li&gt;
-&lt;li&gt;2、增加点击切换到中间位置。 &lt;/li&gt;
-&lt;li&gt;3、手势滑动切换。 &lt;/li&gt;
-&lt;li&gt;4、切换中间回调。 &lt;/li&gt;
-&lt;li&gt;5、自定义适配器更加方便用户设置自己需要的布局。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;GlFancyCoverFlow-电影海报轮播图&quot;&gt;&lt;a href=&quot;#GlFancyCoverFlow-电影海报轮播图&quot; class=&quot;headerlink&quot; title=&quot;GlFancyCoverFlow:电影海报轮播图&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/LittleLiByte/GlFancyCoverFlow&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GlFancyCoverFlow&lt;/a&gt;:电影海报轮播图&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://github.com/LittleLiByte/GlFancyCoverFlow/raw/master/GlFancyCoverFlow/res/raw/ScreenShots/device-2014-10-15-141029.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;借鉴自&lt;a href=&quot;https://github.com/davidschreiber/FancyCoverFlow&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;FancyCoverFlow&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;增加了无限滚动，更适合海报等效果&lt;/li&gt;
-&lt;li&gt;但是继承自GalleryView，这个类已经被google放弃了，有内存溢出的风险&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;特殊ui&quot;&gt;&lt;a href=&quot;#特殊ui&quot; class=&quot;headerlink&quot; title=&quot;特殊ui&quot;&gt;&lt;/a&gt;特殊ui&lt;/h2&gt;&lt;h3 id=&quot;ExpandableLayout-控件收缩&quot;&gt;&lt;a href=&quot;#ExpandableLayout-控件收缩&quot; class=&quot;headerlink&quot; title=&quot;ExpandableLayout:控件收缩&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/traex/ExpandableLayout&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;ExpandableLayout&lt;/a&gt;:控件收缩&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;https://github.com/traex/ExpandableLayout/raw/master/demo.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;目前正在使用，可以自己修改源码。&lt;/li&gt;
-&lt;/ul&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;第一部分：工具库&quot;&gt;&lt;a href=&quot;#第一部分：工具库&quot; class=&quot;headerlink&quot; title=&quot;第一部分：工具库&quot;&gt;&lt;/a&gt;第一部分：工具库&lt;/h1&gt;&lt;h2 id=&quot;依赖注入库&quot;&gt;&lt;a href=&quot;#依赖注入库&quot; class=&quot;headerlink
-    
-    </summary>
-    
-      <category term="android" scheme="http://hammercui.github.io/categories/android/"/>
-    
-    
-      <category term="android最佳实践" scheme="http://hammercui.github.io/tags/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
     
   </entry>
   

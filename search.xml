@@ -4,6 +4,114 @@
   
     
     <entry>
+      <title><![CDATA[android学习路线]]></title>
+      <url>http://hammercui.github.io/post/android%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
+      <content type="html"><![CDATA[<h2 id="初级阶段"><a href="#初级阶段" class="headerlink" title="初级阶段"></a>初级阶段</h2><p>技术要求：</p>
+<ul>
+<li>四大组件Activity，Service, BroadcastReceive，ContentProvider的使用.<a href="http://www.jianshu.com/p/51aaa65d5d25" target="_blank" rel="external">参考文章</a></li>
+<li>Fragment</li>
+<li>ui设计<ul>
+<li>各类layout</li>
+<li>简单自定义view，各种用户界面</li>
+<li>动画[包括valueAnimator,ObjectAnimator]</li>
+<li>Bitmap,Canvas</li>
+</ul>
+</li>
+<li>数据存储<ul>
+<li>sharePerference</li>
+<li>SQLite3,GreenDao,Realm</li>
+</ul>
+</li>
+</ul>
+<p>书籍推荐:</p>
+<ul>
+<li>《Thinking in java》 经典</li>
+</ul>
+<p>网站推荐:</p>
+<ul>
+<li><a href="https://developer.android.com/guide/index.html" target="_blank" rel="external">google api guides</a>官方api，不知道怎么用，就看官方的</li>
+<li><a href="http://wiki.jikexueyuan.com/list/android/" target="_blank" rel="external">极客学院Android wiki</a>非常全面</li>
+<li><a href="http://wiki.jikexueyuan.com/list/android/" target="_blank" rel="external">Stack Overflow android tag</a></li>
+</ul>
+<h2 id="中级阶段"><a href="#中级阶段" class="headerlink" title="中级阶段"></a>中级阶段</h2><p>技术要求</p>
+<ul>
+<li>aidl:熟悉aidl，理解其工作原理，懂transact和onTransact的区别</li>
+<li>Binder:从java层大概理解Binder的工作原理，懂Parcel对象的使用</li>
+<li>多进程：多进程的运行机制，消息队列，Messenger,Socket</li>
+<li>事件分发：弹性滑动 滑动冲突</li>
+<li>玩转view： view的绘制原理，各种自定义view</li>
+<li>动画系列：熟悉view动画和属性动画的不同点，懂ObjectAnimator的工作原理</li>
+<li>懂性能优化，熟悉mat等工具</li>
+<li>熟悉常见的设计模式，比如mvp,mvvm</li>
+<li>熟悉rxjava响应式编程</li>
+</ul>
+<p>学习方法</p>
+<ul>
+<li>阅读源码</li>
+<li>view以及事件分发<ul>
+<li>view的滑动原理</li>
+<li>如何实现弹性滑动</li>
+<li>view的滑动冲突</li>
+<li>view的measure，layout，draw</li>
+<li>自己实现几个经典的view</li>
+</ul>
+</li>
+</ul>
+<h2 id="高级阶段"><a href="#高级阶段" class="headerlink" title="高级阶段"></a>高级阶段</h2><p>技术要求</p>
+<ul>
+<li>了解SystemSever的启动过程</li>
+<li>了解AndroidFramework层的内容</li>
+<li>了解主线程的消息循环模型</li>
+<li>了解ams和psm的工作原理</li>
+<li>了解Windows</li>
+<li>Activity的启动模式以及异常情况下不同Activity的表现 </li>
+<li>Service的onBind和onReBind的关联 </li>
+<li>onServiceDisconnected(ComponentName className)和binderDied()的区别 </li>
+<li>AsyncTask在不同版本上的表现细节 </li>
+<li>线程池的细节和参数配置 </li>
+</ul>
+<p>总结</p>
+<ul>
+<li>系统核心机制</li>
+<li>基础知识点的细节</li>
+<li>设计模式和架构</li>
+<li>了解这张图的底层细节<br><img src="http://img.blog.csdn.net/20140326133801171?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaXRmb290YmFsbA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="image"> </li>
+</ul>
+<p>推荐书籍</p>
+<ul>
+<li>《android内核剖析》</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[android基础：控件集锦]]></title>
+      <url>http://hammercui.github.io/post/android%E6%8E%A7%E4%BB%B6%E9%9B%86%E9%94%A6/</url>
+      <content type="html"><![CDATA[<blockquote>
+<p>汇总常用的或者经常忘记的Android控件</p>
+</blockquote>
+<h2 id="DrawerLayout"><a href="#DrawerLayout" class="headerlink" title="DrawerLayout"></a>DrawerLayout</h2><p>弹出式抽屉视图<br><em>DrawerLayout 控件的子视图必须是2个，1个显示原视图，1个显示弹出的抽屉视图</em></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">&lt;android.support.v4.widget.DrawerLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    xmlns:tools=&quot;http://schemas.android.com/tools&quot;</span><br><span class="line">    android:id=&quot;@+id/drawerLayout&quot;</span><br><span class="line">    android:layout_width=&quot;match_parent&quot;</span><br><span class="line">    android:layout_height=&quot;match_parent&quot;</span><br><span class="line">    tools:context=&quot;com.inthecheesefactory.lab.designlibrary.CodeLabActivity&quot;&gt;</span><br><span class="line">    &lt;!--视图1：原视图--&gt;</span><br><span class="line">    &lt;TextView</span><br><span class="line">        android:layout_width=&quot;wrap_content&quot;</span><br><span class="line">        android:layout_height=&quot;wrap_content&quot;</span><br><span class="line">        android:text=&quot;@string/hello_world&quot; /&gt;</span><br><span class="line">    &lt;!--视图2：弹出的抽屉视图 --&gt;</span><br><span class="line">    &lt;LinearLayout</span><br><span class="line">        android:layout_width=&quot;match_parent&quot;</span><br><span class="line">        android:layout_height=&quot;match_parent&quot;</span><br><span class="line">        android:layout_gravity=&quot;start&quot;</span><br><span class="line">        android:background=&quot;#ffffff&quot;</span><br><span class="line">        android:orientation=&quot;vertical&quot;&gt;</span><br><span class="line"></span><br><span class="line">   &lt;/LinearLayout&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="硬按键控制音量"><a href="#硬按键控制音量" class="headerlink" title="硬按键控制音量"></a>硬按键控制音量</h2><p>1 添加权限<br><code>&lt;uses-permission android:name=&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot; /&gt;</code></p>
+<p>2 新建控制音量类实例 </p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> //音量控制,初始化定义</span><br><span class="line"> private AudioManager mAudioManager;</span><br></pre></td></tr></table></figure>
+<p>3 实例初始化，在<code>onCreat()</code>中：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mAudioManager = (AudioManager) </span><br><span class="line">getSystemService(Context.AUDIO_SERVICE);</span><br></pre></td></tr></table></figure>
+<p>4 具体调节音量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">  public boolean onKeyDown(int keyCode, KeyEvent event) &#123;</span><br><span class="line">    </span><br><span class="line">    int currentVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);</span><br><span class="line">    switch(keyCode)</span><br><span class="line">    &#123;</span><br><span class="line">    case KeyEvent.KEYCODE_VOLUME_UP:</span><br><span class="line">      mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume+1, 1);</span><br><span class="line">      return true;</span><br><span class="line">      </span><br><span class="line">    case KeyEvent.KEYCODE_VOLUME_DOWN:</span><br><span class="line">      mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, currentVolume-1, 1);</span><br><span class="line">      return true;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    return super.onKeyDown(keyCode, event);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="home按键切换后台"><a href="#home按键切换后台" class="headerlink" title="home按键切换后台"></a>home按键切换后台</h2><p> 1借用surface改变：<br>切换后台触发:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) &#123;</span><br><span class="line">  // TODO Auto-generated method stub</span><br><span class="line">  Log.v(&quot;admob&quot;, &quot;surfaceChanged!&quot;);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>回到前台触发：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">public void surfaceCreated(SurfaceHolder arg0) &#123;	//activity resume</span><br><span class="line">  // TODO Auto-generated method stub</span><br><span class="line">  if(isPause &amp;&amp; m_State == GAME_PLAY)&#123;</span><br><span class="line">   AlertDialog.Builder builder = new AlertDialog.Builder(GameActivity.mContext);</span><br><span class="line">   builder.setTitle(&quot;Alert&quot;)</span><br><span class="line">   .setMessage(&quot;Game is paused，press OK resume&quot;)</span><br><span class="line">      .setCancelable(false)</span><br><span class="line">      .setPositiveButton(&quot;OK&quot;, new DialogInterface.OnClickListener() &#123;</span><br><span class="line">       public void onClick(DialogInterface dialog, int which) &#123;</span><br><span class="line">        // TODO Auto-generated method stub</span><br><span class="line">        mLoopHandler.start();</span><br><span class="line">       &#125;</span><br><span class="line">      &#125;);</span><br><span class="line">   AlertDialog alert = builder.create();</span><br><span class="line">   alert.show();</span><br><span class="line">  &#125;else&#123;</span><br><span class="line">   mLoopHandler.start();</span><br><span class="line">  &#125;</span><br><span class="line">  isPause = false;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">##  action bar使用</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">action bar是3.0之后系统自带的控件，</span><br></pre></td></tr></table></figure>
+<p>@Override<br>protected void onCreate(Bundle savedInstanceState) {<br>super.onCreate(savedInstanceState);<br>    setContentView(R.layout.aty_securityissue_creat);<br>actionBar= getActionBar();<br>actionBar.show();</p>
+<p>}<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line">//创建菜单</span><br></pre></td></tr></table></figure></p>
+<p>@Override<br>public boolean onCreateOptionsMenu(Menu menu) {<br>// Inflate the menu; this adds items to the action bar if it is present.<br>super.onCreateOptionsMenu(menu);<br>//添加菜单项<br>MenuItem add=menu.add(0,0,0,”add”);<br>    MenuItem del=menu.add(0,0,0,”del”);<br>    MenuItem save=menu.add(0,0,0,”save”);<br>//绑定到ActionBar<br>add.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);<br>    del.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);<br>    save.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);<br>return true;<br>}</p>
+<p>//选择菜单<br>@Override<br>public boolean onOptionsItemSelected(MenuItem item)<br>{<br>switch (item.getItemId())<br>    {<br>case android.R.id.home:<br>return true;<br>default:<br>return super.onOptionsItemSelected(item);<br>    }<br>}<br>```</p>
+<h2 id="FragmentTabHost"><a href="#FragmentTabHost" class="headerlink" title="FragmentTabHost"></a>FragmentTabHost</h2><p><a href="http://www.jianshu.com/p/3b0ff7a4bde1" target="_blank" rel="external">参考案例</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[python学习笔记：6 tornado]]></title>
       <url>http://hammercui.github.io/post/python%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%9A6-tornado/</url>
       <content type="html"><![CDATA[<blockquote>
