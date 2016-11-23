@@ -11,16 +11,40 @@
     
 
     
-    <meta name="description" content="参考文献React入门教程 - 组件生命周期">
+    <meta name="description" content="参考文献React入门教程 - 组件生命周期
+
+componentWillMount（）：组件加载。
+
+componentWillMount会在组件render()之前执行，永远只执行一次。类似于Android的onCreat
+
+componentDidMount():组件加载。
+
+这个方法在组件加载之后执行，这时组件已经生成了对应的DOM结构，可以通过geDOMNode()来进行访问。如果你想和">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-native基础：组件生命周期">
 <meta property="og:url" content="http://hammercui.github.io/post/react-native基础：组件生命周期/index.html">
 <meta property="og:site_name" content="hammer崔的程序世界">
-<meta property="og:description" content="参考文献React入门教程 - 组件生命周期">
-<meta property="og:updated_time" content="2016-03-30T07:17:22.000Z">
+<meta property="og:description" content="参考文献React入门教程 - 组件生命周期
+
+componentWillMount（）：组件加载。
+
+componentWillMount会在组件render()之前执行，永远只执行一次。类似于Android的onCreat
+
+componentDidMount():组件加载。
+
+这个方法在组件加载之后执行，这时组件已经生成了对应的DOM结构，可以通过geDOMNode()来进行访问。如果你想和">
+<meta property="og:updated_time" content="2016-11-21T02:37:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native基础：组件生命周期">
-<meta name="twitter:description" content="参考文献React入门教程 - 组件生命周期">
+<meta name="twitter:description" content="参考文献React入门教程 - 组件生命周期
+
+componentWillMount（）：组件加载。
+
+componentWillMount会在组件render()之前执行，永远只执行一次。类似于Android的onCreat
+
+componentDidMount():组件加载。
+
+这个方法在组件加载之后执行，这时组件已经生成了对应的DOM结构，可以通过geDOMNode()来进行访问。如果你想和">
 
     
     <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
@@ -45,7 +69,7 @@
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -61,7 +85,7 @@
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -83,20 +107,49 @@
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-03-30T07:13:04.000Z" itemprop="datePublished"> Published 2016-03-30</time>
+    <time datetime="2016-03-30T07:13:04.000Z" itemprop="datePublished"> 发表于 2016-03-30</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">1.</span> <span class="toc-text">参考文献</span></a></li></ol>
 		
 		</div>
 		
 		<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://fraserxu.me/2014/08/31/react-component-lifecycle/" target="_blank" rel="external">React入门教程 - 组件生命周期</a></p>
+<ul>
+<li><code>componentWillMount（）</code>：<strong>组件加载</strong>。</li>
+</ul>
+<p><code>componentWillMount</code>会在组件<code>render()</code>之前执行，永远只执行一次。类似于Android的<code>onCreat</code></p>
+<ul>
+<li><code>componentDidMount()</code>:<strong>组件加载</strong>。</li>
+</ul>
+<p>这个方法在组件加载之后执行，这时组件已经生成了对应的DOM结构，可以通过<code>geDOMNode()</code>来进行访问。如果你想和其他JavaScript框架一起使用，可以在这个方法中执行setTimeout, setInterval或者发送AJAX请求等操作(防止异部操作阻塞UI)。</p>
+<ul>
+<li><code>componentWillReceiveProps（object nextProps）</code>：<strong>组件更新</strong>。</li>
+</ul>
+<p>这个方法在初始化render时不会被调用。旧的props可以通过this.props来获取。在这个函数内调用this.setState()方法不会增加一次新的render.</p>
+<ul>
+<li><code>boolean shouldComponentUpdate(object nextProps, object nextState)</code>：<strong>组件更新</strong>。</li>
+</ul>
+<p>返回一个布尔值。在组件接收到新的props或者state时被执行。在初始化时或者使用<code>forceUpdate</code>时不被执行。可以在你确认不需要更新组件时使用。</p>
+<ul>
+<li><code>componentWillUpdate(object nextProps, object nextState)</code>:<strong>组件更新</strong>.</li>
+</ul>
+<p>在组件接收到新的props或者state但还没有render时被执行。在初始化时不会被执行。</p>
+<p>一般用在组件发生更新之前。</p>
+<ul>
+<li><code>componentDidUpdate(object prevProps, object prevState)</code>:<strong>组件更新</strong>.</li>
+</ul>
+<p>在组件完成更新后立即执行。在初始化时不会被执行。一般会在组件完成更新后被使用。例如清除notification文字等操作。</p>
+<ul>
+<li><code>componentWillUnmount()</code>:<strong>组件Unmounting</strong>.</li>
+</ul>
+<p>在组件从DOM unmount后立即执行.主要用来执行一些必要的清理任务。例如清除setTimeout等函数，或者任意的在componentDidMount创建的DOM元素。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -158,22 +211,22 @@
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文献"><span class="toc-number">1.</span> <span class="toc-text">参考文献</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -234,7 +287,7 @@
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -294,11 +347,11 @@
 			
 		
 			
-				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -306,7 +359,7 @@
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -314,7 +367,7 @@
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -339,11 +392,11 @@
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -582,7 +635,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

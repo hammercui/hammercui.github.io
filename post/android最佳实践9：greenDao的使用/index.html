@@ -72,7 +72,7 @@ android studio中的使用1 android工程配置[greendao generator]模块1 .src/
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -88,7 +88,7 @@ android studio中的使用1 android工程配置[greendao generator]模块1 .src/
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -110,14 +110,14 @@ android studio中的使用1 android工程配置[greendao generator]模块1 .src/
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-06-13T07:53:06.000Z" itemprop="datePublished"> Published 2016-06-13</time>
+    <time datetime="2016-06-13T07:53:06.000Z" itemprop="datePublished"> 发表于 2016-06-13</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#greenDao的特点"><span class="toc-number">1.</span> <span class="toc-text">greenDao的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#android-studio中的使用"><span class="toc-number">2.</span> <span class="toc-text">android studio中的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-android工程配置-greendao-generator-模块"><span class="toc-number">2.1.</span> <span class="toc-text">1 android工程配置[greendao generator]模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-新建greenDao-generator模块，纯java工程"><span class="toc-number">2.2.</span> <span class="toc-text">2 新建greenDao generator模块，纯java工程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在android工程进行数据库操作"><span class="toc-number">3.</span> <span class="toc-text">在android工程进行数据库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-考虑到application的生命周期，把DaoMaster跟DaoSession的实例放到application中，避免重复创建"><span class="toc-number">3.1.</span> <span class="toc-text">1 考虑到application的生命周期，把DaoMaster跟DaoSession的实例放到application中，避免重复创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-考虑到松耦合性，新增一个Dao的中间层，用来切换不同的Dao实现"><span class="toc-number">3.2.</span> <span class="toc-text">2 考虑到松耦合性，新增一个Dao的中间层，用来切换不同的Dao实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-响应view层的增删查改操作"><span class="toc-number">3.3.</span> <span class="toc-text">3 响应view层的增删查改操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
 		
@@ -210,22 +210,22 @@ android studio中的使用1 android工程配置[greendao generator]模块1 .src/
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#greenDao的特点"><span class="toc-number">1.</span> <span class="toc-text">greenDao的特点</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#android-studio中的使用"><span class="toc-number">2.</span> <span class="toc-text">android studio中的使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-android工程配置-greendao-generator-模块"><span class="toc-number">2.1.</span> <span class="toc-text">1 android工程配置[greendao generator]模块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-新建greenDao-generator模块，纯java工程"><span class="toc-number">2.2.</span> <span class="toc-text">2 新建greenDao generator模块，纯java工程</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#在android工程进行数据库操作"><span class="toc-number">3.</span> <span class="toc-text">在android工程进行数据库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-考虑到application的生命周期，把DaoMaster跟DaoSession的实例放到application中，避免重复创建"><span class="toc-number">3.1.</span> <span class="toc-text">1 考虑到application的生命周期，把DaoMaster跟DaoSession的实例放到application中，避免重复创建</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-考虑到松耦合性，新增一个Dao的中间层，用来切换不同的Dao实现"><span class="toc-number">3.2.</span> <span class="toc-text">2 考虑到松耦合性，新增一个Dao的中间层，用来切换不同的Dao实现</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-响应view层的增删查改操作"><span class="toc-number">3.3.</span> <span class="toc-text">3 响应view层的增删查改操作</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#参考"><span class="toc-number">4.</span> <span class="toc-text">参考</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -286,7 +286,7 @@ android studio中的使用1 android工程配置[greendao generator]模块1 .src/
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -346,11 +346,11 @@ android studio中的使用1 android工程配置[greendao generator]模块1 .src/
 			
 		
 			
-				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -358,7 +358,7 @@ android studio中的使用1 android工程配置[greendao generator]模块1 .src/
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -366,7 +366,7 @@ android studio中的使用1 android工程配置[greendao generator]模块1 .src/
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -391,11 +391,11 @@ android studio中的使用1 android工程配置[greendao generator]模块1 .src/
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -634,7 +634,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 

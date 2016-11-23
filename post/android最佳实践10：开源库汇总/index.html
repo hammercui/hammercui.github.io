@@ -85,7 +85,7 @@ AndroidAnnotations(Code Diet)
 				<h1 class="site-name"><a href="/" title="hammer崔的程序世界">hammer崔的程序世界</a></h1>
 				<h2 class="blog-motto">我的生涯一片无悔，我想起那个午夜在灯泡下的抠代码，那是我逝去的青春！</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -101,7 +101,7 @@ AndroidAnnotations(Code Diet)
  					
 						<form class="search" action="http://hammercui.github.io" target="_blank">
 							<label>Search</label>
-						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="Search"><br>
+						<input name="s" type="hidden" value= 3920052797586756600 ><input type="text" name="q" size="30" placeholder="搜索"><br>
 						</form>
 					
 					</li>
@@ -123,14 +123,14 @@ AndroidAnnotations(Code Diet)
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-05-16T01:57:48.000Z" itemprop="datePublished"> Published 2016-05-16</time>
+    <time datetime="2016-05-16T01:57:48.000Z" itemprop="datePublished"> 发表于 2016-05-16</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目录</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一部分：工具库"><span class="toc-number">1.</span> <span class="toc-text">第一部分：工具库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖注入库"><span class="toc-number">1.1.</span> <span class="toc-text">依赖注入库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dagger：Square公司的明星项目，已被google官方采用"><span class="toc-number">1.1.1.</span> <span class="toc-text">dagger：Square公司的明星项目，已被google官方采用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AndroidAnnotations-Code-Diet"><span class="toc-number">1.1.2.</span> <span class="toc-text">AndroidAnnotations(Code Diet)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片缓存库"><span class="toc-number">1.2.</span> <span class="toc-text">图片缓存库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对比"><span class="toc-number">1.2.1.</span> <span class="toc-text">对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-retrolambda-java7兼容lambda库"><span class="toc-number">1.3.</span> <span class="toc-text">gradle-retrolambda:java7兼容lambda库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rx-android-感受响应式编程魅力"><span class="toc-number">1.4.</span> <span class="toc-text">rx-android:感受响应式编程魅力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrofit2-0-最热门的restfull规范网络请求框架"><span class="toc-number">1.5.</span> <span class="toc-text">Retrofit2.0:最热门的restfull规范网络请求框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EventBus：发布-订阅的事件总线"><span class="toc-number">1.6.</span> <span class="toc-text">EventBus：发布 / 订阅的事件总线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高版本向低版本兼容库"><span class="toc-number">1.7.</span> <span class="toc-text">高版本向低版本兼容库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nineoldandroids-JakeWharton大神的项目"><span class="toc-number">1.7.1.</span> <span class="toc-text">nineoldandroids:JakeWharton大神的项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二部分-ui库"><span class="toc-number">2.</span> <span class="toc-text">第二部分 ui库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#刷新ui"><span class="toc-number">2.1.</span> <span class="toc-text">刷新ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BGARefreshLayout-Android-多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位"><span class="toc-number">2.1.1.</span> <span class="toc-text">BGARefreshLayout-Android:多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-PullToRefresh"><span class="toc-number">2.1.2.</span> <span class="toc-text">Android-PullToRefresh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#android-Ultra-Pull-To-Refresh"><span class="toc-number">2.1.3.</span> <span class="toc-text">android-Ultra-Pull-To-Refresh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Material-Design-UI"><span class="toc-number">2.2.</span> <span class="toc-text">Material Design UI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#material-dialogs"><span class="toc-number">2.2.1.</span> <span class="toc-text">material-dialogs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#仿ios的ui"><span class="toc-number">2.3.</span> <span class="toc-text">仿ios的ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-PickerView-仿ios的pickview库"><span class="toc-number">2.3.1.</span> <span class="toc-text">Android-PickerView:仿ios的pickview库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewPager-、Gallery轮播图-旋转木马效果"><span class="toc-number">2.4.</span> <span class="toc-text">ViewPager 、Gallery轮播图 旋转木马效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-ConvenientBanner-banner轮播图"><span class="toc-number">2.4.1.</span> <span class="toc-text">Android-ConvenientBanner:banner轮播图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LoopRotarySwitch：旋转木马"><span class="toc-number">2.4.2.</span> <span class="toc-text">LoopRotarySwitch：旋转木马</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CarouselViewProject：画廊效果"><span class="toc-number">2.4.3.</span> <span class="toc-text">CarouselViewProject：画廊效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3d旋转木马效果"><span class="toc-number">2.4.4.</span> <span class="toc-text">3d旋转木马效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#carousel-android-star31"><span class="toc-number">2.4.4.1.</span> <span class="toc-text">carousel-android:star31</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-3D-Carousel-star4"><span class="toc-number">2.4.4.2.</span> <span class="toc-text">Android-3D-Carousel:star4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CarrouselView-star22-中文版"><span class="toc-number">2.4.4.3.</span> <span class="toc-text">CarrouselView:star22 中文版</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GlFancyCoverFlow-电影海报轮播图"><span class="toc-number">2.4.5.</span> <span class="toc-text">GlFancyCoverFlow:电影海报轮播图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊ui"><span class="toc-number">2.5.</span> <span class="toc-text">特殊ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ExpandableLayout-控件收缩"><span class="toc-number">2.5.1.</span> <span class="toc-text">ExpandableLayout:控件收缩</span></a></li></ol></li></ol></li></ol>
 		
@@ -293,22 +293,22 @@ AndroidAnnotations(Code Diet)
 
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目录</strong>
  
  <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#第一部分：工具库"><span class="toc-number">1.</span> <span class="toc-text">第一部分：工具库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖注入库"><span class="toc-number">1.1.</span> <span class="toc-text">依赖注入库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#dagger：Square公司的明星项目，已被google官方采用"><span class="toc-number">1.1.1.</span> <span class="toc-text">dagger：Square公司的明星项目，已被google官方采用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AndroidAnnotations-Code-Diet"><span class="toc-number">1.1.2.</span> <span class="toc-text">AndroidAnnotations(Code Diet)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#图片缓存库"><span class="toc-number">1.2.</span> <span class="toc-text">图片缓存库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#对比"><span class="toc-number">1.2.1.</span> <span class="toc-text">对比</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gradle-retrolambda-java7兼容lambda库"><span class="toc-number">1.3.</span> <span class="toc-text">gradle-retrolambda:java7兼容lambda库</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rx-android-感受响应式编程魅力"><span class="toc-number">1.4.</span> <span class="toc-text">rx-android:感受响应式编程魅力</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Retrofit2-0-最热门的restfull规范网络请求框架"><span class="toc-number">1.5.</span> <span class="toc-text">Retrofit2.0:最热门的restfull规范网络请求框架</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#EventBus：发布-订阅的事件总线"><span class="toc-number">1.6.</span> <span class="toc-text">EventBus：发布 / 订阅的事件总线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#高版本向低版本兼容库"><span class="toc-number">1.7.</span> <span class="toc-text">高版本向低版本兼容库</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#nineoldandroids-JakeWharton大神的项目"><span class="toc-number">1.7.1.</span> <span class="toc-text">nineoldandroids:JakeWharton大神的项目</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#第二部分-ui库"><span class="toc-number">2.</span> <span class="toc-text">第二部分 ui库</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#刷新ui"><span class="toc-number">2.1.</span> <span class="toc-text">刷新ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#BGARefreshLayout-Android-多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位"><span class="toc-number">2.1.1.</span> <span class="toc-text">BGARefreshLayout-Android:多种下拉刷新效果、上拉加载更多、可配置自定义头部广告位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-PullToRefresh"><span class="toc-number">2.1.2.</span> <span class="toc-text">Android-PullToRefresh</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#android-Ultra-Pull-To-Refresh"><span class="toc-number">2.1.3.</span> <span class="toc-text">android-Ultra-Pull-To-Refresh</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Material-Design-UI"><span class="toc-number">2.2.</span> <span class="toc-text">Material Design UI</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#material-dialogs"><span class="toc-number">2.2.1.</span> <span class="toc-text">material-dialogs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#仿ios的ui"><span class="toc-number">2.3.</span> <span class="toc-text">仿ios的ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-PickerView-仿ios的pickview库"><span class="toc-number">2.3.1.</span> <span class="toc-text">Android-PickerView:仿ios的pickview库</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ViewPager-、Gallery轮播图-旋转木马效果"><span class="toc-number">2.4.</span> <span class="toc-text">ViewPager 、Gallery轮播图 旋转木马效果</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Android-ConvenientBanner-banner轮播图"><span class="toc-number">2.4.1.</span> <span class="toc-text">Android-ConvenientBanner:banner轮播图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LoopRotarySwitch：旋转木马"><span class="toc-number">2.4.2.</span> <span class="toc-text">LoopRotarySwitch：旋转木马</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CarouselViewProject：画廊效果"><span class="toc-number">2.4.3.</span> <span class="toc-text">CarouselViewProject：画廊效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3d旋转木马效果"><span class="toc-number">2.4.4.</span> <span class="toc-text">3d旋转木马效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#carousel-android-star31"><span class="toc-number">2.4.4.1.</span> <span class="toc-text">carousel-android:star31</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Android-3D-Carousel-star4"><span class="toc-number">2.4.4.2.</span> <span class="toc-text">Android-3D-Carousel:star4</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CarrouselView-star22-中文版"><span class="toc-number">2.4.4.3.</span> <span class="toc-text">CarrouselView:star22 中文版</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GlFancyCoverFlow-电影海报轮播图"><span class="toc-number">2.4.5.</span> <span class="toc-text">GlFancyCoverFlow:电影海报轮播图</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#特殊ui"><span class="toc-number">2.5.</span> <span class="toc-text">特殊ui</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#ExpandableLayout-控件收缩"><span class="toc-number">2.5.1.</span> <span class="toc-text">ExpandableLayout:控件收缩</span></a></li></ol></li></ol></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
 <aside class="clearfix">
 
   
 <div class="categorieslist">
-	<p class="asidetitle">Categories</p>
+	<p class="asidetitle">分类</p>
 		<ul>
 		
 		  
@@ -369,7 +369,7 @@ AndroidAnnotations(Code Diet)
 
   
 <div class="tagslist">
-	<p class="asidetitle">Tags</p>
+	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
 		
 			
@@ -429,11 +429,11 @@ AndroidAnnotations(Code Diet)
 			
 		
 			
-				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
+				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
 			
 		
 			
-				<li><a href="/tags/android-web-python-java/" title="android,web,python,java">android,web,python,java<sup>1</sup></a></li>
+				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
 			
 		
 			
@@ -441,7 +441,7 @@ AndroidAnnotations(Code Diet)
 			
 		
 			
-				<li><a href="/tags/技术杂谈/" title="技术杂谈">技术杂谈<sup>1</sup></a></li>
+				<li><a href="/tags/数据库-mongoDB/" title="数据库 mongoDB">数据库 mongoDB<sup>1</sup></a></li>
 			
 		
 		</ul>
@@ -449,7 +449,7 @@ AndroidAnnotations(Code Diet)
 
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情链接</p>
     <ul>
         
           <li>
@@ -474,11 +474,11 @@ AndroidAnnotations(Code Diet)
 </div>
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -717,7 +717,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
