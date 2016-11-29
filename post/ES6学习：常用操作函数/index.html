@@ -4,89 +4,59 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>nodejs学习：1 express的安装与使用 | hammer崔的程序世界</title>
+    <title>ES6学习：常用操作函数 | hammer崔的程序世界</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="hammercui">
     
 
     
-    <meta name="description" content="nodejs简介
-nodejs能提供静态文件服务
+    <meta name="description" content="参考文章
+ReactNative中文社区的React/React Native 的ES5 ES6写法对照表
+拥抱ES6之数组扩展
+阮一峰的es6入门
 
-网页
-纯文本
-图片
-前端JavaScript代码
-css样式表文件
-媒体文件
-字体文件
+语法Array数组，常用map进行遍历
+新建
+var array = new Array();
+或者
+var array = [&amp;quot;1111&amp;quot;,&amp;quot;22222&amp;quot;]
 
-
-nodejs能提供http服务
-
-api接口
-中间件
-
-
-nodejs能提供tcp(socket)服务
-
-
-安装及启动安装1 安装node软件2 安装express生成模板1npm install -g express-generator
-3 安装expr">
+array.lenght:数组长度
+array">
 <meta property="og:type" content="article">
-<meta property="og:title" content="nodejs学习：1 express的安装与使用">
-<meta property="og:url" content="http://hammercui.github.io/post/nodejs学习：1-express的安装与使用/index.html">
+<meta property="og:title" content="ES6学习：常用操作函数">
+<meta property="og:url" content="http://hammercui.github.io/post/ES6学习：常用操作函数/index.html">
 <meta property="og:site_name" content="hammer崔的程序世界">
-<meta property="og:description" content="nodejs简介
-nodejs能提供静态文件服务
+<meta property="og:description" content="参考文章
+ReactNative中文社区的React/React Native 的ES5 ES6写法对照表
+拥抱ES6之数组扩展
+阮一峰的es6入门
 
-网页
-纯文本
-图片
-前端JavaScript代码
-css样式表文件
-媒体文件
-字体文件
+语法Array数组，常用map进行遍历
+新建
+var array = new Array();
+或者
+var array = [&amp;quot;1111&amp;quot;,&amp;quot;22222&amp;quot;]
 
-
-nodejs能提供http服务
-
-api接口
-中间件
-
-
-nodejs能提供tcp(socket)服务
-
-
-安装及启动安装1 安装node软件2 安装express生成模板1npm install -g express-generator
-3 安装expr">
-<meta property="og:updated_time" content="2016-04-09T08:15:52.000Z">
+array.lenght:数组长度
+array">
+<meta property="og:updated_time" content="2016-11-28T02:28:09.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="nodejs学习：1 express的安装与使用">
-<meta name="twitter:description" content="nodejs简介
-nodejs能提供静态文件服务
+<meta name="twitter:title" content="ES6学习：常用操作函数">
+<meta name="twitter:description" content="参考文章
+ReactNative中文社区的React/React Native 的ES5 ES6写法对照表
+拥抱ES6之数组扩展
+阮一峰的es6入门
 
-网页
-纯文本
-图片
-前端JavaScript代码
-css样式表文件
-媒体文件
-字体文件
+语法Array数组，常用map进行遍历
+新建
+var array = new Array();
+或者
+var array = [&amp;quot;1111&amp;quot;,&amp;quot;22222&amp;quot;]
 
-
-nodejs能提供http服务
-
-api接口
-中间件
-
-
-nodejs能提供tcp(socket)服务
-
-
-安装及启动安装1 安装node软件2 安装express生成模板1npm install -g express-generator
-3 安装expr">
+array.lenght:数组长度
+array">
 
     
     <link rel="alternative" href="/atom.xml" title="hammer崔的程序世界" type="application/atom+xml">
@@ -142,14 +112,14 @@ nodejs能提供tcp(socket)服务
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/post/nodejs学习：1-express的安装与使用/" title="nodejs学习：1 express的安装与使用" itemprop="url">nodejs学习：1 express的安装与使用</a>
+      <a href="/post/ES6学习：常用操作函数/" title="ES6学习：常用操作函数" itemprop="url">ES6学习：常用操作函数</a>
   </h1>
   <p class="article-author">By
        
 		<a href="/about" title="hammercui" target="_blank" itemprop="author">hammercui</a>
 		
   <p class="article-time">
-    <time datetime="2016-04-09T07:07:11.000Z" itemprop="datePublished"> Published 2016-04-09</time>
+    <time datetime="2016-03-24T07:39:25.000Z" itemprop="datePublished"> Published 2016-03-24</time>
     
   </p>
 </header>
@@ -158,60 +128,60 @@ nodejs能提供tcp(socket)服务
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#nodejs简介"><span class="toc-number">1.</span> <span class="toc-text">nodejs简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装及启动"><span class="toc-number">2.</span> <span class="toc-text">安装及启动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动服务"><span class="toc-number">2.2.</span> <span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体使用"><span class="toc-number">3.</span> <span class="toc-text">具体使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用express的静态文件服务"><span class="toc-number">3.1.</span> <span class="toc-text">使用express的静态文件服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用express的路由"><span class="toc-number">3.2.</span> <span class="toc-text">使用express的路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#带参数路由"><span class="toc-number">3.2.1.</span> <span class="toc-text">带参数路由</span></a></li></ol></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">1.</span> <span class="toc-text">参考文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法"><span class="toc-number">2.</span> <span class="toc-text">语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Array"><span class="toc-number">2.1.</span> <span class="toc-text">Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">2.2.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sync"><span class="toc-number">2.3.</span> <span class="toc-text">Sync</span></a></li></ol></li></ol>
 		
 		</div>
 		
-		<h1 id="nodejs简介"><a href="#nodejs简介" class="headerlink" title="nodejs简介"></a>nodejs简介</h1><ul>
-<li><p>nodejs能提供静态文件服务</p>
+		<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
+<li>ReactNative中文社区的<a href="http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8" target="_blank" rel="external">React/React Native 的ES5 ES6写法对照表</a></li>
+<li><a href="https://segmentfault.com/a/1190000003857670?_ea=396445" target="_blank" rel="external">拥抱ES6之数组扩展</a></li>
+<li><a href="http://es6.ruanyifeng.com/" target="_blank" rel="external">阮一峰的es6入门</a></li>
+</ul>
+<h1 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h1><h2 id="Array"><a href="#Array" class="headerlink" title="Array"></a>Array</h2><p>数组，常用map进行遍历</p>
+<p>新建</p>
+<p><code>var array = new Array();</code></p>
+<p>或者</p>
+<p><code>var array = [&quot;1111&quot;,&quot;22222&quot;]</code></p>
 <ul>
-<li>网页</li>
-<li>纯文本</li>
-<li>图片</li>
-<li>前端JavaScript代码</li>
-<li>css样式表文件</li>
-<li>媒体文件</li>
-<li>字体文件</li>
+<li><code>array.lenght</code>:数组长度</li>
+<li><code>array.isArray</code>:判断一个对象是否是数组</li>
 </ul>
-</li>
-<li><p>nodejs能提供http服务</p>
-<ul>
-<li>api接口</li>
-<li>中间件</li>
-</ul>
-</li>
-<li><p>nodejs能提供tcp(socket)服务</p>
-</li>
-</ul>
-<h1 id="安装及启动"><a href="#安装及启动" class="headerlink" title="安装及启动"></a>安装及启动</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1 安装node软件<br>2 安装express生成模板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express-generator</span><br></pre></td></tr></table></figure></p>
-<p>3 安装express<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express</span><br></pre></td></tr></table></figure></p>
-<p>4 安装nodemon调试模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nodemon</span><br></pre></td></tr></table></figure></p>
-<p>5 使用模板创建nodejs工程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express [工程名]</span><br></pre></td></tr></table></figure></p>
-<p>然后执行<code>npm install</code>安装第三方模块。</p>
-<p>创建工程后出现如下目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+bin</span><br><span class="line"> -www  //执行脚本</span><br><span class="line">+public </span><br><span class="line">+routes </span><br><span class="line">+view     //静态页面</span><br><span class="line">-app.js   //创建express实例</span><br><span class="line">-package.json</span><br></pre></td></tr></table></figure></p>
-<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
-<h1 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h1><h2 id="使用express的静态文件服务"><a href="#使用express的静态文件服务" class="headerlink" title="使用express的静态文件服务"></a>使用express的静态文件服务</h2><p>使用express的静态服务的中间件，直接使用<br>use方法使用中间件<br>public目录当做我们的静态文件目录<br>/直接使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(express.static(path.join(__dirname, &apos;public&apos;)));</span><br></pre></td></tr></table></figure>
-<h2 id="使用express的路由"><a href="#使用express的路由" class="headerlink" title="使用express的路由"></a>使用express的路由</h2><ul>
-<li>将不同的请求。分配给响应的函数</li>
-<li>区分：路径，请求方法</li>
-</ul>
-<p>三种方法：</p>
-<ul>
-<li>path方式 直接get</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.get(&apos;/login&apos;,function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Router方式</li>
-</ul>
-<p>比如一组路由，都是post下面的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var Router = express.Router();</span><br><span class="line">Router.get(&apos;/add&apos;,function(req,res)&#123;</span><br><span class="line">&#125;)</span><br><span class="line">Router.get(&apos;/list&apos;,function(req,res)&#123;</span><br><span class="line">&#125;)</span><br><span class="line">app.user(&apos;post&apos;,Router);</span><br></pre></td></tr></table></figure>
-<ul>
-<li>route方式</li>
-</ul>
-<p>针对一个路由，编写不同方法的不同处理。<br>不如针对以上路由的get请求方法</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.route(&apos;article&apos;).get(function(req,response)</span><br><span class="line">&#123;</span><br><span class="line">&#125;).post(function(req,response))</span><br></pre></td></tr></table></figure>
-<h3 id="带参数路由"><a href="#带参数路由" class="headerlink" title="带参数路由"></a>带参数路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.param(&apos;newsId&apos;,function(req,res,next,newsId)&#123;</span><br><span class="line">req.nresId = newsId;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.get(&apos;/news/:newsId,function(req,response)&#123;</span><br><span class="line">req.end(&apos;newsId:&apos;+req.newsId)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><strong><code>Array.from</code></strong> </p>
+<p>这个方法作用是将一个 ArrayLike 对象或者 Iterable 对象转换成一个 Array ，本文只讨论 ArrayLike 对象相关内容。<br>比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//把一个字符串转换成数组对象</span><br><span class="line">var Array.from(“qwert”)</span><br><span class="line">//[&quot;q&quot;,&quot;w&quot;,&quot;e&quot;,&quot;r&quot;,&quot;t&quot;]</span><br></pre></td></tr></table></figure>
+<p><strong><code>Array.map</code></strong></p>
+<p>用来将数组转换为另外一个数组</p>
+<p>基本用法跟forEach方法类似：</p>
+<p><code>array.map(callback,[ thisObject]);</code></p>
+<p>callback的参数也类似：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[].map(function(value, index, array) &#123;</span><br><span class="line">    // ...</span><br><span class="line">    return Object</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>但是map更多的是用来返回对象<br><code>callback</code>需要有return值,return值就相当于foreach运算之后的返回值。所以常用于循环遍历数组，返回<view>对象，也就是react的render方法里，比如以下代码用法：</view></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var array = [&quot;我&quot;,&quot;你&quot;]</span><br><span class="line">render()&#123;</span><br><span class="line">return(</span><br><span class="line">	array.map((str,index)==&gt;&#123;</span><br><span class="line">		&lt;View&gt;&#123;str&#125;&lt;/View&gt;</span><br><span class="line">	&#125;)</span><br><span class="line">)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong><code>Array.concat()</code></strong></p>
+<p>方法用于连接两个或多个数组。该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = Array.of(1, 2, 3);</span><br><span class="line">var resArr = arr.concat(4);</span><br><span class="line">arr // [ 1, 2, 3 ]</span><br><span class="line">resArr // [ 1, 2, 3, 4 ]</span><br></pre></td></tr></table></figure>
+<p><strong><code>Array.join()</code></strong></p>
+<p>方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = Array.of(1, 2, 3);</span><br><span class="line">var resStr = arr.join(&quot;,&quot;);</span><br><span class="line">arr // [ 1, 2, 3 ]</span><br><span class="line">resStr // 1,2,3</span><br></pre></td></tr></table></figure>
+<p><strong>Array.pop()</strong></p>
+<p>方法用于删除并返回数组的最后一个元素。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = Array.of(1, 2, 3);</span><br><span class="line">var resEle = arr.pop();</span><br><span class="line">arr // [ 1, 2 ]</span><br><span class="line">resEle // 3</span><br></pre></td></tr></table></figure>
+<p><strong><code>Array.push()</code></strong></p>
+<p>方法可向数组的末尾添加一个或多个元素，并返回新的长度。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var arr = Array.of(1, 2, 3);</span><br><span class="line">var resLen = arr.push(&apos;a&apos;);</span><br><span class="line">arr // [ 1, 2, 3, &apos;a&apos; ]</span><br><span class="line">resLen // 4</span><br></pre></td></tr></table></figure>
+<p><strong><code>Array.sort()</code></strong></p>
+<p>方法用于对数组的元素进行排序。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//按照整数数值比较</span><br><span class="line">var arr = Array.of(3, 11, 8);</span><br><span class="line">var res = arr.sort((a, b) =&gt; a - b);</span><br><span class="line">arr // [ 11, 3, 8 ]</span><br><span class="line">res // [ 3, 8, 11 ]</span><br></pre></td></tr></table></figure>
+<p><strong><code>Array.fliter()</code></strong></p>
+<p>使用指定的函数测试所有元素，并返回一个包含所有测试通过的元素的数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var new_arrary = arr.filter(callback[, thisArg])</span><br></pre></td></tr></table></figure>
+<p>callback函数：<br>用来测试数组每个元素的函数，参数是（element，index，array），返回true表示用过测试，保留，false表示不保留</p>
+<p>thisArg：<br>可选。执行 callback 时的用于 this 的值。</p>
+<h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>Promise</p>
+<p>1 简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果.</p>
+<p>2 语法上，promise是一个对象，可以获取异步操作的消息。有三种状态：Pending(进行总)，Resolved（已完成），Rejected（已失败）.<br>3 Promise构造函数接受一个函数作为参数。该函数的两个参数是resolve方法和reject方法。</p>
+<h2 id="Sync"><a href="#Sync" class="headerlink" title="Sync"></a>Sync</h2><p>es7新增特性，结合或者Promise使用，表达一个异步操作，内部函数体内。<code>awite function()</code>操作为要等待的操作，类似于c#的yield，之后的awite操作执行完毕，后面的代码段才执行</p>
+<p>## </p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -219,13 +189,13 @@ nodejs能提供tcp(socket)服务
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/categories/nodejs/">nodejs</a>
+  <a class="article-category-link" href="/categories/ES6/">ES6</a>
 </div>
 
 
   <div class="article-tags">
   
-  <span></span> <a href="/tags/nodejs/">nodejs</a>
+  <span></span> <a href="/tags/ES6/">ES6</a><a href="/tags/React-Native/">React Native</a>
   </div>
 
 </div>
@@ -234,7 +204,7 @@ nodejs能提供tcp(socket)服务
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="http://hammercui.github.io/post/nodejs学习：1-express的安装与使用/" data-title="nodejs学习：1 express的安装与使用 | hammer崔的程序世界" data-tsina="null" class="share clearfix">
+	  <div data-url="http://hammercui.github.io/post/ES6学习：常用操作函数/" data-title="ES6学习：常用操作函数 | hammer崔的程序世界" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -248,18 +218,18 @@ nodejs能提供tcp(socket)服务
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/post/nodejs学习：2-redis的安装与使用/" title="nodejs学习：2 redis的安装与使用">
+ <a href="/post/react-native基础：redux学习/" title="react-native基础：redux学习">
   <strong>上一篇：</strong><br/>
   <span>
-  nodejs学习：2 redis的安装与使用</span>
+  react-native基础：redux学习</span>
 </a>
 </div>
 
 
 <div class="next">
-<a href="/post/android基础：常见问题集锦/"  title="android基础：常见问题集锦">
+<a href="/post/react-native-android实战：listView构建信息流/"  title="react-native android实战：5 ListView构建信息流">
  <strong>下一篇：</strong><br/> 
- <span>android基础：常见问题集锦
+ <span>react-native android实战：5 ListView构建信息流
 </span>
 </a>
 </div>
@@ -268,7 +238,7 @@ nodejs能提供tcp(socket)服务
 
 	
 <section id="comments" class="comment">
-	<div class="ds-thread" data-thread-key="post/nodejs学习：1-express的安装与使用/" data-title="nodejs学习：1 express的安装与使用" data-url="http://hammercui.github.io/post/nodejs学习：1-express的安装与使用/"></div>
+	<div class="ds-thread" data-thread-key="post/ES6学习：常用操作函数/" data-title="ES6学习：常用操作函数" data-url="http://hammercui.github.io/post/ES6学习：常用操作函数/"></div>
 </section>
 
 
@@ -278,7 +248,7 @@ nodejs能提供tcp(socket)服务
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#nodejs简介"><span class="toc-number">1.</span> <span class="toc-text">nodejs简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#安装及启动"><span class="toc-number">2.</span> <span class="toc-text">安装及启动</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动服务"><span class="toc-number">2.2.</span> <span class="toc-text">启动服务</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#具体使用"><span class="toc-number">3.</span> <span class="toc-text">具体使用</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#使用express的静态文件服务"><span class="toc-number">3.1.</span> <span class="toc-text">使用express的静态文件服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用express的路由"><span class="toc-number">3.2.</span> <span class="toc-text">使用express的路由</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#带参数路由"><span class="toc-number">3.2.1.</span> <span class="toc-text">带参数路由</span></a></li></ol></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#参考文章"><span class="toc-number">1.</span> <span class="toc-text">参考文章</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#语法"><span class="toc-number">2.</span> <span class="toc-text">语法</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Array"><span class="toc-number">2.1.</span> <span class="toc-text">Array</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">2.2.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Sync"><span class="toc-number">2.3.</span> <span class="toc-text">Sync</span></a></li></ol></li></ol>
  
   </div>
 
