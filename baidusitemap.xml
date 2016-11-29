@@ -668,12 +668,12 @@
 
     
   <url>
-    <loc>http://hammercui.github.io/post/react%E5%9F%BA%E7%A1%80%EF%BC%9Areact-webpack%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA/</loc>
+    <loc>http://hammercui.github.io/post/react%E5%9F%BA%E7%A1%80%EF%BC%9Areact-webpack%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA2%EF%BC%9A%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2016-05-04T10:34:00.000Z</lastmod>
     <data>
         <display>
-        <title>react基础：react0.14.7+webpack快速搭建web项目</title>
-        <pubTime>2016-03-26T10:26:56.000Z</pubTime>
+        <title>react基础：react0.14.7+webpack开发生产环境的区别</title>
+        <pubTime>2016-04-04T10:31:54.000Z</pubTime>
         
         <tag>react</tag>
          
@@ -688,12 +688,12 @@
 
     
   <url>
-    <loc>http://hammercui.github.io/post/react%E5%9F%BA%E7%A1%80%EF%BC%9Areact-webpack%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA2%EF%BC%9A%E5%BC%80%E5%8F%91%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/</loc>
+    <loc>http://hammercui.github.io/post/react%E5%9F%BA%E7%A1%80%EF%BC%9Areact-webpack%E5%BF%AB%E9%80%9F%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2016-05-04T10:34:00.000Z</lastmod>
     <data>
         <display>
-        <title>react基础：react0.14.7+webpack开发生产环境的区别</title>
-        <pubTime>2016-04-04T10:31:54.000Z</pubTime>
+        <title>react基础：react0.14.7+webpack快速搭建web项目</title>
+        <pubTime>2016-03-26T10:26:56.000Z</pubTime>
         
         <tag>react</tag>
          
@@ -1178,12 +1178,36 @@
 
     
   <url>
-    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A03%EF%BC%9A%20%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%8C%E8%BF%87%E6%BB%A4%E5%99%A8/</loc>
+    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A06%EF%BC%9A%E6%8C%87%E4%BB%A4/</loc>
     <lastmod>2016-03-03T01:48:02.000Z</lastmod>
     <data>
         <display>
-        <title>angularJs学习3:控制器，过滤器</title>
-        <pubTime>2016-03-02T14:39:09.000Z</pubTime>
+        <title>angularJs学习6：指令</title>
+        <pubTime>2016-03-02T14:43:38.000Z</pubTime>
+        
+        <tag>angulasJs</tag>
+         
+        <tag>html5</tag>
+         
+        <tag>ionic</tag>
+         
+         
+           
+             
+              <breadCrumb title="angulasJs" url="http://hammercui.github.io/categories/angulasJs/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A05%EF%BC%9A%20%E6%93%8D%E4%BD%9Chtml%E7%9A%84Dom/</loc>
+    <lastmod>2016-03-03T01:48:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>angularJs学习5： 操作html的Dom</title>
+        <pubTime>2016-03-02T14:42:33.000Z</pubTime>
         
         <tag>angulasJs</tag>
          
@@ -1226,60 +1250,36 @@
 
     
   <url>
+    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A03%EF%BC%9A%20%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%8C%E8%BF%87%E6%BB%A4%E5%99%A8/</loc>
+    <lastmod>2016-03-03T01:48:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>angularJs学习3:控制器，过滤器</title>
+        <pubTime>2016-03-02T14:39:09.000Z</pubTime>
+        
+        <tag>angulasJs</tag>
+         
+        <tag>html5</tag>
+         
+        <tag>ionic</tag>
+         
+         
+           
+             
+              <breadCrumb title="angulasJs" url="http://hammercui.github.io/categories/angulasJs/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A02%EF%BC%9Ascope%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
     <lastmod>2016-03-03T01:48:02.000Z</lastmod>
     <data>
         <display>
         <title>angularJs学习2：scope作用域</title>
         <pubTime>2016-03-02T14:35:49.000Z</pubTime>
-        
-        <tag>angulasJs</tag>
-         
-        <tag>html5</tag>
-         
-        <tag>ionic</tag>
-         
-         
-           
-             
-              <breadCrumb title="angulasJs" url="http://hammercui.github.io/categories/angulasJs/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A06%EF%BC%9A%E6%8C%87%E4%BB%A4/</loc>
-    <lastmod>2016-03-03T01:48:02.000Z</lastmod>
-    <data>
-        <display>
-        <title>angularJs学习6：指令</title>
-        <pubTime>2016-03-02T14:43:38.000Z</pubTime>
-        
-        <tag>angulasJs</tag>
-         
-        <tag>html5</tag>
-         
-        <tag>ionic</tag>
-         
-         
-           
-             
-              <breadCrumb title="angulasJs" url="http://hammercui.github.io/categories/angulasJs/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A05%EF%BC%9A%20%E6%93%8D%E4%BD%9Chtml%E7%9A%84Dom/</loc>
-    <lastmod>2016-03-03T01:48:02.000Z</lastmod>
-    <data>
-        <display>
-        <title>angularJs学习5： 操作html的Dom</title>
-        <pubTime>2016-03-02T14:42:33.000Z</pubTime>
         
         <tag>angulasJs</tag>
          
