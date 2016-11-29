@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hammercui.github.io/"/>
-  <updated>2016-11-29T01:16:30.000Z</updated>
+  <updated>2016-11-29T13:02:19.000Z</updated>
   <id>http://hammercui.github.io/</id>
   
   <author>
@@ -16,38 +16,192 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>react-native基础：redux学习</title>
+    <link href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://hammercui.github.io/post/react-native基础：redux学习/</id>
+    <published>2016-11-29T00:55:48.000Z</published>
+    <updated>2016-11-29T13:02:19.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;参考文献&quot;&gt;&lt;a href=&quot;#参考文献&quot; class=&quot;headerlink&quot; title=&quot;参考文献&quot;&gt;&lt;/a&gt;参考文献&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://camsong.github.io/redux-in-chinese/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redux 中文文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://richard-cao.github.io/2016/01/12/React-Native-With-Redux/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;React-Native With Redux&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://div.io/topic/1309&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入到源码：解读 redux 的设计思路与用法&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://react-china.org/t/redux/2687&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这段时间研究了下Redux，写写自己对它的感觉。&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/kenberkeley/redux-simple-tutorial#-需求-2在上述需求的基础上记录用户的操作时间&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redux 简明教程&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;预备知识&quot;&gt;&lt;a href=&quot;#预备知识&quot; class=&quot;headerlink&quot; title=&quot;预备知识&quot;&gt;&lt;/a&gt;预备知识&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;本篇blog主要涉及实际开发过程中，一些知识点及注意事项，不会对很多概念做过多讲解，建议大家先看下&lt;a href=&quot;#参考文献&quot;&gt;参考文献&lt;/a&gt;中的优秀文章。&lt;br&gt;首先是&lt;a href=&quot;https://camsong.github.io/redux-in-chinese/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redux 中文文档&lt;/a&gt;，然后是&lt;a href=&quot;http://div.io/topic/1309&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入到源码：解读 redux 的设计思路与用法&lt;/a&gt;,以及&lt;a href=&quot;http://richard-cao.github.io/2016/01/12/React-Native-With-Redux/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;React-Native With Redux&lt;/a&gt;,最后如果对redux的基础知识有了初步了解，可以看下这个讨论帖&lt;a href=&quot;http://react-china.org/t/redux/2687&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这段时间研究了下Redux，写写自己对它的感觉。&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;Flex模式与Redux&quot;&gt;&lt;a href=&quot;#Flex模式与Redux&quot; class=&quot;headerlink&quot; title=&quot;Flex模式与Redux&quot;&gt;&lt;/a&gt;Flex模式与Redux&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Flex: react遵循了单向数据流Flex的设计。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Redux: Redux是javascript状态容器，提供可预测化的状态管理，可以构建一致化的应用，除了和React一起用外，还支持其他界面库，体积小（只有2kb）而且没有任何依赖。&lt;br&gt;Redux由Flux演变而来，但是避开了Flux的复杂性，上手快，使用简单，而且社区活跃，是目前主流的Flux数据流框架（ps：上手一点都不快，关键是设计思想的转变，对于我这个c程序刚开始完全看不懂）。学习Redux可以参考&lt;a href=&quot;https://camsong.github.io/redux-in-chinese/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redux中文文档&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;Redux的三个核心action，store，reducers&quot;&gt;&lt;a href=&quot;#Redux的三个核心action，store，reducers&quot; class=&quot;headerlink&quot; title=&quot;Redux的三个核心action，store，reducers&quot;&gt;&lt;/a&gt;Redux的三个核心action，store，reducers&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;store: 应用中所有的&lt;code&gt;state&lt;/code&gt;都以一个对象树的形式储存在一个单一的store中，&lt;code&gt;state&lt;/code&gt;就是每个&lt;code&gt;component&lt;/code&gt;里都存在的状态集合，你也可以理解为java类的属性和方法。&lt;/li&gt;
+&lt;li&gt;action: 惟一改变 state 的办法是触发 action，一个描述发生什么的对象。它是 store 数据的唯一来源。&lt;/li&gt;
+&lt;li&gt;reducers:为了描述 action 如何改变 state 树，你需要编写 reducers。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;action&quot;&gt;&lt;a href=&quot;#action&quot; class=&quot;headerlink&quot; title=&quot;action&quot;&gt;&lt;/a&gt;action&lt;/h3&gt;&lt;p&gt;action本质是是一个包含&lt;code&gt;type&lt;/code&gt;属性的普通对象，type是它的key也是识别码。改变state必须&lt;code&gt;dispatch&lt;/code&gt;一个&lt;code&gt;action&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;高阶用法包括&lt;code&gt;selector绑定&lt;/code&gt;，这是为了解决全局变化而对store的state做了最小化拆分&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;存储最小的可能变化state&lt;/li&gt;
+&lt;li&gt;提高效率，除非一个参数发生改变，否则不会重新计算&lt;/li&gt;
+&lt;li&gt;selector是可组合的，一个selector可以导出给其他&lt;code&gt;selector&lt;/code&gt;使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;reducer&quot;&gt;&lt;a href=&quot;#reducer&quot; class=&quot;headerlink&quot; title=&quot;reducer&quot;&gt;&lt;/a&gt;reducer&lt;/h3&gt;&lt;p&gt;指明如何更新&lt;code&gt;state&lt;/code&gt;，&lt;code&gt;reducer&lt;/code&gt; 本质是一个一&lt;code&gt;function&lt;/code&gt;，接收旧&lt;code&gt;state&lt;/code&gt; 和 &lt;code&gt;action&lt;/code&gt;，返回新的 &lt;code&gt;state&lt;/code&gt;，我们叫&lt;code&gt;nextState&lt;/code&gt;，也就是说每次返回的都是新的state,而不是旧state的副本。reducer返回啥，state就被替换成啥。&lt;/p&gt;
+&lt;p&gt;思考：这样就能实现数据的回滚了，比如执行redo,undo操作了。&lt;/p&gt;
+&lt;h3 id=&quot;store&quot;&gt;&lt;a href=&quot;#store&quot; class=&quot;headerlink&quot; title=&quot;store&quot;&gt;&lt;/a&gt;store&lt;/h3&gt;&lt;p&gt;Store 就是把它们联系到一起的对象。Store 有以下职责：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;维持应用的 state；&lt;/li&gt;
+&lt;li&gt;提供 getState() 方法获取 state；&lt;/li&gt;
+&lt;li&gt;提供 dispatch(action) 方法更新 state；&lt;/li&gt;
+&lt;li&gt;通过 subscribe(listener) 注册监听器。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;一个Redux应用只能有一个单一的store&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;⊙-Redux-与传统后端-MVC-的对照&quot;&gt;&lt;a href=&quot;#⊙-Redux-与传统后端-MVC-的对照&quot; class=&quot;headerlink&quot; title=&quot;⊙ Redux 与传统后端 MVC 的对照&quot;&gt;&lt;/a&gt;⊙ Redux 与传统后端 MVC 的对照&lt;/h3&gt;&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Redux&lt;/th&gt;
+&lt;th&gt;传统后端 MVC&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;store&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;数据库实例&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;state&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;数据库中存储的数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;dispatch(action)&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;用户发起请求&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;action: { type, payload }&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;type&lt;/code&gt; 表示请求的 URL，&lt;code&gt;payload&lt;/code&gt; 表示请求的数据&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;reducer&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;路由 + 控制器（handler）&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;reducer&lt;/code&gt; 中的 &lt;code&gt;switch-case&lt;/code&gt; 分支&lt;/td&gt;
+&lt;td&gt;路由，根据 &lt;code&gt;action.type&lt;/code&gt; 路由到对应的控制器&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;reducer&lt;/code&gt; 内部对 &lt;code&gt;state&lt;/code&gt; 的处理&lt;/td&gt;
+&lt;td&gt;控制器对数据库进行增删改操作&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;code&gt;reducer&lt;/code&gt; 返回 &lt;code&gt;nextState&lt;/code&gt;&lt;/td&gt;
+&lt;td&gt;将修改后的记录写回数据库&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h1 id=&quot;React-Redux-实战&quot;&gt;&lt;a href=&quot;#React-Redux-实战&quot; class=&quot;headerlink&quot; title=&quot;React-Redux 实战&quot;&gt;&lt;/a&gt;React-Redux 实战&lt;/h1&gt;&lt;h2 id=&quot;安装需要用到的库&quot;&gt;&lt;a href=&quot;#安装需要用到的库&quot; class=&quot;headerlink&quot; title=&quot;安装需要用到的库&quot;&gt;&lt;/a&gt;安装需要用到的库&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install --save redux&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install --save react-redux&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install --save redux-devtools&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install --save redux-thunk&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install --save redux-logger&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;react绑定库跟开发者工具&lt;br&gt;&lt;a href=&quot;https://github.com/reactjs/redux&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/reactjs/react-redux&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-redux&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/gaearon/redux-devtools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux-devtools&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;异步action构造器&lt;a href=&quot;https://github.com/gaearon/redux-thunk/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux-thunk&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;日志工具&lt;br&gt;&lt;a href=&quot;https://github.com/fcomb/redux-logger&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux-logger&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;使用&quot;&gt;&lt;a href=&quot;#使用&quot; class=&quot;headerlink&quot; title=&quot;使用&quot;&gt;&lt;/a&gt;使用&lt;/h2&gt;&lt;h3 id=&quot;基础用法-同步的action&quot;&gt;&lt;a href=&quot;#基础用法-同步的action&quot; class=&quot;headerlink&quot; title=&quot;基础用法 同步的action&quot;&gt;&lt;/a&gt;基础用法 同步的action&lt;/h3&gt;&lt;p&gt;引入支持&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import &amp;#123; createStore &amp;#125; from &amp;apos;redux&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import &amp;#123; Provider, connect &amp;#125; from &amp;apos;react-redux&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;将根组件包装进&lt;code&gt;&amp;lt;Provider&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//reducer函数，所有的&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function reducer(state=&amp;#123;&amp;#125;,action)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;let store = createStore(todoApp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;render(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;Provider store=&amp;#123;store&amp;#125;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;App /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;/Provider&amp;gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  document.getElementById(&amp;apos;root&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;通过 &lt;code&gt;react-redux&lt;/code&gt; 提供的 &lt;code&gt;connect()&lt;/code&gt; 方法将包装好的组件连接到&lt;code&gt;Redux&lt;/code&gt;。尽量只做一个顶层的组件，或者 &lt;code&gt;route&lt;/code&gt; 处理&lt;/p&gt;
+&lt;p&gt;任何一个从 &lt;code&gt;connect()&lt;/code&gt; 包装好的组件都可以得到一个 &lt;code&gt;dispatch&lt;/code&gt; 方法作为组件的 &lt;code&gt;props&lt;/code&gt;，以及得到全局 &lt;code&gt;state&lt;/code&gt; 中所需的任何内容。 &lt;code&gt;connect()&lt;/code&gt; 的唯一参数是 &lt;code&gt;selector&lt;/code&gt;。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;const PageContainer = connect()(PageContainer);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;let store = createStore(todoApp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;render(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;Provider store=&amp;#123;store&amp;#125;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;App /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;/Provider&amp;gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  document.getElementById(&amp;apos;root&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;高价用法-异步action&quot;&gt;&lt;a href=&quot;#高价用法-异步action&quot; class=&quot;headerlink&quot; title=&quot;高价用法 异步action&quot;&gt;&lt;/a&gt;高价用法 异步action&lt;/h3&gt;&lt;p&gt;如何把action creator跟网络请求结合起来呢。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;redux-thunk&lt;/a&gt;：一个搭建异步action的构造器。&lt;br&gt;其作用就是把一些比较复杂的动作(例如这里用到的异步操作)封装到一个action中去。&lt;/p&gt;
+&lt;p&gt;通过使用指定的 middleware，action creator 除了返回 action 对象外还可以返回函数。这时，这个 action creator 就成为了 thunk。&lt;/p&gt;
+&lt;p&gt;当 action creator 返回函数时，这个函数会被 Redux Thunk middleware 执行。这个函数并不需要保持纯净；它还可以带有副作用，包括执行异步 API 请求。这个函数还可以 dispatch action，就像 dispatch 前面定义的同步 action 一样。&lt;/p&gt;
+&lt;p&gt;注意&lt;code&gt;dispatch&lt;/code&gt;定义：通过 &lt;code&gt;store.dispatch()&lt;/code&gt; 将 &lt;code&gt;action&lt;/code&gt; 传到 &lt;code&gt;store&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;使用 ES6 计算属性语法，使用 &lt;code&gt;Object.assign()&lt;/code&gt; 来简洁高效地更新 &lt;code&gt;state&lt;/code&gt;的值&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;return Object.assign(&amp;#123;&amp;#125;, state, newState);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;注意事项&quot;&gt;&lt;a href=&quot;#注意事项&quot; class=&quot;headerlink&quot; title=&quot;注意事项&quot;&gt;&lt;/a&gt;注意事项&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;fetch&lt;br&gt;当我们在react-native版本可以直接使用这个强大的网络操作API，当时在react-web中大多数浏览器不支持，建议使用[isomorphic-fetch](&lt;a href=&quot;https://github.com/matthew-andrews/isomorphic-fetch.所以我考虑还是在web项目使用jQuery，最稳妥。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/matthew-andrews/isomorphic-fetch.所以我考虑还是在web项目使用jQuery，最稳妥。&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 每次使用 `fetch` 前都这样调用一下&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import fetch from &amp;apos;isomorphic-fetch&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;React-Redux容器组件与展示组件分离的开发思想&quot;&gt;&lt;a href=&quot;#React-Redux容器组件与展示组件分离的开发思想&quot; class=&quot;headerlink&quot; title=&quot;React-Redux容器组件与展示组件分离的开发思想&quot;&gt;&lt;/a&gt;React-Redux&lt;a href=&quot;https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;容器组件与展示组件分离&lt;/a&gt;的开发思想&lt;/h2&gt;&lt;p&gt;这个在&lt;a href=&quot;https://camsong.github.io/redux-in-chinese/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redux 中文文档&lt;/a&gt;中有详细跟直观的讲解。&lt;br&gt;通俗来讲就是，一个Redux应用切成两部分来管理数据流&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Container:容器组件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-在这里使用redux，控制分发需要向下传递的state,action创建函数
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;View：展示组件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-我们要展示数据的的view，以及触发action的操作
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;参考文献&quot;&gt;&lt;a href=&quot;#参考文献&quot; class=&quot;headerlink&quot; title=&quot;参考文献&quot;&gt;&lt;/a&gt;参考文献&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://camsong.github.io/redux-in-chinese/&quot; target=&quot;
+    
+    </summary>
+    
+      <category term="react-native basis" scheme="http://hammercui.github.io/categories/react-native-basis/"/>
+    
+    
+      <category term="react-native" scheme="http://hammercui.github.io/tags/react-native/"/>
+    
+  </entry>
+  
+  <entry>
     <title>react-native学习路线</title>
     <link href="http://hammercui.github.io/post/react-native%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
     <id>http://hammercui.github.io/post/react-native学习路线/</id>
     <published>2016-11-26T03:34:48.000Z</published>
-    <updated>2016-11-29T01:16:30.000Z</updated>
+    <updated>2016-11-29T13:02:18.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;react-native是Facebook推出的跨平台开发技术，使用JavaScript代码，目前是es6。主要涉及知识点flexbox（弹性工具盒）布局，flux来管理数据流动&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;h1 id=&quot;初级阶段&quot;&gt;&lt;a href=&quot;#初级阶段&quot; class=&quot;headerlink&quot; title=&quot;初级阶段&quot;&gt;&lt;/a&gt;初级阶段&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;es6语法&lt;ul&gt;
+&lt;li&gt;promis&lt;/li&gt;
+&lt;li&gt;async,waite&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://lodashjs.com/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;lodash&lt;/a&gt;:是具有一致接口，模块化，高性能等特性的JavaScript工具库。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
 &lt;li&gt;npm安装，react-native安装，环境搭建&lt;/li&gt;
 &lt;li&gt;了解Props，State&lt;/li&gt;
 &lt;li&gt;学习样式jxs,flexbox&lt;/li&gt;
 &lt;li&gt;学习导航器&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&quot;进阶阶段&quot;&gt;&lt;a href=&quot;#进阶阶段&quot; class=&quot;headerlink&quot; title=&quot;进阶阶段&quot;&gt;&lt;/a&gt;进阶阶段&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;学习&lt;a href=&quot;http://cn.redux.js.org/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux&lt;/a&gt;,了解它与flux的区别，它的使用场景会更多。你也可以看做它是简化了流程的flux。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;学习&lt;a href=&quot;http://cn.redux.js.org/index.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux&lt;/a&gt;,了解它与flux的区别，学会如何使用单项数据流的思想管理状态树。它的使用场景会更多。你也可以看做它是简化了流程的flux。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;action&lt;/li&gt;
 &lt;li&gt;reducer&lt;/li&gt;
 &lt;li&gt;store&lt;/li&gt;
 &lt;li&gt;middleWare&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/gaearon/redux-thunk/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux-thunk&lt;/a&gt;:比较流行的redux异步action中间件，统一了异步和同步action的调用方式，避免在component动刀子。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;学习&lt;a href=&quot;https://github.com/reactjs/reselect&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Reselect&lt;/a&gt;:构建粒度化的数据，Reselect 库可以创建可记忆的(Memoized)、可组合的 selector 函数。Reselect selectors 可以用来高效地计算 Redux store 里的衍生数据。&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;学习&lt;a href=&quot;https://github.com/root-two/react-native-drawer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-native-drawer&lt;/a&gt;:可用于Android ios的抽屉式布局。&lt;br&gt;&lt;img src=&quot;http://7xrf0l.com1.z0.glb.clouddn.com/rn-drawer.gif&quot; alt=&quot;image&quot;&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;li&gt;学习&lt;a href=&quot;https://github.com/root-two/react-native-drawer&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-native-drawer&lt;/a&gt;:可用于Android ios的抽屉式控件。&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;学习&lt;a href=&quot;https://github.com/d-a-n/react-native-modal-picker&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-native-model-picker&lt;/a&gt;：一个比较好用的model picker,兼容Android  iOS&lt;/p&gt;
 &lt;/li&gt;
+&lt;li&gt;&lt;p&gt;学习&lt;a href=&quot;https://github.com/jprichardson/redux-watch&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux-watch&lt;/a&gt;:一个可以检测全局store数据变动的组件，常用于全局的状态变化，比如登录数据：当发现token不一致时，弹出登录界面。比如全局检测错误数据：根据错误id显示不同的提示。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;文件系统&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/    johanneslumpe/react-native-fs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-native-fs&lt;/a&gt;：react-native调用本地    文件系统的库，兼容Android iOS&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/johanneslumpe/react-native-fs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-native-file-transfer&lt;/a&gt;:ios专用的从图片库往服务器上传库&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/PhilippKrone/react-native-fileupload/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-native-fileupload&lt;/a&gt;:兼容iOS Android上传文件的库。支持 1 同时上传多个文件 2 支持file and fields&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h1 id=&quot;解坑阶段&quot;&gt;&lt;a href=&quot;#解坑阶段&quot; class=&quot;headerlink&quot; title=&quot;解坑阶段&quot;&gt;&lt;/a&gt;解坑阶段&lt;/h1&gt;&lt;h2 id=&quot;坑1：ios-模拟器-command-D-程序崩溃&quot;&gt;&lt;a href=&quot;#坑1：ios-模拟器-command-D-程序崩溃&quot; class=&quot;headerlink&quot; title=&quot;坑1：ios 模拟器 command+D 程序崩溃&quot;&gt;&lt;/a&gt;坑1：ios 模拟器 command+D 程序崩溃&lt;/h2&gt;&lt;p&gt;0.3.6才有的问题，ipad丢失了actionsheet布局&lt;br&gt;修复：&lt;br&gt;在React/Modules/RctDevMenu.m第519行新增&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;导航&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/aksonov/react-native-router-flux/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-native-router-flux&lt;/a&gt;：可配合redux的路由导航库，目前最全面，功能最强大。常用于构建整个APP的路由规则。&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/skv-headless/react-native-scrollable-tab-view&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-native-scrollable-tab-view&lt;/a&gt;:带scroll滑动切换的tab view&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/aksonov/react-native-tabs&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-native-tabs&lt;/a&gt;：简版的底部tabbar导航栏，常见于ios应用，兼容Android iOS&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&quot;解坑阶段&quot;&gt;&lt;a href=&quot;#解坑阶段&quot; class=&quot;headerlink&quot; title=&quot;解坑阶段&quot;&gt;&lt;/a&gt;解坑阶段&lt;/h1&gt;&lt;h2 id=&quot;坑1：ipad-模拟器-command-D-程序崩溃&quot;&gt;&lt;a href=&quot;#坑1：ipad-模拟器-command-D-程序崩溃&quot; class=&quot;headerlink&quot; title=&quot;坑1：ipad 模拟器 command+D 程序崩溃&quot;&gt;&lt;/a&gt;坑1：ipad 模拟器 command+D 程序崩溃&lt;/h2&gt;&lt;p&gt;0.3.6才有的问题，ipad丢失了actionsheet布局&lt;br&gt;修复：&lt;br&gt;在React/Modules/RctDevMenu.m第519行新增&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;UIAlertControllerStyle style = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? UIAlertControllerStyleActionSheet : UIAlertControllerStyleAlert;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;然后把519行的&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;_actionSheet = [UIAlertController alertControllerWithTitle:title&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                                     message:@&amp;quot;&amp;quot;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                              preferredStyle:UIAlertControllerStyleActionSheet];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -1124,62 +1278,6 @@
     
     
       <category term="技术杂谈" scheme="http://hammercui.github.io/tags/%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android基础：Activity Window View ViewGroup</title>
-    <link href="http://hammercui.github.io/post/android%E5%9F%BA%E7%A1%80%EF%BC%9AActivity-Window-View-ViewGroup/"/>
-    <id>http://hammercui.github.io/post/android基础：Activity-Window-View-ViewGroup/</id>
-    <published>2016-05-30T02:22:08.000Z</published>
-    <updated>2016-06-06T10:31:16.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;View与ViewGroup的关系&quot;&gt;&lt;a href=&quot;#View与ViewGroup的关系&quot; class=&quot;headerlink&quot; title=&quot;View与ViewGroup的关系&quot;&gt;&lt;/a&gt;View与ViewGroup的关系&lt;/h1&gt;&lt;p&gt;Android系统中的所有UI类都是建立在View和ViewGroup这两个类的基础上的。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;所有View的子类成为”Widget”&lt;/li&gt;
-&lt;li&gt;所有ViewGroup的子类成为”Layout”&lt;/li&gt;
-&lt;li&gt;ViewGroup是一种特殊的View&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;View和ViewGroup之间采用了组合设计模式，可以使得“部分-整体”同等对待。ViewGroup作为布局容器类的最上层，布局容器里面又可以有View和ViewGroup&lt;/p&gt;
-&lt;p&gt;如下图&lt;br&gt;&lt;img src=&quot;http://hi.csdn.net/attachment/201108/21/0_1313928575W9Q0.gif&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;区别&quot;&gt;&lt;a href=&quot;#区别&quot; class=&quot;headerlink&quot; title=&quot;区别&quot;&gt;&lt;/a&gt;区别&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;如果viewgroup有一个子view是invisible状态，viewgroup就是invisible状态&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20140919111037400?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmFua2V0cmVl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20140919110917937?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmFua2V0cmVl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://img.blog.csdn.net/20140919111133997?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmFua2V0cmVl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://img.blog.csdn.net/20140919111154012?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYmFua2V0cmVl/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;Activity与window&quot;&gt;&lt;a href=&quot;#Activity与window&quot; class=&quot;headerlink&quot; title=&quot;Activity与window&quot;&gt;&lt;/a&gt;Activity与window&lt;/h1&gt;&lt;h2 id=&quot;Activity&quot;&gt;&lt;a href=&quot;#Activity&quot; class=&quot;headerlink&quot; title=&quot;Activity&quot;&gt;&lt;/a&gt;Activity&lt;/h2&gt;&lt;p&gt;在Activity中使用LayoutInflater。&lt;br&gt;LayoutInflater是一个用来实例化XML布局文件为View对象的类&lt;br&gt;LayoutInflater.infalte(R.layout.test,null)用来从指定的XML资源中填充一个新的View&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Activity的作用相当于人机交互界面，负责管理跟维护View与手机的操作。比如提供用户处理事件的API，如onKeyEvent, onTouchEvent等。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Window&quot;&gt;&lt;a href=&quot;#Window&quot; class=&quot;headerlink&quot; title=&quot;Window&quot;&gt;&lt;/a&gt;Window&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;window是一个抽象类&lt;/li&gt;
-&lt;li&gt;当我们调用Acitivity的 setContentView方法的时候实际上是调用的Window对象的setContentView方法，Activity中关于界 面的绘制实际上全是交给Window对象来做的&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;Activity与Window关系&quot;&gt;&lt;a href=&quot;#Activity与Window关系&quot; class=&quot;headerlink&quot; title=&quot;Activity与Window关系&quot;&gt;&lt;/a&gt;Activity与Window关系&lt;/h2&gt;&lt;p&gt;一个Activity包含了一个Window，Window才是真正代表一个窗口，也就是说Activity可以没有Window，那就相当于是Service了。在ActivityThread中也有控制Service的相关函数或许正好印证了这一点。&lt;br&gt; Activity和Window的第一次邂逅是在ActivityThread调用Activity的attach()函数时。&lt;/p&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//[window]:通过PolicyManager创建window,实现callback函数,所以,当window接收到&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//外界状态改变时,会调用activity的方法,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;final void attach(Context context, ActivityThread aThread,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Instrumentation instr, IBinder token, int ident,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Application application, Intent intent, ActivityInfo info,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        CharSequence title, Activity parent, String id,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        NonConfigurationInstances lastNonConfigurationInstances,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        Configuration config, String referrer, IVoiceInteractor voiceInteractor) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ....&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mWindow = PolicyManager.makeNewWindow(this);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    //当window接收系统发送给它的IO输入事件时,例如键盘和触摸屏事件,就可以转发给相应的Activity&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mWindow.setCallback(this);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .....&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    //设置本地窗口管理器&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mWindow.setWindowManager(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            (WindowManager)context.getSystemService(Context.WINDOW_SERVICE),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            mToken, mComponent.flattenToString(),&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;            (info.flags &amp;amp; ActivityInfo.FLAG_HARDWARE_ACCELERATED) != 0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .....&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt; 在attach()中，新建一个Window实例作为自己的成员变量，它的类型为PhoneWindow,这是抽象类Window的一个子类。然后设置mWindow的WindowManager。&lt;/p&gt;
-&lt;h2 id=&quot;Window-Activity和DecorView&quot;&gt;&lt;a href=&quot;#Window-Activity和DecorView&quot; class=&quot;headerlink&quot; title=&quot;Window,Activity和DecorView&quot;&gt;&lt;/a&gt;Window,Activity和DecorView&lt;/h2&gt;&lt;p&gt;DecorView是FrameLayout的子类，它可以被认为是Android视图树的根节点视图。DecorView作为顶级View，一般情况下它内部包含一个竖直方向的LinearLayout，在这个LinearLayout里面有上下两个部分（具体情况和Android版本及主体有关），上面的是标题栏，下面的是内容栏。在Activity中通过setContentView所设置的布局文件其实就是被加到内容栏之中的，而内容栏的id是content，在代码中可以通过ViewGroup content = （ViewGroup)findViewById(R.android.id.content)来得到content对应的layout。&lt;br&gt; Window中有几个视图相关的比较重要的成员变量如下所示:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;mDecor:DecorView的实例，标示Window内部的顶级视图&lt;/li&gt;
-&lt;li&gt;mContentParent:setContetView所设置的布局文件就加到这个视图中&lt;/li&gt;
-&lt;li&gt;mContentRoot:是DecorView的唯一子视图，内部包含mContentParent,标题栏和状态栏。&lt;br&gt; &lt;br&gt;Activity中不仅持有一个Window实例，还有一个类型为View的mDecor实例。这个实例和Window中的mDecor实例有什么关系呢？它又是什么时候被创建的呢？&lt;br&gt; 二者其实指向同一个对象，这个对象是在Activity调用setContentView时创建的。我们都知道Activity的setContentView实际上是调用了Window的setContentView方法。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;@Override&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public void setContentView(int layoutResID) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    if (mContentParent == null) &amp;#123; //[window]如何没有DecorView,那么就新建一个&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        installDecor(); //[window]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125; else if (!hasFeature(FEATURE_CONTENT_TRANSITIONS)) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;        mContentParent.removeAllViews();&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    ....&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    //[window]第二步,将layout添加到mContentParent&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    mLayoutInflater.inflate(layoutResID, mContentParent);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    .....&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;h1 id=&quot;参考文献&quot;&gt;&lt;a href=&quot;#参考文献&quot; class=&quot;headerlink&quot; title=&quot;参考文献&quot;&gt;&lt;/a&gt;参考文献&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/u012422440/article/details/51173387&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android视图架构详解&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://blog.csdn.net/luoshengyang/article/details/8245546&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Android应用程序窗口（Activity）的视图对象（View）的创建过程分析&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;View与ViewGroup的关系&quot;&gt;&lt;a href=&quot;#View与ViewGroup的关系&quot; class=&quot;headerlink&quot; title=&quot;View与ViewGroup的关系&quot;&gt;&lt;/a&gt;View与ViewGroup的关系&lt;/h1&gt;&lt;p&gt;Android系统中
-    
-    </summary>
-    
-      <category term="android" scheme="http://hammercui.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://hammercui.github.io/tags/android/"/>
     
   </entry>
   

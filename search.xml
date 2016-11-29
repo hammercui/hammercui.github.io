@@ -4,34 +4,172 @@
   
     
     <entry>
+      <title><![CDATA[react-native基础：redux学习]]></title>
+      <url>http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A0/</url>
+      <content type="html"><![CDATA[<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux 中文文档</a></p>
+<p><a href="http://richard-cao.github.io/2016/01/12/React-Native-With-Redux/" target="_blank" rel="external">React-Native With Redux</a></p>
+<p><a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a></p>
+<p><a href="http://react-china.org/t/redux/2687" target="_blank" rel="external">这段时间研究了下Redux，写写自己对它的感觉。</a></p>
+<p><a href="https://github.com/kenberkeley/redux-simple-tutorial#-需求-2在上述需求的基础上记录用户的操作时间" target="_blank" rel="external">Redux 简明教程</a></p>
+<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><blockquote>
+<p>本篇blog主要涉及实际开发过程中，一些知识点及注意事项，不会对很多概念做过多讲解，建议大家先看下<a href="#参考文献">参考文献</a>中的优秀文章。<br>首先是<a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux 中文文档</a>，然后是<a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a>,以及<a href="http://richard-cao.github.io/2016/01/12/React-Native-With-Redux/" target="_blank" rel="external">React-Native With Redux</a>,最后如果对redux的基础知识有了初步了解，可以看下这个讨论帖<a href="http://react-china.org/t/redux/2687" target="_blank" rel="external">这段时间研究了下Redux，写写自己对它的感觉。</a></p>
+</blockquote>
+<h2 id="Flex模式与Redux"><a href="#Flex模式与Redux" class="headerlink" title="Flex模式与Redux"></a>Flex模式与Redux</h2><ul>
+<li><p>Flex: react遵循了单向数据流Flex的设计。</p>
+</li>
+<li><p>Redux: Redux是javascript状态容器，提供可预测化的状态管理，可以构建一致化的应用，除了和React一起用外，还支持其他界面库，体积小（只有2kb）而且没有任何依赖。<br>Redux由Flux演变而来，但是避开了Flux的复杂性，上手快，使用简单，而且社区活跃，是目前主流的Flux数据流框架（ps：上手一点都不快，关键是设计思想的转变，对于我这个c程序刚开始完全看不懂）。学习Redux可以参考<a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux中文文档</a></p>
+</li>
+</ul>
+<h2 id="Redux的三个核心action，store，reducers"><a href="#Redux的三个核心action，store，reducers" class="headerlink" title="Redux的三个核心action，store，reducers"></a>Redux的三个核心action，store，reducers</h2><ul>
+<li>store: 应用中所有的<code>state</code>都以一个对象树的形式储存在一个单一的store中，<code>state</code>就是每个<code>component</code>里都存在的状态集合，你也可以理解为java类的属性和方法。</li>
+<li>action: 惟一改变 state 的办法是触发 action，一个描述发生什么的对象。它是 store 数据的唯一来源。</li>
+<li>reducers:为了描述 action 如何改变 state 树，你需要编写 reducers。</li>
+</ul>
+<h3 id="action"><a href="#action" class="headerlink" title="action"></a>action</h3><p>action本质是是一个包含<code>type</code>属性的普通对象，type是它的key也是识别码。改变state必须<code>dispatch</code>一个<code>action</code>。</p>
+<p>高阶用法包括<code>selector绑定</code>，这是为了解决全局变化而对store的state做了最小化拆分</p>
+<ul>
+<li>存储最小的可能变化state</li>
+<li>提高效率，除非一个参数发生改变，否则不会重新计算</li>
+<li>selector是可组合的，一个selector可以导出给其他<code>selector</code>使用</li>
+</ul>
+<h3 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h3><p>指明如何更新<code>state</code>，<code>reducer</code> 本质是一个一<code>function</code>，接收旧<code>state</code> 和 <code>action</code>，返回新的 <code>state</code>，我们叫<code>nextState</code>，也就是说每次返回的都是新的state,而不是旧state的副本。reducer返回啥，state就被替换成啥。</p>
+<p>思考：这样就能实现数据的回滚了，比如执行redo,undo操作了。</p>
+<h3 id="store"><a href="#store" class="headerlink" title="store"></a>store</h3><p>Store 就是把它们联系到一起的对象。Store 有以下职责：</p>
+<ul>
+<li>维持应用的 state；</li>
+<li>提供 getState() 方法获取 state；</li>
+<li>提供 dispatch(action) 方法更新 state；</li>
+<li>通过 subscribe(listener) 注册监听器。</li>
+</ul>
+<p><strong>一个Redux应用只能有一个单一的store</strong></p>
+<h3 id="⊙-Redux-与传统后端-MVC-的对照"><a href="#⊙-Redux-与传统后端-MVC-的对照" class="headerlink" title="⊙ Redux 与传统后端 MVC 的对照"></a>⊙ Redux 与传统后端 MVC 的对照</h3><table>
+<thead>
+<tr>
+<th>Redux</th>
+<th>传统后端 MVC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>store</code></td>
+<td>数据库实例</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td>数据库中存储的数据</td>
+</tr>
+<tr>
+<td><code>dispatch(action)</code></td>
+<td>用户发起请求</td>
+</tr>
+<tr>
+<td><code>action: { type, payload }</code></td>
+<td><code>type</code> 表示请求的 URL，<code>payload</code> 表示请求的数据</td>
+</tr>
+<tr>
+<td><code>reducer</code></td>
+<td>路由 + 控制器（handler）</td>
+</tr>
+<tr>
+<td><code>reducer</code> 中的 <code>switch-case</code> 分支</td>
+<td>路由，根据 <code>action.type</code> 路由到对应的控制器</td>
+</tr>
+<tr>
+<td><code>reducer</code> 内部对 <code>state</code> 的处理</td>
+<td>控制器对数据库进行增删改操作</td>
+</tr>
+<tr>
+<td><code>reducer</code> 返回 <code>nextState</code></td>
+<td>将修改后的记录写回数据库</td>
+</tr>
+</tbody>
+</table>
+<h1 id="React-Redux-实战"><a href="#React-Redux-实战" class="headerlink" title="React-Redux 实战"></a>React-Redux 实战</h1><h2 id="安装需要用到的库"><a href="#安装需要用到的库" class="headerlink" title="安装需要用到的库"></a>安装需要用到的库</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install --save redux</span><br><span class="line">npm install --save react-redux</span><br><span class="line">npm install --save redux-devtools</span><br><span class="line">npm install --save redux-thunk</span><br><span class="line">npm install --save redux-logger</span><br></pre></td></tr></table></figure>
+<p>react绑定库跟开发者工具<br><a href="https://github.com/reactjs/redux" target="_blank" rel="external">redux</a><br><a href="https://github.com/reactjs/react-redux" target="_blank" rel="external">react-redux</a><br><a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="external">redux-devtools</a></p>
+<p>异步action构造器<a href="https://github.com/gaearon/redux-thunk/" target="_blank" rel="external">redux-thunk</a></p>
+<p>日志工具<br><a href="https://github.com/fcomb/redux-logger" target="_blank" rel="external">redux-logger</a></p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="基础用法-同步的action"><a href="#基础用法-同步的action" class="headerlink" title="基础用法 同步的action"></a>基础用法 同步的action</h3><p>引入支持</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore &#125; from &apos;redux&apos;</span><br><span class="line">import &#123; Provider, connect &#125; from &apos;react-redux&apos;</span><br></pre></td></tr></table></figure>
+<p>将根组件包装进<code>&lt;Provider&gt;</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//reducer函数，所有的</span><br><span class="line">function reducer(state=&#123;&#125;,action)&#123;</span><br><span class="line">&#125;</span><br><span class="line">let store = createStore(todoApp);</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;App /&gt;</span><br><span class="line">  &lt;/Provider&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>通过 <code>react-redux</code> 提供的 <code>connect()</code> 方法将包装好的组件连接到<code>Redux</code>。尽量只做一个顶层的组件，或者 <code>route</code> 处理</p>
+<p>任何一个从 <code>connect()</code> 包装好的组件都可以得到一个 <code>dispatch</code> 方法作为组件的 <code>props</code>，以及得到全局 <code>state</code> 中所需的任何内容。 <code>connect()</code> 的唯一参数是 <code>selector</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const PageContainer = connect()(PageContainer);</span><br><span class="line"></span><br><span class="line">let store = createStore(todoApp);</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;App /&gt;</span><br><span class="line">  &lt;/Provider&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h3 id="高价用法-异步action"><a href="#高价用法-异步action" class="headerlink" title="高价用法 异步action"></a>高价用法 异步action</h3><p>如何把action creator跟网络请求结合起来呢。</p>
+<p><a href="">redux-thunk</a>：一个搭建异步action的构造器。<br>其作用就是把一些比较复杂的动作(例如这里用到的异步操作)封装到一个action中去。</p>
+<p>通过使用指定的 middleware，action creator 除了返回 action 对象外还可以返回函数。这时，这个 action creator 就成为了 thunk。</p>
+<p>当 action creator 返回函数时，这个函数会被 Redux Thunk middleware 执行。这个函数并不需要保持纯净；它还可以带有副作用，包括执行异步 API 请求。这个函数还可以 dispatch action，就像 dispatch 前面定义的同步 action 一样。</p>
+<p>注意<code>dispatch</code>定义：通过 <code>store.dispatch()</code> 将 <code>action</code> 传到 <code>store</code></p>
+<p>使用 ES6 计算属性语法，使用 <code>Object.assign()</code> 来简洁高效地更新 <code>state</code>的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return Object.assign(&#123;&#125;, state, newState);</span><br></pre></td></tr></table></figure></p>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
+<li>fetch<br>当我们在react-native版本可以直接使用这个强大的网络操作API，当时在react-web中大多数浏览器不支持，建议使用[isomorphic-fetch](<a href="https://github.com/matthew-andrews/isomorphic-fetch.所以我考虑还是在web项目使用jQuery，最稳妥。" target="_blank" rel="external">https://github.com/matthew-andrews/isomorphic-fetch.所以我考虑还是在web项目使用jQuery，最稳妥。</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 每次使用 `fetch` 前都这样调用一下</span><br><span class="line">import fetch from &apos;isomorphic-fetch&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="React-Redux容器组件与展示组件分离的开发思想"><a href="#React-Redux容器组件与展示组件分离的开发思想" class="headerlink" title="React-Redux容器组件与展示组件分离的开发思想"></a>React-Redux<a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0" target="_blank" rel="external">容器组件与展示组件分离</a>的开发思想</h2><p>这个在<a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux 中文文档</a>中有详细跟直观的讲解。<br>通俗来讲就是，一个Redux应用切成两部分来管理数据流</p>
+<ul>
+<li><p>Container:容器组件</p>
+<pre><code>-在这里使用redux，控制分发需要向下传递的state,action创建函数
+</code></pre></li>
+<li><p>View：展示组件</p>
+<pre><code>-我们要展示数据的的view，以及触发action的操作
+</code></pre></li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[react-native学习路线]]></title>
       <url>http://hammercui.github.io/post/react-native%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</url>
       <content type="html"><![CDATA[<blockquote>
 <p>react-native是Facebook推出的跨平台开发技术，使用JavaScript代码，目前是es6。主要涉及知识点flexbox（弹性工具盒）布局，flux来管理数据流动</p>
 </blockquote>
 <h1 id="初级阶段"><a href="#初级阶段" class="headerlink" title="初级阶段"></a>初级阶段</h1><ul>
+<li>es6语法<ul>
+<li>promis</li>
+<li>async,waite</li>
+<li><a href="http://lodashjs.com/docs/" target="_blank" rel="external">lodash</a>:是具有一致接口，模块化，高性能等特性的JavaScript工具库。</li>
+</ul>
+</li>
 <li>npm安装，react-native安装，环境搭建</li>
 <li>了解Props，State</li>
 <li>学习样式jxs,flexbox</li>
 <li>学习导航器</li>
 </ul>
 <h1 id="进阶阶段"><a href="#进阶阶段" class="headerlink" title="进阶阶段"></a>进阶阶段</h1><ul>
-<li><p>学习<a href="http://cn.redux.js.org/index.html" target="_blank" rel="external">redux</a>,了解它与flux的区别，它的使用场景会更多。你也可以看做它是简化了流程的flux。</p>
+<li><p>学习<a href="http://cn.redux.js.org/index.html" target="_blank" rel="external">redux</a>,了解它与flux的区别，学会如何使用单项数据流的思想管理状态树。它的使用场景会更多。你也可以看做它是简化了流程的flux。</p>
 <ul>
 <li>action</li>
 <li>reducer</li>
 <li>store</li>
 <li>middleWare</li>
+<li><a href="https://github.com/gaearon/redux-thunk/" target="_blank" rel="external">redux-thunk</a>:比较流行的redux异步action中间件，统一了异步和同步action的调用方式，避免在component动刀子。</li>
 </ul>
 </li>
 <li><p>学习<a href="https://github.com/reactjs/reselect" target="_blank" rel="external">Reselect</a>:构建粒度化的数据，Reselect 库可以创建可记忆的(Memoized)、可组合的 selector 函数。Reselect selectors 可以用来高效地计算 Redux store 里的衍生数据。</p>
 </li>
-<li><p>学习<a href="https://github.com/root-two/react-native-drawer" target="_blank" rel="external">react-native-drawer</a>:可用于Android ios的抽屉式布局。<br><img src="http://7xrf0l.com1.z0.glb.clouddn.com/rn-drawer.gif" alt="image"></p>
-</li>
+<li>学习<a href="https://github.com/root-two/react-native-drawer" target="_blank" rel="external">react-native-drawer</a>:可用于Android ios的抽屉式控件。</li>
 <li><p>学习<a href="https://github.com/d-a-n/react-native-modal-picker" target="_blank" rel="external">react-native-model-picker</a>：一个比较好用的model picker,兼容Android  iOS</p>
 </li>
+<li><p>学习<a href="https://github.com/jprichardson/redux-watch" target="_blank" rel="external">redux-watch</a>:一个可以检测全局store数据变动的组件，常用于全局的状态变化，比如登录数据：当发现token不一致时，弹出登录界面。比如全局检测错误数据：根据错误id显示不同的提示。</p>
+</li>
+<li>文件系统<ul>
+<li><a href="https://github.com/    johanneslumpe/react-native-fs" target="_blank" rel="external">react-native-fs</a>：react-native调用本地    文件系统的库，兼容Android iOS</li>
+<li><a href="https://github.com/johanneslumpe/react-native-fs" target="_blank" rel="external">react-native-file-transfer</a>:ios专用的从图片库往服务器上传库</li>
+<li><a href="https://github.com/PhilippKrone/react-native-fileupload/" target="_blank" rel="external">react-native-fileupload</a>:兼容iOS Android上传文件的库。支持 1 同时上传多个文件 2 支持file and fields</li>
 </ul>
-<h1 id="解坑阶段"><a href="#解坑阶段" class="headerlink" title="解坑阶段"></a>解坑阶段</h1><h2 id="坑1：ios-模拟器-command-D-程序崩溃"><a href="#坑1：ios-模拟器-command-D-程序崩溃" class="headerlink" title="坑1：ios 模拟器 command+D 程序崩溃"></a>坑1：ios 模拟器 command+D 程序崩溃</h2><p>0.3.6才有的问题，ipad丢失了actionsheet布局<br>修复：<br>在React/Modules/RctDevMenu.m第519行新增</p>
+</li>
+<li><p>导航</p>
+<ul>
+<li><a href="https://github.com/aksonov/react-native-router-flux/" target="_blank" rel="external">react-native-router-flux</a>：可配合redux的路由导航库，目前最全面，功能最强大。常用于构建整个APP的路由规则。<ul>
+<li><a href="https://github.com/skv-headless/react-native-scrollable-tab-view" target="_blank" rel="external">react-native-scrollable-tab-view</a>:带scroll滑动切换的tab view</li>
+<li><a href="https://github.com/aksonov/react-native-tabs" target="_blank" rel="external">react-native-tabs</a>：简版的底部tabbar导航栏，常见于ios应用，兼容Android iOS</li>
+</ul>
+</li>
+</ul>
+</li>
+<li></li>
+</ul>
+<h1 id="解坑阶段"><a href="#解坑阶段" class="headerlink" title="解坑阶段"></a>解坑阶段</h1><h2 id="坑1：ipad-模拟器-command-D-程序崩溃"><a href="#坑1：ipad-模拟器-command-D-程序崩溃" class="headerlink" title="坑1：ipad 模拟器 command+D 程序崩溃"></a>坑1：ipad 模拟器 command+D 程序崩溃</h2><p>0.3.6才有的问题，ipad丢失了actionsheet布局<br>修复：<br>在React/Modules/RctDevMenu.m第519行新增</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIAlertControllerStyle style = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? UIAlertControllerStyleActionSheet : UIAlertControllerStyleAlert;</span><br></pre></td></tr></table></figure>
 <p>然后把519行的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">_actionSheet = [UIAlertController alertControllerWithTitle:title</span><br><span class="line">                                                     message:@&quot;&quot;</span><br><span class="line">                                              preferredStyle:UIAlertControllerStyleActionSheet];</span><br></pre></td></tr></table></figure>
@@ -1195,76 +1333,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[react-native基础：redux学习]]></title>
-      <url>http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A0/</url>
-      <content type="html"><![CDATA[<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux 中文文档</a></p>
-<p><a href="http://richard-cao.github.io/2016/01/12/React-Native-With-Redux/" target="_blank" rel="external">React-Native With Redux</a></p>
-<p><a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a></p>
-<p><a href="http://react-china.org/t/redux/2687" target="_blank" rel="external">这段时间研究了下Redux，写写自己对它的感觉。</a></p>
-<h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><blockquote>
-<p>本篇blog主要涉及实际开发过程中，一些知识点及注意事项，不会对很多概念做过多讲解，建议大家先看下<a href="#参考文献">参考文献</a>中的优秀文章。<br>首先是<a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux 中文文档</a>，然后是<a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a>,以及<a href="http://richard-cao.github.io/2016/01/12/React-Native-With-Redux/" target="_blank" rel="external">React-Native With Redux</a>,最后如果对redux的基础知识有了初步了解，可以看下这个讨论帖<a href="http://react-china.org/t/redux/2687" target="_blank" rel="external">这段时间研究了下Redux，写写自己对它的感觉。</a></p>
-</blockquote>
-<h2 id="Flex模式与Redux"><a href="#Flex模式与Redux" class="headerlink" title="Flex模式与Redux"></a>Flex模式与Redux</h2><ul>
-<li><p>Flex: react遵循了单向数据流Flex的设计。</p>
-</li>
-<li><p>Redux: Redux是javascript状态容器，提供可预测化的状态管理，可以构建一致化的应用，除了和React一起用外，还支持其他界面库，体积小（只有2kb）而且没有任何依赖。<br>Redux由Flux演变而来，但是避开了Flux的复杂性，上手快，使用简单，而且社区活跃，是目前主流的Flux数据流框架（ps：上手一点都不快，关键是设计思想的转变，对于我这个c程序刚开始完全看不懂）。学习Redux可以参考<a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux中文文档</a></p>
-</li>
-</ul>
-<h2 id="Redux的三个核心action，store，reducers"><a href="#Redux的三个核心action，store，reducers" class="headerlink" title="Redux的三个核心action，store，reducers"></a>Redux的三个核心action，store，reducers</h2><ul>
-<li>store: 应用中所有的 state 都以一个对象树的形式储存在一个单一的 store 中。</li>
-<li>action: 惟一改变 state 的办法是触发 action，一个描述发生什么的对象。它是 store 数据的唯一来源。</li>
-<li>reducers:为了描述 action 如何改变 state 树，你需要编写 reducers。</li>
-</ul>
-<h3 id="action"><a href="#action" class="headerlink" title="action"></a>action</h3><p>描述事情发生</p>
-<h3 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h3><p>指明如何更新state。reducer 就是一个函数，接收旧的 state 和 action，返回新的 state。也就是说每次返回的都是新的state，而不是旧state的副本。</p>
-<p>永远不要在 reducer 里做这些操作：</p>
-<ul>
-<li>修改传入参数；</li>
-<li>执行有副作用的操作，如 API 请求和路由跳转；</li>
-<li>调用非纯函数，如 Date.now() 或 Math.random()。</li>
-</ul>
-<h3 id="store"><a href="#store" class="headerlink" title="store"></a>store</h3><p>Store 就是把它们联系到一起的对象。Store 有以下职责：</p>
-<ul>
-<li>维持应用的 state；</li>
-<li>提供 getState() 方法获取 state；</li>
-<li>提供 dispatch(action) 方法更新 state；</li>
-<li>通过 subscribe(listener) 注册监听器。</li>
-</ul>
-<p><strong>一个Redux应用只能有一个单一的store</strong></p>
-<h2 id="React-Redux容器组件与展示组件分离的开发思想"><a href="#React-Redux容器组件与展示组件分离的开发思想" class="headerlink" title="React-Redux容器组件与展示组件分离的开发思想"></a>React-Redux<a href="https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0" target="_blank" rel="external">容器组件与展示组件分离</a>的开发思想</h2><p>这个在<a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux 中文文档</a>中有详细跟直观的讲解。<br>通俗来讲就是，一个Redux应用切成两部分来管理数据流</p>
-<ul>
-<li><p>Container:容器组件</p>
-<pre><code>-在这里使用redux，控制分发需要向下传递的state,action创建函数
-</code></pre></li>
-<li><p>View：展示组件</p>
-<pre><code>-我们要展示数据的的view，以及触发action的操作
-</code></pre></li>
-</ul>
-<h1 id="React-Redux-实战"><a href="#React-Redux-实战" class="headerlink" title="React-Redux 实战"></a>React-Redux 实战</h1><h2 id="安装需要用到的库"><a href="#安装需要用到的库" class="headerlink" title="安装需要用到的库"></a>安装需要用到的库</h2><p><a href="https://github.com/reactjs/redux" target="_blank" rel="external">redux</a><br><a href="https://github.com/reactjs/react-redux" target="_blank" rel="external">react-redux</a><br><a href="https://github.com/gaearon/redux-devtools" target="_blank" rel="external">redux-devtools</a><br><a href="https://github.com/fcomb/redux-logger" target="_blank" rel="external">redux-logger</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save redux</span><br></pre></td></tr></table></figure>
-<p>安装react绑定库跟开发者工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install --save react-redux</span><br><span class="line">npm install --save redux-devtools</span><br></pre></td></tr></table></figure></p>
-<p>安装异步action构造器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save redux-thunk</span><br></pre></td></tr></table></figure></p>
-<p>安装日志工具<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save redux-logger</span><br></pre></td></tr></table></figure></p>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="基础用法-同步的action"><a href="#基础用法-同步的action" class="headerlink" title="基础用法 同步的action"></a>基础用法 同步的action</h3><p>引入支持<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import &#123; createStore &#125; from &apos;redux&apos;</span><br><span class="line">import &#123; Provider, connect &#125; from &apos;react-redux&apos;</span><br></pre></td></tr></table></figure></p>
-<p>将根组件包装进<code>&lt;Provider&gt;</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">//reducer函数，所有的</span><br><span class="line">function reducer(state=&#123;&#125;,action)&#123;</span><br><span class="line">&#125;</span><br><span class="line">let store = createStore(todoApp);</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;App /&gt;</span><br><span class="line">  &lt;/Provider&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>通过 <code>react-redux</code> 提供的 <code>connect()</code> 方法将包装好的组件连接到<code>Redux</code>。尽量只做一个顶层的组件，或者 <code>route</code> 处理</p>
-<p>任何一个从 <code>connect()</code> 包装好的组件都可以得到一个 <code>dispatch</code> 方法作为组件的 <code>props</code>，以及得到全局 <code>state</code> 中所需的任何内容。 <code>connect()</code> 的唯一参数是 <code>selector</code>。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">const PageContainer = connect()(PageContainer);</span><br><span class="line"></span><br><span class="line">let store = createStore(todoApp);</span><br><span class="line"></span><br><span class="line">render(</span><br><span class="line">  &lt;Provider store=&#123;store&#125;&gt;</span><br><span class="line">    &lt;App /&gt;</span><br><span class="line">  &lt;/Provider&gt;,</span><br><span class="line">  document.getElementById(&apos;root&apos;)</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<h3 id="高价用法-异步action"><a href="#高价用法-异步action" class="headerlink" title="高价用法 异步action"></a>高价用法 异步action</h3><p>如何把action creator跟网络请求结合起来呢。</p>
-<p><a href="">redux-thunk</a>：一个搭建异步action的构造器。<br>其作用就是把一些比较复杂的动作(例如这里用到的异步操作)封装到一个action中去。</p>
-<p>通过使用指定的 middleware，action creator 除了返回 action 对象外还可以返回函数。这时，这个 action creator 就成为了 thunk。</p>
-<p>当 action creator 返回函数时，这个函数会被 Redux Thunk middleware 执行。这个函数并不需要保持纯净；它还可以带有副作用，包括执行异步 API 请求。这个函数还可以 dispatch action，就像 dispatch 前面定义的同步 action 一样。</p>
-<p>注意<code>dispatch</code>定义：通过 <code>store.dispatch()</code> 将 <code>action</code> 传到 <code>store</code></p>
-<p>使用 ES6 计算属性语法，使用 <code>Object.assign()</code> 来简洁高效地更新 <code>state</code>的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">return Object.assign(&#123;&#125;, state, newState);</span><br></pre></td></tr></table></figure></p>
-<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><ul>
-<li>fetch<br>当我们在react-native版本可以直接使用这个强大的网络操作API，当时在react-web中大多数浏览器不支持，建议使用[isomorphic-fetch](<a href="https://github.com/matthew-andrews/isomorphic-fetch.所以我考虑还是在web项目使用jQuery，最稳妥。" target="_blank" rel="external">https://github.com/matthew-andrews/isomorphic-fetch.所以我考虑还是在web项目使用jQuery，最稳妥。</a></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 每次使用 `fetch` 前都这样调用一下</span><br><span class="line">import fetch from &apos;isomorphic-fetch&apos;</span><br></pre></td></tr></table></figure>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[ES6学习：常用操作函数]]></title>
       <url>http://hammercui.github.io/post/ES6%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/</url>
       <content type="html"><![CDATA[<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
@@ -2204,6 +2272,12 @@
     </entry>
     
     <entry>
+      <title><![CDATA[angularJs学习1：初始angular]]></title>
+      <url>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A01%EF%BC%9A%E5%88%9D%E5%A7%8Bangular/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[angularJs学习1：初识angular]]></title>
       <url>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A01%EF%BC%9A%E5%88%9D%E8%AF%86angular/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>angular是google搞出来的js框架，后端程序如果想做前段，可以考虑尝试下。因为其按照mvc的架构来做框架，并引入了mvvm的机制，就是view动态数据绑定</p>
@@ -2233,12 +2307,6 @@
 <li>除了这些内置的指令ng-app,ng-init,ng-model,ng-repeat外，还可以自定义指令，但是在命名的时候用驼峰法，使用的时候用-间隔。</li>
 </ol>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[angularJs学习1：初始angular]]></title>
-      <url>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A01%EF%BC%9A%E5%88%9D%E5%A7%8Bangular/</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
