@@ -104,7 +104,7 @@ React-Native With Redux
 Redux 简明教程
 预备知识
 本篇blog主要涉及实际开发过程中，一些知识点及注意事项，不会对很多概念做过多讲解，建议大家先看下参考文献中的优秀文章。首先是Redux 中文文档，然后是深入到源码：解读 redux 的设计思">
-<meta property="og:updated_time" content="2016-11-29T13:02:19.000Z">
+<meta property="og:updated_time" content="2016-11-30T06:04:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native基础：redux学习">
 <meta name="twitter:description" content="参考文献Redux 中文文档
@@ -383,27 +383,34 @@ Redux 简明教程
 <h1 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h1><blockquote>
 <p>本篇blog主要涉及实际开发过程中，一些知识点及注意事项，不会对很多概念做过多讲解，建议大家先看下<a href="#参考文献">参考文献</a>中的优秀文章。<br>首先是<a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux 中文文档</a>，然后是<a href="http://div.io/topic/1309" target="_blank" rel="external">深入到源码：解读 redux 的设计思路与用法</a>,以及<a href="http://richard-cao.github.io/2016/01/12/React-Native-With-Redux/" target="_blank" rel="external">React-Native With Redux</a>,最后如果对redux的基础知识有了初步了解，可以看下这个讨论帖<a href="http://react-china.org/t/redux/2687" target="_blank" rel="external">这段时间研究了下Redux，写写自己对它的感觉。</a></p>
 </blockquote>
-<h2 id="Flex模式与Redux"><a href="#Flex模式与Redux" class="headerlink" title="Flex模式与Redux"></a>Flex模式与Redux</h2><ul>
-<li><p>Flex: react遵循了单向数据流Flex的设计。</p>
-</li>
-<li><p>Redux: Redux是javascript状态容器，提供可预测化的状态管理，可以构建一致化的应用，除了和React一起用外，还支持其他界面库，体积小（只有2kb）而且没有任何依赖。<br>Redux由Flux演变而来，但是避开了Flux的复杂性，上手快，使用简单，而且社区活跃，是目前主流的Flux数据流框架（ps：上手一点都不快，关键是设计思想的转变，对于我这个c程序刚开始完全看不懂）。学习Redux可以参考<a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux中文文档</a></p>
-</li>
+<h2 id="Flex与Redux的关系"><a href="#Flex与Redux的关系" class="headerlink" title="Flex与Redux的关系"></a>Flex与Redux的关系</h2><blockquote>
+<p>Redux是遵循了单向数据流Flex的设计,但是做了流程的简化。</p>
+</blockquote>
+<p>Redux是javascript状态容器，提供可预测化的状态管理，可以构建一致化的应用，除了和React一起用外，还支持其他界面库，体积小（只有2kb）而且没有任何依赖。Redux由Flux演变而来，但是避开了Flux的复杂性，上手快，使用简单，而且社区活跃，是目前主流的Flux数据流框架（学习Redux可以参考<a href="https://camsong.github.io/redux-in-chinese/" target="_blank" rel="external">Redux中文文档</a>）</p>
+<h2 id="Redux总览"><a href="#Redux总览" class="headerlink" title="Redux总览"></a>Redux总览</h2><blockquote>
+<p>在 Redux 的[源码目录][redux-src] <code>src/</code>，我们可以看到如下文件结构：</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">├── utils/</span><br><span class="line">│     ├── warning.js # 打酱油的，负责在控制台显示警告信息</span><br><span class="line">├── applyMiddleware.js</span><br><span class="line">├── bindActionCreators.js</span><br><span class="line">├── combineReducers.js</span><br><span class="line">├── compose.js</span><br><span class="line">├── createStore.js</span><br><span class="line">├── index.js # 入口文件</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>store</strong>: 应用中所有的<code>state</code>都以一个对象树的形式储存在一个单一的store中，<code>state</code>就是每个<code>component</code>里都存在的状态集合，你也可以理解为java类的属性和方法。</li>
+<li><strong>action</strong>: 惟一改变 state 的办法是触发 action，一个描述发生什么的对象。它是 store 数据的唯一来源。</li>
+<li><strong>reducers</strong>:为了描述 action 如何改变 state 树，你需要编写 reducers。</li>
+<li><strong>compose</strong>:没有依赖，是个纯函数，实现函数的层级合并，从右开始。</li>
+<li><strong>createStore</strong>:创建store的函数。参数是(reducer,初始化state，中间件)，返回store</li>
+<li><strong>combineReducers(reducers)</strong>:可以合并不同的reducer，便于不同功能的reducer进行分支化管理</li>
+<li><strong>bindActionCreators(actionCreators,dispacth)</strong>:实现自动<code>dispatch</code></li>
 </ul>
-<h2 id="Redux的三个核心action，store，reducers"><a href="#Redux的三个核心action，store，reducers" class="headerlink" title="Redux的三个核心action，store，reducers"></a>Redux的三个核心action，store，reducers</h2><ul>
-<li>store: 应用中所有的<code>state</code>都以一个对象树的形式储存在一个单一的store中，<code>state</code>就是每个<code>component</code>里都存在的状态集合，你也可以理解为java类的属性和方法。</li>
-<li>action: 惟一改变 state 的办法是触发 action，一个描述发生什么的对象。它是 store 数据的唯一来源。</li>
-<li>reducers:为了描述 action 如何改变 state 树，你需要编写 reducers。</li>
-</ul>
-<h3 id="action"><a href="#action" class="headerlink" title="action"></a>action</h3><p>action本质是是一个包含<code>type</code>属性的普通对象，type是它的key也是识别码。改变state必须<code>dispatch</code>一个<code>action</code>。</p>
+<h3 id="sect-action"><a href="#sect-action" class="headerlink" title="&sect; action"></a>&sect; action</h3><p>action本质是是一个包含<code>type</code>属性的普通对象，type是它的key也是识别码。改变state必须<code>dispatch</code>一个<code>action</code>。</p>
+<p>一般用法component的state其实是从props传递的，以propsMaptoState形式存储在store中。</p>
 <p>高阶用法包括<code>selector绑定</code>，这是为了解决全局变化而对store的state做了最小化拆分</p>
 <ul>
 <li>存储最小的可能变化state</li>
 <li>提高效率，除非一个参数发生改变，否则不会重新计算</li>
 <li>selector是可组合的，一个selector可以导出给其他<code>selector</code>使用</li>
 </ul>
-<h3 id="reducer"><a href="#reducer" class="headerlink" title="reducer"></a>reducer</h3><p>指明如何更新<code>state</code>，<code>reducer</code> 本质是一个一<code>function</code>，接收旧<code>state</code> 和 <code>action</code>，返回新的 <code>state</code>，我们叫<code>nextState</code>，也就是说每次返回的都是新的state,而不是旧state的副本。reducer返回啥，state就被替换成啥。</p>
+<h3 id="sect-reducer"><a href="#sect-reducer" class="headerlink" title="&sect; reducer"></a>&sect; reducer</h3><p>指明如何更新<code>state</code>，<code>reducer</code> 本质是一个一<code>function</code>，接收旧<code>state</code> 和 <code>action</code>，返回新的 <code>state</code>，我们叫<code>nextState</code>，也就是说每次返回的都是新的state,而不是旧state的副本。reducer返回啥，state就被替换成啥。</p>
 <p>思考：这样就能实现数据的回滚了，比如执行redo,undo操作了。</p>
-<h3 id="store"><a href="#store" class="headerlink" title="store"></a>store</h3><p>Store 就是把它们联系到一起的对象。Store 有以下职责：</p>
+<h3 id="sect-store"><a href="#sect-store" class="headerlink" title="&sect; store"></a>&sect; store</h3><p>Store 就是把它们联系到一起的对象。Store 有以下职责：</p>
 <ul>
 <li>维持应用的 state；</li>
 <li>提供 getState() 方法获取 state；</li>
@@ -411,6 +418,26 @@ Redux 简明教程
 <li>通过 subscribe(listener) 注册监听器。</li>
 </ul>
 <p><strong>一个Redux应用只能有一个单一的store</strong></p>
+<h3 id="sect-compose"><a href="#sect-compose" class="headerlink" title="&sect; compose"></a>&sect; compose</h3><p>主要的作用是让代码更优雅，如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var re1 = func3(func2(func1(0)));</span><br><span class="line">//替换为</span><br><span class="line">var re2 = Redux.compose(func3, func2, func1)(0);</span><br><span class="line">//是不是更优雅了</span><br></pre></td></tr></table></figure>
+<h3 id="sect-creteStore-reducer-initalState-enhaner"><a href="#sect-creteStore-reducer-initalState-enhaner" class="headerlink" title="&sect; creteStore(reducer,initalState,enhaner)"></a>&sect; creteStore(reducer,initalState,enhaner)</h3><p>经常的用法是创建store，并给store添加中间件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">const finalCreateStore = Redux.compose(</span><br><span class="line">	中间件1，</span><br><span class="line">	中间件2，</span><br><span class="line">	中间件3</span><br><span class="line">)（createStore）</span><br><span class="line"></span><br><span class="line">const store = finalCreateStore(reducer);</span><br><span class="line">//执行流程是</span><br><span class="line">//reducer作为参数传递给函数createStore,返回store</span><br><span class="line">//store作为参数传递给函数中间件3,返回store</span><br><span class="line">//store作为参数传递给函数中间件2,返回store</span><br><span class="line">//store作为参数传递给函数中间件1,返回store</span><br></pre></td></tr></table></figure>
+<h3 id="combineReducers-reducers）"><a href="#combineReducers-reducers）" class="headerlink" title="combineReducers(reducers）"></a>combineReducers(reducers）</h3><p>无论应用的状态树多复杂，都可以通过逐层下分，来管理对应部分的state，如下图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">                                 aReducer(a_value, action) -------------------- a_value</span><br><span class="line">                              ↗                                                              ↘</span><br><span class="line">rootReducer(state, action) —→∑     ↗ b1Reducer(b1_value, action) ------ b1_value ↘         nextState</span><br><span class="line">                              ↘—→∑                                                    b_value  ↗</span><br><span class="line">                                   ↘ b2Reducer(b2_value,action) ----- b2_value ↗</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注：左侧表示 dispatch 分发流，∑ 表示 combineReducers；右侧表示各实体 reducer 的返回值，最后汇总整合成 nextState</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>无论dispatch哪个action，都会流通所有的reducer</p>
+<p>这也是为何 reducer 必须返回其对应的 state 的原因。否则整合状态树时，该 reducer 对应的键值就是 undefined</p>
+</blockquote>
+<h3 id="set-bindActionCreators-actionCreators-diapatch"><a href="#set-bindActionCreators-actionCreators-diapatch" class="headerlink" title="&set; bindActionCreators(actionCreators,diapatch)"></a>&set; bindActionCreators(actionCreators,diapatch)</h3><p>把我们手动的action的dispatch过程变成了自动</p>
+<h3 id="sect-Reselect"><a href="#sect-Reselect" class="headerlink" title="&sect; Reselect"></a>&sect; Reselect</h3><p><a href="https://github.com/reactjs/reselect" target="_blank" rel="external">Reselect</a>是一个第三方库，解决数据冗余的问题。这个问题是怎么产生的呢？<br>首先：原本store中的state是通过props，数据一级一级的传递，在 render 中处理，避免了状态判断的问题，即拿到的数据总是最新的，缺点就是每次重新计算。</p>
+<p>然后：一层层传递的数据，每个层级组件都要用，一旦原始数据被污染了，需要保存多份原始数据的处理结果，数据的冗余就出现了。</p>
+<p>解决方案：<br>Container component 模式很，就是每个组件connect自己所需要的数据.</p>
+<p>reselect的三个优点</p>
+<ul>
+<li>Selectors can compute derived data, allowing Redux to store the minimal possible state.(Selectors可以计算派生数据，允许Redux存储最小可用state)</li>
+<li>Selectors are efficient. A selector is not recomputed unless one of its arguments change.（Selectors是高效的。除非其中一个参数发生更改，否则不会重新计算Selectors）</li>
+<li>Selectors are composable. They can be used as input to other selectors.(Selectors是可组合的，也可以作为input给其他Selectors使用)</li>
+</ul>
 <h3 id="⊙-Redux-与传统后端-MVC-的对照"><a href="#⊙-Redux-与传统后端-MVC-的对照" class="headerlink" title="⊙ Redux 与传统后端 MVC 的对照"></a>⊙ Redux 与传统后端 MVC 的对照</h3><table>
 <thead>
 <tr>
@@ -522,6 +549,10 @@ Redux 简明教程
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/post/react-native基础：global全局变量和持久化/" rel="prev" title="react-native基础：global全局变量和持久化">
+                react-native基础：global全局变量和持久化 <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -630,7 +661,7 @@ Redux 简明教程
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">64</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -712,7 +743,7 @@ Redux 简明教程
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">1.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预备知识"><span class="nav-number">2.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex模式与Redux"><span class="nav-number">2.1.</span> <span class="nav-text">Flex模式与Redux</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redux的三个核心action，store，reducers"><span class="nav-number">2.2.</span> <span class="nav-text">Redux的三个核心action，store，reducers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#action"><span class="nav-number">2.2.1.</span> <span class="nav-text">action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#reducer"><span class="nav-number">2.2.2.</span> <span class="nav-text">reducer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#store"><span class="nav-number">2.2.3.</span> <span class="nav-text">store</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊙-Redux-与传统后端-MVC-的对照"><span class="nav-number">2.2.4.</span> <span class="nav-text">⊙ Redux 与传统后端 MVC 的对照</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Redux-实战"><span class="nav-number">3.</span> <span class="nav-text">React-Redux 实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装需要用到的库"><span class="nav-number">3.1.</span> <span class="nav-text">安装需要用到的库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础用法-同步的action"><span class="nav-number">3.2.1.</span> <span class="nav-text">基础用法 同步的action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高价用法-异步action"><span class="nav-number">3.2.2.</span> <span class="nav-text">高价用法 异步action</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事项"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Redux容器组件与展示组件分离的开发思想"><span class="nav-number">3.3.</span> <span class="nav-text">React-Redux容器组件与展示组件分离的开发思想</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文献"><span class="nav-number">1.</span> <span class="nav-text">参考文献</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#预备知识"><span class="nav-number">2.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Flex与Redux的关系"><span class="nav-number">2.1.</span> <span class="nav-text">Flex与Redux的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redux总览"><span class="nav-number">2.2.</span> <span class="nav-text">Redux总览</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sect-action"><span class="nav-number">2.2.1.</span> <span class="nav-text">§ action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sect-reducer"><span class="nav-number">2.2.2.</span> <span class="nav-text">§ reducer</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sect-store"><span class="nav-number">2.2.3.</span> <span class="nav-text">§ store</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sect-compose"><span class="nav-number">2.2.4.</span> <span class="nav-text">§ compose</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sect-creteStore-reducer-initalState-enhaner"><span class="nav-number">2.2.5.</span> <span class="nav-text">§ creteStore(reducer,initalState,enhaner)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#combineReducers-reducers）"><span class="nav-number">2.2.6.</span> <span class="nav-text">combineReducers(reducers）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#set-bindActionCreators-actionCreators-diapatch"><span class="nav-number">2.2.7.</span> <span class="nav-text">&set; bindActionCreators(actionCreators,diapatch)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sect-Reselect"><span class="nav-number">2.2.8.</span> <span class="nav-text">§ Reselect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#⊙-Redux-与传统后端-MVC-的对照"><span class="nav-number">2.2.9.</span> <span class="nav-text">⊙ Redux 与传统后端 MVC 的对照</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Redux-实战"><span class="nav-number">3.</span> <span class="nav-text">React-Redux 实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装需要用到的库"><span class="nav-number">3.1.</span> <span class="nav-text">安装需要用到的库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用"><span class="nav-number">3.2.</span> <span class="nav-text">使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础用法-同步的action"><span class="nav-number">3.2.1.</span> <span class="nav-text">基础用法 同步的action</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高价用法-异步action"><span class="nav-number">3.2.2.</span> <span class="nav-text">高价用法 异步action</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#注意事项"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">注意事项</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React-Redux容器组件与展示组件分离的开发思想"><span class="nav-number">3.3.</span> <span class="nav-text">React-Redux容器组件与展示组件分离的开发思想</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

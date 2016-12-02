@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aglobal%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E6%8C%81%E4%B9%85%E5%8C%96/</loc>
+    
+    <lastmod>2016-12-02T08:40:21.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A0/</loc>
     
-    <lastmod>2016-11-29T13:02:19.000Z</lastmod>
+    <lastmod>2016-11-30T06:04:00.000Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://hammercui.github.io/post/react-native%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/</loc>
     
-    <lastmod>2016-11-29T13:02:18.000Z</lastmod>
+    <lastmod>2016-11-29T13:12:26.000Z</lastmod>
     
   </url>
   
@@ -422,7 +429,7 @@
   </url>
   
   <url>
-    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A06%EF%BC%9A%E6%8C%87%E4%BB%A4/</loc>
+    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A03%EF%BC%9A%20%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%8C%E8%BF%87%E6%BB%A4%E5%99%A8/</loc>
     
     <lastmod>2016-03-03T01:48:02.000Z</lastmod>
     
@@ -436,6 +443,13 @@
   </url>
   
   <url>
+    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A02%EF%BC%9Ascope%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
+    
+    <lastmod>2016-03-03T01:48:02.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A04%EF%BC%9Ahttp%E8%AF%B7%E6%B1%82/</loc>
     
     <lastmod>2016-03-03T01:48:02.000Z</lastmod>
@@ -443,14 +457,7 @@
   </url>
   
   <url>
-    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A03%EF%BC%9A%20%E6%8E%A7%E5%88%B6%E5%99%A8%EF%BC%8C%E8%BF%87%E6%BB%A4%E5%99%A8/</loc>
-    
-    <lastmod>2016-03-03T01:48:02.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A02%EF%BC%9Ascope%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
+    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A06%EF%BC%9A%E6%8C%87%E4%BB%A4/</loc>
     
     <lastmod>2016-03-03T01:48:02.000Z</lastmod>
     

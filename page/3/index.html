@@ -293,6 +293,175 @@
             
               
                 
+                <a class="post-title-link" href="/post/直播的相关技术/" itemprop="url">
+                  直播的相关技术
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-10T20:59:26+08:00" content="2016-06-10">
+              2016-06-10
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/技术杂谈/" itemprop="url" rel="index">
+                    <span itemprop="name">技术杂谈</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/直播的相关技术/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/直播的相关技术/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>重要从四点来说直播的相关技术</p>
+</blockquote>
+<ul>
+<li>服务器，云存储</li>
+<li>手机端推流，主播</li>
+<li>手机端拉流，观众</li>
+<li>互动sdk，比如打赏，弹幕</li>
+</ul>
+<h1 id="服务器"><a href="#服务器" class="headerlink" title="服务器"></a>服务器</h1><p>流媒体服务器就是p2p服务器</p>
+<blockquote>
+<p>一般自建流媒体服务器平比较复杂，维护也麻烦，都选择现成的云存储解决方案<br>技术关键字<code>rtmp</code>推流，<code>hls</code>拉流</p>
+</blockquote>
+<p>上行，就是数据上传，一般有<br>RTMP，HLS推流</p>
+<p>下行，播放，一般有<br>RTMP、HLS和HTTP（FLV）协议</p>
+<h2 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h2><p>RTMP,RTSP,HLS都是流媒体协议，如果要开发一套准实时的手机音视频直播系统，需要支持iphone，android，windows phone等多款手机，最好使用hls协议，这个时候客户端播放的是切割的ts文件，它的延迟取决于切片的大小。</p>
+<ul>
+<li>rtmp和hls并存：rtmp一般用于pc-flash播放直播，而hls用于移动端播放</li>
+<li>RTMP本质上是流协议，实时性高，RTMP的实时性在3秒之内</li>
+<li>hls是apple搞出来的协议，实时性在3s左右， Apple 为了提高流播效率开发的技术，特点是将流媒体切分为若干 TS 片段（比如每10秒一段），然后通过一个扩展的 m3u 列表文件将这些 TS 片段集中起来供客户端播放器接收。比mp4适合做直播技术。</li>
+</ul>
+<p><a href="https://github.com/ossrs/srs/wiki/v1_CN_RTMP.PK.HTTP" target="_blank" rel="external">参考文章</a></p>
+<h2 id="腾讯云视频解决方案，全方向"><a href="#腾讯云视频解决方案，全方向" class="headerlink" title="腾讯云视频解决方案，全方向"></a><a href="https://www.qcloud.com/solution/video.html" target="_blank" rel="external">腾讯云视频解决方案，全方向</a></h2><blockquote>
+<p>最全的解决方案，包括服务器，客户端的sdk</p>
+</blockquote>
+<p>代表商</p>
+<ul>
+<li>龙珠直播</li>
+</ul>
+<p>提供游戏直播，美女主播解决方案，比如：</p>
+<ul>
+<li>直播提供HLS拉流/RTMP推流接入能力，快速接入游戏主播摄像头、游戏桌面、专业视频源等，并行进快速下发；通过500+CDN节点快速触及玩家；低至2秒延迟；</li>
+<li>互动直播通过双向SDK，提供400ms超低延迟的实时互动能力，提供游戏直播场景中的互动能力；下行也可通过标准HLS下发进行单向直播，无需安装SDK；</li>
+<li>提供推流端口，播放端的sdk<br>架构如图<br><img src="https://qzonestyle.gtimg.cn/aoi/sola/20151228190527_8KQCd9MwEL.png" alt=""></li>
+</ul>
+<h2 id="网易视频云，全方向"><a href="#网易视频云，全方向" class="headerlink" title="网易视频云，全方向"></a><a href="http://vcloud.163.com/live.html" target="_blank" rel="external">网易视频云，全方向</a></h2><blockquote>
+<p>解决方案也很全，包括服务器，客户端的sdk，贵</p>
+</blockquote>
+<p>代表商<br>BoBo美女主播</p>
+<ul>
+<li>提供推流Android SDK， iOS SDK，Windows SDK</li>
+<li>提供播放器Android SDK， iOS SDK</li>
+</ul>
+<h2 id="乐视云方案，手机方向"><a href="#乐视云方案，手机方向" class="headerlink" title="乐视云方案，手机方向"></a><a href="http://www.lecloud.com/mobile.html" target="_blank" rel="external">乐视云方案，手机方向</a></h2><p>产品架构图</p>
+<p><img src="http://i3.letvimg.com/lc05_lecloud/201604/19/20/12/process.png" alt=""></p>
+<h2 id="阿里云直播-pc方向"><a href="#阿里云直播-pc方向" class="headerlink" title="阿里云直播,pc方向"></a><a href="https://www.aliyun.com/solution/media/live?spm=5176.8009263.277601.3.j9Hr2d" target="_blank" rel="external">阿里云直播,pc方向</a></h2><p>产品架构图<br><img src="https://img.alicdn.com/tps/i4/TB1yKnMIpXXXXb5XVXXyEWcOpXX-612-454.jpg" alt=""></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>手机端推流，主要就是链接服务器，上传ts文件碎片</p>
+<p>手机端拉流，主要就是下载ts文件碎片，播放的问题</p>
+<p>互动sdk,参考聊天，弹幕类，主要是udp技术。</p>
+<p>付费扣费sdk,主要是http技术</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/android基础：Activity-Window-View-ViewGroup/" itemprop="url">
                   android基础：Activity Window View ViewGroup
                 </a>
@@ -1608,134 +1777,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/android最佳实践6：android-studio使用/" itemprop="url">
-                  android最佳实践6：android studio使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-01T14:21:45+08:00" content="2016-04-01">
-              2016-04-01
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/post/android最佳实践6：android-studio使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/android最佳实践6：android-studio使用/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>android studio版本号：2.1.5 preview<br>jdk 1.8<br>sdk: 6.0</p>
-</blockquote>
-<h1 id="开启-instant-run支持"><a href="#开启-instant-run支持" class="headerlink" title="开启 instant run支持"></a>开启 instant run支持</h1><p>这个类似于swift的热加载，大大改善开发效率<br>setting-&gt;Build,Execution,Deployment -&gt;Instant Run<br><img src="http://7xrf0l.com1.z0.glb.clouddn.com/16-4-1/12490656.jpg" alt=""></p>
-<h1 id="开启java8的支持"><a href="#开启java8的支持" class="headerlink" title="开启java8的支持"></a>开启java8的支持</h1><p>android studio从2.1开启改善了对java8的支持，好开森，可以放弃gradle-retrolambda了<br>re<br>参考地址在 <a href="http://luckymin.com/2016/03/16/2016031610_%E5%9C%A8AndroidStudio%E4%B8%AD%E6%94%AF%E6%8C%81Java8/" target="_blank" rel="external">Android Studio 中支持 Java 8</a></p>
-<p>app.gradle文件增加</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">···</span><br><span class="line">	defaultConfig &#123;</span><br><span class="line">    ...</span><br><span class="line">	//要想使用java8，必须使用jack编译</span><br><span class="line">    jackOptions &#123;</span><br><span class="line">      enabled true</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">    compileOptions &#123;</span><br><span class="line">        sourceCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">        targetCompatibility JavaVersion.VERSION_1_8</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>另外别忘了下载并修改buildTollersion 24.0.rc2</p>
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>现阶段<br> <code>com.android.tools.build:gradle:2.1.0-alpha</code><br> <code>buildToolsVersion &quot;24rc2&quot;</code><br>build gradle时还是比较卡的，不推荐尝鲜，我尝试了一下又换回<br>gradle-retrolambda了</p>
-<h1 id="支持instant和不支持instant的地方"><a href="#支持instant和不支持instant的地方" class="headerlink" title="支持instant和不支持instant的地方"></a>支持instant和不支持instant的地方</h1>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1781,7 +1822,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">64</span>
+              <span class="site-state-item-count">65</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

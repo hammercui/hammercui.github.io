@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hammercui.github.io/"/>
-  <updated>2016-11-29T13:02:19.000Z</updated>
+  <updated>2016-12-02T08:40:21.000Z</updated>
   <id>http://hammercui.github.io/</id>
   
   <author>
@@ -16,11 +16,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>react-native基础：global全局变量和持久化</title>
+    <link href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aglobal%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F%E5%92%8C%E6%8C%81%E4%B9%85%E5%8C%96/"/>
+    <id>http://hammercui.github.io/post/react-native基础：global全局变量和持久化/</id>
+    <published>2016-12-02T06:53:25.000Z</published>
+    <updated>2016-12-02T08:40:21.000Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;如何实现react-native的全局变量呢&quot;&gt;&lt;a href=&quot;#如何实现react-native的全局变量呢&quot; class=&quot;headerlink&quot; title=&quot;如何实现react-native的全局变量呢&quot;&gt;&lt;/a&gt;如何实现react-native的全局变量呢&lt;/h2&gt;&lt;p&gt;参考网上的答案，使用&lt;code&gt;global&lt;/code&gt;,类似于web的window,&lt;br&gt;比如&lt;br&gt;global.isBeat = true,&lt;br&gt;全局就知道这是一个测试版&lt;/p&gt;
+&lt;h2 id=&quot;如何做持久化存储呢&quot;&gt;&lt;a href=&quot;#如何做持久化存储呢&quot; class=&quot;headerlink&quot; title=&quot;如何做持久化存储呢&quot;&gt;&lt;/a&gt;如何做持久化存储呢&lt;/h2&gt;&lt;p&gt;推荐&lt;a href=&quot;https://github.com/sunnylqm/react-native-storage/blob/master/README-CHN.md&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;code&gt;react-native-storage&lt;/code&gt;&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;如何实现react-native的全局变量呢&quot;&gt;&lt;a href=&quot;#如何实现react-native的全局变量呢&quot; class=&quot;headerlink&quot; title=&quot;如何实现react-native的全局变量呢&quot;&gt;&lt;/a&gt;如何实现react-native的全局变
+    
+    </summary>
+    
+      <category term="react-native basis" scheme="http://hammercui.github.io/categories/react-native-basis/"/>
+    
+    
+      <category term="react-native" scheme="http://hammercui.github.io/tags/react-native/"/>
+    
+  </entry>
+  
+  <entry>
     <title>react-native基础：redux学习</title>
     <link href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A0/"/>
     <id>http://hammercui.github.io/post/react-native基础：redux学习/</id>
     <published>2016-11-29T00:55:48.000Z</published>
-    <updated>2016-11-29T13:02:19.000Z</updated>
+    <updated>2016-11-30T06:04:00.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;参考文献&quot;&gt;&lt;a href=&quot;#参考文献&quot; class=&quot;headerlink&quot; title=&quot;参考文献&quot;&gt;&lt;/a&gt;参考文献&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://camsong.github.io/redux-in-chinese/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redux 中文文档&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://richard-cao.github.io/2016/01/12/React-Native-With-Redux/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;React-Native With Redux&lt;/a&gt;&lt;/p&gt;
@@ -30,27 +54,34 @@
 &lt;h1 id=&quot;预备知识&quot;&gt;&lt;a href=&quot;#预备知识&quot; class=&quot;headerlink&quot; title=&quot;预备知识&quot;&gt;&lt;/a&gt;预备知识&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;本篇blog主要涉及实际开发过程中，一些知识点及注意事项，不会对很多概念做过多讲解，建议大家先看下&lt;a href=&quot;#参考文献&quot;&gt;参考文献&lt;/a&gt;中的优秀文章。&lt;br&gt;首先是&lt;a href=&quot;https://camsong.github.io/redux-in-chinese/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redux 中文文档&lt;/a&gt;，然后是&lt;a href=&quot;http://div.io/topic/1309&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入到源码：解读 redux 的设计思路与用法&lt;/a&gt;,以及&lt;a href=&quot;http://richard-cao.github.io/2016/01/12/React-Native-With-Redux/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;React-Native With Redux&lt;/a&gt;,最后如果对redux的基础知识有了初步了解，可以看下这个讨论帖&lt;a href=&quot;http://react-china.org/t/redux/2687&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;这段时间研究了下Redux，写写自己对它的感觉。&lt;/a&gt;&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h2 id=&quot;Flex模式与Redux&quot;&gt;&lt;a href=&quot;#Flex模式与Redux&quot; class=&quot;headerlink&quot; title=&quot;Flex模式与Redux&quot;&gt;&lt;/a&gt;Flex模式与Redux&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Flex: react遵循了单向数据流Flex的设计。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Redux: Redux是javascript状态容器，提供可预测化的状态管理，可以构建一致化的应用，除了和React一起用外，还支持其他界面库，体积小（只有2kb）而且没有任何依赖。&lt;br&gt;Redux由Flux演变而来，但是避开了Flux的复杂性，上手快，使用简单，而且社区活跃，是目前主流的Flux数据流框架（ps：上手一点都不快，关键是设计思想的转变，对于我这个c程序刚开始完全看不懂）。学习Redux可以参考&lt;a href=&quot;https://camsong.github.io/redux-in-chinese/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redux中文文档&lt;/a&gt;&lt;/p&gt;
-&lt;/li&gt;
+&lt;h2 id=&quot;Flex与Redux的关系&quot;&gt;&lt;a href=&quot;#Flex与Redux的关系&quot; class=&quot;headerlink&quot; title=&quot;Flex与Redux的关系&quot;&gt;&lt;/a&gt;Flex与Redux的关系&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;Redux是遵循了单向数据流Flex的设计,但是做了流程的简化。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Redux是javascript状态容器，提供可预测化的状态管理，可以构建一致化的应用，除了和React一起用外，还支持其他界面库，体积小（只有2kb）而且没有任何依赖。Redux由Flux演变而来，但是避开了Flux的复杂性，上手快，使用简单，而且社区活跃，是目前主流的Flux数据流框架（学习Redux可以参考&lt;a href=&quot;https://camsong.github.io/redux-in-chinese/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Redux中文文档&lt;/a&gt;）&lt;/p&gt;
+&lt;h2 id=&quot;Redux总览&quot;&gt;&lt;a href=&quot;#Redux总览&quot; class=&quot;headerlink&quot; title=&quot;Redux总览&quot;&gt;&lt;/a&gt;Redux总览&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;在 Redux 的[源码目录][redux-src] &lt;code&gt;src/&lt;/code&gt;，我们可以看到如下文件结构：&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;├── utils/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;│     ├── warning.js # 打酱油的，负责在控制台显示警告信息&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── applyMiddleware.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── bindActionCreators.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── combineReducers.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── compose.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── createStore.js&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;├── index.js # 入口文件&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;store&lt;/strong&gt;: 应用中所有的&lt;code&gt;state&lt;/code&gt;都以一个对象树的形式储存在一个单一的store中，&lt;code&gt;state&lt;/code&gt;就是每个&lt;code&gt;component&lt;/code&gt;里都存在的状态集合，你也可以理解为java类的属性和方法。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;action&lt;/strong&gt;: 惟一改变 state 的办法是触发 action，一个描述发生什么的对象。它是 store 数据的唯一来源。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;reducers&lt;/strong&gt;:为了描述 action 如何改变 state 树，你需要编写 reducers。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;compose&lt;/strong&gt;:没有依赖，是个纯函数，实现函数的层级合并，从右开始。&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;createStore&lt;/strong&gt;:创建store的函数。参数是(reducer,初始化state，中间件)，返回store&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;combineReducers(reducers)&lt;/strong&gt;:可以合并不同的reducer，便于不同功能的reducer进行分支化管理&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;bindActionCreators(actionCreators,dispacth)&lt;/strong&gt;:实现自动&lt;code&gt;dispatch&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&quot;Redux的三个核心action，store，reducers&quot;&gt;&lt;a href=&quot;#Redux的三个核心action，store，reducers&quot; class=&quot;headerlink&quot; title=&quot;Redux的三个核心action，store，reducers&quot;&gt;&lt;/a&gt;Redux的三个核心action，store，reducers&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;store: 应用中所有的&lt;code&gt;state&lt;/code&gt;都以一个对象树的形式储存在一个单一的store中，&lt;code&gt;state&lt;/code&gt;就是每个&lt;code&gt;component&lt;/code&gt;里都存在的状态集合，你也可以理解为java类的属性和方法。&lt;/li&gt;
-&lt;li&gt;action: 惟一改变 state 的办法是触发 action，一个描述发生什么的对象。它是 store 数据的唯一来源。&lt;/li&gt;
-&lt;li&gt;reducers:为了描述 action 如何改变 state 树，你需要编写 reducers。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3 id=&quot;action&quot;&gt;&lt;a href=&quot;#action&quot; class=&quot;headerlink&quot; title=&quot;action&quot;&gt;&lt;/a&gt;action&lt;/h3&gt;&lt;p&gt;action本质是是一个包含&lt;code&gt;type&lt;/code&gt;属性的普通对象，type是它的key也是识别码。改变state必须&lt;code&gt;dispatch&lt;/code&gt;一个&lt;code&gt;action&lt;/code&gt;。&lt;/p&gt;
+&lt;h3 id=&quot;sect-action&quot;&gt;&lt;a href=&quot;#sect-action&quot; class=&quot;headerlink&quot; title=&quot;&amp;sect; action&quot;&gt;&lt;/a&gt;&amp;sect; action&lt;/h3&gt;&lt;p&gt;action本质是是一个包含&lt;code&gt;type&lt;/code&gt;属性的普通对象，type是它的key也是识别码。改变state必须&lt;code&gt;dispatch&lt;/code&gt;一个&lt;code&gt;action&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;一般用法component的state其实是从props传递的，以propsMaptoState形式存储在store中。&lt;/p&gt;
 &lt;p&gt;高阶用法包括&lt;code&gt;selector绑定&lt;/code&gt;，这是为了解决全局变化而对store的state做了最小化拆分&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;存储最小的可能变化state&lt;/li&gt;
 &lt;li&gt;提高效率，除非一个参数发生改变，否则不会重新计算&lt;/li&gt;
 &lt;li&gt;selector是可组合的，一个selector可以导出给其他&lt;code&gt;selector&lt;/code&gt;使用&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;reducer&quot;&gt;&lt;a href=&quot;#reducer&quot; class=&quot;headerlink&quot; title=&quot;reducer&quot;&gt;&lt;/a&gt;reducer&lt;/h3&gt;&lt;p&gt;指明如何更新&lt;code&gt;state&lt;/code&gt;，&lt;code&gt;reducer&lt;/code&gt; 本质是一个一&lt;code&gt;function&lt;/code&gt;，接收旧&lt;code&gt;state&lt;/code&gt; 和 &lt;code&gt;action&lt;/code&gt;，返回新的 &lt;code&gt;state&lt;/code&gt;，我们叫&lt;code&gt;nextState&lt;/code&gt;，也就是说每次返回的都是新的state,而不是旧state的副本。reducer返回啥，state就被替换成啥。&lt;/p&gt;
+&lt;h3 id=&quot;sect-reducer&quot;&gt;&lt;a href=&quot;#sect-reducer&quot; class=&quot;headerlink&quot; title=&quot;&amp;sect; reducer&quot;&gt;&lt;/a&gt;&amp;sect; reducer&lt;/h3&gt;&lt;p&gt;指明如何更新&lt;code&gt;state&lt;/code&gt;，&lt;code&gt;reducer&lt;/code&gt; 本质是一个一&lt;code&gt;function&lt;/code&gt;，接收旧&lt;code&gt;state&lt;/code&gt; 和 &lt;code&gt;action&lt;/code&gt;，返回新的 &lt;code&gt;state&lt;/code&gt;，我们叫&lt;code&gt;nextState&lt;/code&gt;，也就是说每次返回的都是新的state,而不是旧state的副本。reducer返回啥，state就被替换成啥。&lt;/p&gt;
 &lt;p&gt;思考：这样就能实现数据的回滚了，比如执行redo,undo操作了。&lt;/p&gt;
-&lt;h3 id=&quot;store&quot;&gt;&lt;a href=&quot;#store&quot; class=&quot;headerlink&quot; title=&quot;store&quot;&gt;&lt;/a&gt;store&lt;/h3&gt;&lt;p&gt;Store 就是把它们联系到一起的对象。Store 有以下职责：&lt;/p&gt;
+&lt;h3 id=&quot;sect-store&quot;&gt;&lt;a href=&quot;#sect-store&quot; class=&quot;headerlink&quot; title=&quot;&amp;sect; store&quot;&gt;&lt;/a&gt;&amp;sect; store&lt;/h3&gt;&lt;p&gt;Store 就是把它们联系到一起的对象。Store 有以下职责：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;维持应用的 state；&lt;/li&gt;
 &lt;li&gt;提供 getState() 方法获取 state；&lt;/li&gt;
@@ -58,6 +89,26 @@
 &lt;li&gt;通过 subscribe(listener) 注册监听器。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;strong&gt;一个Redux应用只能有一个单一的store&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;sect-compose&quot;&gt;&lt;a href=&quot;#sect-compose&quot; class=&quot;headerlink&quot; title=&quot;&amp;sect; compose&quot;&gt;&lt;/a&gt;&amp;sect; compose&lt;/h3&gt;&lt;p&gt;主要的作用是让代码更优雅，如下：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;var re1 = func3(func2(func1(0)));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//替换为&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;var re2 = Redux.compose(func3, func2, func1)(0);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//是不是更优雅了&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;sect-creteStore-reducer-initalState-enhaner&quot;&gt;&lt;a href=&quot;#sect-creteStore-reducer-initalState-enhaner&quot; class=&quot;headerlink&quot; title=&quot;&amp;sect; creteStore(reducer,initalState,enhaner)&quot;&gt;&lt;/a&gt;&amp;sect; creteStore(reducer,initalState,enhaner)&lt;/h3&gt;&lt;p&gt;经常的用法是创建store，并给store添加中间件&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;const finalCreateStore = Redux.compose(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	中间件1，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	中间件2，&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	中间件3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)（createStore）&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;const store = finalCreateStore(reducer);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//执行流程是&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//reducer作为参数传递给函数createStore,返回store&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//store作为参数传递给函数中间件3,返回store&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//store作为参数传递给函数中间件2,返回store&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;//store作为参数传递给函数中间件1,返回store&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;combineReducers-reducers）&quot;&gt;&lt;a href=&quot;#combineReducers-reducers）&quot; class=&quot;headerlink&quot; title=&quot;combineReducers(reducers）&quot;&gt;&lt;/a&gt;combineReducers(reducers）&lt;/h3&gt;&lt;p&gt;无论应用的状态树多复杂，都可以通过逐层下分，来管理对应部分的state，如下图&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;                                 aReducer(a_value, action) -------------------- a_value&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                              ↗                                                              ↘&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;rootReducer(state, action) —→∑     ↗ b1Reducer(b1_value, action) ------ b1_value ↘         nextState&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                              ↘—→∑                                                    b_value  ↗&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                                   ↘ b2Reducer(b2_value,action) ----- b2_value ↗&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;注：左侧表示 dispatch 分发流，∑ 表示 combineReducers；右侧表示各实体 reducer 的返回值，最后汇总整合成 nextState&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;blockquote&gt;
+&lt;p&gt;无论dispatch哪个action，都会流通所有的reducer&lt;/p&gt;
+&lt;p&gt;这也是为何 reducer 必须返回其对应的 state 的原因。否则整合状态树时，该 reducer 对应的键值就是 undefined&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;set-bindActionCreators-actionCreators-diapatch&quot;&gt;&lt;a href=&quot;#set-bindActionCreators-actionCreators-diapatch&quot; class=&quot;headerlink&quot; title=&quot;&amp;set; bindActionCreators(actionCreators,diapatch)&quot;&gt;&lt;/a&gt;&amp;set; bindActionCreators(actionCreators,diapatch)&lt;/h3&gt;&lt;p&gt;把我们手动的action的dispatch过程变成了自动&lt;/p&gt;
+&lt;h3 id=&quot;sect-Reselect&quot;&gt;&lt;a href=&quot;#sect-Reselect&quot; class=&quot;headerlink&quot; title=&quot;&amp;sect; Reselect&quot;&gt;&lt;/a&gt;&amp;sect; Reselect&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/reactjs/reselect&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Reselect&lt;/a&gt;是一个第三方库，解决数据冗余的问题。这个问题是怎么产生的呢？&lt;br&gt;首先：原本store中的state是通过props，数据一级一级的传递，在 render 中处理，避免了状态判断的问题，即拿到的数据总是最新的，缺点就是每次重新计算。&lt;/p&gt;
+&lt;p&gt;然后：一层层传递的数据，每个层级组件都要用，一旦原始数据被污染了，需要保存多份原始数据的处理结果，数据的冗余就出现了。&lt;/p&gt;
+&lt;p&gt;解决方案：&lt;br&gt;Container component 模式很，就是每个组件connect自己所需要的数据.&lt;/p&gt;
+&lt;p&gt;reselect的三个优点&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Selectors can compute derived data, allowing Redux to store the minimal possible state.(Selectors可以计算派生数据，允许Redux存储最小可用state)&lt;/li&gt;
+&lt;li&gt;Selectors are efficient. A selector is not recomputed unless one of its arguments change.（Selectors是高效的。除非其中一个参数发生更改，否则不会重新计算Selectors）&lt;/li&gt;
+&lt;li&gt;Selectors are composable. They can be used as input to other selectors.(Selectors是可组合的，也可以作为input给其他Selectors使用)&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&quot;⊙-Redux-与传统后端-MVC-的对照&quot;&gt;&lt;a href=&quot;#⊙-Redux-与传统后端-MVC-的对照&quot; class=&quot;headerlink&quot; title=&quot;⊙ Redux 与传统后端 MVC 的对照&quot;&gt;&lt;/a&gt;⊙ Redux 与传统后端 MVC 的对照&lt;/h3&gt;&lt;table&gt;
 &lt;thead&gt;
 &lt;tr&gt;
@@ -150,7 +201,7 @@
     <link href="http://hammercui.github.io/post/react-native%E5%AD%A6%E4%B9%A0%E8%B7%AF%E7%BA%BF/"/>
     <id>http://hammercui.github.io/post/react-native学习路线/</id>
     <published>2016-11-26T03:34:48.000Z</published>
-    <updated>2016-11-29T13:02:18.000Z</updated>
+    <updated>2016-11-29T13:12:26.000Z</updated>
     
     <content type="html">&lt;blockquote&gt;
 &lt;p&gt;react-native是Facebook推出的跨平台开发技术，使用JavaScript代码，目前是es6。主要涉及知识点flexbox（弹性工具盒）布局，flux来管理数据流动&lt;/p&gt;
@@ -1197,87 +1248,6 @@
     
     
       <category term="android" scheme="http://hammercui.github.io/tags/android/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>直播的相关技术</title>
-    <link href="http://hammercui.github.io/post/%E7%9B%B4%E6%92%AD%E7%9A%84%E7%9B%B8%E5%85%B3%E6%8A%80%E6%9C%AF/"/>
-    <id>http://hammercui.github.io/post/直播的相关技术/</id>
-    <published>2016-06-10T12:59:26.000Z</published>
-    <updated>2016-06-11T08:55:52.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;重要从四点来说直播的相关技术&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;服务器，云存储&lt;/li&gt;
-&lt;li&gt;手机端推流，主播&lt;/li&gt;
-&lt;li&gt;手机端拉流，观众&lt;/li&gt;
-&lt;li&gt;互动sdk，比如打赏，弹幕&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;服务器&quot;&gt;&lt;a href=&quot;#服务器&quot; class=&quot;headerlink&quot; title=&quot;服务器&quot;&gt;&lt;/a&gt;服务器&lt;/h1&gt;&lt;p&gt;流媒体服务器就是p2p服务器&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;一般自建流媒体服务器平比较复杂，维护也麻烦，都选择现成的云存储解决方案&lt;br&gt;技术关键字&lt;code&gt;rtmp&lt;/code&gt;推流，&lt;code&gt;hls&lt;/code&gt;拉流&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;上行，就是数据上传，一般有&lt;br&gt;RTMP，HLS推流&lt;/p&gt;
-&lt;p&gt;下行，播放，一般有&lt;br&gt;RTMP、HLS和HTTP（FLV）协议&lt;/p&gt;
-&lt;h2 id=&quot;综述&quot;&gt;&lt;a href=&quot;#综述&quot; class=&quot;headerlink&quot; title=&quot;综述&quot;&gt;&lt;/a&gt;综述&lt;/h2&gt;&lt;p&gt;RTMP,RTSP,HLS都是流媒体协议，如果要开发一套准实时的手机音视频直播系统，需要支持iphone，android，windows phone等多款手机，最好使用hls协议，这个时候客户端播放的是切割的ts文件，它的延迟取决于切片的大小。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;rtmp和hls并存：rtmp一般用于pc-flash播放直播，而hls用于移动端播放&lt;/li&gt;
-&lt;li&gt;RTMP本质上是流协议，实时性高，RTMP的实时性在3秒之内&lt;/li&gt;
-&lt;li&gt;hls是apple搞出来的协议，实时性在3s左右， Apple 为了提高流播效率开发的技术，特点是将流媒体切分为若干 TS 片段（比如每10秒一段），然后通过一个扩展的 m3u 列表文件将这些 TS 片段集中起来供客户端播放器接收。比mp4适合做直播技术。&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/ossrs/srs/wiki/v1_CN_RTMP.PK.HTTP&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;参考文章&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;腾讯云视频解决方案，全方向&quot;&gt;&lt;a href=&quot;#腾讯云视频解决方案，全方向&quot; class=&quot;headerlink&quot; title=&quot;腾讯云视频解决方案，全方向&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.qcloud.com/solution/video.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;腾讯云视频解决方案，全方向&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;最全的解决方案，包括服务器，客户端的sdk&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;代表商&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;龙珠直播&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;提供游戏直播，美女主播解决方案，比如：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;直播提供HLS拉流/RTMP推流接入能力，快速接入游戏主播摄像头、游戏桌面、专业视频源等，并行进快速下发；通过500+CDN节点快速触及玩家；低至2秒延迟；&lt;/li&gt;
-&lt;li&gt;互动直播通过双向SDK，提供400ms超低延迟的实时互动能力，提供游戏直播场景中的互动能力；下行也可通过标准HLS下发进行单向直播，无需安装SDK；&lt;/li&gt;
-&lt;li&gt;提供推流端口，播放端的sdk&lt;br&gt;架构如图&lt;br&gt;&lt;img src=&quot;https://qzonestyle.gtimg.cn/aoi/sola/20151228190527_8KQCd9MwEL.png&quot; alt=&quot;&quot;&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;网易视频云，全方向&quot;&gt;&lt;a href=&quot;#网易视频云，全方向&quot; class=&quot;headerlink&quot; title=&quot;网易视频云，全方向&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://vcloud.163.com/live.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;网易视频云，全方向&lt;/a&gt;&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;解决方案也很全，包括服务器，客户端的sdk，贵&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;代表商&lt;br&gt;BoBo美女主播&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;提供推流Android SDK， iOS SDK，Windows SDK&lt;/li&gt;
-&lt;li&gt;提供播放器Android SDK， iOS SDK&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;乐视云方案，手机方向&quot;&gt;&lt;a href=&quot;#乐视云方案，手机方向&quot; class=&quot;headerlink&quot; title=&quot;乐视云方案，手机方向&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.lecloud.com/mobile.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;乐视云方案，手机方向&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;产品架构图&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://i3.letvimg.com/lc05_lecloud/201604/19/20/12/process.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;阿里云直播-pc方向&quot;&gt;&lt;a href=&quot;#阿里云直播-pc方向&quot; class=&quot;headerlink&quot; title=&quot;阿里云直播,pc方向&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://www.aliyun.com/solution/media/live?spm=5176.8009263.277601.3.j9Hr2d&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;阿里云直播,pc方向&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;产品架构图&lt;br&gt;&lt;img src=&quot;https://img.alicdn.com/tps/i4/TB1yKnMIpXXXXb5XVXXyEWcOpXX-612-454.jpg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;其他&quot;&gt;&lt;a href=&quot;#其他&quot; class=&quot;headerlink&quot; title=&quot;其他&quot;&gt;&lt;/a&gt;其他&lt;/h1&gt;&lt;p&gt;手机端推流，主要就是链接服务器，上传ts文件碎片&lt;/p&gt;
-&lt;p&gt;手机端拉流，主要就是下载ts文件碎片，播放的问题&lt;/p&gt;
-&lt;p&gt;互动sdk,参考聊天，弹幕类，主要是udp技术。&lt;/p&gt;
-&lt;p&gt;付费扣费sdk,主要是http技术&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;重要从四点来说直播的相关技术&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;服务器，云存储&lt;/li&gt;
-&lt;li&gt;手机端推流，主播&lt;/li&gt;
-&lt;li&gt;手机端拉流，观众&lt;/li&gt;
-&lt;li&gt;互动sdk，比如打赏，弹幕&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 
-    
-    </summary>
-    
-      <category term="技术杂谈" scheme="http://hammercui.github.io/categories/%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/"/>
-    
-    
-      <category term="技术杂谈" scheme="http://hammercui.github.io/tags/%E6%8A%80%E6%9C%AF%E6%9D%82%E8%B0%88/"/>
     
   </entry>
   

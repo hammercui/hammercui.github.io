@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="react-native," />
 
 
 
@@ -86,15 +86,19 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="hammer崔的程序世界">
-<meta property="og:url" content="http://hammercui.github.io/categories/ES6/index.html">
+<meta name="description" content="如何实现react-native的全局变量呢参考网上的答案，使用global,类似于web的window,比如global.isBeat = true,全局就知道这是一个测试版
+如何做持久化存储呢推荐react-native-storage">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-native基础：global全局变量和持久化">
+<meta property="og:url" content="http://hammercui.github.io/post/react-native基础：global全局变量和持久化/index.html">
 <meta property="og:site_name" content="hammer崔的程序世界">
-<meta property="og:description">
+<meta property="og:description" content="如何实现react-native的全局变量呢参考网上的答案，使用global,类似于web的window,比如global.isBeat = true,全局就知道这是一个测试版
+如何做持久化存储呢推荐react-native-storage">
+<meta property="og:updated_time" content="2016-12-02T08:40:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="hammer崔的程序世界">
-<meta name="twitter:description">
+<meta name="twitter:title" content="react-native基础：global全局变量和持久化">
+<meta name="twitter:description" content="如何实现react-native的全局变量呢参考网上的答案，使用global,类似于web的window,比如global.isBeat = true,全局就知道这是一个测试版
+如何做持久化存储呢推荐react-native-storage">
 
 
 
@@ -115,9 +119,9 @@
 
 
 
-  <link rel="canonical" href="http://hammercui.github.io/categories/ES6/"/>
+  <link rel="canonical" href="http://hammercui.github.io/post/react-native基础：global全局变量和持久化/"/>
 
-  <title> 分类: ES6 | hammer崔的程序世界 </title>
+  <title> react-native基础：global全局变量和持久化 | hammer崔的程序世界 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -148,7 +152,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -269,47 +273,187 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        ES6
-        <small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                react-native基础：global全局变量和持久化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-02T14:53:25+08:00" content="2016-12-02">
+              2016-12-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react-native-basis/" itemprop="url" rel="index">
+                    <span itemprop="name">react-native basis</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/react-native基础：global全局变量和持久化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/react-native基础：global全局变量和持久化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="如何实现react-native的全局变量呢"><a href="#如何实现react-native的全局变量呢" class="headerlink" title="如何实现react-native的全局变量呢"></a>如何实现react-native的全局变量呢</h2><p>参考网上的答案，使用<code>global</code>,类似于web的window,<br>比如<br>global.isBeat = true,<br>全局就知道这是一个测试版</p>
+<h2 id="如何做持久化存储呢"><a href="#如何做持久化存储呢" class="headerlink" title="如何做持久化存储呢"></a>如何做持久化存储呢</h2><p>推荐<a href="https://github.com/sunnylqm/react-native-storage/blob/master/README-CHN.md" target="_blank" rel="external"><code>react-native-storage</code></a></p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/post/ES6学习：常用操作函数/" itemprop="url">
-              
-                <span itemprop="name">ES6学习：常用操作函数</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-03-24T15:39:25+08:00"
-              content="2016-03-24" >
-          03-24
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/react-native/" rel="tag">#react-native</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/react-native基础：redux学习/" rel="next" title="react-native基础：redux学习">
+                <i class="fa fa-chevron-left"></i> react-native基础：redux学习
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        
+  <div class="bdsharebuttonbox">
+    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+    <a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a href="#" class="bds_tieba" data-cmd="tieba" title="分享到百度贴吧"></a>
+    <a href="#" class="bds_twi" data-cmd="twi" title="分享到Twitter"></a>
+    <a href="#" class="bds_fbook" data-cmd="fbook" title="分享到Facebook"></a>
+    <a href="#" class="bds_more" data-cmd="more"></a>
+    <a class="bds_count" data-cmd="count"></a>
+  </div>
+  <script>
+    window._bd_share_config = {
+      "common": {
+        "bdText": "",
+        "bdMini": "2",
+        "bdMiniList": false,
+        "bdPic": ""
+      },
+      "share": {
+        "bdSize": "16",
+        "bdStyle": "0"
+      },
+      "image": {
+        "viewList": ["tsina", "douban", "sqq", "qzone", "weixin", "twi", "fbook"],
+        "viewText": "分享到：",
+        "viewSize": "16"
+      }
+    }
+  </script>
 
+<script>
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+      
+    </div>
+  </div>
 
 
           </div>
@@ -317,6 +461,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="post/react-native基础：global全局变量和持久化/"
+           data-title="react-native基础：global全局变量和持久化" data-url="http://hammercui.github.io/post/react-native基础：global全局变量和持久化/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -336,8 +488,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://avatar.coolapk.com/data/000/65/51/50_avatar_middle.jpg"
@@ -423,6 +584,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现react-native的全局变量呢"><span class="nav-number">1.</span> <span class="nav-text">如何实现react-native的全局变量呢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何做持久化存储呢"><span class="nav-number">2.</span> <span class="nav-text">如何做持久化存储呢</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -526,6 +698,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
