@@ -87,18 +87,30 @@
 
 
 <meta name="description" content="如何实现react-native的全局变量呢参考网上的答案，使用global,类似于web的window,比如global.isBeat = true,全局就知道这是一个测试版
-如何做持久化存储呢推荐react-native-storage">
+如何做持久化存储呢推荐react-native-storage
+
+支持react-native(AsyncStorage,简单的异步的持久化的key-value存储系统)
+支持浏览器（localStorage）
+es6语法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="react-native基础：global全局变量和持久化">
 <meta property="og:url" content="http://hammercui.github.io/post/react-native基础：global全局变量和持久化/index.html">
 <meta property="og:site_name" content="hammer崔的程序世界">
 <meta property="og:description" content="如何实现react-native的全局变量呢参考网上的答案，使用global,类似于web的window,比如global.isBeat = true,全局就知道这是一个测试版
-如何做持久化存储呢推荐react-native-storage">
-<meta property="og:updated_time" content="2016-12-02T08:40:21.000Z">
+如何做持久化存储呢推荐react-native-storage
+
+支持react-native(AsyncStorage,简单的异步的持久化的key-value存储系统)
+支持浏览器（localStorage）
+es6语法">
+<meta property="og:updated_time" content="2016-12-02T09:06:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native基础：global全局变量和持久化">
 <meta name="twitter:description" content="如何实现react-native的全局变量呢参考网上的答案，使用global,类似于web的window,比如global.isBeat = true,全局就知道这是一个测试版
-如何做持久化存储呢推荐react-native-storage">
+如何做持久化存储呢推荐react-native-storage
+
+支持react-native(AsyncStorage,简单的异步的持久化的key-value存储系统)
+支持浏览器（localStorage）
+es6语法">
 
 
 
@@ -362,6 +374,14 @@
       
         <h2 id="如何实现react-native的全局变量呢"><a href="#如何实现react-native的全局变量呢" class="headerlink" title="如何实现react-native的全局变量呢"></a>如何实现react-native的全局变量呢</h2><p>参考网上的答案，使用<code>global</code>,类似于web的window,<br>比如<br>global.isBeat = true,<br>全局就知道这是一个测试版</p>
 <h2 id="如何做持久化存储呢"><a href="#如何做持久化存储呢" class="headerlink" title="如何做持久化存储呢"></a>如何做持久化存储呢</h2><p>推荐<a href="https://github.com/sunnylqm/react-native-storage/blob/master/README-CHN.md" target="_blank" rel="external"><code>react-native-storage</code></a></p>
+<ul>
+<li>支持react-native(AsyncStorage,简单的异步的持久化的key-value存储系统)</li>
+<li>支持浏览器（localStorage）</li>
+<li>es6语法，promise异步读取，使用jest进行单元测试</li>
+</ul>
+<p>推荐new出来的Storage给global，这样我们就能全局使用了。<br>比如</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">var storage = new Storage(&#123;</span><br><span class="line">  // 最大容量，默认值1000条数据循环存储</span><br><span class="line">  size: 1000,</span><br><span class="line"></span><br><span class="line">  // 存储引擎：对于RN使用AsyncStorage，对于web使用window.localStorage</span><br><span class="line">  // 如果不指定则数据只会保存在内存中，重启后即丢失</span><br><span class="line">  storageBackend: AsyncStorage,</span><br><span class="line"></span><br><span class="line">  // 数据过期时间，默认一整天（1000 * 3600 * 24 毫秒），设为null则永不过期</span><br><span class="line">  defaultExpires: 1000 * 3600 * 24,</span><br><span class="line"></span><br><span class="line">  // 读写时在内存中缓存数据。默认启用。</span><br><span class="line">  enableCache: true,</span><br><span class="line">  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">global.storage = storage;</span><br></pre></td></tr></table></figure>
+<h3 id="保存-读取-删除"><a href="#保存-读取-删除" class="headerlink" title="保存 读取 删除"></a>保存 读取 删除</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">// 使用key来保存数据。这些数据一般是全局独有的，常常需要调用的。</span><br><span class="line">  // 除非你手动移除，这些数据会被永久保存，而且默认不会过期。</span><br><span class="line">  storage.save(&#123;</span><br><span class="line">    key: &apos;loginState&apos;,  // 注意:请不要在key中使用_下划线符号!</span><br><span class="line">    rawData: &#123; </span><br><span class="line">      from: &apos;some other site&apos;,</span><br><span class="line">      userid: &apos;some userid&apos;,</span><br><span class="line">      token: &apos;some token&apos;</span><br><span class="line">    &#125;,</span><br><span class="line"></span><br><span class="line">    // 如果不指定过期时间，则会使用defaultExpires参数</span><br><span class="line">    // 如果设为null，则永不过期</span><br><span class="line">    expires: 1000 * 3600</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  // 读取</span><br><span class="line">  storage.load(&#123;</span><br><span class="line">    key: &apos;loginState&apos;,</span><br><span class="line"></span><br><span class="line">    // autoSync(默认为true)意味着在没有找到数据或数据过期时自动调用相应的sync方法</span><br><span class="line">    autoSync: true,</span><br><span class="line"></span><br><span class="line">    // syncInBackground(默认为true)意味着如果数据过期，</span><br><span class="line">    // 在调用sync方法的同时先返回已经过期的数据。</span><br><span class="line">    // 设置为false的话，则始终强制返回sync方法提供的最新数据(当然会需要更多等待时间)。</span><br><span class="line">    syncInBackground: true</span><br><span class="line">  &#125;).then(ret =&gt; &#123;</span><br><span class="line">    // 如果找到数据，则在then方法中返回</span><br><span class="line">    // 注意：这是异步返回的结果（不了解异步请自行搜索学习）</span><br><span class="line">    // 你只能在then这个方法内继续处理ret数据</span><br><span class="line">    // 而不能在then以外处理</span><br><span class="line">    // 也没有办法“变成”同步返回</span><br><span class="line">    // 你也可以使用“看似”同步的async/await语法</span><br><span class="line"></span><br><span class="line">    console.log(ret.userid);</span><br><span class="line">    this.setState(&#123; user: ret &#125;);</span><br><span class="line">  &#125;).catch(err =&gt; &#123;</span><br><span class="line">    //如果没有找到数据且没有sync方法，</span><br><span class="line">    //或者有其他异常，则在catch中返回</span><br><span class="line">    console.warn(err.message);</span><br><span class="line">    switch (err.name) &#123;</span><br><span class="line">        case &apos;NotFoundError&apos;:</span><br><span class="line">            // TODO;</span><br><span class="line">            break;</span><br><span class="line">        case &apos;ExpiredError&apos;:</span><br><span class="line">            // TODO</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  // --------------------------------------------------</span><br><span class="line"></span><br><span class="line">// 获取某个key下的所有id</span><br><span class="line">storage.getIdsForKey(&apos;user&apos;).then(ids =&gt; &#123;</span><br><span class="line">    console.log(ids);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// 获取某个key下的所有数据</span><br><span class="line">storage.getAllDataForKey(&apos;user&apos;).then(users =&gt; &#123;</span><br><span class="line">    console.log(users);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// !! 清除某个key下的所有数据</span><br><span class="line">storage.clearMapForKey(&apos;user&apos;);</span><br><span class="line"></span><br><span class="line">// --------------------------------------------------  </span><br><span class="line"></span><br><span class="line">// 删除单个数据</span><br><span class="line">storage.remove(&#123;</span><br><span class="line">    key: &apos;lastPage&apos;</span><br><span class="line">&#125;);</span><br><span class="line">storage.remove(&#123;</span><br><span class="line">    key: &apos;user&apos;,</span><br><span class="line">    id: &apos;1001&apos;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">// !! 清空map，移除所有&quot;key-id&quot;数据（但会保留只有key的数据）</span><br><span class="line">storage.clearMap();</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -393,8 +413,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/post/react-native基础：redux学习/" rel="next" title="react-native基础：redux学习">
-                <i class="fa fa-chevron-left"></i> react-native基础：redux学习
+              <a href="/post/react-native基础：redux学习1/" rel="next" title="react-native基础：redux学习1-理论篇">
+                <i class="fa fa-chevron-left"></i> react-native基础：redux学习1-理论篇
               </a>
             
           </div>
@@ -526,7 +546,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-count">19</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -591,7 +611,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现react-native的全局变量呢"><span class="nav-number">1.</span> <span class="nav-text">如何实现react-native的全局变量呢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何做持久化存储呢"><span class="nav-number">2.</span> <span class="nav-text">如何做持久化存储呢</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#如何实现react-native的全局变量呢"><span class="nav-number">1.</span> <span class="nav-text">如何实现react-native的全局变量呢</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何做持久化存储呢"><span class="nav-number">2.</span> <span class="nav-text">如何做持久化存储呢</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#保存-读取-删除"><span class="nav-number">2.1.</span> <span class="nav-text">保存 读取 删除</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
