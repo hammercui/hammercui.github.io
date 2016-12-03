@@ -52,9 +52,9 @@
     <link href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A01/"/>
     <id>http://hammercui.github.io/post/react-native基础：redux学习1/</id>
     <published>2016-11-29T00:55:48.000Z</published>
-    <updated>2016-12-03T02:02:43.000Z</updated>
+    <updated>2016-12-03T02:25:39.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;导航&quot;&gt;&lt;a href=&quot;#导航&quot; class=&quot;headerlink&quot; title=&quot;导航&quot;&gt;&lt;/a&gt;导航&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;&quot;&gt;react-native基础：redux学习1-理论篇&lt;/a&gt;&lt;/p&gt;
+    <content type="html">&lt;h1 id=&quot;导航&quot;&gt;&lt;a href=&quot;#导航&quot; class=&quot;headerlink&quot; title=&quot;导航&quot;&gt;&lt;/a&gt;导航&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A01/&quot;&gt;react-native基础：redux学习1-理论篇&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;&quot;&gt;react-native基础：redux学习2-实战篇&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&quot;理论&quot;&gt;&lt;a href=&quot;#理论&quot; class=&quot;headerlink&quot; title=&quot;理论&quot;&gt;&lt;/a&gt;理论&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;本篇blog主要讲解redux的一些理论，以及第三方的组件库和其优秀的解决思路，所谓理论现行。&lt;/p&gt;
@@ -152,9 +152,9 @@
 &lt;h2 id=&quot;第三方辅助类组件库&quot;&gt;&lt;a href=&quot;#第三方辅助类组件库&quot; class=&quot;headerlink&quot; title=&quot;第三方辅助类组件库&quot;&gt;&lt;/a&gt;第三方辅助类组件库&lt;/h2&gt;&lt;h3 id=&quot;sect-redux-actions&quot;&gt;&lt;a href=&quot;#sect-redux-actions&quot; class=&quot;headerlink&quot; title=&quot;&amp;sect; redux-actions&quot;&gt;&lt;/a&gt;&amp;sect; &lt;a href=&quot;https://github.com/acdlite/redux-actions&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux-actions&lt;/a&gt;&lt;/h3&gt;&lt;blockquote&gt;
 &lt;p&gt;专门为redux准备的，flux standard action的工具集。&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h4 id=&quot;createAction-type-payloadCreator-Identity-metaCreator&quot;&gt;&lt;a href=&quot;#createAction-type-payloadCreator-Identity-metaCreator&quot; class=&quot;headerlink&quot; title=&quot;createAction(type, payloadCreator = Identity, ?metaCreator)&quot;&gt;&lt;/a&gt;createAction(type, payloadCreator = Identity, ?metaCreator)&lt;/h4&gt;&lt;ul&gt;
-&lt;li&gt;参数type就是action类型，一般是string，&lt;/li&gt;
-&lt;li&gt;参数payloadCreator就是payload生成器，一般是个function&lt;/li&gt;
+&lt;h4 id=&quot;什么是flux-standard-action？&quot;&gt;&lt;a href=&quot;#什么是flux-standard-action？&quot; class=&quot;headerlink&quot; title=&quot;什么是flux standard action？&quot;&gt;&lt;/a&gt;什么是&lt;a href=&quot;https://github.com/acdlite/flux-standard-action&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;flux standard action&lt;/a&gt;？&lt;/h4&gt;&lt;h4 id=&quot;createAction-type-payloadCreator-Identity-metaCreator&quot;&gt;&lt;a href=&quot;#createAction-type-payloadCreator-Identity-metaCreator&quot; class=&quot;headerlink&quot; title=&quot;createAction(type, payloadCreator = Identity, ?metaCreator)&quot;&gt;&lt;/a&gt;createAction(type, payloadCreator = Identity, ?metaCreator)&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;参数type:就是action类型，一般是string，&lt;/li&gt;
+&lt;li&gt;参数payloadCreator:就是payload生成器，一般是个function&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;包装一个action creator ,然后就能把flux标准的action的payload，作为返回值返回。&lt;/p&gt;
 &lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;let increment = createAction(&amp;apos;INCREMENT&amp;apos;, amount =&amp;gt; amount);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;expect(increment(42)).to.deep.equal(&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  type: &amp;apos;INCREMENT&amp;apos;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  payload: 42&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
@@ -168,8 +168,8 @@
 &lt;/ul&gt;
 &lt;h4 id=&quot;handleAction-type-reducer-reducerMap-Identity-defaultState&quot;&gt;&lt;a href=&quot;#handleAction-type-reducer-reducerMap-Identity-defaultState&quot; class=&quot;headerlink&quot; title=&quot;handleAction(type, reducer | reducerMap = Identity, defaultState)&quot;&gt;&lt;/a&gt;handleAction(type, reducer | reducerMap = Identity, defaultState)&lt;/h4&gt;&lt;p&gt;包装一个reducer，这个reducer仅能处理一个，确定type的、flux标准的action。&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;参数type，就是一个action的type&lt;/li&gt;
-&lt;li&gt;参数reducer，就是reducer函数，用来处理传递的action里的payload和state,然后返回新的state&lt;/li&gt;
+&lt;li&gt;参数type:就是一个action的type&lt;/li&gt;
+&lt;li&gt;参数reducer:就是reducer函数，用来处理传递的action里的payload和state,然后返回新的state&lt;/li&gt;
 &lt;li&gt;参数defaultState,当reducer收到的参数是&lt;code&gt;undefined&lt;/code&gt;时，就返回defaultState&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h4 id=&quot;handleActions-reducerMap-defaultState&quot;&gt;&lt;a href=&quot;#handleActions-reducerMap-defaultState&quot; class=&quot;headerlink&quot; title=&quot;handleActions(reducerMap, defaultState)&quot;&gt;&lt;/a&gt;handleActions(reducerMap, defaultState)&lt;/h4&gt;&lt;ul&gt;
@@ -208,8 +208,7 @@
     
     <summary type="html">
     
-      &lt;h1 id=&quot;导航&quot;&gt;&lt;a href=&quot;#导航&quot; class=&quot;headerlink&quot; title=&quot;导航&quot;&gt;&lt;/a&gt;导航&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;&quot;&gt;react-native基础：redux学习1-理论篇&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;&quot;&gt;react-nat
+      &lt;h1 id=&quot;导航&quot;&gt;&lt;a href=&quot;#导航&quot; class=&quot;headerlink&quot; title=&quot;导航&quot;&gt;&lt;/a&gt;导航&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%8
     
     </summary>
     
