@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hammercui.github.io/"/>
-  <updated>2016-12-02T09:06:18.000Z</updated>
+  <updated>2016-12-03T02:31:43.000Z</updated>
   <id>http://hammercui.github.io/</id>
   
   <author>
@@ -14,6 +14,56 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>react-native基础：redux学习2-实战篇</title>
+    <link href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A02/"/>
+    <id>http://hammercui.github.io/post/react-native基础：redux学习2/</id>
+    <published>2016-12-03T01:36:50.000Z</published>
+    <updated>2016-12-03T02:31:43.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;导航&quot;&gt;&lt;a href=&quot;#导航&quot; class=&quot;headerlink&quot; title=&quot;导航&quot;&gt;&lt;/a&gt;导航&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A01/&quot;&gt;react-native基础：redux学习1-理论篇&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;react-native基础：redux学习2-实战篇&lt;/a&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;本篇blog是在对redux理论知识有了足够了解后，做的实战架构。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;实战&quot;&gt;&lt;a href=&quot;#实战&quot; class=&quot;headerlink&quot; title=&quot;实战&quot;&gt;&lt;/a&gt;实战&lt;/h1&gt;&lt;h2 id=&quot;安装需要用到的库&quot;&gt;&lt;a href=&quot;#安装需要用到的库&quot; class=&quot;headerlink&quot; title=&quot;安装需要用到的库&quot;&gt;&lt;/a&gt;安装需要用到的库&lt;/h2&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;npm install --save redux&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install --save react-redux&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install --save redux-devtools&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install --save redux-thunk&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;npm install --save redux-logger&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;react绑定库跟开发者工具&lt;br&gt;&lt;a href=&quot;https://github.com/reactjs/redux&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/reactjs/react-redux&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;react-redux&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://github.com/gaearon/redux-devtools&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux-devtools&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;异步action构造器&lt;a href=&quot;https://github.com/gaearon/redux-thunk/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux-thunk&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;日志工具&lt;br&gt;&lt;a href=&quot;https://github.com/fcomb/redux-logger&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;redux-logger&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;基础用法-同步的action&quot;&gt;&lt;a href=&quot;#基础用法-同步的action&quot; class=&quot;headerlink&quot; title=&quot;基础用法 同步的action&quot;&gt;&lt;/a&gt;基础用法 同步的action&lt;/h3&gt;&lt;p&gt;引入支持&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;import &amp;#123; createStore &amp;#125; from &amp;apos;redux&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import &amp;#123; Provider, connect &amp;#125; from &amp;apos;react-redux&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;将根组件包装进&lt;code&gt;&amp;lt;Provider&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;//reducer函数，所有的&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;function reducer(state=&amp;#123;&amp;#125;,action)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;let store = createStore(todoApp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;render(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;Provider store=&amp;#123;store&amp;#125;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;App /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;/Provider&amp;gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  document.getElementById(&amp;apos;root&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;通过 &lt;code&gt;react-redux&lt;/code&gt; 提供的 &lt;code&gt;connect()&lt;/code&gt; 方法将包装好的组件连接到&lt;code&gt;Redux&lt;/code&gt;。尽量只做一个顶层的组件，或者 &lt;code&gt;route&lt;/code&gt; 处理&lt;/p&gt;
+&lt;p&gt;任何一个从 &lt;code&gt;connect()&lt;/code&gt; 包装好的组件都可以得到一个 &lt;code&gt;dispatch&lt;/code&gt; 方法作为组件的 &lt;code&gt;props&lt;/code&gt;，以及得到全局 &lt;code&gt;state&lt;/code&gt; 中所需的任何内容。 &lt;code&gt;connect()&lt;/code&gt; 的唯一参数是 &lt;code&gt;selector&lt;/code&gt;。&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;const PageContainer = connect()(PageContainer);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;let store = createStore(todoApp);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;render(&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;Provider store=&amp;#123;store&amp;#125;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;lt;App /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;lt;/Provider&amp;gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  document.getElementById(&amp;apos;root&amp;apos;)&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;)&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h3 id=&quot;高价用法-异步action&quot;&gt;&lt;a href=&quot;#高价用法-异步action&quot; class=&quot;headerlink&quot; title=&quot;高价用法 异步action&quot;&gt;&lt;/a&gt;高价用法 异步action&lt;/h3&gt;&lt;p&gt;如何把action creator跟网络请求结合起来呢。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;&quot;&gt;redux-thunk&lt;/a&gt;：一个搭建异步action的构造器。&lt;br&gt;其作用就是把一些比较复杂的动作(例如这里用到的异步操作)封装到一个action中去。&lt;/p&gt;
+&lt;p&gt;通过使用指定的 middleware，action creator 除了返回 action 对象外还可以返回函数。这时，这个 action creator 就成为了 thunk。&lt;/p&gt;
+&lt;p&gt;当 action creator 返回函数时，这个函数会被 Redux Thunk middleware 执行。这个函数并不需要保持纯净；它还可以带有副作用，包括执行异步 API 请求。这个函数还可以 dispatch action，就像 dispatch 前面定义的同步 action 一样。&lt;/p&gt;
+&lt;p&gt;注意&lt;code&gt;dispatch&lt;/code&gt;定义：通过 &lt;code&gt;store.dispatch()&lt;/code&gt; 将 &lt;code&gt;action&lt;/code&gt; 传到 &lt;code&gt;store&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;使用 ES6 计算属性语法，使用 &lt;code&gt;Object.assign()&lt;/code&gt; 来简洁高效地更新 &lt;code&gt;state&lt;/code&gt;的值&lt;br&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;return Object.assign(&amp;#123;&amp;#125;, state, newState);&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;h4 id=&quot;注意事项&quot;&gt;&lt;a href=&quot;#注意事项&quot; class=&quot;headerlink&quot; title=&quot;注意事项&quot;&gt;&lt;/a&gt;注意事项&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;fetch&lt;br&gt;当我们在react-native版本可以直接使用这个强大的网络操作API，当时在react-web中大多数浏览器不支持，建议使用[isomorphic-fetch](&lt;a href=&quot;https://github.com/matthew-andrews/isomorphic-fetch.所以我考虑还是在web项目使用jQuery，最稳妥。&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://github.com/matthew-andrews/isomorphic-fetch.所以我考虑还是在web项目使用jQuery，最稳妥。&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;// 每次使用 `fetch` 前都这样调用一下&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;import fetch from &amp;apos;isomorphic-fetch&amp;apos;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;导航&quot;&gt;&lt;a href=&quot;#导航&quot; class=&quot;headerlink&quot; title=&quot;导航&quot;&gt;&lt;/a&gt;导航&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%8
+    
+    </summary>
+    
+      <category term="react-native basis" scheme="http://hammercui.github.io/categories/react-native-basis/"/>
+    
+    
+      <category term="react-native" scheme="http://hammercui.github.io/tags/react-native/"/>
+    
+      <category term="redux" scheme="http://hammercui.github.io/tags/redux/"/>
+    
+  </entry>
   
   <entry>
     <title>react-native基础：global全局变量和持久化</title>
@@ -1232,43 +1282,6 @@
     
     
       <category term="android最佳实践" scheme="http://hammercui.github.io/tags/android%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>android基础：工具类</title>
-    <link href="http://hammercui.github.io/post/android%E5%9F%BA%E7%A1%80%EF%BC%9A%E5%B7%A5%E5%85%B7%E7%B1%BB/"/>
-    <id>http://hammercui.github.io/post/android基础：工具类/</id>
-    <published>2016-06-12T14:25:20.000Z</published>
-    <updated>2016-06-15T09:07:38.000Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;本文主要总结下android常用的工具类&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;TextUtils类，处理字符串&quot;&gt;&lt;a href=&quot;#TextUtils类，处理字符串&quot; class=&quot;headerlink&quot; title=&quot;TextUtils类，处理字符串&quot;&gt;&lt;/a&gt;TextUtils类，处理字符串&lt;/h1&gt;&lt;p&gt;&lt;code&gt;android.text.TextUtils&lt;/code&gt;这个类有以下功能&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;public static boolean isEmpty(@Nullable CharSequence str)&lt;/code&gt;这个方法判断字符串非null且非空，在对字符串进行判断时可以不必if(str !=null &amp;amp;&amp;amp; str.length() &amp;gt; 0)这样判断。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;public static CharSequence concat(CharSequence... text)&lt;/code&gt; 字符串连接。有很多字符串，你还在用＋拼接或自己new 一个StringBuffer\StringBuilder么？其实这个方法已经帮我们做好了，用StringBuilder实现，进行字符串拼接时可以考虑使用这个方法。而且支持SpannableString。&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;public static boolean isDigitsOnly(CharSequence str)&lt;/code&gt; 判断所给的字符串是否只有数字&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;public static boolean equals(CharSequence a, CharSequence b)&lt;/code&gt; 判断两个字符串对象的内容是否相等，内部进行了非null判断&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;public static String htmlEncode(String s)&lt;/code&gt;将html代码中的特殊字符进行转码处理&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h1 id=&quot;android-text-format-DateUtils-日期格式化工具&quot;&gt;&lt;a href=&quot;#android-text-format-DateUtils-日期格式化工具&quot; class=&quot;headerlink&quot; title=&quot;android.text.format.DateUtils 日期格式化工具&quot;&gt;&lt;/a&gt;android.text.format.DateUtils 日期格式化工具&lt;/h1&gt;&lt;h1 id=&quot;android-webkit-URLUtil-URI判断工具类&quot;&gt;&lt;a href=&quot;#android-webkit-URLUtil-URI判断工具类&quot; class=&quot;headerlink&quot; title=&quot;android.webkit.URLUtil URI判断工具类&quot;&gt;&lt;/a&gt;android.webkit.URLUtil URI判断工具类&lt;/h1&gt;&lt;h1 id=&quot;参考&quot;&gt;&lt;a href=&quot;#参考&quot; class=&quot;headerlink&quot; title=&quot;参考&quot;&gt;&lt;/a&gt;参考&lt;/h1&gt;&lt;p&gt;[Android快速开发系列 10个常用工具类]（&lt;a href=&quot;http://blog.csdn.net/lmj623565791/article/details/38965311）&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://blog.csdn.net/lmj623565791/article/details/38965311）&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;本文主要总结下android常用的工具类&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;TextUtils类，处理字符串&quot;&gt;&lt;a href=&quot;#TextUtils类，处理字符串&quot; class=&quot;headerlink&quot; title=&quot;TextU
-    
-    </summary>
-    
-      <category term="android" scheme="http://hammercui.github.io/categories/android/"/>
-    
-    
-      <category term="android" scheme="http://hammercui.github.io/tags/android/"/>
     
   </entry>
   

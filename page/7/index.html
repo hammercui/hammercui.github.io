@@ -293,6 +293,133 @@
             
               
                 
+                <a class="post-title-link" href="/post/android最佳实践4：沉浸式体验框架SystemBarTint/" itemprop="url">
+                  android最佳实践4：4.4以下沉浸式体验框架SystemBarTint
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2015-12-15T18:00:08+08:00" content="2015-12-15">
+              2015-12-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/android最佳实践4：沉浸式体验框架SystemBarTint/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/android最佳实践4：沉浸式体验框架SystemBarTint/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>android也实现了类似于ios的状态栏透明，变色效果，称为沉浸式体验。但是，4.4及以上才能用！！所以强烈推荐这个<a href="https://github.com/jgilfelt/SystemBarTint" target="_blank" rel="external">SystemBarTint</a>框架，能实现同样的效果,而且最低兼容API10.</p>
+<p><strong>注意</strong></p>
+<p>当不采用MD设计规范时，采用本方案最合适。若使用MD方案了，请最好使用toolbar取代actionbar.具体本方案的兼容性，还需要继续测试。</p>
+<h1 id="4-4-以下版本的方案"><a href="#4-4-以下版本的方案" class="headerlink" title="4.4 以下版本的方案"></a>4.4 以下版本的方案</h1><h2 id="引入依赖"><a href="#引入依赖" class="headerlink" title="引入依赖"></a>引入依赖</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &apos;com.readystatesoftware.systembartint:systembartint:1.0.3&apos;</span><br></pre></td></tr></table></figure>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="1-Activity的onCreate方法添加"><a href="#1-Activity的onCreate方法添加" class="headerlink" title="1  Activity的onCreate方法添加"></a>1  Activity的onCreate方法添加</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">protected void onCreate(Bundle savedInstanceState) &#123;</span><br><span class="line">    super.onCreate(savedInstanceState);</span><br><span class="line">    setContentView(R.layout.activity_main);</span><br><span class="line">	//当api》=19时</span><br><span class="line">	if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) &#123;</span><br><span class="line">			setTranslucentStatus(true);</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">    // 创建状态栏的管理实例</span><br><span class="line">    SystemBarTintManager tintManager = new SystemBarTintManager(this);</span><br><span class="line">    // 激活状态栏设置</span><br><span class="line">    tintManager.setStatusBarTintEnabled(true);</span><br><span class="line">    // 激活导航栏设置，当使用actionbar的时候开启</span><br><span class="line">    tintManager.setNavigationBarTintEnabled(true);</span><br><span class="line">	// 设置一个颜色给系统栏  </span><br><span class="line">	tintManager.setTintColor(Color.parseColor(&quot;#99000FF&quot;));  </span><br><span class="line">	// 设置状态栏需颜色或背景图</span><br><span class="line">	tintManager.setStatusBarTintResource(R.color.statusbar_bg);</span><br><span class="line">	// 设置一个样式背景给导航栏，当使用actionbar的时候使用</span><br><span class="line">	tintManager.setNavigationBarTintResource(R.drawable.my_tint);  </span><br><span class="line">	</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@TargetApi(19) </span><br><span class="line">	private void setTranslucentStatus(boolean on) &#123;</span><br><span class="line">		Window win = getWindow();</span><br><span class="line">		WindowManager.LayoutParams winParams = win.getAttributes();</span><br><span class="line">		final int bits = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;</span><br><span class="line">		if (on) &#123;</span><br><span class="line">			winParams.flags |= bits;</span><br><span class="line">		&#125; else &#123;</span><br><span class="line">			winParams.flags &amp;= ~bits;</span><br><span class="line">		&#125;</span><br><span class="line">		win.setAttributes(winParams);</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-activity的xml配置文件"><a href="#2-activity的xml配置文件" class="headerlink" title="2 activity的xml配置文件"></a>2 activity的xml配置文件</h2><p>记得新增属性<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h2 id="3-Theme的配置"><a href="#3-Theme的配置" class="headerlink" title="3 Theme的配置"></a>3 Theme的配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- 我的activity主题，应用于所有的 activity--&gt;</span><br><span class="line">    &lt;style name=&quot;MyTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;</span><br><span class="line">		&lt;!-- activity切换动画--&gt;</span><br><span class="line">        &lt;item name=&quot;android:windowAnimationStyle&quot;&gt;@style/activityAnimation&lt;/item&gt;</span><br><span class="line">		&lt;!-- 不显示Title Bar --&gt;</span><br><span class="line">		&lt;item name=&quot;android:windowNoTitle&quot;&gt;true&lt;/item&gt;</span><br><span class="line">		&lt;!-- 避免控件都会顶到状态栏上 --&gt;</span><br><span class="line">        &lt;item name=&quot;android:fitsSystemWindows&quot;&gt;true&lt;/item&gt;</span><br><span class="line">		&lt;!-- API 14 theme 的自定义 can go here. --&gt;</span><br><span class="line">		&lt;item name=&quot;android:actionBarStyle&quot;&gt;@style/ActionBarStyle&lt;/item&gt;</span><br><span class="line">    &lt;/style&gt;</span><br><span class="line"></span><br><span class="line">&lt;!--activity统一的切换动画 --&gt;</span><br><span class="line">&lt;style name=&quot;activityAnimation&quot; parent=&quot;@android:style/Animation.Activity&quot;&gt;</span><br><span class="line">        &lt;item name=&quot;android:activityOpenEnterAnimation&quot;&gt;@anim/push_left_in&lt;/item&gt;  </span><br><span class="line">        &lt;item name=&quot;android:activityOpenExitAnimation&quot;&gt;@anim/push_left_out&lt;/item&gt;  </span><br><span class="line">        &lt;item name=&quot;android:activityCloseEnterAnimation&quot;&gt;@anim/back_right_in&lt;/item&gt;  </span><br><span class="line">        &lt;item name=&quot;android:activityCloseExitAnimation&quot;&gt;@anim/back_right_out&lt;/item&gt;  </span><br><span class="line">    &lt;/style&gt;</span><br><span class="line">	</span><br><span class="line">	&lt;!--API 14主题的自定义 --&gt;</span><br><span class="line">	&lt;style name=&quot;ActionBarStyle&quot; parent=&quot;android:Widget.Holo.Light.ActionBar.Solid.Inverse&quot;&gt;</span><br><span class="line">	&lt;item name=&quot;android:background&quot;&gt;@color/orange&lt;/item&gt;</span><br><span class="line">	&lt;/style&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="4-4以上版本的方案（不适用第三方框架）"><a href="#4-4以上版本的方案（不适用第三方框架）" class="headerlink" title="4.4以上版本的方案（不适用第三方框架）"></a>4.4以上版本的方案（不适用第三方框架）</h1><p>如何实现，请参考blog <a href="http://blog.csdn.net/koche/article/details/46766963" target="_blank" rel="external">安卓4.4以上修改状态栏颜色</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/android最佳实践3：retrofit框架/" itemprop="url">
                   android最佳实践3：retrofit框架
                 </a>
@@ -1008,7 +1135,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-count">66</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

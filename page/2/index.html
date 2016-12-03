@@ -293,6 +293,152 @@
             
               
                 
+                <a class="post-title-link" href="/post/正则表达式/" itemprop="url">
+                  正则表达式
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-09T14:26:38+08:00" content="2016-09-09">
+              2016-09-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/基础/" itemprop="url" rel="index">
+                    <span itemprop="name">基础</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/正则表达式/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/正则表达式/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>正则表达式广泛用于前端，移动端，以及服务端，用来做字符串的规则校验，校验是否合法</p>
+</blockquote>
+<ul>
+<li>\d可以匹配一个数字，\w可以匹配一个字母或数字</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&apos;00\d&apos;可以匹配&apos;007&apos;，但无法匹配&apos;00A&apos;；</span><br><span class="line"></span><br><span class="line">&apos;\d\d\d&apos;可以匹配&apos;010&apos;；</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>.</code>匹配任意字符</li>
+<li><code>*</code>表示任意个字符，包括0个，<code>+</code>表示至少一个字符，<code>?</code>表示0个或1个字符，<code>{n}</code>表示n个字符，<code>{n-m}</code>表示n-m个字符</li>
+<li><code>[]</code>表示范围<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[0-9a-zA-Z\_]可以匹配一个数字,字母或者下划线</span><br><span class="line">[0-9a-zA-Z\_]+可以匹配至少由一个数字、字母或者下划线组成的字符串，比如&apos;a100&apos;，&apos;0_Z&apos;，&apos;Py3000&apos;等等</span><br><span class="line">``` </span><br><span class="line">* `A|B`可以匹配A或B，所以`(P|p)ython`可以匹配`&apos;Python&apos;`或者`&apos;python&apos;`</span><br><span class="line">* ^表示行的开头，^\d表示必须以数字开头。</span><br><span class="line">* $表示行的结束，\d$表示必须以数字结束。</span><br><span class="line"></span><br><span class="line">## python中的使用</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>import re<br>if re.match(r’^\d{3}-\d{3,8}$’,’010-55’):<br>    print ‘ok’<br>else:<br>    print ‘not match’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">无法识别连续的空格，用正则表达式试试：</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>re.split(r’\s+’, ‘a b   c’)<br>[‘a’, ‘b’, ‘c’]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">无论多少个空格都可以正常分割。加入,试试</span><br></pre></td></tr></table></figure></p>
+<p>re.split(r’[\s\,]+’, ‘a,b, c  d’)<br>[‘a’, ‘b’, ‘c’, ‘d’]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">再加入;试试：</span><br></pre></td></tr></table></figure></p>
+<p>re.split(r’[\s\,\;]+’, ‘a,b;; c  d’)<br>[‘a’, ‘b’, ‘c’, ‘d’]<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">**分组功能**</span><br><span class="line">加上（）用来做分组的拆分</span><br></pre></td></tr></table></figure></p>
+<p>m = re.match(r’^(\d{3})-(\d{3,8})$’, ‘010-12345’)<br>m.group(1)<br>‘010’<br>m.group(2)<br>‘12345’<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">**预编译**</span><br><span class="line">如果一个正则表达式要重复使用几千次，出于效率的考虑，我们可以预编译该正则表达式</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+</blockquote>
+</blockquote>
+<p>import re</p>
+<h1 id="编译"><a href="#编译" class="headerlink" title="编译:"></a>编译:</h1><p> re_telephone = re.compile(r’^(\d{3})-(\d{3,8})$’)</p>
+<h1 id="使用："><a href="#使用：" class="headerlink" title="使用："></a>使用：</h1><p>re_telephone.match(‘010-12345’).groups()<br>执行结果：<br>(‘010’, ‘12345’)<br>```</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/python学习笔记：3-io操作/" itemprop="url">
                   python学习笔记：3 io操作
                 </a>
@@ -1684,137 +1830,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/android基础：工具类/" itemprop="url">
-                  android基础：工具类
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-12T22:25:20+08:00" content="2016-06-12">
-              2016-06-12
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/post/android基础：工具类/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/android基础：工具类/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>本文主要总结下android常用的工具类</p>
-</blockquote>
-<h1 id="TextUtils类，处理字符串"><a href="#TextUtils类，处理字符串" class="headerlink" title="TextUtils类，处理字符串"></a>TextUtils类，处理字符串</h1><p><code>android.text.TextUtils</code>这个类有以下功能</p>
-<ul>
-<li><code>public static boolean isEmpty(@Nullable CharSequence str)</code>这个方法判断字符串非null且非空，在对字符串进行判断时可以不必if(str !=null &amp;&amp; str.length() &gt; 0)这样判断。</li>
-<li><code>public static CharSequence concat(CharSequence... text)</code> 字符串连接。有很多字符串，你还在用＋拼接或自己new 一个StringBuffer\StringBuilder么？其实这个方法已经帮我们做好了，用StringBuilder实现，进行字符串拼接时可以考虑使用这个方法。而且支持SpannableString。</li>
-<li><code>public static boolean isDigitsOnly(CharSequence str)</code> 判断所给的字符串是否只有数字</li>
-<li><code>public static boolean equals(CharSequence a, CharSequence b)</code> 判断两个字符串对象的内容是否相等，内部进行了非null判断</li>
-<li><code>public static String htmlEncode(String s)</code>将html代码中的特殊字符进行转码处理</li>
-</ul>
-<h1 id="android-text-format-DateUtils-日期格式化工具"><a href="#android-text-format-DateUtils-日期格式化工具" class="headerlink" title="android.text.format.DateUtils 日期格式化工具"></a>android.text.format.DateUtils 日期格式化工具</h1><h1 id="android-webkit-URLUtil-URI判断工具类"><a href="#android-webkit-URLUtil-URI判断工具类" class="headerlink" title="android.webkit.URLUtil URI判断工具类"></a>android.webkit.URLUtil URI判断工具类</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p>[Android快速开发系列 10个常用工具类]（<a href="http://blog.csdn.net/lmj623565791/article/details/38965311）" target="_blank" rel="external">http://blog.csdn.net/lmj623565791/article/details/38965311）</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1860,7 +1875,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-count">66</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
