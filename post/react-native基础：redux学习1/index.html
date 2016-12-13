@@ -102,7 +102,7 @@ react-native基础：redux学习2-实战篇
 本篇blog主要讲解redux的一些理论，以及第三方的组件库和其优秀的解决思路，所谓理论现行。
 我在查阅了大量参考文章和blog后，有感于大部分文章都侧重于讲某个点，而没有系统的让初学者从0开始对redux进行理解，所以写下了这篇总结。
 当然我们首先还是要站在巨人的肩膀，需要预">
-<meta property="og:updated_time" content="2016-12-03T02:28:46.000Z">
+<meta property="og:updated_time" content="2016-12-03T09:51:24.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="react-native基础：redux学习1-理论篇">
 <meta name="twitter:description" content="导航react-native基础：redux学习1-理论篇
@@ -373,7 +373,7 @@ react-native基础：redux学习2-实战篇
 
       
         <h1 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h1><p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A01/">react-native基础：redux学习1-理论篇</a></p>
-<p><a href="">react-native基础：redux学习2-实战篇</a></p>
+<p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A02/">react-native基础：redux学习2-实战篇</a></p>
 <h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><blockquote>
 <p>本篇blog主要讲解redux的一些理论，以及第三方的组件库和其优秀的解决思路，所谓理论现行。</p>
 <p>我在查阅了大量参考文章和blog后，有感于大部分文章都侧重于讲某个点，而没有系统的让初学者从0开始对redux进行理解，所以写下了这篇总结。</p>
@@ -470,18 +470,22 @@ react-native基础：redux学习2-实战篇
 <h2 id="第三方辅助类组件库"><a href="#第三方辅助类组件库" class="headerlink" title="第三方辅助类组件库"></a>第三方辅助类组件库</h2><h3 id="sect-redux-actions"><a href="#sect-redux-actions" class="headerlink" title="&sect; redux-actions"></a>&sect; <a href="https://github.com/acdlite/redux-actions" target="_blank" rel="external">redux-actions</a></h3><blockquote>
 <p>专门为redux准备的，flux standard action的工具集。</p>
 </blockquote>
-<h4 id="什么是flux-standard-action？"><a href="#什么是flux-standard-action？" class="headerlink" title="什么是flux standard action？"></a>什么是<a href="https://github.com/acdlite/flux-standard-action" target="_blank" rel="external">flux standard action</a>？</h4><h4 id="createAction-type-payloadCreator-Identity-metaCreator"><a href="#createAction-type-payloadCreator-Identity-metaCreator" class="headerlink" title="createAction(type, payloadCreator = Identity, ?metaCreator)"></a>createAction(type, payloadCreator = Identity, ?metaCreator)</h4><ul>
-<li>参数type:就是action类型，一般是string，</li>
-<li>参数payloadCreator:就是payload生成器，一般是个function</li>
+<h4 id="什么是flux-standard-action？"><a href="#什么是flux-standard-action？" class="headerlink" title="什么是flux standard action？"></a>什么是<a href="https://github.com/acdlite/flux-standard-action" target="_blank" rel="external">flux standard action</a>？</h4><p>简称fsa,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: &apos;ADD_TODO&apos;,</span><br><span class="line">  payload: &#123;</span><br><span class="line">    text: &apos;Do something.&apos;  </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>出错时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: &apos;ADD_TODO&apos;,</span><br><span class="line">  payload: new Error(),</span><br><span class="line">  error: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>type必须的，payload可选的，error可选的，meta可选的<br>判断一个action是否是flux standard action<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="createAction-type-payloadCreator-Identity-metaCreator"><a href="#createAction-type-payloadCreator-Identity-metaCreator" class="headerlink" title="createAction(type, payloadCreator = Identity, ?metaCreator)"></a>createAction(type, payloadCreator = Identity, ?metaCreator)</h4><ul>
+<li>参数type:就是<code>action</code>的<code>type</code>，一般是<code>string</code>，</li>
+<li>参数payloadCreator:就是<code>payload</code>生成器，类型只能是<code>function</code>，<code>undefined</code>，<code>或者null</code>，</li>
 </ul>
-<p>包装一个action creator ,然后就能把flux标准的action的payload，作为返回值返回。</p>
+<p><code>createAction</code>是一个Action生成器，返回一个<code>Flux Standard Action</code>,这个<code>Action</code>的<code>payLoad</code>的值就是payloadCreator的返回值</p>
+<p>举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let increment = createAction(&apos;INCREMENT&apos;, amount =&gt; amount);</span><br><span class="line">expect(increment(42)).to.deep.equal(&#123;</span><br><span class="line">  type: &apos;INCREMENT&apos;,</span><br><span class="line">  payload: 42</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>好处是如果payload是一个error实例，react-actions就能自动把<code>action.error = true</code></p>
-<p>example</p>
+<p>好处是如果payload是一个Error对象（<code>new TypeError</code>），<code>react-actions</code>就能自动把<code>Action.error = true</code></p>
+<p>举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const increment = createAction(&apos;INCREMENT&apos;);</span><br><span class="line"></span><br><span class="line">const error = new TypeError(&apos;not a number&apos;);</span><br><span class="line">expect(increment(error)).to.deep.equal(&#123;</span><br><span class="line">  type: &apos;INCREMENT&apos;,</span><br><span class="line">  payload: error,</span><br><span class="line">  error: true</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>createAction也能返回它的<code>type</code>，然后作为<code>type</code>传参给<code>handleAction</code>或者<code>handleActions</code></p>
+<p><code>createAction</code>也能返回它的<code>type</code>，然后作为<code>type</code>传参给<code>handleAction</code>或者<code>handleActions</code>使用</p>
 <ul>
-<li>作为参数在handleAction中</li>
+<li>作为参数在<code>handleAction</code>中使用</li>
 <li>作为object key 在handleActions中使用</li>
 </ul>
 <h4 id="handleAction-type-reducer-reducerMap-Identity-defaultState"><a href="#handleAction-type-reducer-reducerMap-Identity-defaultState" class="headerlink" title="handleAction(type, reducer | reducerMap = Identity, defaultState)"></a>handleAction(type, reducer | reducerMap = Identity, defaultState)</h4><p>包装一个reducer，这个reducer仅能处理一个，确定type的、flux标准的action。</p>
@@ -671,7 +675,7 @@ react-native基础：redux学习2-实战篇
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

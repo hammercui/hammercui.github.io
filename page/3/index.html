@@ -293,6 +293,151 @@
             
               
                 
+                <a class="post-title-link" href="/post/android最佳实践9：greenDao的使用/" itemprop="url">
+                  android最佳实践9：greenDao在android studio中的使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-13T15:53:06+08:00" content="2016-06-13">
+              2016-06-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/android最佳实践9：greenDao的使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/android最佳实践9：greenDao的使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>greenDao是一个将对象映射到 SQLite 数据库中的轻量且快速的 ORM 解决方案，性能很不错。</p>
+</blockquote>
+<p><img src="http://static.codeceo.com/images/2015/07/4cb11fd0257a668c15b9deda53cb65fb.png" alt=""></p>
+<h1 id="greenDao的特点"><a href="#greenDao的特点" class="headerlink" title="greenDao的特点"></a>greenDao的特点</h1><ul>
+<li>精简</li>
+<li>性能最大化</li>
+<li>不使用注解，使用code generate</li>
+</ul>
+<h1 id="android-studio中的使用"><a href="#android-studio中的使用" class="headerlink" title="android studio中的使用"></a>android studio中的使用</h1><h2 id="1-android工程配置-greendao-generator-模块"><a href="#1-android工程配置-greendao-generator-模块" class="headerlink" title="1 android工程配置[greendao generator]模块"></a>1 android工程配置[greendao generator]模块</h2><p>1 .src/main目录新建一个与java目录同层的<code>java-gen</code>目录，用于存放由greenDao生成的Bean,Dao,DaoMaster,DaoSession类</p>
+<p>2 app的build.gradle添加sourceSets与dependencies</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">buildTypes&#123;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> sourceSets &#123;</span><br><span class="line">        main&#123;</span><br><span class="line">            java.srcDirs = [&apos;src/main/java&apos;,src/main/java-gen]</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">...</span><br><span class="line"> compile &apos;org.greenrobot:greendao:2.2.1&apos;</span><br><span class="line">    compile &apos;org.greenrobot:greendao-generator:2.2.0&apos;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-新建greenDao-generator模块，纯java工程"><a href="#2-新建greenDao-generator模块，纯java工程" class="headerlink" title="2 新建greenDao generator模块，纯java工程"></a>2 新建greenDao generator模块，纯java工程</h2><p>1 file-&gt;new-&gt;new module-&gt;java Library-&gt;填写包名类名-&gt;finish</p>
+<p>然后在新工程的build.gradle中添加</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dependencies&#123;</span><br><span class="line">...</span><br><span class="line">compile &apos;org.greenrobot:greendao-generator:2.2.0&apos;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2 编写【ExampleDaoGenerator】类，注意： 我们的 Java 工程只有一个类，它的内容决定了「GreenDao Generator」的输出，你可以在这个类中通过对象、关系等创建数据库结构，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">public class ExampleDaoGenerator &#123;</span><br><span class="line">    public static void main(String args[])&#123;</span><br><span class="line">        // 正如你所见的，你创建了一个用于添加实体（Entity）的模式（Schema）对象。</span><br><span class="line">        // 两个参数分别代表：数据库版本号与自动生成代码的包路径。</span><br><span class="line">        Schema schema = new Schema(1, &quot;com.hammer.example&quot;);</span><br><span class="line">        //当然，如果你愿意，你也可以分别指定生成的 Bean 与 DAO 类所在的目录，只要如下所示：</span><br><span class="line">        // 一旦你拥有了一个 Schema 对象后，你便可以使用它添加实体（Entities）了。</span><br><span class="line">        addNote(schema);</span><br><span class="line">        // 最后我们将使用 DAOGenerator 类的 generateAll() 方法自动生成代码，此处你需要根据自己的情况更改输出目录（既之前创建的 java-gen)。</span><br><span class="line">        // 其实，输出目录的路径可以在 build.gradle 中设置，有兴趣的朋友可以自行搜索，这里就不再详解。</span><br><span class="line">        try &#123;</span><br><span class="line">            new DaoGenerator().generateAll(schema, &quot;E:/androidSpace/android-lesson/BaseLesson/src/main/java-gen&quot;);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * @param schema</span><br><span class="line">     */</span><br><span class="line">    private static void addNote(Schema schema) &#123;</span><br><span class="line">        // 一个实体（类）就关联到数据库中的一张表，此处表名为「Note」（既类名）</span><br><span class="line">        Entity note = schema.addEntity(&quot;Note&quot;);</span><br><span class="line">        // 你也可以重新给表命名</span><br><span class="line">        // note.setTableName(&quot;NODE&quot;);</span><br><span class="line">        // greenDAO 会自动根据实体类的属性值来创建表字段，并赋予默认值</span><br><span class="line">        // 接下来你便可以设置表中的字段：</span><br><span class="line">        note.addIdProperty();</span><br><span class="line">        note.addStringProperty(&quot;text&quot;).notNull();</span><br><span class="line">        // 与在 Java 中使用驼峰命名法不同，默认数据库中的命名是使用大写和下划线来分割单词的。</span><br><span class="line">        // For example, a property called “creationDate” will become a database column “CREATION_DATE”.</span><br><span class="line">        note.addStringProperty(&quot;comment&quot;);</span><br><span class="line">        note.addDateProperty(&quot;date&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3 执行run main函数，生成如图4个文件<br><img src="http://7xrf0l.com1.z0.glb.clouddn.com/QQ%E6%88%AA%E5%9B%BE20160614113731.png" alt=""></p>
+<h1 id="在android工程进行数据库操作"><a href="#在android工程进行数据库操作" class="headerlink" title="在android工程进行数据库操作"></a>在android工程进行数据库操作</h1><h2 id="1-考虑到application的生命周期，把DaoMaster跟DaoSession的实例放到application中，避免重复创建"><a href="#1-考虑到application的生命周期，把DaoMaster跟DaoSession的实例放到application中，避免重复创建" class="headerlink" title="1 考虑到application的生命周期，把DaoMaster跟DaoSession的实例放到application中，避免重复创建"></a>1 考虑到application的生命周期，把DaoMaster跟DaoSession的实例放到application中，避免重复创建</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public  DaoMaster getDaoMaster(Context context)&#123;</span><br><span class="line">        if (daoMaster == null)&#123;</span><br><span class="line">            daoMaster = new DaoMaster(getSQLDB(context));</span><br><span class="line">        &#125;</span><br><span class="line">        return daoMaster;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public SQLiteDatabase getSQLDB(Context context)&#123;</span><br><span class="line">        if (sqlDB == null)&#123;</span><br><span class="line">            DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(context, &quot;zlot-db&quot;, null);</span><br><span class="line">            sqlDB = helper.getWritableDatabase();</span><br><span class="line">        &#125;</span><br><span class="line">        return  sqlDB;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public DaoSession getDaoSession(Context context)&#123;</span><br><span class="line">        if (daoSession == null)</span><br><span class="line">        &#123;</span><br><span class="line">            if (daoMaster == null)</span><br><span class="line">            &#123;</span><br><span class="line">                daoMaster = getDaoMaster(context);</span><br><span class="line">            &#125;</span><br><span class="line">            daoSession = daoMaster.newSession();</span><br><span class="line">        &#125;</span><br><span class="line">        return daoSession;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-考虑到松耦合性，新增一个Dao的中间层，用来切换不同的Dao实现"><a href="#2-考虑到松耦合性，新增一个Dao的中间层，用来切换不同的Dao实现" class="headerlink" title="2 考虑到松耦合性，新增一个Dao的中间层，用来切换不同的Dao实现"></a>2 考虑到松耦合性，新增一个Dao的中间层，用来切换不同的Dao实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">public class NoteDaoMiddle &#123;</span><br><span class="line">    private NoteDao noteDao;</span><br><span class="line">    private ILessonSixActvity lessonSixActvity;</span><br><span class="line">    public  ArrayList&lt;Note&gt; notes = new ArrayList&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    public NoteDaoMiddle(ILessonSixActvity lessonSixActvity, DaoSession daoSession)&#123;</span><br><span class="line">        this.lessonSixActvity = lessonSixActvity;</span><br><span class="line">        this.noteDao = daoSession.getNoteDao();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public void add(Note note)&#123;</span><br><span class="line">        Observable.create(subscriber-&gt;&#123;</span><br><span class="line">            noteDao.insert(note);</span><br><span class="line">            notes.add(note);</span><br><span class="line">            subscriber.onCompleted();</span><br><span class="line">        &#125;).subscribeOn(Schedulers.io()) //指定 subscribe() 发生在 IO 线程</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread()) //指定 Subscriber 的回调发生在主线程</span><br><span class="line">                .subscribe(getUpdateSubScriber());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void search(String title)&#123;</span><br><span class="line">        Observable.create(subscriber-&gt;&#123;</span><br><span class="line">            //为空</span><br><span class="line">            if (TextUtils.isEmpty(title))&#123;</span><br><span class="line">                // Query 类代表了一个可以被重复执行的查询</span><br><span class="line">                Query&lt;Note&gt; query = noteDao.queryBuilder()</span><br><span class="line">                        .orderAsc(NoteDao.Properties.Date)</span><br><span class="line">                        .build();</span><br><span class="line">                //      查询结果以 List 返回</span><br><span class="line">                notes = (ArrayList&lt;Note&gt;) query.list();</span><br><span class="line">            &#125;</span><br><span class="line">            else&#123;</span><br><span class="line">                Query query = noteDao.queryBuilder()</span><br><span class="line">                        .where(NoteDao.Properties.Text.eq(title))</span><br><span class="line">                        .orderAsc(NoteDao.Properties.Date)</span><br><span class="line">                        .build();</span><br><span class="line">                notes = (ArrayList&lt;Note&gt;) query.list();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            // 在 QueryBuilder 类中内置两个 Flag 用于方便输出执行的 SQL 语句与传递参数的值</span><br><span class="line">            QueryBuilder.LOG_SQL = true;</span><br><span class="line">            QueryBuilder.LOG_VALUES = true;</span><br><span class="line">            subscriber.onCompleted();</span><br><span class="line">        &#125;)</span><br><span class="line">                .subscribeOn(Schedulers.io()) //指定 subscribe() 发生在 IO 线程</span><br><span class="line">                .observeOn(AndroidSchedulers.mainThread()) //指定 Subscriber 的回调发生在主线程</span><br><span class="line">                .subscribe(getUpdateSubScriber());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    private Subscriber&lt;Object&gt; getUpdateSubScriber()&#123;</span><br><span class="line"></span><br><span class="line">        return  new Subscriber&lt;Object&gt;() &#123;</span><br><span class="line">            @Override</span><br><span class="line">            public void onCompleted() &#123;</span><br><span class="line">                lessonSixActvity.onUpdateList(notes);</span><br><span class="line">                LogUtil.Debug(&quot;onCompleted&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            @Override</span><br><span class="line">            public void onError(Throwable e) &#123;</span><br><span class="line">                LogUtil.Debug(&quot;onError:&quot;+e.toString());</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void onNext(Object o) &#123;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-响应view层的增删查改操作"><a href="#3-响应view层的增删查改操作" class="headerlink" title="3 响应view层的增删查改操作"></a>3 响应view层的增删查改操作</h2><p>新建NoteDaoMiddle实例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">   protected void onCreate(@Nullable Bundle savedInstanceState) &#123;</span><br><span class="line">       super.onCreate(savedInstanceState);</span><br><span class="line">       ...</span><br><span class="line">       daoSession = MyApplication.getIns().getDaoSession(this);</span><br><span class="line">       noteDaoMiddle = new NoteDaoMiddle(this,daoSession);</span><br><span class="line"></span><br><span class="line">       &apos;&apos;&apos;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<p>响应add search按钮<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">private void addNote()&#123;</span><br><span class="line">       //如果新增为空，弹出</span><br><span class="line">       if (TextUtils.isEmpty(editText.getText()))&#123;</span><br><span class="line">           Toast.makeText(this,&quot;add不能为空&quot;,Toast.LENGTH_SHORT);</span><br><span class="line">           return;</span><br><span class="line">       &#125;</span><br><span class="line"></span><br><span class="line">    	&apos;&apos;&apos;</span><br><span class="line">       // 插入操作，简单到只要你创建一个 Java 对象</span><br><span class="line">       Note note = new Note(null, noteText, comment, new Date());</span><br><span class="line">       noteDaoMiddle.add(note);</span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">private void search(String title) &#123;</span><br><span class="line">       noteDaoMiddle.search(title);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>通过回调或者接口响应查询结果,并通知listview刷新视图</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Override</span><br><span class="line">    public void onUpdateList(ArrayList&lt;Note&gt; notes) &#123;</span><br><span class="line">        sixAdapter.setData(notes);</span><br><span class="line">        sixAdapter.notifyDataSetChanged();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><p><a href="http://www.codeceo.com/article/android-orm-greendao-usage.html" target="_blank" rel="external">Android ORM 框架 greenDAO 使用经验总结</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/android基础：工具类/" itemprop="url">
                   android基础：工具类
                 </a>
@@ -1654,132 +1799,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/android基础：常见问题集锦/" itemprop="url">
-                  android基础：常见问题集锦
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-05T18:20:01+08:00" content="2016-04-05">
-              2016-04-05
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/post/android基础：常见问题集锦/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/android基础：常见问题集锦/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="v-21-ripple配合selector，state-enabled不起作用"><a href="#v-21-ripple配合selector，state-enabled不起作用" class="headerlink" title="v-21 ripple配合selector，state_enabled不起作用"></a>v-21 ripple配合selector，state_enabled不起作用</h1><p>ripple是android L之后新增的水波纹特效，当我们的按钮增加了特效后，state_enabled=false，让按钮置为灰色，不起作用了下面贴出代码</p>
-<p>drawable <code>btn_green.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; &gt;</span><br><span class="line">    &lt;item android:state_pressed=&quot;true&quot; android:drawable=&quot;@color/pressed&quot;&gt;&lt;/item&gt;</span><br><span class="line">    &lt;item android:state_enabled=&quot;false&quot; android:drawable=&quot;@color/dark_gray&quot;&gt;&lt;/item&gt;</span><br><span class="line">    &lt;item  android:drawable=&quot;@color/green&quot;/&gt;</span><br><span class="line">&lt;/selector&gt;</span><br></pre></td></tr></table></figure></p>
-<p>drawable-21 <code>btn_green.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ripple xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:color=&quot;@color/pressed&quot;&gt;</span><br><span class="line">    &lt;item&gt;</span><br><span class="line">        &lt;selector &gt;</span><br><span class="line">            &lt;item android:state_enabled=&quot;true&quot; android:drawable=&quot;@color/green&quot;&gt;&lt;/item&gt;</span><br><span class="line">            &lt;item android:state_enabled=&quot;false&quot; android:drawable=&quot;@color/dark_gray&quot;&gt;&lt;/item&gt;</span><br><span class="line">        &lt;/selector&gt;</span><br><span class="line">    &lt;/item&gt;</span><br><span class="line">&lt;/ripple&gt;</span><br></pre></td></tr></table></figure></p>
-<p>也就是说在新版的selector里面，没有默认状态，我们必须手动填写<code>android:state_enabled=&quot;true&quot;</code></p>
-<h1 id="Activity-has-leaked-window-that-was-originally-added"><a href="#Activity-has-leaked-window-that-was-originally-added" class="headerlink" title="Activity has leaked window that was originally added"></a>Activity has leaked window that was originally added</h1><p>报错但并不crash</p>
-<p>原因：</p>
-<p>因为使用了Dialog，但是未在activity销毁时，调用dismiss（）。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1825,7 +1844,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

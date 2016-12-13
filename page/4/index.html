@@ -293,6 +293,132 @@
             
               
                 
+                <a class="post-title-link" href="/post/android基础：常见问题集锦/" itemprop="url">
+                  android基础：常见问题集锦
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-05T18:20:01+08:00" content="2016-04-05">
+              2016-04-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/android基础：常见问题集锦/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/android基础：常见问题集锦/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="v-21-ripple配合selector，state-enabled不起作用"><a href="#v-21-ripple配合selector，state-enabled不起作用" class="headerlink" title="v-21 ripple配合selector，state_enabled不起作用"></a>v-21 ripple配合selector，state_enabled不起作用</h1><p>ripple是android L之后新增的水波纹特效，当我们的按钮增加了特效后，state_enabled=false，让按钮置为灰色，不起作用了下面贴出代码</p>
+<p>drawable <code>btn_green.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;selector xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot; &gt;</span><br><span class="line">    &lt;item android:state_pressed=&quot;true&quot; android:drawable=&quot;@color/pressed&quot;&gt;&lt;/item&gt;</span><br><span class="line">    &lt;item android:state_enabled=&quot;false&quot; android:drawable=&quot;@color/dark_gray&quot;&gt;&lt;/item&gt;</span><br><span class="line">    &lt;item  android:drawable=&quot;@color/green&quot;/&gt;</span><br><span class="line">&lt;/selector&gt;</span><br></pre></td></tr></table></figure></p>
+<p>drawable-21 <code>btn_green.xml</code><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ripple xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    android:color=&quot;@color/pressed&quot;&gt;</span><br><span class="line">    &lt;item&gt;</span><br><span class="line">        &lt;selector &gt;</span><br><span class="line">            &lt;item android:state_enabled=&quot;true&quot; android:drawable=&quot;@color/green&quot;&gt;&lt;/item&gt;</span><br><span class="line">            &lt;item android:state_enabled=&quot;false&quot; android:drawable=&quot;@color/dark_gray&quot;&gt;&lt;/item&gt;</span><br><span class="line">        &lt;/selector&gt;</span><br><span class="line">    &lt;/item&gt;</span><br><span class="line">&lt;/ripple&gt;</span><br></pre></td></tr></table></figure></p>
+<p>也就是说在新版的selector里面，没有默认状态，我们必须手动填写<code>android:state_enabled=&quot;true&quot;</code></p>
+<h1 id="Activity-has-leaked-window-that-was-originally-added"><a href="#Activity-has-leaked-window-that-was-originally-added" class="headerlink" title="Activity has leaked window that was originally added"></a>Activity has leaked window that was originally added</h1><p>报错但并不crash</p>
+<p>原因：</p>
+<p>因为使用了Dialog，但是未在activity销毁时，调用dismiss（）。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/react基础：react-webpack快速搭建2：开发生产环境的搭建/" itemprop="url">
                   react基础：react0.14.7+webpack开发生产环境的区别
                 </a>
@@ -1089,8 +1215,8 @@
             
               
                 
-                <a class="post-title-link" href="/post/ES6学习：常用操作函数/" itemprop="url">
-                  ES6学习：常用操作函数
+                <a class="post-title-link" href="/post/ES6语法：Array、Promise、Async/" itemprop="url">
+                  ES6语法：Array、Promise、Async
                 </a>
               
             
@@ -1133,8 +1259,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/post/ES6学习：常用操作函数/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/ES6学习：常用操作函数/" itemprop="commentsCount"></span>
+                <a href="/post/ES6语法：Array、Promise、Async/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/ES6语法：Array、Promise、Async/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -1206,8 +1332,9 @@
 <p>thisArg：<br>可选。执行 callback 时的用于 this 的值。</p>
 <h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>Promise</p>
 <p>1 简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果.</p>
-<p>2 语法上，promise是一个对象，可以获取异步操作的消息。有三种状态：Pending(进行总)，Resolved（已完成），Rejected（已失败）.<br>3 Promise构造函数接受一个函数作为参数。该函数的两个参数是resolve方法和reject方法。</p>
-<h2 id="Sync"><a href="#Sync" class="headerlink" title="Sync"></a>Sync</h2><p>es7新增特性，结合或者Promise使用，表达一个异步操作，内部函数体内。<code>awite function()</code>操作为要等待的操作，类似于c#的yield，之后的awite操作执行完毕，后面的代码段才执行</p>
+<p>2 语法上，promise是一个对象，可以获取异步操作的消息。有三种状态：Pending(进行总)，Resolved（已完成），Rejected（已失败）</p>
+<p>3 Promise构造函数接受一个函数作为参数。该函数的两个参数是resolve方法和reject方法。</p>
+<h2 id="Async"><a href="#Async" class="headerlink" title="Async"></a>Async</h2><p>es7新增特性，结合或者Promise使用，表达一个异步操作，内部函数体内。<code>awite function()</code>操作为要等待的操作，类似于c#的yield，之后的awite操作执行完毕，后面的代码段才执行</p>
 <p>## </p>
 
           
@@ -1497,133 +1624,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/react-native基础：热更新/" itemprop="url">
-                  react-native基础：热更新
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-21T18:17:42+08:00" content="2016-03-21">
-              2016-03-21
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/react-native-basis/" itemprop="url" rel="index">
-                    <span itemprop="name">react-native basis</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/post/react-native基础：热更新/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/react-native基础：热更新/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="已知的热更新方案"><a href="#已知的热更新方案" class="headerlink" title="已知的热更新方案"></a>已知的热更新方案</h1><ul>
-<li><p><a href="https://github.com/Microsoft/react-native-code-push" target="_blank" rel="external">CodePush</a> ,我在使用的方案，同时支持android跟ios，可以点击查看我的详细教程<a href="http://hammercui.github.io/post/react-native-android%E5%AE%9E%E6%88%98%EF%BC%9A4-CodePush/">react-native-android实战：4 CodePush使用</a></p>
-</li>
-<li><p><a href="http://blog.csdn.net/kid1986513/article/details/50337083" target="_blank" rel="external">React Native for Android 热部署图片自定义方案</a></p>
-</li>
-<li><p><a href="React-Native Android 热更新">React-Native Android 热更新</a>,这个方案对反射的方案做了补充</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1669,7 +1669,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

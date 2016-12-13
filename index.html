@@ -293,6 +293,141 @@
             
               
                 
+                <a class="post-title-link" href="/post/ES6语法：三个点参数/" itemprop="url">
+                  ES6语法：三个点参数
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-12T10:34:47+08:00" content="2016-12-12">
+              2016-12-12
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/ES6/" itemprop="url" rel="index">
+                    <span itemprop="name">ES6</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/ES6语法：三个点参数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/ES6语法：三个点参数/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h1><blockquote>
+<p>ES6 引入 rest 参数（形式为“…变量名”）</p>
+</blockquote>
+<ul>
+<li>rest参数中的变量代表一个数组</li>
+<li>函数的length属性，不包括rest参数</li>
+<li>rest参数后不能再有其他参数，否则报错</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 报错</span><br><span class="line">function f(a, ...b, c) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与箭头函数结合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const numbers = (...nums) =&gt; nums;</span><br><span class="line"></span><br><span class="line">numbers(1, 2, 3, 4, 5)</span><br><span class="line">// [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+<h1 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// ES6的写法</span><br><span class="line">var arr1 = [0, 1, 2];</span><br><span class="line">var arr2 = [3, 4, 5];</span><br><span class="line">arr1.push(...arr2); //arr1=[0,1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+<p>扩展运算符也可以与解构赋值结合起来，用于生成数组。<br>但是只能放在参数的最后一位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const [first, ...rest] = [1, 2, 3, 4, 5];</span><br><span class="line">first // 1</span><br><span class="line">rest  // [2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<p>扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let map = new Map([</span><br><span class="line">  [1, &apos;one&apos;],</span><br><span class="line">  [2, &apos;two&apos;],</span><br><span class="line">  [3, &apos;three&apos;],</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">let arr = [...map.keys()]; // [1, 2, 3]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/react-native基础：redux学习2/" itemprop="url">
                   react-native基础：redux学习2-实战篇
                 </a>
@@ -364,7 +499,7 @@
         
           
             <h1 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h1><p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A01/">react-native基础：redux学习1-理论篇</a></p>
-<p><a href="">react-native基础：redux学习2-实战篇</a></p>
+<p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A02/">react-native基础：redux学习2-实战篇</a></p>
 <blockquote>
 <p>本篇blog是在对redux理论知识有了足够了解后，做的实战架构。</p>
 </blockquote>
@@ -638,7 +773,7 @@
         
           
             <h1 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h1><p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A01/">react-native基础：redux学习1-理论篇</a></p>
-<p><a href="">react-native基础：redux学习2-实战篇</a></p>
+<p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A02/">react-native基础：redux学习2-实战篇</a></p>
 <h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><blockquote>
 <p>本篇blog主要讲解redux的一些理论，以及第三方的组件库和其优秀的解决思路，所谓理论现行。</p>
 <p>我在查阅了大量参考文章和blog后，有感于大部分文章都侧重于讲某个点，而没有系统的让初学者从0开始对redux进行理解，所以写下了这篇总结。</p>
@@ -735,18 +870,22 @@
 <h2 id="第三方辅助类组件库"><a href="#第三方辅助类组件库" class="headerlink" title="第三方辅助类组件库"></a>第三方辅助类组件库</h2><h3 id="sect-redux-actions"><a href="#sect-redux-actions" class="headerlink" title="&sect; redux-actions"></a>&sect; <a href="https://github.com/acdlite/redux-actions" target="_blank" rel="external">redux-actions</a></h3><blockquote>
 <p>专门为redux准备的，flux standard action的工具集。</p>
 </blockquote>
-<h4 id="什么是flux-standard-action？"><a href="#什么是flux-standard-action？" class="headerlink" title="什么是flux standard action？"></a>什么是<a href="https://github.com/acdlite/flux-standard-action" target="_blank" rel="external">flux standard action</a>？</h4><h4 id="createAction-type-payloadCreator-Identity-metaCreator"><a href="#createAction-type-payloadCreator-Identity-metaCreator" class="headerlink" title="createAction(type, payloadCreator = Identity, ?metaCreator)"></a>createAction(type, payloadCreator = Identity, ?metaCreator)</h4><ul>
-<li>参数type:就是action类型，一般是string，</li>
-<li>参数payloadCreator:就是payload生成器，一般是个function</li>
+<h4 id="什么是flux-standard-action？"><a href="#什么是flux-standard-action？" class="headerlink" title="什么是flux standard action？"></a>什么是<a href="https://github.com/acdlite/flux-standard-action" target="_blank" rel="external">flux standard action</a>？</h4><p>简称fsa,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: &apos;ADD_TODO&apos;,</span><br><span class="line">  payload: &#123;</span><br><span class="line">    text: &apos;Do something.&apos;  </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>出错时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: &apos;ADD_TODO&apos;,</span><br><span class="line">  payload: new Error(),</span><br><span class="line">  error: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>type必须的，payload可选的，error可选的，meta可选的<br>判断一个action是否是flux standard action<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="createAction-type-payloadCreator-Identity-metaCreator"><a href="#createAction-type-payloadCreator-Identity-metaCreator" class="headerlink" title="createAction(type, payloadCreator = Identity, ?metaCreator)"></a>createAction(type, payloadCreator = Identity, ?metaCreator)</h4><ul>
+<li>参数type:就是<code>action</code>的<code>type</code>，一般是<code>string</code>，</li>
+<li>参数payloadCreator:就是<code>payload</code>生成器，类型只能是<code>function</code>，<code>undefined</code>，<code>或者null</code>，</li>
 </ul>
-<p>包装一个action creator ,然后就能把flux标准的action的payload，作为返回值返回。</p>
+<p><code>createAction</code>是一个Action生成器，返回一个<code>Flux Standard Action</code>,这个<code>Action</code>的<code>payLoad</code>的值就是payloadCreator的返回值</p>
+<p>举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let increment = createAction(&apos;INCREMENT&apos;, amount =&gt; amount);</span><br><span class="line">expect(increment(42)).to.deep.equal(&#123;</span><br><span class="line">  type: &apos;INCREMENT&apos;,</span><br><span class="line">  payload: 42</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>好处是如果payload是一个error实例，react-actions就能自动把<code>action.error = true</code></p>
-<p>example</p>
+<p>好处是如果payload是一个Error对象（<code>new TypeError</code>），<code>react-actions</code>就能自动把<code>Action.error = true</code></p>
+<p>举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const increment = createAction(&apos;INCREMENT&apos;);</span><br><span class="line"></span><br><span class="line">const error = new TypeError(&apos;not a number&apos;);</span><br><span class="line">expect(increment(error)).to.deep.equal(&#123;</span><br><span class="line">  type: &apos;INCREMENT&apos;,</span><br><span class="line">  payload: error,</span><br><span class="line">  error: true</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>createAction也能返回它的<code>type</code>，然后作为<code>type</code>传参给<code>handleAction</code>或者<code>handleActions</code></p>
+<p><code>createAction</code>也能返回它的<code>type</code>，然后作为<code>type</code>传参给<code>handleAction</code>或者<code>handleActions</code>使用</p>
 <ul>
-<li>作为参数在handleAction中</li>
+<li>作为参数在<code>handleAction</code>中使用</li>
 <li>作为object key 在handleActions中使用</li>
 </ul>
 <h4 id="handleAction-type-reducer-reducerMap-Identity-defaultState"><a href="#handleAction-type-reducer-reducerMap-Identity-defaultState" class="headerlink" title="handleAction(type, reducer | reducerMap = Identity, defaultState)"></a>handleAction(type, reducer | reducerMap = Identity, defaultState)</h4><p>包装一个reducer，这个reducer仅能处理一个，确定type的、flux标准的action。</p>
@@ -918,6 +1057,18 @@
 <li>学习导航器</li>
 </ul>
 <h1 id="进阶阶段"><a href="#进阶阶段" class="headerlink" title="进阶阶段"></a>进阶阶段</h1><ul>
+<li>es6语法<ul>
+<li>三个点参数用法（rest参数，spread操作符）</li>
+<li>异步函数（Promise，Async）</li>
+<li>array操作（join,conact,map…）</li>
+<li>babel(es6转译es5)</li>
+<li>Object.assign(obj,…):扩展操作</li>
+<li>柯里化（curry）函数：参数逐渐求值的过程</li>
+<li>compose函数</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li><p>学习<a href="http://cn.redux.js.org/index.html" target="_blank" rel="external">redux</a>,了解它与flux的区别，学会如何使用单项数据流的思想管理状态树。它的使用场景会更多。你也可以看做它是简化了流程的flux。</p>
 <ul>
 <li>action</li>
@@ -940,8 +1091,7 @@
 <li><a href="https://github.com/PhilippKrone/react-native-fileupload/" target="_blank" rel="external">react-native-fileupload</a>:兼容iOS Android上传文件的库。支持 1 同时上传多个文件 2 支持file and fields</li>
 </ul>
 </li>
-<li><p>导航</p>
-<ul>
+<li>导航<ul>
 <li><a href="https://github.com/aksonov/react-native-router-flux/" target="_blank" rel="external">react-native-router-flux</a>：可配合redux的路由导航库，目前最全面，功能最强大。常用于构建整个APP的路由规则。<ul>
 <li><a href="https://github.com/skv-headless/react-native-scrollable-tab-view" target="_blank" rel="external">react-native-scrollable-tab-view</a>:带scroll滑动切换的tab view</li>
 <li><a href="https://github.com/aksonov/react-native-tabs" target="_blank" rel="external">react-native-tabs</a>：简版的底部tabbar导航栏，常见于ios应用，兼容Android iOS</li>
@@ -949,7 +1099,6 @@
 </li>
 </ul>
 </li>
-<li></li>
 </ul>
 <h1 id="解坑阶段"><a href="#解坑阶段" class="headerlink" title="解坑阶段"></a>解坑阶段</h1><h2 id="坑1：ipad-模拟器-command-D-程序崩溃"><a href="#坑1：ipad-模拟器-command-D-程序崩溃" class="headerlink" title="坑1：ipad 模拟器 command+D 程序崩溃"></a>坑1：ipad 模拟器 command+D 程序崩溃</h2><p>0.3.6才有的问题，ipad丢失了actionsheet布局<br>修复：<br>在React/Modules/RctDevMenu.m第519行新增</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIAlertControllerStyle style = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? UIAlertControllerStyleActionSheet : UIAlertControllerStyleAlert;</span><br></pre></td></tr></table></figure>
@@ -1764,135 +1913,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/python学习笔记：4-常用模块/" itemprop="url">
-                  python学习笔记：4 常用模块
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-09T15:06:36+08:00" content="2016-09-09">
-              2016-09-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/python/" itemprop="url" rel="index">
-                    <span itemprop="name">python</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/post/python学习笔记：4-常用模块/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/python学习笔记：4-常用模块/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="常用内建模块"><a href="#常用内建模块" class="headerlink" title="常用内建模块"></a>常用内建模块</h2><h3 id="collections"><a href="#collections" class="headerlink" title="collections"></a>collections</h3><p><strong>namedtuple</strong><br>用来自定义tuple。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">from collections import nametuple</span><br><span class="line"></span><br><span class="line">Point = nametuple(&apos;Point&apos;,[&apos;x&apos;,&apos;y&apos;])</span><br><span class="line">p = Point(1,2)</span><br><span class="line">pring p.x,p.y</span><br></pre></td></tr></table></figure></p>
-<p><strong>deque</strong><br>deque是为了高效实现插入和删除操作的双向列表，适合用于队列和栈<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from collections import deque</span><br><span class="line">q = deque([&apos;a&apos;,&apos;b&apos;,&apos;c&apos;])</span><br><span class="line">a.append(&apos;xx)</span><br></pre></td></tr></table></figure></p>
-<p><strong>defaultdict</strong><br>使用dict时，如果引用的Key不存在，就会抛出KeyError。如果希望key不存在时，返回一个默认值，就可以用defaultdict</p>
-<p><strong>OrderedDict</strong></p>
-<p>如果要保持Key的顺序，可以用OrderedDict：<br>注意，OrderedDict的Key会按照插入的顺序排列，不是Key本身排序：</p>
-<h4 id="base64"><a href="#base64" class="headerlink" title="base64"></a>base64</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import base64</span><br><span class="line">&gt;&gt;&gt; base64.b64encode(&apos;binary\x00string&apos;)</span><br><span class="line">&apos;YmluYXJ5AHN0cmluZw==&apos;</span><br><span class="line">&gt;&gt;&gt; base64.b64decode(&apos;YmluYXJ5AHN0cmluZw==&apos;)</span><br><span class="line">&apos;binary\x00string&apos;</span><br></pre></td></tr></table></figure>
-<h4 id="hashlib"><a href="#hashlib" class="headerlink" title="hashlib"></a>hashlib</h4><p>Python的hashlib提供了常见的摘要算法，如MD5，SHA1等等。</p>
-<p>什么是摘要算法呢？摘要算法又称哈希算法、散列算法。它通过一个函数，把任意长度的数据转换为一个长度固定的数据串（通常用16进制的字符串表示）</p>
-<p><strong>md5使用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">md5 = hashlib.md5()</span><br><span class="line">md5.update(&apos;how to use md5 in python hashlib?&apos;)</span><br><span class="line">print md5.hexdigest()</span><br></pre></td></tr></table></figure></p>
-<p><strong>sha1使用</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import hashlib</span><br><span class="line"></span><br><span class="line">sha1 = hashlib.sha1()</span><br><span class="line">sha1.update(&apos;how to use sha1 in &apos;)</span><br><span class="line">sha1.update(&apos;python hashlib?&apos;)</span><br><span class="line">print sha1.hexdigest()</span><br></pre></td></tr></table></figure></p>
-<h2 id="常用第三方模块"><a href="#常用第三方模块" class="headerlink" title="常用第三方模块"></a>常用第三方模块</h2>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1938,7 +1958,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-count">67</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

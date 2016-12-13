@@ -4,10 +4,32 @@
   
     
     <entry>
+      <title><![CDATA[ES6语法：三个点参数]]></title>
+      <url>http://hammercui.github.io/post/ES6%E8%AF%AD%E6%B3%95%EF%BC%9A%E4%B8%89%E4%B8%AA%E7%82%B9%E5%8F%82%E6%95%B0/</url>
+      <content type="html"><![CDATA[<h1 id="rest参数"><a href="#rest参数" class="headerlink" title="rest参数"></a>rest参数</h1><blockquote>
+<p>ES6 引入 rest 参数（形式为“…变量名”）</p>
+</blockquote>
+<ul>
+<li>rest参数中的变量代表一个数组</li>
+<li>函数的length属性，不包括rest参数</li>
+<li>rest参数后不能再有其他参数，否则报错</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 报错</span><br><span class="line">function f(a, ...b, c) &#123;</span><br><span class="line">  // ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>与箭头函数结合</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">const numbers = (...nums) =&gt; nums;</span><br><span class="line"></span><br><span class="line">numbers(1, 2, 3, 4, 5)</span><br><span class="line">// [1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+<h1 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// ES6的写法</span><br><span class="line">var arr1 = [0, 1, 2];</span><br><span class="line">var arr2 = [3, 4, 5];</span><br><span class="line">arr1.push(...arr2); //arr1=[0,1,2,3,4,5]</span><br></pre></td></tr></table></figure>
+<p>扩展运算符也可以与解构赋值结合起来，用于生成数组。<br>但是只能放在参数的最后一位</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">const [first, ...rest] = [1, 2, 3, 4, 5];</span><br><span class="line">first // 1</span><br><span class="line">rest  // [2, 3, 4, 5]</span><br></pre></td></tr></table></figure>
+<p>扩展运算符内部调用的是数据结构的 Iterator 接口，因此只要具有 Iterator 接口的对象，都可以使用扩展运算符</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let map = new Map([</span><br><span class="line">  [1, &apos;one&apos;],</span><br><span class="line">  [2, &apos;two&apos;],</span><br><span class="line">  [3, &apos;three&apos;],</span><br><span class="line">]);</span><br><span class="line"></span><br><span class="line">let arr = [...map.keys()]; // [1, 2, 3]</span><br></pre></td></tr></table></figure>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[react-native基础：redux学习2-实战篇]]></title>
       <url>http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A02/</url>
       <content type="html"><![CDATA[<h1 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h1><p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A01/">react-native基础：redux学习1-理论篇</a></p>
-<p><a href="">react-native基础：redux学习2-实战篇</a></p>
+<p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A02/">react-native基础：redux学习2-实战篇</a></p>
 <blockquote>
 <p>本篇blog是在对redux理论知识有了足够了解后，做的实战架构。</p>
 </blockquote>
@@ -55,7 +77,7 @@
       <title><![CDATA[react-native基础：redux学习1-理论篇]]></title>
       <url>http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A01/</url>
       <content type="html"><![CDATA[<h1 id="导航"><a href="#导航" class="headerlink" title="导航"></a>导航</h1><p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A01/">react-native基础：redux学习1-理论篇</a></p>
-<p><a href="">react-native基础：redux学习2-实战篇</a></p>
+<p><a href="http://hammercui.github.io/post/react-native%E5%9F%BA%E7%A1%80%EF%BC%9Aredux%E5%AD%A6%E4%B9%A02/">react-native基础：redux学习2-实战篇</a></p>
 <h1 id="理论"><a href="#理论" class="headerlink" title="理论"></a>理论</h1><blockquote>
 <p>本篇blog主要讲解redux的一些理论，以及第三方的组件库和其优秀的解决思路，所谓理论现行。</p>
 <p>我在查阅了大量参考文章和blog后，有感于大部分文章都侧重于讲某个点，而没有系统的让初学者从0开始对redux进行理解，所以写下了这篇总结。</p>
@@ -152,18 +174,22 @@
 <h2 id="第三方辅助类组件库"><a href="#第三方辅助类组件库" class="headerlink" title="第三方辅助类组件库"></a>第三方辅助类组件库</h2><h3 id="sect-redux-actions"><a href="#sect-redux-actions" class="headerlink" title="&sect; redux-actions"></a>&sect; <a href="https://github.com/acdlite/redux-actions" target="_blank" rel="external">redux-actions</a></h3><blockquote>
 <p>专门为redux准备的，flux standard action的工具集。</p>
 </blockquote>
-<h4 id="什么是flux-standard-action？"><a href="#什么是flux-standard-action？" class="headerlink" title="什么是flux standard action？"></a>什么是<a href="https://github.com/acdlite/flux-standard-action" target="_blank" rel="external">flux standard action</a>？</h4><h4 id="createAction-type-payloadCreator-Identity-metaCreator"><a href="#createAction-type-payloadCreator-Identity-metaCreator" class="headerlink" title="createAction(type, payloadCreator = Identity, ?metaCreator)"></a>createAction(type, payloadCreator = Identity, ?metaCreator)</h4><ul>
-<li>参数type:就是action类型，一般是string，</li>
-<li>参数payloadCreator:就是payload生成器，一般是个function</li>
+<h4 id="什么是flux-standard-action？"><a href="#什么是flux-standard-action？" class="headerlink" title="什么是flux standard action？"></a>什么是<a href="https://github.com/acdlite/flux-standard-action" target="_blank" rel="external">flux standard action</a>？</h4><p>简称fsa,<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: &apos;ADD_TODO&apos;,</span><br><span class="line">  payload: &#123;</span><br><span class="line">    text: &apos;Do something.&apos;  </span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>出错时<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  type: &apos;ADD_TODO&apos;,</span><br><span class="line">  payload: new Error(),</span><br><span class="line">  error: true</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>type必须的，payload可选的，error可选的，meta可选的<br>判断一个action是否是flux standard action<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h4 id="createAction-type-payloadCreator-Identity-metaCreator"><a href="#createAction-type-payloadCreator-Identity-metaCreator" class="headerlink" title="createAction(type, payloadCreator = Identity, ?metaCreator)"></a>createAction(type, payloadCreator = Identity, ?metaCreator)</h4><ul>
+<li>参数type:就是<code>action</code>的<code>type</code>，一般是<code>string</code>，</li>
+<li>参数payloadCreator:就是<code>payload</code>生成器，类型只能是<code>function</code>，<code>undefined</code>，<code>或者null</code>，</li>
 </ul>
-<p>包装一个action creator ,然后就能把flux标准的action的payload，作为返回值返回。</p>
+<p><code>createAction</code>是一个Action生成器，返回一个<code>Flux Standard Action</code>,这个<code>Action</code>的<code>payLoad</code>的值就是payloadCreator的返回值</p>
+<p>举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let increment = createAction(&apos;INCREMENT&apos;, amount =&gt; amount);</span><br><span class="line">expect(increment(42)).to.deep.equal(&#123;</span><br><span class="line">  type: &apos;INCREMENT&apos;,</span><br><span class="line">  payload: 42</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>好处是如果payload是一个error实例，react-actions就能自动把<code>action.error = true</code></p>
-<p>example</p>
+<p>好处是如果payload是一个Error对象（<code>new TypeError</code>），<code>react-actions</code>就能自动把<code>Action.error = true</code></p>
+<p>举例：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const increment = createAction(&apos;INCREMENT&apos;);</span><br><span class="line"></span><br><span class="line">const error = new TypeError(&apos;not a number&apos;);</span><br><span class="line">expect(increment(error)).to.deep.equal(&#123;</span><br><span class="line">  type: &apos;INCREMENT&apos;,</span><br><span class="line">  payload: error,</span><br><span class="line">  error: true</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>createAction也能返回它的<code>type</code>，然后作为<code>type</code>传参给<code>handleAction</code>或者<code>handleActions</code></p>
+<p><code>createAction</code>也能返回它的<code>type</code>，然后作为<code>type</code>传参给<code>handleAction</code>或者<code>handleActions</code>使用</p>
 <ul>
-<li>作为参数在handleAction中</li>
+<li>作为参数在<code>handleAction</code>中使用</li>
 <li>作为object key 在handleActions中使用</li>
 </ul>
 <h4 id="handleAction-type-reducer-reducerMap-Identity-defaultState"><a href="#handleAction-type-reducer-reducerMap-Identity-defaultState" class="headerlink" title="handleAction(type, reducer | reducerMap = Identity, defaultState)"></a>handleAction(type, reducer | reducerMap = Identity, defaultState)</h4><p>包装一个reducer，这个reducer仅能处理一个，确定type的、flux标准的action。</p>
@@ -222,6 +248,18 @@
 <li>学习导航器</li>
 </ul>
 <h1 id="进阶阶段"><a href="#进阶阶段" class="headerlink" title="进阶阶段"></a>进阶阶段</h1><ul>
+<li>es6语法<ul>
+<li>三个点参数用法（rest参数，spread操作符）</li>
+<li>异步函数（Promise，Async）</li>
+<li>array操作（join,conact,map…）</li>
+<li>babel(es6转译es5)</li>
+<li>Object.assign(obj,…):扩展操作</li>
+<li>柯里化（curry）函数：参数逐渐求值的过程</li>
+<li>compose函数</li>
+</ul>
+</li>
+</ul>
+<ul>
 <li><p>学习<a href="http://cn.redux.js.org/index.html" target="_blank" rel="external">redux</a>,了解它与flux的区别，学会如何使用单项数据流的思想管理状态树。它的使用场景会更多。你也可以看做它是简化了流程的flux。</p>
 <ul>
 <li>action</li>
@@ -244,8 +282,7 @@
 <li><a href="https://github.com/PhilippKrone/react-native-fileupload/" target="_blank" rel="external">react-native-fileupload</a>:兼容iOS Android上传文件的库。支持 1 同时上传多个文件 2 支持file and fields</li>
 </ul>
 </li>
-<li><p>导航</p>
-<ul>
+<li>导航<ul>
 <li><a href="https://github.com/aksonov/react-native-router-flux/" target="_blank" rel="external">react-native-router-flux</a>：可配合redux的路由导航库，目前最全面，功能最强大。常用于构建整个APP的路由规则。<ul>
 <li><a href="https://github.com/skv-headless/react-native-scrollable-tab-view" target="_blank" rel="external">react-native-scrollable-tab-view</a>:带scroll滑动切换的tab view</li>
 <li><a href="https://github.com/aksonov/react-native-tabs" target="_blank" rel="external">react-native-tabs</a>：简版的底部tabbar导航栏，常见于ios应用，兼容Android iOS</li>
@@ -253,7 +290,6 @@
 </li>
 </ul>
 </li>
-<li></li>
 </ul>
 <h1 id="解坑阶段"><a href="#解坑阶段" class="headerlink" title="解坑阶段"></a>解坑阶段</h1><h2 id="坑1：ipad-模拟器-command-D-程序崩溃"><a href="#坑1：ipad-模拟器-command-D-程序崩溃" class="headerlink" title="坑1：ipad 模拟器 command+D 程序崩溃"></a>坑1：ipad 模拟器 command+D 程序崩溃</h2><p>0.3.6才有的问题，ipad丢失了actionsheet布局<br>修复：<br>在React/Modules/RctDevMenu.m第519行新增</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">UIAlertControllerStyle style = [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone ? UIAlertControllerStyleActionSheet : UIAlertControllerStyleAlert;</span><br></pre></td></tr></table></figure>
@@ -1419,8 +1455,8 @@
     </entry>
     
     <entry>
-      <title><![CDATA[ES6学习：常用操作函数]]></title>
-      <url>http://hammercui.github.io/post/ES6%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E5%87%BD%E6%95%B0/</url>
+      <title><![CDATA[ES6语法：Array、Promise、Async]]></title>
+      <url>http://hammercui.github.io/post/ES6%E8%AF%AD%E6%B3%95%EF%BC%9AArray%E3%80%81Promise%E3%80%81Async/</url>
       <content type="html"><![CDATA[<h1 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h1><ul>
 <li>ReactNative中文社区的<a href="http://bbs.reactnative.cn/topic/15/react-react-native-%E7%9A%84es5-es6%E5%86%99%E6%B3%95%E5%AF%B9%E7%85%A7%E8%A1%A8" target="_blank" rel="external">React/React Native 的ES5 ES6写法对照表</a></li>
 <li><a href="https://segmentfault.com/a/1190000003857670?_ea=396445" target="_blank" rel="external">拥抱ES6之数组扩展</a></li>
@@ -1468,8 +1504,9 @@
 <p>thisArg：<br>可选。执行 callback 时的用于 this 的值。</p>
 <h2 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h2><p>Promise</p>
 <p>1 简单说就是一个容器，里面保存着某个未来才会结束的事件（通常是一个异步操作）的结果.</p>
-<p>2 语法上，promise是一个对象，可以获取异步操作的消息。有三种状态：Pending(进行总)，Resolved（已完成），Rejected（已失败）.<br>3 Promise构造函数接受一个函数作为参数。该函数的两个参数是resolve方法和reject方法。</p>
-<h2 id="Sync"><a href="#Sync" class="headerlink" title="Sync"></a>Sync</h2><p>es7新增特性，结合或者Promise使用，表达一个异步操作，内部函数体内。<code>awite function()</code>操作为要等待的操作，类似于c#的yield，之后的awite操作执行完毕，后面的代码段才执行</p>
+<p>2 语法上，promise是一个对象，可以获取异步操作的消息。有三种状态：Pending(进行总)，Resolved（已完成），Rejected（已失败）</p>
+<p>3 Promise构造函数接受一个函数作为参数。该函数的两个参数是resolve方法和reject方法。</p>
+<h2 id="Async"><a href="#Async" class="headerlink" title="Async"></a>Async</h2><p>es7新增特性，结合或者Promise使用，表达一个异步操作，内部函数体内。<code>awite function()</code>操作为要等待的操作，类似于c#的yield，之后的awite操作执行完毕，后面的代码段才执行</p>
 <p>## </p>
 ]]></content>
     </entry>
