@@ -293,6 +293,175 @@
             
               
                 
+                <a class="post-title-link" href="/post/nodejs学习：1-express的安装与使用/" itemprop="url">
+                  nodejs学习：1 express的安装与使用
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-04-09T15:07:11+08:00" content="2016-04-09">
+              2016-04-09
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/nodejs/" itemprop="url" rel="index">
+                    <span itemprop="name">nodejs</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/nodejs学习：1-express的安装与使用/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/nodejs学习：1-express的安装与使用/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="nodejs简介"><a href="#nodejs简介" class="headerlink" title="nodejs简介"></a>nodejs简介</h1><ul>
+<li><p>nodejs能提供静态文件服务</p>
+<ul>
+<li>网页</li>
+<li>纯文本</li>
+<li>图片</li>
+<li>前端JavaScript代码</li>
+<li>css样式表文件</li>
+<li>媒体文件</li>
+<li>字体文件</li>
+</ul>
+</li>
+<li><p>nodejs能提供http服务</p>
+<ul>
+<li>api接口</li>
+<li>中间件</li>
+</ul>
+</li>
+<li><p>nodejs能提供tcp(socket)服务</p>
+</li>
+</ul>
+<h1 id="安装及启动"><a href="#安装及启动" class="headerlink" title="安装及启动"></a>安装及启动</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>1 安装node软件<br>2 安装express生成模板<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express-generator</span><br></pre></td></tr></table></figure></p>
+<p>3 安装express<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g express</span><br></pre></td></tr></table></figure></p>
+<p>4 安装nodemon调试模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g nodemon</span><br></pre></td></tr></table></figure></p>
+<p>5 使用模板创建nodejs工程<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">express [工程名]</span><br></pre></td></tr></table></figure></p>
+<p>然后执行<code>npm install</code>安装第三方模块。</p>
+<p>创建工程后出现如下目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">+bin</span><br><span class="line"> -www  //执行脚本</span><br><span class="line">+public </span><br><span class="line">+routes </span><br><span class="line">+view     //静态页面</span><br><span class="line">-app.js   //创建express实例</span><br><span class="line">-package.json</span><br></pre></td></tr></table></figure></p>
+<h2 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<h1 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h1><h2 id="使用express的静态文件服务"><a href="#使用express的静态文件服务" class="headerlink" title="使用express的静态文件服务"></a>使用express的静态文件服务</h2><p>使用express的静态服务的中间件，直接使用<br>use方法使用中间件<br>public目录当做我们的静态文件目录<br>/直接使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.use(express.static(path.join(__dirname, &apos;public&apos;)));</span><br></pre></td></tr></table></figure>
+<h2 id="使用express的路由"><a href="#使用express的路由" class="headerlink" title="使用express的路由"></a>使用express的路由</h2><ul>
+<li>将不同的请求。分配给响应的函数</li>
+<li>区分：路径，请求方法</li>
+</ul>
+<p>三种方法：</p>
+<ul>
+<li>path方式 直接get</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.get(&apos;/login&apos;,function()&#123;</span><br><span class="line"></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Router方式</li>
+</ul>
+<p>比如一组路由，都是post下面的</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var Router = express.Router();</span><br><span class="line">Router.get(&apos;/add&apos;,function(req,res)&#123;</span><br><span class="line">&#125;)</span><br><span class="line">Router.get(&apos;/list&apos;,function(req,res)&#123;</span><br><span class="line">&#125;)</span><br><span class="line">app.user(&apos;post&apos;,Router);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>route方式</li>
+</ul>
+<p>针对一个路由，编写不同方法的不同处理。<br>不如针对以上路由的get请求方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">app.route(&apos;article&apos;).get(function(req,response)</span><br><span class="line">&#123;</span><br><span class="line">&#125;).post(function(req,response))</span><br></pre></td></tr></table></figure>
+<h3 id="带参数路由"><a href="#带参数路由" class="headerlink" title="带参数路由"></a>带参数路由</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">app.param(&apos;newsId&apos;,function(req,res,next,newsId)&#123;</span><br><span class="line">req.nresId = newsId;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">app.get(&apos;/news/:newsId,function(req,response)&#123;</span><br><span class="line">req.end(&apos;newsId:&apos;+req.newsId)</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/android基础：常见问题集锦/" itemprop="url">
                   android基础：常见问题集锦
                 </a>
@@ -1490,140 +1659,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/android基础：applicationId与packageName的区别/" itemprop="url">
-                  android基础：applicationId与packageName的区别
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-23T15:41:11+08:00" content="2016-03-23">
-              2016-03-23
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/android/" itemprop="url" rel="index">
-                    <span itemprop="name">android</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/post/android基础：applicationId与packageName的区别/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/android基础：applicationId与packageName的区别/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p><code>applicationId</code>：在Android系统中应用的<code>applicationId</code>作为应用的唯一标识，就像人的身份证号一样，在一个Android设备中所有的应用程序的<code>applicationId</code>都是唯一的。</p>
-</blockquote>
-<h1 id="eclipse版本"><a href="#eclipse版本" class="headerlink" title="eclipse版本"></a>eclipse版本</h1><p><code>package name</code>：在用Eclipse构建的Android项目中，使用包名(Package Name)作为应用的唯一标识（<code>applicationId</code>）。可以说在Eclipse下<code>applicationId</code>=<code>package name</code>。所以Eclipse构建的Android项目包名必须唯一，一个包名代表一个应用，不允许两个应用使用同样的包名。包名主要用于系统识别应用，几乎不会被最终用户看到。</p>
-<h1 id="androidStudo版本"><a href="#androidStudo版本" class="headerlink" title="androidStudo版本"></a>androidStudo版本</h1><p>在用Android studio构建的Android项目中可以为应用配置<code>applicationId</code>·，配置的<code>applicationId</code>可以不和<code>package name</code>一样。由此可以看来用Android studio构建的Android项目<code>package name</code>不一定是应用程序的标识。这一点很重要，开发者一定要记住。比如你在使用第三方SDK开发时，如百度地图，需要你来设置Android SDK安全码，在设置安全码时需要用到应用程序的包名，这个包名指的是<code>applicationId</code>。</p>
-<p><strong>注意</strong>：识别.R跟Activity文件的路径还是packageName,这个是唯一的</p>
-<h2 id="解耦方案"><a href="#解耦方案" class="headerlink" title="解耦方案"></a>解耦方案</h2><ul>
-<li><code>application id</code> 对应 apk 中 manifest 定义的应用包名，同时用于设备以及 Google Play 的应用唯一标识。</li>
-<li><code>package</code> 用于在源码中引用 R 类以及解析注册相关的 activity/service，对应 Java 的包名概念。</li>
-</ul>
-<p>我们在AndroidManifest.xml定义一个包名，这个是唯一的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</span><br><span class="line">    package=&quot;com.hammercui.app.react&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>我们在<code>app.gradle</code>文件使用Gradle DSL 方法来为不同的 flavor 和 build type 定义不同的 applicationId：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android&#123;</span><br><span class="line">···</span><br><span class="line">productFlavors &#123;</span><br><span class="line">        pro &#123;</span><br><span class="line">            applicationId = &quot;com.hammercui.app.pro&quot;</span><br><span class="line">        &#125;</span><br><span class="line">        free &#123;</span><br><span class="line">            applicationId = &quot;com.hammercui.app.free&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    buildTypes &#123;</span><br><span class="line">        debug &#123;</span><br><span class="line">            applicationIdSuffix &quot;.debug&quot;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ....</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p><a href="https://chaosleong.gitbooks.io/gradle-for-android/content/appendix/applicationid_versus_packagename.html" target="_blank" rel="external">Gradle Android Plugin中文手册</a></p>
-<p><a href="http://siroccoicode.club/?p=574" target="_blank" rel="external">applicationID和packageName的区别</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1669,7 +1704,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

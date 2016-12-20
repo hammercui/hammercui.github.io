@@ -293,6 +293,142 @@
             
               
                 
+                <a class="post-title-link" href="/post/react-native-android实战：Bug集锦/" itemprop="url">
+                  react-native-android实战：Bug集锦
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-04T11:42:35+08:00" content="2016-03-04">
+              2016-03-04
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react-native-android实战/" itemprop="url" rel="index">
+                    <span itemprop="name">react-native android实战</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/react-native-android实战：Bug集锦/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/react-native-android实战：Bug集锦/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="android版本开发时遇到的Bug"><a href="#android版本开发时遇到的Bug" class="headerlink" title="android版本开发时遇到的Bug"></a>android版本开发时遇到的Bug</h1><blockquote>
+<p>记录我在react-native android平台开发过程遇到的bug</p>
+</blockquote>
+<h2 id="1-error-undefined-is-not-an-object-evaluating-‘screenPhysicalPixels-width’"><a href="#1-error-undefined-is-not-an-object-evaluating-‘screenPhysicalPixels-width’" class="headerlink" title="1 error:undefined is not an object (evaluating ‘screenPhysicalPixels.width’)"></a>1 error:undefined is not an object (evaluating ‘screenPhysicalPixels.width’)</h2><p><img src="https://cloud.githubusercontent.com/assets/744542/13090471/db3cb65c-d4aa-11e5-85e3-39b36d1d8326.png" alt=""></p>
+<p>解决方案：</p>
+<p><a href="http://stackoverflow.com/questions/35609603/react-native-android-screenphysicalpixels-width-is-undefined" target="_blank" rel="external">参考地址</a></p>
+<p>android\app\build.gradle</p>
+<p>修改</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &quot;com.facebook.react:react-native:0.19.+&quot;</span><br></pre></td></tr></table></figure>
+<p>为</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">compile &quot;com.facebook.react:react-native:0.20.+&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="2-Error-while-updating-property-39-navIcon-39-of-a-view-managed-by-ToolbarAndroid"><a href="#2-Error-while-updating-property-39-navIcon-39-of-a-view-managed-by-ToolbarAndroid" class="headerlink" title="2 Error while updating property &#39;navIcon&#39; of a view managed by: ToolbarAndroid"></a>2 <code>Error while updating property &#39;navIcon&#39; of a view managed by: ToolbarAndroid</code></h2><p><img src="https://cloud.githubusercontent.com/assets/4703440/11673166/8685e3a2-9e51-11e5-9d5d-e3db69cae28f.png" alt=""></p>
+<p>解决方案 1：</p>
+<p>猜测是nacIcon没有package进apk,我在src文件，有nav_back@2x.png,nav_back@3x.png,我猜测就是这套机制出问题了，我现在尝试只保留nav_back.png,然后就没再报错，等有机会好好研究下打包机制</p>
+<p>解决方案2：</p>
+<p>turn<br><code>compile &#39;com.facebook.react:react-native:0.20.+&#39;</code><br>to<br><code>compile &#39;com.facebook.react:react-native:0.21.+&#39;</code></p>
+<p>参考<a href="https://github.com/oblador/react-native-vector-icons/issues/134" target="_blank" rel="external">Error while updating property ‘navIcon’ of a view managed by: ToolbarAndroid #134</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/react-native基础：flexbox布局实战/" itemprop="url">
                   react-native基础：flexbox布局
                 </a>
@@ -1698,151 +1834,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/angularJs学习1：初识angular/" itemprop="url">
-                  angularJs学习1：初识angular
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-02T17:57:15+08:00" content="2016-03-02">
-              2016-03-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/angulasJs/" itemprop="url" rel="index">
-                    <span itemprop="name">angulasJs</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/post/angularJs学习1：初识angular/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/angularJs学习1：初识angular/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>angular是google搞出来的js框架，后端程序如果想做前段，可以考虑尝试下。因为其按照mvc的架构来做框架，并引入了mvvm的机制，就是view动态数据绑定</p>
-<h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>比较适合单页面，更符合app的设计思路，当然，商城页面也可以写，如苏宁易购，主要是有后端开发经验，更容易理解</p>
-<blockquote>
-<p>什么事单页面场景？</p>
-</blockquote>
-<h2 id="如何学习"><a href="#如何学习" class="headerlink" title="如何学习"></a>如何学习</h2><ol>
-<li><p><a href="http://www.runoob.com/angularjs/angularjs-tutorial.html" target="_blank" rel="external">angular学习站，模仿w3school</a></p>
-</li>
-<li><p><a href="http://blog.jobbole.com/46779/" target="_blank" rel="external">伯乐在线的一篇文章</a></p>
-</li>
-</ol>
-<h2 id="配合"><a href="#配合" class="headerlink" title="配合"></a>配合</h2><p>学习这货主要是为了配合ionic的开发</p>
-<h2 id="要点"><a href="#要点" class="headerlink" title="要点"></a>要点</h2><ol>
-<li>只要看到ng-而不是id,说明用的是angular绑定，而不是jquery的dom查找</li>
-<li>angular基本类似于javascript，但是可以直接在html写，angular没有for循环，==条件判断，及异常，但是有自己的实现机制<br>比如：<br>```<div ng-app="" ng-init="names=[
-{name:'Jani',country:'Norway'},
-{name:'Hege',country:'Sweden'},
-{name:'Kai',country:'Denmark'}]">
-
-</div></li>
-</ol>
-<p></p><p>循环对象：</p><p></p>
-<p><ul><br>  <li ng-repeat="x    in names"><br>    undefined, undefined<br>  </li><br></ul><br><br>```        </p>
-<ol>
-<li>除了这些内置的指令ng-app,ng-init,ng-model,ng-repeat外，还可以自定义指令，但是在命名的时候用驼峰法，使用的时候用-间隔。</li>
-</ol>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1888,7 +1879,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">67</span>
+              <span class="site-state-item-count">68</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
