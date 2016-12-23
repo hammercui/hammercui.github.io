@@ -1266,30 +1266,6 @@
 
     
   <url>
-    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A06%EF%BC%9A%E6%8C%87%E4%BB%A4/</loc>
-    <lastmod>2016-03-03T01:48:02.000Z</lastmod>
-    <data>
-        <display>
-        <title>angularJs学习6：指令</title>
-        <pubTime>2016-03-02T14:43:38.000Z</pubTime>
-        
-        <tag>angulasJs</tag>
-         
-        <tag>html5</tag>
-         
-        <tag>ionic</tag>
-         
-         
-           
-             
-              <breadCrumb title="angulasJs" url="http://hammercui.github.io/categories/angulasJs/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A04%EF%BC%9Ahttp%E8%AF%B7%E6%B1%82/</loc>
     <lastmod>2016-03-03T01:48:02.000Z</lastmod>
     <data>
@@ -1338,12 +1314,12 @@
 
     
   <url>
-    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A02%EF%BC%9Ascope%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
+    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A05%EF%BC%9A%20%E6%93%8D%E4%BD%9Chtml%E7%9A%84Dom/</loc>
     <lastmod>2016-03-03T01:48:02.000Z</lastmod>
     <data>
         <display>
-        <title>angularJs学习2：scope作用域</title>
-        <pubTime>2016-03-02T14:35:49.000Z</pubTime>
+        <title>angularJs学习5： 操作html的Dom</title>
+        <pubTime>2016-03-02T14:42:33.000Z</pubTime>
         
         <tag>angulasJs</tag>
          
@@ -1362,12 +1338,36 @@
 
     
   <url>
-    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A05%EF%BC%9A%20%E6%93%8D%E4%BD%9Chtml%E7%9A%84Dom/</loc>
+    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A06%EF%BC%9A%E6%8C%87%E4%BB%A4/</loc>
     <lastmod>2016-03-03T01:48:02.000Z</lastmod>
     <data>
         <display>
-        <title>angularJs学习5： 操作html的Dom</title>
-        <pubTime>2016-03-02T14:42:33.000Z</pubTime>
+        <title>angularJs学习6：指令</title>
+        <pubTime>2016-03-02T14:43:38.000Z</pubTime>
+        
+        <tag>angulasJs</tag>
+         
+        <tag>html5</tag>
+         
+        <tag>ionic</tag>
+         
+         
+           
+             
+              <breadCrumb title="angulasJs" url="http://hammercui.github.io/categories/angulasJs/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A02%EF%BC%9Ascope%E4%BD%9C%E7%94%A8%E5%9F%9F/</loc>
+    <lastmod>2016-03-03T01:48:02.000Z</lastmod>
+    <data>
+        <display>
+        <title>angularJs学习2：scope作用域</title>
+        <pubTime>2016-03-02T14:35:49.000Z</pubTime>
         
         <tag>angulasJs</tag>
          
