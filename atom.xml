@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://hammercui.github.io/"/>
-  <updated>2016-12-13T13:04:50.000Z</updated>
+  <updated>2017-01-04T09:36:33.000Z</updated>
   <id>http://hammercui.github.io/</id>
   
   <author>
@@ -20,16 +20,44 @@
     <link href="http://hammercui.github.io/post/ES6%E8%AF%AD%E6%B3%95%EF%BC%9Acompose%E5%87%BD%E6%95%B0%E3%80%81%E6%9F%AF%E9%87%8C%E5%8C%96%E5%87%BD%E6%95%B0/"/>
     <id>http://hammercui.github.io/post/ES6语法：compose函数、柯里化函数/</id>
     <published>2016-12-13T11:48:14.000Z</published>
-    <updated>2016-12-13T13:04:50.000Z</updated>
+    <updated>2017-01-04T09:36:33.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;参考文章&quot;&gt;&lt;a href=&quot;#参考文章&quot; class=&quot;headerlink&quot; title=&quot;参考文章&quot;&gt;&lt;/a&gt;参考文章&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;http://guoyongfeng.github.io/idoc/html/React%E8%AF%BE%E7%A8%8B%E4%B8%93%E9%A2%98/JavaScript%E5%87%BD%E6%95%B0%E5%BC%8F%E7%BC%96%E7%A8%8B.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript 函数式编程 (ES6)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://cnodejs.org/topic/56261a249b48ca9448b776c4&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript柯里化&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/zztt/p/4142891.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;浅析 JavaScript 中的 函数 currying 柯里化&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://uule.iteye.com/blog/1158829&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JS中的call()和apply()方法&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&quot;apply与call的区别&quot;&gt;&lt;a href=&quot;#apply与call的区别&quot; class=&quot;headerlink&quot; title=&quot;apply与call的区别&quot;&gt;&lt;/a&gt;apply与call的区别&lt;/h1&gt;&lt;h1 id=&quot;柯里化curry&quot;&gt;&lt;a href=&quot;#柯里化curry&quot; class=&quot;headerlink&quot; title=&quot;柯里化curry&quot;&gt;&lt;/a&gt;柯里化curry&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;含义：跟函数分布传递参数，每次传递参数的后部分参数，比如（1，2，3，4，5）先传递5然后获得一个函数，再接受并处理参数4，依次类推，逐步求解。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;h1 id=&quot;apply与call的区别&quot;&gt;&lt;a href=&quot;#apply与call的区别&quot; class=&quot;headerlink&quot; title=&quot;apply与call的区别&quot;&gt;&lt;/a&gt;apply与call的区别&lt;/h1&gt;&lt;p&gt;区分apply与call只有一句话&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg2, arg3)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;call,apply都是Function.prototype(&lt;code&gt;prototype&lt;/code&gt;是&lt;code&gt;javascript&lt;/code&gt;的&lt;a href=&quot;http://sakyone.iteye.com/blog/484099&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;原型模式&lt;/a&gt;)的方法，是JavaScript引擎的内在实现，意味着每个Function对象实例，就是每个方法都有call，apply属性。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;相同点：作用完全相同&lt;/li&gt;
+&lt;li&gt;不同点：传递参数不同，call传递参数序列，apply传递数组&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;this指代上下文对象，是指每个实例的this,代码在该this内执行。&lt;/p&gt;
+&lt;p&gt;当this为null时，指向全局对象，意思是调用一个函数时，不是一个具体对象的方法&lt;/p&gt;
+&lt;h1 id=&quot;arguments&quot;&gt;&lt;a href=&quot;#arguments&quot; class=&quot;headerlink&quot; title=&quot;arguments&quot;&gt;&lt;/a&gt;arguments&lt;/h1&gt;&lt;p&gt;使用特殊对象 arguments，开发者&lt;em&gt;无需明确指出参数名&lt;/em&gt;，就能访问它们,意味着能以数组的形式，遍历函数的所有参数。&lt;/p&gt;
 &lt;p&gt;举个栗子&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;componentDidMount() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  this.testArguments(1,2,3,4,5,6);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;testArguments()&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    console.log(&amp;quot;arguments&amp;quot;,[].slice.call(arguments));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    //arguments=[1,2,3,4,5,6]&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h1 id=&quot;柯里化curry&quot;&gt;&lt;a href=&quot;#柯里化curry&quot; class=&quot;headerlink&quot; title=&quot;柯里化curry&quot;&gt;&lt;/a&gt;柯里化curry&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;简单的说柯里化就是通过传入函数所需的部分参数，将一个函数分割为多个的一种技术。或者叫分部传参数求解。&lt;/p&gt;
+&lt;p&gt;柯里化允许你将一个函数转换为一些列函数，在经常调用一个相同参数的函数时，柯里化是很好的解决方案。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;举个例子&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;function multiplier(x, y)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	if(y===undefined)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return function(z)&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;			return x * z;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;else&amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;		return x*y;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;利用闭包特性，函数会保留之前的传递的x&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;multiplier(3, 4) == multiplier (3)(4)&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;一个典型的柯里化函数&quot;&gt;&lt;a href=&quot;#一个典型的柯里化函数&quot; class=&quot;headerlink&quot; title=&quot;一个典型的柯里化函数&quot;&gt;&lt;/a&gt;一个典型的柯里化函数&lt;/h3&gt;&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;componentDidMount() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  ...&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  var reciprocal = this.curry(divider,1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  reciprocal(2);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;curry(func) &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    var fixedArgs = [].slice.call(arguments,1);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    return function() &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      var args = fixedArgs.concat([].slice.call(arguments));&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;      return func.apply(null, args);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &amp;#125;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;执行&lt;code&gt;reciprocal(2)&lt;/code&gt;相当于执行了&lt;code&gt;this.curry(divider,1)(2)&lt;/code&gt;,下面来重点讲解执行过程。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;this.curry&lt;/code&gt;执行&lt;code&gt;[].slice.call(arguments,1)&lt;/code&gt;,去掉传入的第一个参数即&lt;code&gt;divider函数&lt;/code&gt;，返回&lt;code&gt;fixedArgs&lt;/code&gt;,此时&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;code&gt;fixedArgs=[1]&lt;/code&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;继续执行返回匿名函数，同时传入变量2&lt;/li&gt;
+&lt;li&gt;执行匿名函数，&lt;code&gt;fixedArgs.concat([].slice.call(arguments))&lt;/code&gt;,将现在的变量arguments和之前的变量合并，返回args&lt;/li&gt;
+&lt;li&gt;使用apply执行第一个参数就是&lt;code&gt;divider函数&lt;/code&gt;，参数是上一步拼接好的args函数&lt;/li&gt;
+&lt;li&gt;返回结果,完毕。&lt;/li&gt;
+&lt;/ol&gt;
 </content>
     
     <summary type="html">

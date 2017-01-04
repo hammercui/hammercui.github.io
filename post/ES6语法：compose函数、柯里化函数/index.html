@@ -90,10 +90,8 @@
 JavaScript柯里化
 浅析 JavaScript 中的 函数 currying 柯里化
 JS中的call()和apply()方法
-apply与call的区别柯里化curry
-含义：跟函数分布传递参数，每次传递参数的后部分参数，比如（1，2，3，4，5）先传递5然后获得一个函数，再接受并处理参数4，依次类推，逐步求解。
-
-举个栗子">
+apply与call的区别区分apply与call只有一句话
+foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES6语法：apply、call、compose函数、柯里化函数">
 <meta property="og:url" content="http://hammercui.github.io/post/ES6语法：compose函数、柯里化函数/index.html">
@@ -102,21 +100,17 @@ apply与call的区别柯里化curry
 JavaScript柯里化
 浅析 JavaScript 中的 函数 currying 柯里化
 JS中的call()和apply()方法
-apply与call的区别柯里化curry
-含义：跟函数分布传递参数，每次传递参数的后部分参数，比如（1，2，3，4，5）先传递5然后获得一个函数，再接受并处理参数4，依次类推，逐步求解。
-
-举个栗子">
-<meta property="og:updated_time" content="2016-12-13T13:04:50.000Z">
+apply与call的区别区分apply与call只有一句话
+foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg">
+<meta property="og:updated_time" content="2017-01-04T09:36:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES6语法：apply、call、compose函数、柯里化函数">
 <meta name="twitter:description" content="参考文章JavaScript 函数式编程 (ES6)
 JavaScript柯里化
 浅析 JavaScript 中的 函数 currying 柯里化
 JS中的call()和apply()方法
-apply与call的区别柯里化curry
-含义：跟函数分布传递参数，每次传递参数的后部分参数，比如（1，2，3，4，5）先传递5然后获得一个函数，再接受并处理参数4，依次类推，逐步求解。
-
-举个栗子">
+apply与call的区别区分apply与call只有一句话
+foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg">
 
 
 
@@ -382,10 +376,38 @@ apply与call的区别柯里化curry
 <p><a href="https://cnodejs.org/topic/56261a249b48ca9448b776c4" target="_blank" rel="external">JavaScript柯里化</a></p>
 <p><a href="http://www.cnblogs.com/zztt/p/4142891.html" target="_blank" rel="external">浅析 JavaScript 中的 函数 currying 柯里化</a></p>
 <p><a href="http://uule.iteye.com/blog/1158829" target="_blank" rel="external">JS中的call()和apply()方法</a></p>
-<h1 id="apply与call的区别"><a href="#apply与call的区别" class="headerlink" title="apply与call的区别"></a>apply与call的区别</h1><h1 id="柯里化curry"><a href="#柯里化curry" class="headerlink" title="柯里化curry"></a>柯里化curry</h1><blockquote>
-<p>含义：跟函数分布传递参数，每次传递参数的后部分参数，比如（1，2，3，4，5）先传递5然后获得一个函数，再接受并处理参数4，依次类推，逐步求解。</p>
-</blockquote>
+<h1 id="apply与call的区别"><a href="#apply与call的区别" class="headerlink" title="apply与call的区别"></a>apply与call的区别</h1><p>区分apply与call只有一句话</p>
+<p><code>foo.call(this, arg1,arg2,arg3) == foo.apply(this, arguments)==this.foo(arg1, arg2, arg3)</code></p>
+<p>call,apply都是Function.prototype(<code>prototype</code>是<code>javascript</code>的<a href="http://sakyone.iteye.com/blog/484099" target="_blank" rel="external">原型模式</a>)的方法，是JavaScript引擎的内在实现，意味着每个Function对象实例，就是每个方法都有call，apply属性。</p>
+<ul>
+<li>相同点：作用完全相同</li>
+<li>不同点：传递参数不同，call传递参数序列，apply传递数组</li>
+</ul>
+<p>this指代上下文对象，是指每个实例的this,代码在该this内执行。</p>
+<p>当this为null时，指向全局对象，意思是调用一个函数时，不是一个具体对象的方法</p>
+<h1 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h1><p>使用特殊对象 arguments，开发者<em>无需明确指出参数名</em>，就能访问它们,意味着能以数组的形式，遍历函数的所有参数。</p>
 <p>举个栗子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">  this.testArguments(1,2,3,4,5,6);</span><br><span class="line">&#125;</span><br><span class="line">testArguments()&#123;</span><br><span class="line">    console.log(&quot;arguments&quot;,[].slice.call(arguments));</span><br><span class="line">    //arguments=[1,2,3,4,5,6]</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h1 id="柯里化curry"><a href="#柯里化curry" class="headerlink" title="柯里化curry"></a>柯里化curry</h1><blockquote>
+<p>简单的说柯里化就是通过传入函数所需的部分参数，将一个函数分割为多个的一种技术。或者叫分部传参数求解。</p>
+<p>柯里化允许你将一个函数转换为一些列函数，在经常调用一个相同参数的函数时，柯里化是很好的解决方案。</p>
+</blockquote>
+<p>举个例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">function multiplier(x, y)&#123;</span><br><span class="line">	if(y===undefined)&#123;</span><br><span class="line">		return function(z)&#123;</span><br><span class="line">			return x * z;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		return x*y;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>利用闭包特性，函数会保留之前的传递的x</p>
+<p><code>multiplier(3, 4) == multiplier (3)(4)</code></p>
+<h3 id="一个典型的柯里化函数"><a href="#一个典型的柯里化函数" class="headerlink" title="一个典型的柯里化函数"></a>一个典型的柯里化函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">componentDidMount() &#123;</span><br><span class="line">  ...</span><br><span class="line">  var reciprocal = this.curry(divider,1);</span><br><span class="line">  reciprocal(2);</span><br><span class="line">&#125;</span><br><span class="line">curry(func) &#123;</span><br><span class="line">    var fixedArgs = [].slice.call(arguments,1);</span><br><span class="line">    return function() &#123;</span><br><span class="line">      var args = fixedArgs.concat([].slice.call(arguments));</span><br><span class="line">      return func.apply(null, args);</span><br><span class="line">    &#125;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>执行<code>reciprocal(2)</code>相当于执行了<code>this.curry(divider,1)(2)</code>,下面来重点讲解执行过程。</p>
+<ol>
+<li><code>this.curry</code>执行<code>[].slice.call(arguments,1)</code>,去掉传入的第一个参数即<code>divider函数</code>，返回<code>fixedArgs</code>,此时</li>
+</ol>
+<p><code>fixedArgs=[1]</code></p>
+<ol>
+<li>继续执行返回匿名函数，同时传入变量2</li>
+<li>执行匿名函数，<code>fixedArgs.concat([].slice.call(arguments))</code>,将现在的变量arguments和之前的变量合并，返回args</li>
+<li>使用apply执行第一个参数就是<code>divider函数</code>，参数是上一步拼接好的args函数</li>
+<li>返回结果,完毕。</li>
+</ol>
 
       
     </div>
@@ -621,7 +643,7 @@ apply与call的区别柯里化curry
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">1.</span> <span class="nav-text">参考文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#apply与call的区别"><span class="nav-number">2.</span> <span class="nav-text">apply与call的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#柯里化curry"><span class="nav-number">3.</span> <span class="nav-text">柯里化curry</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#参考文章"><span class="nav-number">1.</span> <span class="nav-text">参考文章</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#apply与call的区别"><span class="nav-number">2.</span> <span class="nav-text">apply与call的区别</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#arguments"><span class="nav-number">3.</span> <span class="nav-text">arguments</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#柯里化curry"><span class="nav-number">4.</span> <span class="nav-text">柯里化curry</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一个典型的柯里化函数"><span class="nav-number">4.0.1.</span> <span class="nav-text">一个典型的柯里化函数</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -640,7 +662,7 @@ apply与call的区别柯里化curry
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2016</span>
+  <span itemprop="copyrightYear">2017</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
