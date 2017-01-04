@@ -2437,6 +2437,12 @@
     </entry>
     
     <entry>
+      <title><![CDATA[angularJs学习1：初始angular]]></title>
+      <url>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A01%EF%BC%9A%E5%88%9D%E5%A7%8Bangular/</url>
+      <content type="html"></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[angularJs学习1：初识angular]]></title>
       <url>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A01%EF%BC%9A%E5%88%9D%E8%AF%86angular/</url>
       <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>angular是google搞出来的js框架，后端程序如果想做前段，可以考虑尝试下。因为其按照mvc的架构来做框架，并引入了mvvm的机制，就是view动态数据绑定</p>
@@ -2466,12 +2472,6 @@
 <li>除了这些内置的指令ng-app,ng-init,ng-model,ng-repeat外，还可以自定义指令，但是在命名的时候用驼峰法，使用的时候用-间隔。</li>
 </ol>
 ]]></content>
-    </entry>
-    
-    <entry>
-      <title><![CDATA[angularJs学习1：初始angular]]></title>
-      <url>http://hammercui.github.io/post/angularJs%E5%AD%A6%E4%B9%A01%EF%BC%9A%E5%88%9D%E5%A7%8Bangular/</url>
-      <content type="html"></content>
     </entry>
     
     <entry>
