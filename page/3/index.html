@@ -293,6 +293,171 @@
             
               
                 
+                <a class="post-title-link" href="/post/android最佳实践8：dragger2框架/" itemprop="url">
+                  android最佳实践8：dagger2框架
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-17T14:12:30+08:00" content="2016-06-17">
+              2016-06-17
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/android/" itemprop="url" rel="index">
+                    <span itemprop="name">android</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/android最佳实践8：dragger2框架/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/android最佳实践8：dragger2框架/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="dagger2"><a href="#dagger2" class="headerlink" title="dagger2"></a>dagger2</h1><p><a href="http://google.github.io/dagger/" target="_blank" rel="external">dagger2</a>是一种依赖注入框架，由square开发，现在google负责维护。dagger2一般配合mvp，在mvp已经解耦的基础上，让解耦变得更彻底，以便于测试及维护。</p>
+<h2 id="dagger2与dagger的区别"><a href="#dagger2与dagger的区别" class="headerlink" title="dagger2与dagger的区别"></a>dagger2与dagger的区别</h2><ul>
+<li>再也没有使用反射：图的验证、配置和预先设置都在编译的时候执行。</li>
+<li>容易调试和可跟踪：完全具体地调用提供和创建的堆栈</li>
+<li>更好的性能：谷歌声称他们提高了13%的处理性能</li>
+<li>代码混淆：使用派遣方法，就如同自己写的代码一样</li>
+</ul>
+<p>当然所有这些很棒的特点都需要付出一个代价，那就是缺乏灵活性，例如：Dagger2没用反射所以没有动态机制。</p>
+<h2 id="注解含义"><a href="#注解含义" class="headerlink" title="注解含义"></a>注解含义</h2><ul>
+<li><p><code>@Inject</code>: 通常在需要依赖的地方使用这个注解，标识我们需要的实例。另外在<code>@Provide</code>中，直接返回的实例，需要在类的构造函数添加<code>@Inject</code></p>
+</li>
+<li><p><code>@Module</code>: 我们定义一个类，用<code>@Module注</code>解,<code>Modules</code>类里面的方法专门提供依赖。这样<code>Dagger</code>在构造类的实例的时候，就知道从哪里去找到需要的依赖。modules的一个重要特征是它们设计为分区并组合在一起（比如说，在我们的Component中可以有多个组成在一起的modules）。</p>
+</li>
+<li><p><code>@Provide</code>: 在<code>Modules</code>类中，我们定义的方法是用这个注解。这些方法都是用来提供依赖，生成实例的。</p>
+</li>
+<li><p><code>@Singlton</code>：常用在<code>@Provide</code>之前，表示提供的依赖是个单例，也就是每次都提供同一个实体。</p>
+</li>
+<li><p><code>@Component</code>: 我们定义一个接口，用<code>Components</code>注解，我们可以理解为Component就是一个注入器，是@Inject和@Module的桥梁。它的主要作用就是连接这两个部分。 Components可以提供所有定义了的类型的实例，比如：我们必须用@Component注解一个接口然后列出所有的@Modules组成该组件，如果缺失了任何一块都会在编译的时候报错。所有的组件都可以通过它的<code>Modules</code>知道依赖的范围。</p>
+</li>
+<li><p><code>@Scope</code>: Dagger2可以通过自定义注解限定注解作用域。后面会演示一个例子，这是一个非常强大的特点，因为就如前面说的一样，没 必要让每个对象都去了解如何管理他们的实例。在scope的例子中，我们用自定义的@PerActivity注解一个类，所以这个对象存活时间就和 activity的一样。简单来说就是我们可以定义所有范围的粒度(@PerFragment, @PerUser, 等等)。</p>
+</li>
+<li><p><code>Qualifier</code>: 当类的类型不足以鉴别一个依赖的时候，我们就可以使用这个注解标示。例如：在Android中，我们会需要不同类型的context，所以我们就可以定义 qualifier注解“@ForApplication”和“@ForActivity”，这样当注入一个context的时候，我们就可以告诉 Dagger我们想要哪种类型的context。</p>
+</li>
+</ul>
+<h1 id="引入工程"><a href="#引入工程" class="headerlink" title="引入工程"></a>引入工程</h1><p>在app/build.gradle添加依赖</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">apply plugin:&apos;android-apt&apos;</span><br><span class="line"></span><br><span class="line">dependencies &#123;</span><br><span class="line">...</span><br><span class="line">	//dragger2</span><br><span class="line">    //provided &apos;org.glassfish:javax.annotation:10.0-b28&apos;</span><br><span class="line">    apt &apos;com.google.dagger:dagger-compiler:2.0.2&apos;</span><br><span class="line">    compile &apos;com.google.dagger:dagger:2.0.2&apos;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为Dragger2是基于注解的，它会预先生成一些类文件，所以需要在整个项目的/build.gradle文件中加上apt工具:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">buildscript &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">    dependencies &#123;</span><br><span class="line">        ...</span><br><span class="line">        classpath &apos;com.neenbedankt.gradle.plugins:android-apt:1.8&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">allprojects &#123;</span><br><span class="line">    repositories &#123;</span><br><span class="line">        jcenter()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">task clean(type: Delete) &#123;</span><br><span class="line">    delete rootProject.buildDir</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="demo详解"><a href="#demo详解" class="headerlink" title="demo详解"></a>demo详解</h1><p>我们通过使用greenDao的示例来说明，引入dagger2的好处。greenDao是非常流行的管理sqldata的orm，我们希望他以单例的形式存在，生命周期等同于Application。</p>
+<h2 id="首先，创建GreenDaoModule-java"><a href="#首先，创建GreenDaoModule-java" class="headerlink" title="首先，创建GreenDaoModule.java"></a>首先，创建GreenDaoModule.java</h2><p>GreenDaoModule.java</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@Module</span><br><span class="line">public class GreenDaoModule &#123;</span><br><span class="line"></span><br><span class="line">    private final BaseApp application;</span><br><span class="line"></span><br><span class="line">    public GreenDaoModule(BaseApp application)&#123;</span><br><span class="line">        this.application = application;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    public BaseApp provideApplication()&#123;</span><br><span class="line">        return application;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    SQLiteDatabase provideSQLiteDatabase(BaseApp baseApp)&#123;</span><br><span class="line">        DaoMaster.OpenHelper helper = new DaoMaster.DevOpenHelper(baseApp, &quot;zlot-db&quot;, null);</span><br><span class="line">        SQLiteDatabase sqlDB = helper.getWritableDatabase();</span><br><span class="line">        return sqlDB;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    DaoMaster provideDaoMaster(SQLiteDatabase sqLiteDatabase)&#123;</span><br><span class="line">        DaoMaster daoMaster = new DaoMaster(sqLiteDatabase);</span><br><span class="line">        return daoMaster;</span><br><span class="line">    &#125;</span><br><span class="line">    @Provides</span><br><span class="line">    @Singleton</span><br><span class="line">    DaoSession provideDaoSession(DaoMaster daoMaster)&#123;</span><br><span class="line">        DaoSession daoSession = daoMaster.newSession();</span><br><span class="line">        return daoSession;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在上述代码中，我们提供了BaseApp，SQLiteDatabase，DaoMaster，DaoSession的依赖，均是单例模式。<br>在目标类注解的时候，会在GreenDaoModule寻找依赖并提供实例。</p>
+<h2 id="创建AppComponent-java，提供注射器"><a href="#创建AppComponent-java，提供注射器" class="headerlink" title="创建AppComponent.java，提供注射器"></a>创建AppComponent.java，提供注射器</h2><p>我们新建一个interface，添加@Component注解，就提供了一个注射器，桥接@Inject跟@Module。</p>
+<p>AppComponent.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@Singleton</span><br><span class="line">@Component(modules = &#123;GreenDaoModule.class&#125;)</span><br><span class="line">public interface AppComponent &#123;</span><br><span class="line">    BaseApp getApplication();</span><br><span class="line"></span><br><span class="line">    BasePresenter inject(BasePresenter basePresenter);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其中BasePresenter是注射目标，也就是说想要在哪个类里面使用依赖注解，必须在component中注射。</p>
+<p>比如我们想在BasePresenter这个类里，使用依赖注入DaoSession实例，必须在component里插入。</p>
+<h2 id="在Application中交给dagger2来完成初始化"><a href="#在Application中交给dagger2来完成初始化" class="headerlink" title="在Application中交给dagger2来完成初始化"></a>在Application中交给dagger2来完成初始化</h2><p>Dagger会处理我们的注解，为components生成实现并重命名加上“Dagger”前缀。</p>
+<p>MyApplication.java<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/**</span><br><span class="line">	 * 初始化依赖加载器</span><br><span class="line">	 */</span><br><span class="line">	private void initInjector()&#123;</span><br><span class="line">		appComponent = DaggerAppComponent</span><br><span class="line">				.builder()</span><br><span class="line">				.apiModule(new ApiModule())</span><br><span class="line">				.greenDaoModule(new GreenDaoModule(this))</span><br><span class="line">				.build();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">public AppComponent getAppComponent()&#123;</span><br><span class="line">		return  appComponent;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们现在可以利用get方法获取创建的component，然后调用inject()方法将BasePresenter作为参数传进去，这样就完成了绑定BasePresenter依赖。</p>
+<h2 id="创建BasePresenter"><a href="#创建BasePresenter" class="headerlink" title="创建BasePresenter"></a>创建BasePresenter</h2><p>BasePresenter的构造函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">public BasePresenter(BaseApp baseApp)&#123;</span><br><span class="line">    baseApp.getAppComponent().inject(this);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>BasePresenter中使用依赖<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">public class BasePresenter &#123;</span><br><span class="line"></span><br><span class="line">    @Inject</span><br><span class="line">    DaoSession daoSession;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 自定义http请求任务</span><br><span class="line">     */</span><br><span class="line">    @Inject</span><br><span class="line">    public HttpTask httpTask;</span><br><span class="line"></span><br><span class="line">    public BasePresenter(BaseApp baseApp)&#123;</span><br><span class="line">        baseApp.getAppComponent().inject(this);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们新建一个Presenter继承自BasePresenter，执行inject绑定，就直接可以使用Application提供的依赖来实例化对象了，而且这些实例都是singlton模式，生命周期等同于Application。<br>我们直接可以使用DaoSession来完成sql操作了。</p>
+<h2 id="继承Presenter"><a href="#继承Presenter" class="headerlink" title="继承Presenter"></a>继承Presenter</h2><p>UserReguPresenter类继承自BasePresenter类，testLog（）方法来测试数据库的操作</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">public class UserReguPresenter  extends BasePresenter&#123;</span><br><span class="line">    private UserReguActivity userReguActivity;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    public UserReguPresenter(UserReguActivity userReguActivity) &#123;</span><br><span class="line">        super((BaseApp) userReguActivity.getApplication());</span><br><span class="line">        this.userReguActivity = userReguActivity;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> public void testLog()&#123;</span><br><span class="line">        Logger.Debug(&quot;调用了presenter的测试&quot;);</span><br><span class="line">		//new一个实例</span><br><span class="line">        RegularHoldInfo regularHoldInfo = new RegularHoldInfo();</span><br><span class="line">        regularHoldInfo.setAmount(100.00);</span><br><span class="line">        regularHoldInfo.setCcsId(110);</span><br><span class="line">		//执行sql inset操作</span><br><span class="line">        daoSession.getRegularHoldInfoDao().insert(regularHoldInfo);</span><br><span class="line">		//执行sql query操作</span><br><span class="line">        Query query = daoSession.getRegularHoldInfoDao()</span><br><span class="line">                .queryBuilder()</span><br><span class="line">                .where(RegularHoldInfoDao.Properties.CcsId.eq(&quot;110&quot;))</span><br><span class="line">                .build();</span><br><span class="line">       List&lt;RegularHoldInfo&gt;  list = (List&lt;RegularHoldInfo&gt;)query.list();</span><br><span class="line">        if (list.size()&gt;0)&#123;</span><br><span class="line">            Logger.Debug(&quot;查询结果：&quot;+list.get(0).getAmount());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>泡在网上的日子 <a href="http://www.jcodecraeer.com/a/anzhuokaifa/androidkaifa/2015/0519/2892.html" target="_blank" rel="external">详解Dagger2</a></p>
+<p><a href="http://blog.csdn.net/finddreams/article/details/50849385" target="_blank" rel="external">基于Retrofit2.0+RxJava+Dragger2实现不一样的Android网络构架搭建</a></p>
+<p><a href="http://www.jianshu.com/p/c2feb21064bb" target="_blank" rel="external">Dagger2使用</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/android基础：多渠道打包和代码混淆/" itemprop="url">
                   android基础：多渠道打包和代码混淆
                 </a>
@@ -1636,7 +1801,7 @@
 <ul>
 <li>粗读Gradle User Guide和Gradle Plugin User Guide</li>
 </ul>
-<h1 id="gradle概念"><a href="#gradle概念" class="headerlink" title="gradle概念"></a>gradle概念</h1><h1 id="gradle构建android工程"><a href="#gradle构建android工程" class="headerlink" title="gradle构建android工程"></a>gradle构建android工程</h1><h1 id="如何解决重复依赖"><a href="#如何解决重复依赖" class="headerlink" title="如何解决重复依赖"></a>如何解决重复依赖</h1><h2 id="如何发现"><a href="#如何发现" class="headerlink" title="如何发现"></a>如何发现</h2><ul>
+<h1 id="gradle概念"><a href="#gradle概念" class="headerlink" title="gradle概念"></a>gradle概念</h1><h1 id="gradle构建android工程"><a href="#gradle构建android工程" class="headerlink" title="gradle构建android工程"></a>gradle构建android工程</h1><h1 id="gradle实用技能"><a href="#gradle实用技能" class="headerlink" title="gradle实用技能"></a>gradle实用技能</h1><h2 id="1-解决重复依赖"><a href="#1-解决重复依赖" class="headerlink" title="1.解决重复依赖"></a>1.解决重复依赖</h2><h3 id="如何发现"><a href="#如何发现" class="headerlink" title="如何发现"></a>如何发现</h3><ul>
 <li>方法1</li>
 </ul>
 <p><code>windows</code>环境下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">命令行执行</span><br><span class="line">gradlew -q dependencies module名称:dependencies --configuration compile</span><br></pre></td></tr></table></figure></p>
@@ -1645,132 +1810,20 @@
 <li>方法2</li>
 </ul>
 <p>下载gradle view插件</p>
-<h2 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h2><p>在重复引用的依赖里，去除对引入的其他依赖</p>
+<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><p>在重复引用的依赖里，去除对引入的其他依赖</p>
 <p>eg:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line">compile(&apos;org.hibernate:hibernate:3.1&apos;) &#123;</span><br><span class="line">//excluding a particular transitive dependency:</span><br><span class="line">exclude module: &apos;cglib&apos; //by artifact name</span><br><span class="line">exclude group: &apos;org.jmock&apos; //by group</span><br><span class="line">exclude group: &apos;org.unwanted&apos;, module: &apos;iAmBuggy&apos; //by both name and group </span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>需要注意的是，当我们依赖本地module时，<br>eg:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line"> 	compile fileTree(dir: &apos;libs&apos;, include: &apos;*.jar&apos;)</span><br><span class="line">    compile &apos;com.android.support:support-v4:23.3.0&apos;</span><br><span class="line">	···</span><br><span class="line">		</span><br><span class="line"></span><br><span class="line">	···</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>需要注意的是，当我们依赖本地module时，<br>eg:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dependencies &#123;</span><br><span class="line"> 	compile fileTree(dir: &apos;libs&apos;, include: &apos;*.jar&apos;)</span><br><span class="line">    compile &apos;com.android.support:support-v4:23.3.0&apos;</span><br><span class="line">	···</span><br><span class="line">		</span><br><span class="line">	···</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-使用gradle统一配置sdk和dependencies版本"><a href="#2-使用gradle统一配置sdk和dependencies版本" class="headerlink" title="2 使用gradle统一配置sdk和dependencies版本"></a>2 使用gradle统一配置sdk和dependencies版本</h2><p>首先在工程目录下新建<code>config.gradle</code>文件，内容如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ext &#123;</span><br><span class="line">    android = [compileSdkVersion:23,</span><br><span class="line">            buildToolsVersion:&quot;23.0.1&quot;,</span><br><span class="line">            minSdkVersion:15,</span><br><span class="line">            targetSdkVersion:23]</span><br><span class="line">    dependencies = [</span><br><span class="line">          appcompatv7:&apos;com.android.support:appcompat-v7:23.3.0&apos;,</span><br><span class="line">            junit:&apos;junit:junit:4.12&apos;,</span><br><span class="line">            xlog:&apos;com.elvishew:xlog:1.3.0&apos;,</span><br><span class="line">            flexbox:&apos;com.google.android:flexbox:0.2.5&apos;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在工程的build.gradle里引入</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apply from:&apos;config.gradle&apos;</span><br></pre></td></tr></table></figure>
+<p>然后在app或者module的build.gradle使用这些配置信息，比如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">android &#123;</span><br><span class="line">    compileSdkVersion rootProject.ext.android.compileSdkVersion</span><br><span class="line">    buildToolsVersion rootProject.ext.android.buildToolsVersion</span><br><span class="line"></span><br><span class="line">    defaultConfig &#123;</span><br><span class="line">        minSdkVersion rootProject.ext.android.minSdkVersion</span><br><span class="line">        targetSdkVersion rootProject.ext.android.targetSdkVersion</span><br><span class="line">        versionCode 1</span><br><span class="line">        versionName &quot;1.0&quot;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> </span><br><span class="line"> dependencies &#123;</span><br><span class="line"> ...</span><br><span class="line"> 	//</span><br><span class="line">   compile rootProject.ext.dependencies.appcompatv7</span><br><span class="line"> ...</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
 <h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://www.csdn.net/article/2015-08-10/2825420" target="_blank" rel="external">Android项目中如何用好构建神器Gradle？</a></p>
 <p><a href="http://www.jcodecraeer.com/a/anzhuokaifa/Android_Studio/2015/0129/2375.html" target="_blank" rel="external">Gradle之依赖管理</a></p>
 
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/nodejs学习：2-redis的安装与使用/" itemprop="url">
-                  nodejs学习：2 redis的安装与使用
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-09T16:57:23+08:00" content="2016-04-09">
-              2016-04-09
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/nodejs/" itemprop="url" rel="index">
-                    <span itemprop="name">nodejs</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/post/nodejs学习：2-redis的安装与使用/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/nodejs学习：2-redis的安装与使用/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
           
         
       
@@ -1843,7 +1896,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">69</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

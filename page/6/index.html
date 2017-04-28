@@ -293,6 +293,150 @@
             
               
                 
+                <a class="post-title-link" href="/post/react-native-android实战：1-创建项目/" itemprop="url">
+                  react-native android实战：1 创建项目
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-03-07T14:46:52+08:00" content="2016-03-07">
+              2016-03-07
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/react-native-android实战/" itemprop="url" rel="index">
+                    <span itemprop="name">react-native android实战</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/post/react-native-android实战：1-创建项目/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="post/react-native-android实战：1-创建项目/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="新建工程"><a href="#新建工程" class="headerlink" title="新建工程"></a>新建工程</h1><p>执行命令 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native init MyProject</span><br></pre></td></tr></table></figure>
+<h1 id="导入第三方库"><a href="#导入第三方库" class="headerlink" title="导入第三方库"></a>导入第三方库</h1><p>导入Button库<code>react-native-button</code>，<a href="https://github.com/ide/react-native-button" target="_blank" rel="external">戳这里，打开github</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-native-button --save</span><br></pre></td></tr></table></figure>
+<p>导入导航库react-native-router-flux，<a href="https://github.com/hammercui/react-native-router-flux" target="_blank" rel="external">点击查看github</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-native-router-flux --save</span><br></pre></td></tr></table></figure></p>
+<p>导入<a href="https://github.com/reactjs/redux" target="_blank" rel="external">redux</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install redux --save</span><br></pre></td></tr></table></figure>
+<p>导入<a href="https://github.com/reactjs/react-redux" target="_blank" rel="external">react-redux</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-redux --save</span><br></pre></td></tr></table></figure>
+<p>导入<a href="https://github.com/maxs15/react-native-modalbox" target="_blank" rel="external">react-native-modalbox</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install react-native-modalbox --save</span><br></pre></td></tr></table></figure>
+<p>react-native-modalbox如下图<img src="https://camo.githubusercontent.com/d4a496a80e4159490d873dcc37e93b71d6da7e0b/687474703a2f2f692e696d6775722e636f6d2f3358554c4c74382e676966" alt=""></p>
+<p>导入<a href="https://github.com/oblador/react-native-vector-icons" target="_blank" rel="external">react-native-vector-icons</a>        </p>
+<p><code>react-native-vector-icons</code>是github中很火的开源图标项目，解决我们找四处找图标的麻烦</p>
+<p><strong>注意在android使用中，一定不要忘记把<code>node_modules\react-native-vector-icons\Fonts</code>下的所有文件拷贝到<code>android/app/src/main/assets/fonts</code>路径</strong></p>
+<h1 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h1><p>打开服务 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native start</span><br></pre></td></tr></table></figure>
+<p>android虚拟机或真机运行  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">react-native run-android</span><br></pre></td></tr></table></figure>
+<h1 id="推荐的IDE"><a href="#推荐的IDE" class="headerlink" title="推荐的IDE"></a>推荐的IDE</h1><p>使用webstorm11,代码补全以及文件索引，要优于atom跟sublime text</p>
+<h1 id="推荐模拟器"><a href="#推荐模拟器" class="headerlink" title="推荐模拟器"></a>推荐模拟器</h1><p><a href="https://developer.xamarin.com/guides/android/getting_started/installation/android-player/" target="_blank" rel="external">Xamarin Android Player</a>,自带的菜单按钮特别方便，genymotion在win10经常起不来，后来试用了xamarin，发现相当稳定，强烈推荐</p>
+<h1 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h1><p>5.0以下 点击memu菜单或者摇晃机身，弹出选项，选择<code>reload js</code></p>
+<p>5.0以上 首先adb reverse tcp:8081 tcp:8081，然后摇晃机身</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p><a href="http://richard-cao.github.io/2015/11/24/React-native-Android-%E5%88%9D%E6%AC%A1%E8%B8%A9%E5%9D%91%E4%B9%8B%E6%97%85/" target="_blank" rel="external">React-Native Android 初次踩坑之旅</a></p>
+<p><a href="http://bbs.reactnative.cn/topic/10/%E5%9C%A8windows%E4%B8%8B%E6%90%AD%E5%BB%BAreact-native-android%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83" target="_blank" rel="external">在windows下搭建react-native-android开发环境</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/post/react-native-android实战：Bug集锦/" itemprop="url">
                   react-native-android实战：Bug集锦
                 </a>
@@ -1715,125 +1859,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/post/angularJs学习1：初始angular/" itemprop="url">
-                  angularJs学习1：初始angular
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-02T17:57:15+08:00" content="2016-03-02">
-              2016-03-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/angulasJs/" itemprop="url" rel="index">
-                    <span itemprop="name">angulasJs</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/post/angularJs学习1：初始angular/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="post/angularJs学习1：初始angular/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1879,7 +1904,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">69</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
